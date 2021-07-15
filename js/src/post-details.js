@@ -72,7 +72,10 @@ $(document).ready(function () {
   // TOC item animation navigate & prevent #item selector in adress bar.
   $('.post-toc a').on('click', function (e) {
     e.preventDefault();
-    var targetSelector = NexT.utils.escapeSelector(this.getAttribute('href'));
+    /* 解析错误 */
+    // var targetSelector = NexT.utils.escapeSelector(this.getAttribute('href'));
+    // 添加下面一行代码，重新解析URL
+    var targetSelector = decodeURI(this.getAttribute('href'))
     var offset = $(targetSelector).offset().top;
 
     hasVelocity ?

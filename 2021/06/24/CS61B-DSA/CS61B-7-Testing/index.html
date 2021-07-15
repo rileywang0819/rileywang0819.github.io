@@ -1,0 +1,867 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="en,zh-Hans,default">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Roboto Slab:300,300italic,400,400italic,700,700italic|Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="CS61B," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="In this lecture, we will discuss an important and realistic issue – Testing . How do you know that your code works correctly?  Pass Autograder. (in this lecture) Run to see if the code works as your e">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CS61B(7): Testing">
+<meta property="og:url" content="http://example.com/2021/06/24/CS61B-DSA/CS61B-7-Testing/index.html">
+<meta property="og:site_name" content="GoGo-Wang&#39;s Blog">
+<meta property="og:description" content="In this lecture, we will discuss an important and realistic issue – Testing . How do you know that your code works correctly?  Pass Autograder. (in this lecture) Run to see if the code works as your e">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/2021/06/24/CS61B-DSA/CS61B-7-Testing/1.JPG">
+<meta property="og:image" content="http://example.com/2021/06/24/CS61B-DSA/CS61B-7-Testing/2.JPG">
+<meta property="og:image" content="http://example.com/2021/06/24/CS61B-DSA/CS61B-7-Testing/3.JPG">
+<meta property="article:published_time" content="2021-06-24T06:09:01.000Z">
+<meta property="article:modified_time" content="2021-07-14T16:01:56.716Z">
+<meta property="article:author" content="gogo-wang">
+<meta property="article:tag" content="CS61B">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2021/06/24/CS61B-DSA/CS61B-7-Testing/1.JPG">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://example.com/2021/06/24/CS61B-DSA/CS61B-7-Testing/"/>
+
+
+
+
+
+  <title>CS61B(7): Testing | GoGo-Wang's Blog</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">GoGo-Wang's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">"Say something." <br> - "Something."</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/%20" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags%20" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories%20" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives%20" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/06/24/CS61B-DSA/CS61B-7-Testing/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="GoGo-Wang's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">CS61B(7): Testing</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2021-06-24T15:09:01+09:00">
+                2021-06-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/CS61B-Data-Strucutes/" itemprop="url" rel="index">
+                    <span itemprop="name">CS61B-Data Strucutes</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2021/06/24/CS61B-DSA/CS61B-7-Testing/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2021/06/24/CS61B-DSA/CS61B-7-Testing/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>In this lecture, we will discuss an important and realistic issue – <code>Testing</code> .</p>
+<p>How do you know that your code works correctly?</p>
+<ul>
+<li>Pass Autograder. (in this lecture)</li>
+<li>Run to see if the code works as your expect.</li>
+<li><strong>Pass tests.</strong></li>
+</ul>
+<p>The last one is the most important one. In the real world, programmers believe their code works because of <strong>tests they write themselves.</strong></p>
+<span id="more"></span>
+
+
+<h2 id="Ad-Hoc-Testing-vs-JUnit"><a href="#Ad-Hoc-Testing-vs-JUnit" class="headerlink" title="Ad Hoc Testing vs. JUnit"></a>Ad Hoc Testing vs. JUnit</h2><p>Let’s try to write a method that sorts arrays of Strings and promise its correctness.</p>
+<img src="/2021/06/24/CS61B-DSA/CS61B-7-Testing/1.JPG" class="">
+
+<p>With the old way, we will write sort method, and use Autograder to verify its correctness. But with the new way which will be taught in this lecture, <strong>we will write sort, as well as our own test for sort.</strong></p>
+<h3 id="Ad-Hoc-Testing"><a href="#Ad-Hoc-Testing" class="headerlink" title="Ad Hoc Testing"></a>Ad Hoc Testing</h3><p>We will start by writing <code>testSort</code> first!</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Arrays;</span><br><span class="line"></span><br><span class="line"><span class="comment">/** Tests the Sort class */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestSort</span> </span>&#123;</span><br><span class="line">    <span class="comment">/** Tests the Sort.sort method */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">testSort</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        String[] input = &#123;<span class="string">&quot;i&quot;</span>, <span class="string">&quot;have&quot;</span>, <span class="string">&quot;an&quot;</span>, <span class="string">&quot;egg&quot;</span>&#125;;</span><br><span class="line">        String[] expected = &#123;<span class="string">&quot;an&quot;</span>, <span class="string">&quot;egg&quot;</span>, <span class="string">&quot;have&quot;</span>, <span class="string">&quot;i&quot;</span>&#125;;</span><br><span class="line">        Sort.sort(input);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; input.length; i++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (!input[i].equals(expected[i])) &#123;</span><br><span class="line">                System.out.println(<span class="string">&quot;Mismatch in position &quot;</span> + i +</span><br><span class="line">                    <span class="string">&quot;, expected: &quot;</span> + expected[i] + <span class="string">&quot;, but got: &quot;</span> + input[i]);</span><br><span class="line">                <span class="keyword">return</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        testSort();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="JUnit"><a href="#JUnit" class="headerlink" title="JUnit"></a>JUnit</h3><img src="/2021/06/24/CS61B-DSA/CS61B-7-Testing/2.JPG" class="">
+
+<p>Next, we will do test by <code>JUnit</code> , and write tests and sort method simultaneously.</p>
+<p>The following is the final code. If you are curious about the process, please watch <a target="_blank" rel="noopener" href="https://www.youtube.com/playlist?list=PL8FaHk7qbOD4ZxWDcuItnUElH2Pnneamc">lecture videos</a>.</p>
+<img src="/2021/06/24/CS61B-DSA/CS61B-7-Testing/3.JPG" class="">
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> org.junit.Test;</span><br><span class="line"><span class="keyword">import</span> <span class="keyword">static</span> org.junit.Assert.*;</span><br><span class="line"></span><br><span class="line"><span class="comment">/** Tests the Sort class */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestSort</span> </span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">/** If you want to have your tests timeout after a certain amount of time </span></span><br><span class="line"><span class="comment">     * (to prevent infinite loops), you can declare your test like the following: */</span></span><br><span class="line">    <span class="meta">@Test(timeout = 1000)</span></span><br><span class="line">    <span class="comment">/** Tests the Sort.findSmallest method. */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testFindSmallest</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        String[] input = &#123;<span class="string">&quot;i&quot;</span>, <span class="string">&quot;have&quot;</span>, <span class="string">&quot;an&quot;</span>, <span class="string">&quot;egg&quot;</span>&#125;;</span><br><span class="line">        <span class="keyword">int</span> expected = <span class="number">2</span>;</span><br><span class="line">        <span class="keyword">int</span> actual = Sort.findSmallest(input, <span class="number">0</span>);</span><br><span class="line">        assertEquals(expected, actual);</span><br><span class="line"></span><br><span class="line">        String[] input2 = &#123;<span class="string">&quot;there&quot;</span>, <span class="string">&quot;are&quot;</span>, <span class="string">&quot;many&quot;</span>, <span class="string">&quot;pigs&quot;</span>&#125;;</span><br><span class="line">        <span class="keyword">int</span> expected2 = <span class="number">2</span>;</span><br><span class="line">        <span class="keyword">int</span> actual2 = Sort.findSmallest(input2, <span class="number">2</span>);</span><br><span class="line">        org.junit.Assert.assertEquals(expected2, actual2);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="comment">/** Tests the Sort.swap method. */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testSwap</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        String[] input = &#123;<span class="string">&quot;i&quot;</span>, <span class="string">&quot;have&quot;</span>, <span class="string">&quot;an&quot;</span>, <span class="string">&quot;egg&quot;</span>&#125;;</span><br><span class="line">        String[] expected = &#123;<span class="string">&quot;an&quot;</span>, <span class="string">&quot;have&quot;</span>, <span class="string">&quot;i&quot;</span>, <span class="string">&quot;egg&quot;</span>&#125;;</span><br><span class="line">        Sort.swap(input, <span class="number">0</span>, <span class="number">2</span>);</span><br><span class="line">        org.junit.Assert.assertArrayEquals(expected, input);</span><br><span class="line"></span><br><span class="line">        String[] input2 = &#123;<span class="string">&quot;there&quot;</span>, <span class="string">&quot;are&quot;</span>, <span class="string">&quot;many&quot;</span>, <span class="string">&quot;pigs&quot;</span>&#125;;</span><br><span class="line">        String[] expected2 = &#123;<span class="string">&quot;there&quot;</span>, <span class="string">&quot;pigs&quot;</span>, <span class="string">&quot;many&quot;</span>, <span class="string">&quot;are&quot;</span>&#125;;</span><br><span class="line">        Sort.swap(input2, <span class="number">1</span>, <span class="number">3</span>);</span><br><span class="line">        assertArrayEquals(expected2, input2);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="comment">/** Tests the Sort.sort method */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testSort</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        String[] input = &#123;<span class="string">&quot;i&quot;</span>, <span class="string">&quot;have&quot;</span>, <span class="string">&quot;an&quot;</span>, <span class="string">&quot;egg&quot;</span>&#125;;</span><br><span class="line">        String[] expected = &#123;<span class="string">&quot;an&quot;</span>, <span class="string">&quot;egg&quot;</span>, <span class="string">&quot;have&quot;</span>, <span class="string">&quot;i&quot;</span>&#125;;</span><br><span class="line">        Sort.sort(input);</span><br><span class="line"></span><br><span class="line">        assertArrayEquals(expected, input);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Sort</span> </span>&#123;</span><br><span class="line">    <span class="comment">/** Sorts strings destructively. */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">sort</span><span class="params">(String[] x)</span> </span>&#123;</span><br><span class="line">        sort(x, <span class="number">0</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/** Sorts x starting at position start. */</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">sort</span><span class="params">(String[] x, <span class="keyword">int</span> start)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (start == x.length - <span class="number">1</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// Find the smallest item</span></span><br><span class="line">        <span class="keyword">int</span> smallestId = Sort.findSmallest(x, start);</span><br><span class="line">        <span class="comment">// Swap</span></span><br><span class="line">        swap(x, start, smallestId);</span><br><span class="line">        <span class="comment">// Selection sort the rest</span></span><br><span class="line">        sort(x, start + <span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/** Returns the index of the smallest String in x, starting at start. */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">findSmallest</span><span class="params">(String[] x, <span class="keyword">int</span> start)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> smallestId = start;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = start; i &lt; x.length; i++) &#123;</span><br><span class="line">            <span class="keyword">int</span> cmp = x[i].compareTo(x[smallestId]);</span><br><span class="line">            <span class="keyword">if</span> (cmp &lt; <span class="number">0</span>) &#123;</span><br><span class="line">                smallestId = i;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> smallestId;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/** Swaps item at position a with item at position b. */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">swap</span><span class="params">(String[] x, <span class="keyword">int</span> a, <span class="keyword">int</span> b)</span> </span>&#123;</span><br><span class="line">        String temp = x[a];</span><br><span class="line">        x[a] = x[b];</span><br><span class="line">        x[b] = temp;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="Unit-Testing"><a href="#Unit-Testing" class="headerlink" title="Unit Testing"></a>Unit Testing</h2><p>Unit Testing is a great way to rigorously test each method of your code and ultimately ensure that you have a working project.</p>
+<p>The “Unit” part of Unit Testing comes from the idea that you can break your program down into units, or the smallest testable part of an application. Therefore, Unit Testing enforces good code structure <strong>(each method should only do “One Thing”)</strong>, and allows you to consider all of the edge cases for each method and test for them individually.</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>Post author:</strong>
+    gogo-wang
+  </li>
+  <li class="post-copyright-link">
+    <strong>Post link:</strong>
+    <a href="http://example.com/2021/06/24/CS61B-DSA/CS61B-7-Testing/" title="CS61B(7): Testing">http://example.com/2021/06/24/CS61B-DSA/CS61B-7-Testing/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice: </strong>
+    All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> unless stating additionally.
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/CS61B/" rel="tag"># CS61B</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2021/06/24/CS61B-DSA/CS61B-6-ALists-vs-SLists-Resizing/" rel="next" title="CS61B(6): ALists vs SLists, Resizing">
+                <i class="fa fa-chevron-left"></i> CS61B(6): ALists vs SLists, Resizing
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2021/06/24/CS61B-DSA/CS61B-8-Inheritance-Implements/" rel="prev" title="CS61B(8): Inheritance, Implements">
+                CS61B(8): Inheritance, Implements <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a target="_blank" rel="noopener" href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name"></p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives%20%7C%7C%20archive">
+              
+                  <span class="site-state-item-count">36</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/rileywang0819" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Ad-Hoc-Testing-vs-JUnit"><span class="nav-number">1.</span> <span class="nav-text">Ad Hoc Testing vs. JUnit</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Ad-Hoc-Testing"><span class="nav-number">1.1.</span> <span class="nav-text">Ad Hoc Testing</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#JUnit"><span class="nav-number">1.2.</span> <span class="nav-text">JUnit</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Unit-Testing"><span class="nav-number">2.</span> <span class="nav-text">Unit Testing</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">GoGo-Wang</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+    
+      <script id="dsq-count-scr" src="https://author.disqus.com/count.js" async></script>
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'http://example.com/2021/06/24/CS61B-DSA/CS61B-7-Testing/';
+          this.page.identifier = '2021/06/24/CS61B-DSA/CS61B-7-Testing/';
+          this.page.title = 'CS61B(7): Testing';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://author.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
