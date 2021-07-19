@@ -1,0 +1,933 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="en,zh-Hans,default">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Roboto Slab:300,300italic,400,400italic,700,700italic|Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Java," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="Java的 util 包中有两个重要的父接口：Collection 和 Map 。这两个接口提供了诸多数据结构的实现，使我们可以专注于程序的逻辑而不必关心底层细节。 在这篇博文中，我们将讨论以下几种接口，以及它们分别的实现类。  java.util package Collection interface List interface ArrayList class LinkedList clas">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java集合详解(Collection和Map接口)">
+<meta property="og:url" content="http://example.com/2021/07/19/Coding/Java-Collection-Interface/index.html">
+<meta property="og:site_name" content="GoGo-Wang&#39;s Blog">
+<meta property="og:description" content="Java的 util 包中有两个重要的父接口：Collection 和 Map 。这两个接口提供了诸多数据结构的实现，使我们可以专注于程序的逻辑而不必关心底层细节。 在这篇博文中，我们将讨论以下几种接口，以及它们分别的实现类。  java.util package Collection interface List interface ArrayList class LinkedList clas">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/2021/07/19/Coding/Java-Collection-Interface/Collection-Interface-in-Java.png">
+<meta property="article:published_time" content="2021-07-19T05:43:55.000Z">
+<meta property="article:modified_time" content="2021-07-19T11:16:44.448Z">
+<meta property="article:author" content="gogo-wang">
+<meta property="article:tag" content="Java">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2021/07/19/Coding/Java-Collection-Interface/Collection-Interface-in-Java.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://example.com/2021/07/19/Coding/Java-Collection-Interface/"/>
+
+
+
+
+
+  <title>Java集合详解(Collection和Map接口) | GoGo-Wang's Blog</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">GoGo-Wang's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">"Say something." <br> - "Something."</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/07/19/Coding/Java-Collection-Interface/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="GoGo-Wang's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Java集合详解(Collection和Map接口)</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2021-07-19T14:43:55+09:00">
+                2021-07-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Coding/" itemprop="url" rel="index">
+                    <span itemprop="name">Coding</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Coding/Java/" itemprop="url" rel="index">
+                    <span itemprop="name">Java</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2021/07/19/Coding/Java-Collection-Interface/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2021/07/19/Coding/Java-Collection-Interface/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>Java的 <code>util</code> 包中有两个重要的父接口：<code>Collection</code> 和 <code>Map</code> 。这两个接口提供了诸多数据结构的实现，使我们可以专注于程序的逻辑而不必关心底层细节。</p>
+<p>在这篇博文中，我们将讨论以下几种接口，以及它们分别的实现类。</p>
+<ul>
+<li>java.util package<ul>
+<li>Collection interface<ul>
+<li>List interface<ul>
+<li>ArrayList class</li>
+<li>LinkedList class</li>
+<li>Vector class<ul>
+<li>Stack </li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Queue interface<ul>
+<li>PriorityQueue class</li>
+</ul>
+</li>
+<li>Set interface<ul>
+<li>HashSet class</li>
+<li>LinkedHashSet class</li>
+<li>SortedSet interface<ul>
+<li>TreeSet class</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Map interface<ul>
+<li>Hashtable class</li>
+<li>HashMap class</li>
+<li>LinkedHashMap class</li>
+<li>SortedMap interface<ul>
+<li>TreeMap class</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<span id="more"></span>
+
+
+<img src="/2021/07/19/Coding/Java-Collection-Interface/Collection-Interface-in-Java.png" class="">
+
+
+<h2 id="List接口"><a href="#List接口" class="headerlink" title="List接口"></a>List接口</h2><p>List接口对应于 List 抽象数据类型。</p>
+<h3 id="1-Overview"><a href="#1-Overview" class="headerlink" title="1. Overview"></a>1. Overview</h3><p>List接口有3种具体的实现：</p>
+<ul>
+<li>ArrayList类：底层数据结构为 <code>动态数组(array)</code> ， 其中扩展因子为0.5。</li>
+<li>LinkedList类：底层数据结构为 <code>双向链表(doubly linked list)</code> 。</li>
+<li>Vector类：底层数据结构为 <code>动态数组(array)</code>， 其中扩展因子为1。</li>
+</ul>
+<p>根据数据结构的知识，如果你需要进行很多的 <code>insertion</code> 或 <code>deletion</code> 操作，那么选用 <code>LinkedList class</code> 会比较好；而如果大量的操作都是 <code>access</code> 操作，那么 <code>ArrayList class</code> 是更好的选择。</p>
+<hr>
+<p>⛱️ <strong>ArrayList</strong> vs. <strong>Vector</strong></p>
+<p>Vector  和 ArrayList 的底层数据结构都是数组。两者唯一的区别在于：ArrayList中的方法不是线程安全的，而Vector中的方法是同步的，意味着线程安全。所以，如果你需要线程安全，那么应该使用Vector。但对于单线程环境，使用使用Vector会花费更多的资源，所以用ArrayList更好。</p>
+<p>如果你查看底层代码，你会发现，Vecotr中的重要操作，如add, remove, get等，这些方法都被 <code>synchronized</code> 关键字所修饰，来保证线程的安全性。</p>
+<hr>
+<p>接下来，让我们来几个List的代码片段。</p>
+<h3 id="Demos"><a href="#Demos" class="headerlink" title="Demos"></a>Demos</h3><h4 id="2种实例化方法"><a href="#2种实例化方法" class="headerlink" title="2种实例化方法"></a>2种实例化方法</h4><p>首先需要说明的是，在实例化一个List的时候，除了我们很熟悉的 <code>List&lt;Integer&gt; L = new ArrayList&lt;&gt;();</code> 方法之外，Java9增加的静态工厂方法 <code>.of()</code> 也可以创建实例，代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Demo</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		List&lt;Integer&gt; L = List.of(<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>);</span><br><span class="line"><span class="comment">//		L.add(5);    // Exception, because L is immutable.</span></span><br><span class="line">		System.out.println(L);  <span class="comment">// [0, 1, 2, 3, 4]</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>不过需要注意的是，使用上述方法创建的List是**不可变的(immutable)**，也就是说一旦创建好一个List，那么它的值，它的大小都是不可变的。后面的 <code>Set/Map/Queue</code> 也是一样的，就不再赘述了。</p>
+<h4 id="基本用法"><a href="#基本用法" class="headerlink" title="基本用法"></a>基本用法</h4><p>让我们来看一个 <code>ArrayList</code> 的代码片段：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.ArrayList;</span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ArrayListDemo</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		List&lt;String&gt; words = List.of(<span class="string">&quot;Apple&quot;</span>, <span class="string">&quot;Peach&quot;</span>);</span><br><span class="line">		List&lt;String&gt; wordsArrayList = <span class="keyword">new</span> ArrayList&lt;&gt;(words);</span><br><span class="line">		System.out.println(<span class="string">&quot;Original list: &quot;</span> + wordsArrayList);</span><br><span class="line"></span><br><span class="line">		<span class="comment">/* Appends an item at the end of list. */</span></span><br><span class="line">		wordsArrayList.add(<span class="number">0</span>, <span class="string">&quot;Dog&quot;</span>);  <span class="comment">// position is optional</span></span><br><span class="line">		System.out.println(<span class="string">&quot;after adding Dog at index 0: &quot;</span> + wordsArrayList);</span><br><span class="line"></span><br><span class="line">		<span class="comment">/* Appends all items at the end of list. */</span></span><br><span class="line">		List&lt;String&gt; newList = List.of(<span class="string">&quot;Mouse&quot;</span>, <span class="string">&quot;Cat&quot;</span>, <span class="string">&quot;Zebra&quot;</span>);</span><br><span class="line">		wordsArrayList.addAll(<span class="number">0</span>, newList);  <span class="comment">// position is optional</span></span><br><span class="line">		System.out.println(<span class="string">&quot;after adding a list: &quot;</span> + wordsArrayList);</span><br><span class="line"></span><br><span class="line">		<span class="comment">/* Removes a specific item. */</span></span><br><span class="line">		wordsArrayList.remove(<span class="number">0</span>);   <span class="comment">//  == wordsArrayList.remove(&quot;Dog&quot;);</span></span><br><span class="line">		System.out.println(<span class="string">&quot;after removing item at index 0: &quot;</span> + wordsArrayList);</span><br><span class="line"></span><br><span class="line">		<span class="comment">/* Replaces the item at the specified position. */</span></span><br><span class="line">		wordsArrayList.set(<span class="number">3</span>, <span class="string">&quot;Fish&quot;</span>);</span><br><span class="line">		System.out.println(<span class="string">&quot;after changing element at index 3: &quot;</span> + wordsArrayList);</span><br><span class="line">		System.out.println();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>输出：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Original list: [Apple, Peach]</span><br><span class="line">after adding Dog at index 0: [Dog, Apple, Peach]</span><br><span class="line">after adding a list: [Mouse, Cat, Zebra, Dog, Apple, Peach]</span><br><span class="line">after removing item at index 0: [Cat, Zebra, Dog, Apple, Peach]</span><br><span class="line">after changing element at index 3: [Cat, Zebra, Dog, Fish, Peach]</span><br></pre></td></tr></table></figure>
+
+<p>无论是ArrayList，还是LinkedList，或是Vector都符合上述展示的List的使用方法，在此就不在写 <code>LinkedList</code> 和 <code>Vector</code> 的代码了。</p>
+<h4 id="遍历List"><a href="#遍历List" class="headerlink" title="遍历List"></a>遍历List</h4><p>接下来让我们来看一下如何遍历列表元素。这里我们展示3种不同遍历方法，注意它们的使用。</p>
+<ol>
+<li>第1种方法，也是最基本的方法：</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.ArrayList;</span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ArrayListDemo</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		List&lt;Integer&gt; L0 = List.of(<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>);</span><br><span class="line">		List&lt;Integer&gt; L = <span class="keyword">new</span> ArrayList&lt;&gt;(L0);</span><br><span class="line">		System.out.println(<span class="string">&quot;original list: &quot;</span> + L);</span><br><span class="line"></span><br><span class="line">		<span class="comment">/* traverse in standard way */</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; L.size(); i++) &#123;</span><br><span class="line">            <span class="keyword">int</span> num = L.get(i);</span><br><span class="line">            <span class="keyword">if</span> (num % <span class="number">2</span> != <span class="number">0</span>) &#123;</span><br><span class="line">            	L.set(i, <span class="number">2</span> * num);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">		System.out.println(<span class="string">&quot;even list: &quot;</span> + L);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>输出：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">original list: [0, 1, 2, 3, 4]</span><br><span class="line">even list: [0, 2, 2, 6, 4]</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+<p>(区别：<code>java.util.Collection</code> 是一个集合接口; <code>java.util.Collections</code> 是一个包装类, 包含有各种有关集合操作的静态多态方法。)</p>
+<h2 id="Set-Interface"><a href="#Set-Interface" class="headerlink" title="Set Interface"></a>Set Interface</h2><h2 id="Queue-Interface"><a href="#Queue-Interface" class="headerlink" title="Queue Interface"></a>Queue Interface</h2><h2 id="Map-Interface"><a href="#Map-Interface" class="headerlink" title="Map Interface"></a>Map Interface</h2>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>Post author:</strong>
+    gogo-wang
+  </li>
+  <li class="post-copyright-link">
+    <strong>Post link:</strong>
+    <a href="http://example.com/2021/07/19/Coding/Java-Collection-Interface/" title="Java集合详解(Collection和Map接口)">http://example.com/2021/07/19/Coding/Java-Collection-Interface/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice: </strong>
+    All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> unless stating additionally.
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Java/" rel="tag"># Java</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2021/07/19/CS61B-28-Graph-Traversals/" rel="next" title="CS61B(28): Graph Traversals">
+                <i class="fa fa-chevron-left"></i> CS61B(28): Graph Traversals
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a target="_blank" rel="noopener" href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name"></p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/%7C%7Carchive">
+              
+                  <span class="site-state-item-count">62</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/rileywang0819" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:rileywang0819@gmail.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#List%E6%8E%A5%E5%8F%A3"><span class="nav-number">1.</span> <span class="nav-text">List接口</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-Overview"><span class="nav-number">1.1.</span> <span class="nav-text">1. Overview</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Demos"><span class="nav-number">1.2.</span> <span class="nav-text">Demos</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2%E7%A7%8D%E5%AE%9E%E4%BE%8B%E5%8C%96%E6%96%B9%E6%B3%95"><span class="nav-number">1.2.1.</span> <span class="nav-text">2种实例化方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E7%94%A8%E6%B3%95"><span class="nav-number">1.2.2.</span> <span class="nav-text">基本用法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%81%8D%E5%8E%86List"><span class="nav-number">1.2.3.</span> <span class="nav-text">遍历List</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Set-Interface"><span class="nav-number">2.</span> <span class="nav-text">Set Interface</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Queue-Interface"><span class="nav-number">3.</span> <span class="nav-text">Queue Interface</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Map-Interface"><span class="nav-number">4.</span> <span class="nav-text">Map Interface</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">GoGo-Wang</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+    
+      <script id="dsq-count-scr" src="https://author.disqus.com/count.js" async></script>
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'http://example.com/2021/07/19/Coding/Java-Collection-Interface/';
+          this.page.identifier = '2021/07/19/Coding/Java-Collection-Interface/';
+          this.page.title = 'Java集合详解(Collection和Map接口)';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://author.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

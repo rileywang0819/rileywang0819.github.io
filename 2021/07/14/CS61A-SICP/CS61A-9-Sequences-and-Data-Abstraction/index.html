@@ -111,16 +111,28 @@
 
 
 
+<meta name="description" content="This is the lecture note of CS61A - Lecture 9.">
 <meta property="og:type" content="article">
 <meta property="og:title" content="CS61A(9): Sequences and Data Abstraction">
 <meta property="og:url" content="http://example.com/2021/07/14/CS61A-SICP/CS61A-9-Sequences-and-Data-Abstraction/index.html">
 <meta property="og:site_name" content="GoGo-Wang&#39;s Blog">
+<meta property="og:description" content="This is the lecture note of CS61A - Lecture 9.">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/2021/07/14/CS61A-SICP/CS61A-9-Sequences-and-Data-Abstraction/1.JPG">
+<meta property="og:image" content="http://example.com/2021/07/14/CS61A-SICP/CS61A-9-Sequences-and-Data-Abstraction/2.JPG">
+<meta property="og:image" content="http://example.com/2021/07/14/CS61A-SICP/CS61A-9-Sequences-and-Data-Abstraction/3.JPG">
+<meta property="og:image" content="http://example.com/2021/07/14/CS61A-SICP/CS61A-9-Sequences-and-Data-Abstraction/4.JPG">
+<meta property="og:image" content="http://example.com/2021/07/14/CS61A-SICP/CS61A-9-Sequences-and-Data-Abstraction/5.JPG">
+<meta property="og:image" content="http://example.com/2021/07/14/CS61A-SICP/CS61A-9-Sequences-and-Data-Abstraction/6.JPG">
+<meta property="og:image" content="http://example.com/2021/07/14/CS61A-SICP/CS61A-9-Sequences-and-Data-Abstraction/7.JPG">
+<meta property="og:image" content="http://example.com/2021/07/14/CS61A-SICP/CS61A-9-Sequences-and-Data-Abstraction/8.JPG">
+<meta property="og:image" content="http://example.com/2021/07/14/CS61A-SICP/CS61A-9-Sequences-and-Data-Abstraction/9.JPG">
 <meta property="article:published_time" content="2021-07-14T07:45:18.000Z">
-<meta property="article:modified_time" content="2021-07-14T16:00:17.547Z">
+<meta property="article:modified_time" content="2021-07-16T03:21:56.664Z">
 <meta property="article:author" content="gogo-wang">
 <meta property="article:tag" content="CS61A">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2021/07/14/CS61A-SICP/CS61A-9-Sequences-and-Data-Abstraction/1.JPG">
 
 
 
@@ -212,7 +224,7 @@
       
         
         <li class="menu-item menu-item-home">
-          <a href="/%20" rel="section">
+          <a href="/" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
@@ -222,7 +234,7 @@
       
         
         <li class="menu-item menu-item-tags">
-          <a href="/tags%20" rel="section">
+          <a href="/tags/" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
             
@@ -232,7 +244,7 @@
       
         
         <li class="menu-item menu-item-categories">
-          <a href="/categories%20" rel="section">
+          <a href="/categories/" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
             
@@ -242,7 +254,7 @@
       
         
         <li class="menu-item menu-item-archives">
-          <a href="/archives%20" rel="section">
+          <a href="/archives/" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
@@ -383,7 +395,82 @@
       
 
       
-        
+        <p>This is the lecture note of CS61A - Lecture 9.</p>
+<span id="more"></span>
+
+<h2 id="Lists"><a href="#Lists" class="headerlink" title="Lists"></a>Lists</h2><p>List is a built-in data type in Python.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Lists</span></span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt; odds = [41, 43, 47, 49]</span><br><span class="line">[41, 43, 47, 49]</span><br><span class="line">&gt;&gt;&gt; len(odds)</span><br><span class="line">4</span><br><span class="line">&gt;&gt;&gt; odds[1]</span><br><span class="line">43</span><br><span class="line">&gt;&gt;&gt; odds[0] - odds[3] + len(odds)</span><br><span class="line">-4</span><br><span class="line">&gt;&gt;&gt; odds[odds[3]-odds[2]]</span><br><span class="line">47</span><br><span class="line">&gt;&gt;&gt; from operator import getitem</span><br><span class="line">&gt;&gt;&gt; getitem(odds, 2)</span><br><span class="line">47</span><br><span class="line">&gt;&gt;&gt; [2, 7] + odds * 2</span><br><span class="line">[2, 7, 41, 43, 47, 49, 41, 43, 47, 49]</span><br><span class="line">&gt;&gt;&gt; pairs = [[10, 20], 30]</span><br><span class="line">&gt;&gt;&gt; pairs[0]</span><br><span class="line">[10, 20]</span><br><span class="line">&gt;&gt;&gt; pairs[0][0]</span><br><span class="line">10</span><br></pre></td></tr></table></figure>
+
+<h2 id="Containers"><a href="#Containers" class="headerlink" title="Containers"></a>Containers</h2><p>Lists can contain other values, and their values can represent collections of other values.</p>
+<p>You can use built-in operators <code>in</code> to test whether an element appears in a compound value. </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Containers</span></span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt; digits = [1, 8, 2, 8]</span><br><span class="line">&gt;&gt;&gt; 1 <span class="keyword">in</span> digits</span><br><span class="line">True</span><br><span class="line">&gt;&gt;&gt; 5 <span class="keyword">in</span> digits</span><br><span class="line">False</span><br><span class="line">&gt;&gt;&gt; <span class="string">&#x27;1&#x27;</span> not <span class="keyword">in</span> digits</span><br><span class="line">True</span><br><span class="line">&gt;&gt;&gt; [1, 8] <span class="keyword">in</span> digits</span><br><span class="line">False</span><br><span class="line">&gt;&gt;&gt; [1, 2] <span class="keyword">in</span> [[1, 2], 3]</span><br><span class="line">True</span><br><span class="line">&gt;&gt;&gt; [1, 2] <span class="keyword">in</span> [[[1, 2]], 3, 4]</span><br><span class="line">False</span><br></pre></td></tr></table></figure>
+
+<h2 id="For-Statements"><a href="#For-Statements" class="headerlink" title="For Statements"></a>For Statements</h2><p>We’ve written lots of code using <strong>while loops</strong>. Now, it’s time to turn to learn an alternative way of iteration structure - <strong>for loops</strong>.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># while statement</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">count_while</span>(<span class="params">s, value</span>):</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;Count the number of occurrences of value in sequence s.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    &gt;&gt;&gt; count_while(digits, 8)</span></span><br><span class="line"><span class="string">    2</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    total, index = <span class="number">0</span>, <span class="number">0</span></span><br><span class="line">    <span class="keyword">while</span> index &lt; <span class="built_in">len</span>(s):</span><br><span class="line">        <span class="keyword">if</span> s[index] == value:</span><br><span class="line">            total = total + <span class="number">1</span></span><br><span class="line">        index = index + <span class="number">1</span></span><br><span class="line">    <span class="keyword">return</span> total</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># for statement</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">count_for</span>(<span class="params">s, value</span>):</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;Count the number of occurrences of value in sequence s.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    &gt;&gt;&gt; count_for(digits, 8)</span></span><br><span class="line"><span class="string">    2</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    total = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> element <span class="keyword">in</span> s:</span><br><span class="line">        <span class="keyword">if</span> elem == value:</span><br><span class="line">            total = total + <span class="number">1</span></span><br><span class="line">    <span class="keyword">return</span> total</span><br></pre></td></tr></table></figure>
+
+<p>There is a cool feature in Python’s for statement: <strong>sequence unpacking</strong>. Here is an example: </p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">count_same</span>(<span class="params">pairs</span>):</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;Return how many pairs have the same element repeated.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    &gt;&gt;&gt; pairs = [[1, 2], [2, 2], [2, 3], [4, 4]]</span></span><br><span class="line"><span class="string">    &gt;&gt;&gt; count_same(pairs)</span></span><br><span class="line"><span class="string">    2</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    same_count = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> x, y <span class="keyword">in</span> pairs:</span><br><span class="line">        <span class="keyword">if</span> x == y:</span><br><span class="line">            same_count = same_count + <span class="number">1</span></span><br><span class="line">    <span class="keyword">return</span> same_count</span><br></pre></td></tr></table></figure>
+
+<p>❗ Attention: This feature only works for a sequence of fixed length sequences, such as sequence pairs.</p>
+<h2 id="Ranges"><a href="#Ranges" class="headerlink" title="Ranges"></a>Ranges</h2><p><strong>Range</strong> is another sequence type.</p>
+<img src="/2021/07/14/CS61A-SICP/CS61A-9-Sequences-and-Data-Abstraction/1.JPG" class="">
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; range(5, 8)</span><br><span class="line">range(5, 8)</span><br><span class="line">&gt;&gt;&gt; list(range(5, 8))</span><br><span class="line">[5, 6, 7]</span><br><span class="line">&gt;&gt;&gt; list(range(4))</span><br><span class="line">[0, 1, 2, 3]</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">cheer</span>():</span></span><br><span class="line">    <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">3</span>):</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;Go Bears!&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># here, we use _ instead of x/i to hightlight the fact that we don&#x27;t care what is it.</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="List-Comprehensions"><a href="#List-Comprehensions" class="headerlink" title="List Comprehensions"></a>List Comprehensions</h2><p>List comprehensions are a powerful form of combination in the Python language.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># List comprehensions</span></span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>odds = [<span class="number">1</span>, <span class="number">3</span>, <span class="number">5</span>, <span class="number">7</span>, <span class="number">9</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>[x+<span class="number">1</span> <span class="keyword">for</span> x <span class="keyword">in</span> odds]</span><br><span class="line">[<span class="number">2</span>, <span class="number">4</span>, <span class="number">6</span>, <span class="number">8</span>, <span class="number">10</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>[x <span class="keyword">for</span> x <span class="keyword">in</span> odds <span class="keyword">if</span> <span class="number">25</span> % x == <span class="number">0</span>]</span><br><span class="line">[<span class="number">1</span>, <span class="number">5</span>]</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">divisors</span>(<span class="params">n</span>):</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;Return the integers that evenly divide n.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    &gt;&gt;&gt; divisors(1)</span></span><br><span class="line"><span class="string">    [1]</span></span><br><span class="line"><span class="string">    &gt;&gt;&gt; divisors(4)</span></span><br><span class="line"><span class="string">    [1, 2]</span></span><br><span class="line"><span class="string">    &gt;&gt;&gt; divisors(12)</span></span><br><span class="line"><span class="string">    [1, 2, 3, 4, 6]</span></span><br><span class="line"><span class="string">    &gt;&gt;&gt; [n for n in range(1, 1000) if sum(divisors(n)) == n]</span></span><br><span class="line"><span class="string">    [1, 6, 28, 496]</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    <span class="keyword">return</span> [<span class="number">1</span>] + [x <span class="keyword">for</span> x <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">2</span>, n) <span class="keyword">if</span> n % x == <span class="number">0</span>]</span><br></pre></td></tr></table></figure>
+
+<h2 id="Strings"><a href="#Strings" class="headerlink" title="Strings"></a>Strings</h2><img src="/2021/07/14/CS61A-SICP/CS61A-9-Sequences-and-Data-Abstraction/2.JPG" class="">
+
+<p>For String, you can use either single quotation mark or double quotation mark. The only difference is that double quoted String can have multiple lines, while single quoted String can only have one line.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; <span class="string">&#x27;curry = lambda f: lambda x: lambda y: f(x, y)&#x27;</span></span><br><span class="line"><span class="string">&#x27;curry = lambda f: lambda x: lambda y: f(x, y)&#x27;</span></span><br><span class="line">&gt;&gt;&gt; <span class="built_in">exec</span>(<span class="string">&#x27;curry = lambda f: lambda x: lambda y: f(x, y)&#x27;</span>)</span><br><span class="line">&gt;&gt;&gt; curry</span><br><span class="line">&lt;<span class="keyword">function</span> &lt;lambda&gt; at 0x000001FF95D32EA0&gt;</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt; city = <span class="string">&#x27;Beijing&#x27;</span></span><br><span class="line">&gt;&gt;&gt; len(city)</span><br><span class="line">7</span><br><span class="line">&gt;&gt;&gt; city[2]</span><br><span class="line"><span class="string">&#x27;i&#x27;</span></span><br><span class="line">&gt;&gt;&gt; <span class="string">&#x27;iji&#x27;</span> <span class="keyword">in</span> city</span><br><span class="line">True</span><br><span class="line">&gt;&gt;&gt; <span class="string">&#x27;B &#x27;</span> not <span class="keyword">in</span> city</span><br><span class="line">True</span><br></pre></td></tr></table></figure>
+
+<h2 id="Dictionaries"><a href="#Dictionaries" class="headerlink" title="Dictionaries"></a>Dictionaries</h2><p>A dictionary allows you to associate values with keys.</p>
+<p>PS: Dictionary doesn’t have order inheritantly.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; numerals = &#123;<span class="string">&#x27;I&#x27;</span>: 1, <span class="string">&#x27;V&#x27;</span>: 5, <span class="string">&#x27;X&#x27;</span>: 10&#125;</span><br><span class="line">&gt;&gt;&gt; numerals[<span class="string">&#x27;X&#x27;</span>]  <span class="comment"># lookup through keys</span></span><br><span class="line">10</span><br><span class="line">&gt;&gt;&gt; numerals[10]  <span class="comment"># cannot through values</span></span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">  File <span class="string">&quot;&lt;stdin&gt;&quot;</span>, line 1, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line">KeyError: 10</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt; numerals.keys()</span><br><span class="line">dict_keys([<span class="string">&#x27;I&#x27;</span>, <span class="string">&#x27;V&#x27;</span>, <span class="string">&#x27;X&#x27;</span>])</span><br><span class="line">&gt;&gt;&gt; numerals.values()</span><br><span class="line">dict_values([1, 5, 10])</span><br><span class="line">&gt;&gt;&gt; items = numerals.items()</span><br><span class="line">&gt;&gt;&gt; items</span><br><span class="line">dict_items([(<span class="string">&#x27;I&#x27;</span>, 1), (<span class="string">&#x27;V&#x27;</span>, 5), (<span class="string">&#x27;X&#x27;</span>, 10)])</span><br><span class="line">&gt;&gt;&gt; dict(items)</span><br><span class="line">&#123;<span class="string">&#x27;I&#x27;</span>: 1, <span class="string">&#x27;V&#x27;</span>: 5, <span class="string">&#x27;X&#x27;</span>: 10&#125;</span><br><span class="line">&gt;&gt;&gt; dict(items)[<span class="string">&#x27;X&#x27;</span>]</span><br><span class="line">10</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt; <span class="string">&#x27;X&#x27;</span> <span class="keyword">in</span> numerals</span><br><span class="line">True</span><br><span class="line">&gt;&gt;&gt; numerals.get(<span class="string">&#x27;X&#x27;</span>, 0)  <span class="comment"># if &#x27;X&#x27; is the key of dictionary, return it&#x27;s value</span></span><br><span class="line">10</span><br><span class="line">&gt;&gt;&gt; numerals.get(<span class="string">&#x27;X-ray&#x27;</span>, 0)  <span class="comment"># otherwise, return 0</span></span><br><span class="line">0</span><br><span class="line"></span><br><span class="line"><span class="comment"># dictionary comprehension</span></span><br><span class="line">&gt;&gt;&gt; &#123;x: x*x <span class="keyword">for</span> x <span class="keyword">in</span> range(5)&#125;</span><br><span class="line">&#123;0: 0, 1: 1, 2: 4, 3: 9, 4: 16&#125;</span><br></pre></td></tr></table></figure>
+
+<img src="/2021/07/14/CS61A-SICP/CS61A-9-Sequences-and-Data-Abstraction/3.JPG" class="">
+
+
+<h2 id="Data-Abstraction"><a href="#Data-Abstraction" class="headerlink" title="Data Abstraction"></a>Data Abstraction</h2><img src="/2021/07/14/CS61A-SICP/CS61A-9-Sequences-and-Data-Abstraction/4.JPG" class="">
+<img src="/2021/07/14/CS61A-SICP/CS61A-9-Sequences-and-Data-Abstraction/5.JPG" class="">
+<img src="/2021/07/14/CS61A-SICP/CS61A-9-Sequences-and-Data-Abstraction/6.JPG" class="">
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Rational arithmetic</span></span><br><span class="line"><span class="comment"># How to use data?</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">add_rational</span>(<span class="params">x, y</span>):</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;The sum of rational numbers X and Y.&quot;&quot;&quot;</span></span><br><span class="line">    nx, dx = numer(x), denom(x)</span><br><span class="line">    ny, dy = numer(y), denom(y)</span><br><span class="line">    <span class="keyword">return</span> rational(nx * dy + ny * dx, dx * dy)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">mul_rational</span>(<span class="params">x, y</span>):</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;The product of rational numbers X and Y.&quot;&quot;&quot;</span></span><br><span class="line">    <span class="keyword">return</span> rational(numer(x) * numer(y), denom(x) * denom(y))</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">rationals_are_equal</span>(<span class="params">x, y</span>):</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;True iff rational numbers X and Y are equal.&quot;&quot;&quot;</span></span><br><span class="line">    <span class="keyword">return</span> numer(x) * denom(y) == numer(y) * denom(x)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">print_rational</span>(<span class="params">x</span>):</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;Print rational X.&quot;&quot;&quot;</span></span><br><span class="line">    <span class="built_in">print</span>(numer(x), <span class="string">&quot;/&quot;</span>, denom(x))</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>rational(n, d): returns a rational number</li>
+<li>numer(x): returns the numerator</li>
+<li>denom(x):returns the denominator</li>
+</ul>
+<p>These functions implement an abstract data type for rational numbers.</p>
+<p>Q: How to implement these functions?</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Constructor and selectors</span></span><br><span class="line"><span class="comment"># How to represent data?</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">rational</span>(<span class="params">n, d</span>):</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;A representation of the rational number N/D.&quot;&quot;&quot;</span></span><br><span class="line">    <span class="keyword">return</span> [n, d]</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">numer</span>(<span class="params">x</span>):</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;Return the numerator of rational number X.&quot;&quot;&quot;</span></span><br><span class="line">    <span class="keyword">return</span> x[<span class="number">0</span>]</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">denom</span>(<span class="params">x</span>):</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;Return the denominator of rational number X.&quot;&quot;&quot;</span></span><br><span class="line">    <span class="keyword">return</span> x[<span class="number">1</span>]</span><br></pre></td></tr></table></figure>
+
+<p>However think about the examples as follows:</p>
+<ul>
+<li>3/2 * 5/3 = 15/6 = 5/2</li>
+<li>2/5 + 1/10 = 25/50 = 1/2</li>
+</ul>
+<p>The implementation of functions need to be improved.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Improved specification</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> fractions <span class="keyword">import</span> gcd</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">rational</span>(<span class="params">n, d</span>):</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;A representation of the rational number N/D.</span></span><br><span class="line"><span class="string">       gcd: 最大公约数</span></span><br><span class="line"><span class="string">       from math import gcd</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    g = gcd(n, d)</span><br><span class="line">    <span class="keyword">return</span> [n//g, d//g]</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">numer</span>(<span class="params">x</span>):</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;Return the numerator of rational number X in lowest terms and having</span></span><br><span class="line"><span class="string">    the sign of X.&quot;&quot;&quot;</span></span><br><span class="line">    <span class="keyword">return</span> x[<span class="number">0</span>]</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">denom</span>(<span class="params">x</span>):</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;Return the denominator of rational number X in lowest terms and positive.&quot;&quot;&quot;</span></span><br><span class="line">    <span class="keyword">return</span> x[<span class="number">1</span>]</span><br></pre></td></tr></table></figure>
+
+<h2 id="Abstraction-Barriers"><a href="#Abstraction-Barriers" class="headerlink" title="Abstraction Barriers"></a>Abstraction Barriers</h2><img src="/2021/07/14/CS61A-SICP/CS61A-9-Sequences-and-Data-Abstraction/7.JPG" class="">
+<img src="/2021/07/14/CS61A-SICP/CS61A-9-Sequences-and-Data-Abstraction/8.JPG" class="">
+
+<p>在计算rational number的函数中，我们不需要知道怎么表示数字，我们只关注运算逻辑。而在数字表示函数中，我们只是关注怎样表示数字，以及改进表示rational number的函数（通过将分子、分母分别除以它们的最大公约数，使得它们之间是互质的，relative-prime）而不必改变涉及到rational number运算的函（add_rational、mul_rational等）。这就是抽象的魅力。</p>
+<p>Let’s take a look at another demo.</p>
+<p>Here, we use function instead of built-in list to implement rational data. We only change data representation whereas keep data useage. The outcome is still correct!</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Functional implementation</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">rational</span>(<span class="params">n, d</span>):</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;A representation of the rational number N/D.&quot;&quot;&quot;</span></span><br><span class="line">    g = gcd(n, d)</span><br><span class="line">    n, d = n//g, d//g</span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">select</span>(<span class="params">name</span>):</span></span><br><span class="line">        <span class="keyword">if</span> name == <span class="string">&#x27;n&#x27;</span>:</span><br><span class="line">            <span class="keyword">return</span> n</span><br><span class="line">        <span class="keyword">elif</span> name == <span class="string">&#x27;d&#x27;</span>:</span><br><span class="line">            <span class="keyword">return</span> d</span><br><span class="line">    <span class="keyword">return</span> select</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">numer</span>(<span class="params">x</span>):</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;Return the numerator of rational number X in lowest terms and having</span></span><br><span class="line"><span class="string">    the sign of X.&quot;&quot;&quot;</span></span><br><span class="line">    <span class="keyword">return</span> x(<span class="string">&#x27;n&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">denom</span>(<span class="params">x</span>):</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;Return the denominator of rational number X in lowest terms and positive.&quot;&quot;&quot;</span></span><br><span class="line">    <span class="keyword">return</span> x(<span class="string">&#x27;d&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string"><span class="meta">&gt;&gt;&gt; </span>x, y = rational(1, 2), rational(3, 8)</span></span><br><span class="line"><span class="string"><span class="meta">&gt;&gt;&gt; </span>x</span></span><br><span class="line"><span class="string">&lt;function select&gt;</span></span><br><span class="line"><span class="string">print_rational(mul_rational(x, y))</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br></pre></td></tr></table></figure>
+
+<img src="/2021/07/14/CS61A-SICP/CS61A-9-Sequences-and-Data-Abstraction/9.JPG" class="">
+
+
+
       
     </div>
     
@@ -505,8 +592,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -519,9 +615,9 @@
             
               <div class="site-state-item site-state-posts">
               
-                <a href="/archives%20%7C%7C%20archive">
+                <a href="/archives/%7C%7Carchive">
               
-                  <span class="site-state-item-count">36</span>
+                  <span class="site-state-item-count">62</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -532,7 +628,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-count">9</span>
                   <span class="site-state-item-name">categories</span>
                 </a>
               </div>
@@ -543,7 +639,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">8</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
@@ -562,6 +658,12 @@
                         <i class="fa fa-fw fa-github"></i>GitHub</a>
                   </span>
                 
+                  <span class="links-of-author-item">
+                    <a href="mailto:rileywang0819@gmail.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
             </div>
           
 
@@ -576,6 +678,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Lists"><span class="nav-number">1.</span> <span class="nav-text">Lists</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Containers"><span class="nav-number">2.</span> <span class="nav-text">Containers</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#For-Statements"><span class="nav-number">3.</span> <span class="nav-text">For Statements</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Ranges"><span class="nav-number">4.</span> <span class="nav-text">Ranges</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#List-Comprehensions"><span class="nav-number">5.</span> <span class="nav-text">List Comprehensions</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Strings"><span class="nav-number">6.</span> <span class="nav-text">Strings</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Dictionaries"><span class="nav-number">7.</span> <span class="nav-text">Dictionaries</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Data-Abstraction"><span class="nav-number">8.</span> <span class="nav-text">Data Abstraction</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Abstraction-Barriers"><span class="nav-number">9.</span> <span class="nav-text">Abstraction Barriers</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       

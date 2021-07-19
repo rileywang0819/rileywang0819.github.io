@@ -1,0 +1,967 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="en,zh-Hans,default">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Roboto Slab:300,300italic,400,400italic,700,700italic|Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="web," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="In this and next blog, I will talk about skills about API development. You will learn:  APIs : You will learn what APIs are and how do they work. Handling HTTP Requests : We will introduce you to HTTP">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Web Dev(2): API Dev and Doc(I)">
+<meta property="og:url" content="http://example.com/2021/07/17/Web%20Development/Web-Dev-2-API-Dev-and-Doc-I/index.html">
+<meta property="og:site_name" content="GoGo-Wang&#39;s Blog">
+<meta property="og:description" content="In this and next blog, I will talk about skills about API development. You will learn:  APIs : You will learn what APIs are and how do they work. Handling HTTP Requests : We will introduce you to HTTP">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/2021/07/17/Web%20Development/Web-Dev-2-API-Dev-and-Doc-I/api-workflow.JPG">
+<meta property="og:image" content="http://example.com/2021/07/17/Web%20Development/Web-Dev-2-API-Dev-and-Doc-I/client-proxy-api.png">
+<meta property="og:image" content="http://example.com/2021/07/17/Web%20Development/Web-Dev-2-API-Dev-and-Doc-I/http-request1.JPG">
+<meta property="og:image" content="http://example.com/2021/07/17/Web%20Development/Web-Dev-2-API-Dev-and-Doc-I/http-request2.JPG">
+<meta property="og:image" content="http://example.com/2021/07/17/Web%20Development/Web-Dev-2-API-Dev-and-Doc-I/http-request-methods.JPG">
+<meta property="og:image" content="http://example.com/2021/07/17/Web%20Development/Web-Dev-2-API-Dev-and-Doc-I/http-response.JPG">
+<meta property="og:image" content="http://example.com/2021/07/17/Web%20Development/Web-Dev-2-API-Dev-and-Doc-I/http-status-code.JPG">
+<meta property="article:published_time" content="2021-07-17T08:04:51.000Z">
+<meta property="article:modified_time" content="2021-07-18T13:53:39.597Z">
+<meta property="article:author" content="gogo-wang">
+<meta property="article:tag" content="web">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2021/07/17/Web%20Development/Web-Dev-2-API-Dev-and-Doc-I/api-workflow.JPG">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://example.com/2021/07/17/Web Development/Web-Dev-2-API-Dev-and-Doc-I/"/>
+
+
+
+
+
+  <title>Web Dev(2): API Dev and Doc(I) | GoGo-Wang's Blog</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">GoGo-Wang's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">"Say something." <br> - "Something."</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/07/17/Web%20Development/Web-Dev-2-API-Dev-and-Doc-I/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="GoGo-Wang's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Web Dev(2): API Dev and Doc(I)</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2021-07-17T17:04:51+09:00">
+                2021-07-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Web-Development/" itemprop="url" rel="index">
+                    <span itemprop="name">Web Development</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2021/07/17/Web%20Development/Web-Dev-2-API-Dev-and-Doc-I/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2021/07/17/Web Development/Web-Dev-2-API-Dev-and-Doc-I/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>In this and next blog, I will talk about skills about API development.</p>
+<p>You will learn:</p>
+<ol>
+<li><strong>APIs</strong> : You will learn what APIs are and how do they work.</li>
+<li><strong>Handling HTTP Requests</strong> : We will introduce you to HTTP, Flask, and writing and accessing endpoints.</li>
+<li><strong>Routing and API Endpoints</strong> : You will learn to use endpoints and <code>payloads</code> (information passed along with the request) to extend the functionality of your API. You will learn to organize API endpoints, handling Cross-Origin Resource Sharing (CORS) requests, parsing different request types, and handling errors.</li>
+<li><strong>Documentation</strong> - You will learn to write documentation。</li>
+<li><strong>Testing</strong> - You will learn <code>unit testing</code> and <code>test-driven development (TDD)</code>.</li>
+</ol>
+<span id="more"></span>
+
+<h2 id="Introdcution-to-APIs"><a href="#Introdcution-to-APIs" class="headerlink" title="Introdcution to APIs"></a>Introdcution to APIs</h2><h3 id="What-are-APIs"><a href="#What-are-APIs" class="headerlink" title="What are APIs?"></a>What are APIs?</h3><p><strong>API (Application Programming Interface)</strong> is an interface which has been created to help two different systems interact with one another.</p>
+<p>The defined functionality of API is independent of the actual implementation. You don’t need to understand the entirety of the application implementation in order to interact with it through the API. This has multiple benefits:</p>
+<ul>
+<li>It doesn’t expose the implementation to those who shouldn’t have access to it.</li>
+<li>The API provides a standard way of accessing the application.</li>
+<li>It makes much easier to understand how to access the application’s data.</li>
+</ul>
+<p>🦁 Resources: Some frequently used APIs include:</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://developers.google.com/maps/documentation/">Google Maps API</a></li>
+<li><a target="_blank" rel="noopener" href="https://stripe.com/docs/api?utm_source=zapier.com&utm_medium=referral&utm_campaign=zapier&utm_source=zapier.com&utm_medium=referral&utm_campaign=zapier">Stripe API</a></li>
+<li><a target="_blank" rel="noopener" href="https://developers.facebook.com/docs">Facebook API</a></li>
+<li><a target="_blank" rel="noopener" href="https://developers.facebook.com/docs">Instagram API</a></li>
+<li><a target="_blank" rel="noopener" href="https://developer.spotify.com/documentation/web-api/">Spotify API</a></li>
+</ul>
+<p>External Resource: <a target="_blank" rel="noopener" href="https://blog.postman.com/intro-to-apis-what-is-an-api/">Postman blog - What is an API?</a></p>
+<h3 id="How-APIs-work"><a href="#How-APIs-work" class="headerlink" title="How APIs work?"></a>How APIs work?</h3><img src="/2021/07/17/Web%20Development/Web-Dev-2-API-Dev-and-Doc-I/api-workflow.JPG" class="">
+
+
+<h3 id="RESTful-APIs"><a href="#RESTful-APIs" class="headerlink" title="RESTful APIs"></a>RESTful APIs</h3><p><code>REST</code> stands for <strong>Representational State Transfer</strong>, which is an architectural style(架构风格) introduced by Roy Fielding in 2000.</p>
+<p>Here’s a short summary of the REST principles:</p>
+<ul>
+<li><strong>Uniform Interface :</strong> Every rest architecture must have a standardized way of accessing and processing data resources. This includes unique resource identifiers (i.e., unique URLs) and self-descriptive messages in the server response that describe how to process the representation (for instance JSON vs XML) of the data resource.</li>
+<li><strong>Stateless(无状态) :</strong> Every client request is self-contained in that the server doesn’t need to store any application data in order to respond to subsequent requests.</li>
+<li><strong>Client-Server :</strong> There must be both a client and server in the architecture.</li>
+<li><strong>Cacheable &amp; Layered System :</strong> Caching and layering increases networking efficiency.</li>
+</ul>
+<img src="/2021/07/17/Web%20Development/Web-Dev-2-API-Dev-and-Doc-I/client-proxy-api.png" class="" title="Using the RESTful APIs">
+
+<p><strong>Why RESTful are stateless?</strong></p>
+<p>It might appear easier to design a server that isn’t stateless. There is a reason why RESTful web servers are not allowed to remember anything about the previous requests that the user has sent. In short, <strong>stateless servers make your applications scalable</strong>.</p>
+<p>External Resource:</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/671118/what-exactly-is-restful-programming">What exactly is RESTful programming?</a></li>
+<li>An article from StackOverflow blogs- <a target="_blank" rel="noopener" href="https://stackoverflow.blog/2020/03/02/best-practices-for-rest-api-design/">Best practices for REST API design</a></li>
+<li>blog: <a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/1590279">什么是RESTful风格的API设计</a></li>
+</ul>
+<h2 id="HTTP-and-Flask-Basics"><a href="#HTTP-and-Flask-Basics" class="headerlink" title="HTTP and Flask Basics"></a>HTTP and Flask Basics</h2><h3 id="Introduction-to-HTTP"><a href="#Introduction-to-HTTP" class="headerlink" title="Introduction to HTTP"></a>Introduction to HTTP</h3><p>HTTP has been the foundation of Internet communication since 1990.</p>
+<p>HTTP Features:</p>
+<ul>
+<li><strong>Connectionless:</strong> When a request is sent, the client opens the connection; once a response is received, the client closes the connection. The client and server only maintain a connection during the response and request. Future responses are made on a new connection. (When a connection has been opened, it means that the port on the client/server is occupied)</li>
+<li><strong>Stateless :</strong> There is no dependency between successive requests.</li>
+<li><strong>Not Sessionless :</strong> Utilizing headers, cookies and caching, sessions can be created to allow each HTTP request to share the same context. (img you visit Facebook and send various request with the same account)</li>
+<li><strong>Media Independent :</strong> Any type of data can be sent over HTTP as long as both the client and server know how to handle the data format. In our case, we’ll use <code>JSON</code>.</li>
+</ul>
+<hr>
+<p>🦄 <strong>Notes on Cookie</strong></p>
+<ol>
+<li>用途：</li>
+</ol>
+<p>因为 HTTP 协议是无状态的，即服务器不知道用户上一次做了什么，这严重阻碍了交互式 Web 应用程序的实现。在典型的网上购物场景中，用户浏览了几个页面，买了一盒饼干和两瓶饮料。最后结帐时，由于 HTTP 的无状态性，不通过额外的手段，服务器并不知道用户到底买了什么，所以 Cookie 就是用来绕开 HTTP 的无状态性的“额外手段”之一。服务器可以设置或读取 Cookies 中包含的信息，借此维护用户跟服务器会话中的状态。</p>
+<p>在刚才的购物场景中，当用户选购了第一项商品，服务器在向用户发送网页的同时，还发送了一段 Cookie，记录着那项商品的信息。当用户访问另一个页面，浏览器会把 Cookie 发送给服务器，于是服务器知道他之前选购了什么。用户继续选购饮料，服务器就在原来那段 Cookie 裡追加新的商品信息。结帐时，服务器读取发送来的 Cookie 即可。</p>
+<p>Cookie 另一个典型的应用是当登录一个网站时，网站往往会请求用户输入用户名和密码，并且用户可以勾选“下次自动登录”。如果勾选了，那么下次访问同一网站时，用户会发现没输入用户名和密码就已经登录了。这正是因为前一次登录时，服务器发送了包含登录凭据（用户名加密码的某种加密形式）的 Cookie 到用户的硬盘上。第二次登录时，如果该 Cookie 尚未到期，浏览器会发送该 Cookie，服务器验证凭据，于是不必输入用户名和密码就让用户登录了。</p>
+<ol start="2">
+<li>分类</li>
+</ol>
+<p>Cookie 保存在客户端中，按在客户端中的存储位置，可分为内存 Cookie 和硬盘 Cookie。</p>
+<p>内存 Cookie 由浏览器维护，保存在内存中，浏览器关闭即消失，存在时间短暂。硬盘 Cookie 保存在硬盘裡，有过期时间，除非用户手动清理或到了过期时间，硬盘 Cookie 不会清除，存在时间较长。所以，按存在时间，可分为非持久 Cookie 和持久 Cookie。</p>
+<ol start="3">
+<li>缺陷</li>
+</ol>
+<ul>
+<li>Cookie 会被附加在每个 HTTP 请求中，所以无形中增加了流量。</li>
+<li>由于 HTTP 请求中的 Cookie 是明文传递的，所以安全性成问题，除非使用 <em>超文本传输安全协定(HTTPs)</em> 。</li>
+<li>Cookie 的大小限制在 4 KB 左右，对于复杂的存储需求来说是不够用的。</li>
+</ul>
+<hr>
+<p>HTTP Elements:</p>
+<ul>
+<li><p><strong>Universal Resource Identifiers (URIs, 统一资源标识符) :</strong> URIs are basically URLs or address which point to specific resources. An example URI is like: <code>http://www.example.com/tasks/term=homework</code> . It has certain components:</p>
+<ul>
+<li><strong>Scheme:</strong> specifies the protocol used to access the resource, HTTP or HTTPS. In our example <code>http</code> .</li>
+<li><strong>Host:</strong> specifies the host that holds the resources. In our example <code>www.example.com</code> .</li>
+<li><strong>Path:</strong> specifies the specific resource being requested. In our example, <code>/tasks</code> .</li>
+<li><strong>Query:</strong> an optional component, the query string provides information the resource can use for some purpose such as a search parameter. In our example it is <code>/term=homework</code> .</li>
+</ul>
+</li>
+<li><p><strong>Messages :</strong> Requests and Responses.</p>
+</li>
+<li><p><strong>Status Code :</strong> e.g. 404 NOT FOUND </p>
+</li>
+</ul>
+<hr>
+<p>🦓 Supplement: <code>URI</code> vs. <code>URL</code></p>
+<p>You may be unsure what the difference is between a <strong>URI (Universal Resource Identifier)</strong> and a <strong>URL (Universal Resource Locator)</strong> . These terms tend to get confused a lot, and are even frequently used interchangeably—but there is a distinction.</p>
+<p>The term URI can refer to any identifier for a resource—for example, it could be either the name of a resource or the address of a resource (since both the name and address are identifiers of that resource). In contrast, URL only refers to the location of a resource—in other words, it only ever refers to an address.</p>
+<p>So, “URI” could refer to a name or an address, while “URL” only refers to an address. Thus, URLs are a specific type of URI that is used to locate a resource on the internet when a client makes a request to a server.</p>
+<hr>
+<p>🐑 <strong>Resource</strong> : <a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Overview">MDN Web Docs - An overview of HTTP</a></p>
+<h3 id="HTTP-Requests-and-Responses"><a href="#HTTP-Requests-and-Responses" class="headerlink" title="HTTP Requests and Responses"></a>HTTP Requests and Responses</h3><h4 id="Requests"><a href="#Requests" class="headerlink" title="Requests"></a>Requests</h4><p>HTTP requests are sent from the client to the server to initiate some operation. it has some elements to specify the requested resource.</p>
+<ul>
+<li>Method: Defines the operation to be performed.</li>
+<li>Path: The URL of the resource to be fetched, excluding the scheme and host.</li>
+<li>HTTP Version</li>
+<li>Headers: optional information, success as Accept-Language.</li>
+<li>Body: optional information, usually for methods such as <code>POST</code> and <code>PATCH</code>, which contain the resource being sent to the server</li>
+</ul>
+<img src="/2021/07/17/Web%20Development/Web-Dev-2-API-Dev-and-Doc-I/http-request1.JPG" class="">
+<img src="/2021/07/17/Web%20Development/Web-Dev-2-API-Dev-and-Doc-I/http-request2.JPG" class="">
+
+<p>Let’s take a look at some common used HTTP request methods.</p>
+<img src="/2021/07/17/Web%20Development/Web-Dev-2-API-Dev-and-Doc-I/http-request-methods.JPG" class="">
+
+<h4 id="Responses"><a href="#Responses" class="headerlink" title="Responses"></a>Responses</h4><p>After the request has been received by the server and processed, the server returns an HTTP response message to the client.</p>
+<img src="/2021/07/17/Web%20Development/Web-Dev-2-API-Dev-and-Doc-I/http-response.JPG" class="">
+
+<p>As an API developer, it’s important to send the correct status code. As a developer using an API, the status codes, particularly the error codes, are important for understanding what caused an error and how to proceed.</p>
+<img src="/2021/07/17/Web%20Development/Web-Dev-2-API-Dev-and-Doc-I/http-status-code.JPG" class="">
+
+<hr>
+<p>🦔 Resource: </p>
+<p><a target="_blank" rel="noopener" href="https://httpstatusdogs.com/">1. HTTP Dogs</a></p>
+<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Status">2. MDN Web Docs - HTTP response status codes</a></p>
+<h3 id="Flasks"><a href="#Flasks" class="headerlink" title="Flasks"></a>Flasks</h3>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>Post author:</strong>
+    gogo-wang
+  </li>
+  <li class="post-copyright-link">
+    <strong>Post link:</strong>
+    <a href="http://example.com/2021/07/17/Web%20Development/Web-Dev-2-API-Dev-and-Doc-I/" title="Web Dev(2): API Dev and Doc(I)">http://example.com/2021/07/17/Web%20Development/Web-Dev-2-API-Dev-and-Doc-I/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice: </strong>
+    All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> unless stating additionally.
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/web/" rel="tag"># web</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2021/07/17/CS61B-DSA/CS61B-19-Asymptotics-III/" rel="next" title="CS61B(19): Asymptotics(III)">
+                <i class="fa fa-chevron-left"></i> CS61B(19): Asymptotics(III)
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2021/07/17/Web%20Development/Web-Dev-2-API-Dev-and-Doc-II/" rel="prev" title="Web Dev(2): API Dev and Doc(II)">
+                Web Dev(2): API Dev and Doc(II) <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a target="_blank" rel="noopener" href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name"></p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/%7C%7Carchive">
+              
+                  <span class="site-state-item-count">62</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/rileywang0819" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:rileywang0819@gmail.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Introdcution-to-APIs"><span class="nav-number">1.</span> <span class="nav-text">Introdcution to APIs</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#What-are-APIs"><span class="nav-number">1.1.</span> <span class="nav-text">What are APIs?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#How-APIs-work"><span class="nav-number">1.2.</span> <span class="nav-text">How APIs work?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#RESTful-APIs"><span class="nav-number">1.3.</span> <span class="nav-text">RESTful APIs</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HTTP-and-Flask-Basics"><span class="nav-number">2.</span> <span class="nav-text">HTTP and Flask Basics</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Introduction-to-HTTP"><span class="nav-number">2.1.</span> <span class="nav-text">Introduction to HTTP</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HTTP-Requests-and-Responses"><span class="nav-number">2.2.</span> <span class="nav-text">HTTP Requests and Responses</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Requests"><span class="nav-number">2.2.1.</span> <span class="nav-text">Requests</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Responses"><span class="nav-number">2.2.2.</span> <span class="nav-text">Responses</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Flasks"><span class="nav-number">2.3.</span> <span class="nav-text">Flasks</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">GoGo-Wang</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+    
+      <script id="dsq-count-scr" src="https://author.disqus.com/count.js" async></script>
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'http://example.com/2021/07/17/Web%20Development/Web-Dev-2-API-Dev-and-Doc-I/';
+          this.page.identifier = '2021/07/17/Web Development/Web-Dev-2-API-Dev-and-Doc-I/';
+          this.page.title = 'Web Dev(2): API Dev and Doc(I)';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://author.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

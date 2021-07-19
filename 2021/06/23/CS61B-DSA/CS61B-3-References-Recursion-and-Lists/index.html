@@ -111,12 +111,12 @@
 
 
 
-<meta name="description" content="Let’s learn about primitive types and reference types in Java, and use these concepts to learn our first data strucure - Linked Data Structures What’s your answer of the following question? Will the c">
+<meta name="description" content="This is the lecture note of CS61B - Lecture 3. Let’s learn about primitive types and reference types in Java, and use these concepts to learn our first data strucure - Linked Data Structures">
 <meta property="og:type" content="article">
 <meta property="og:title" content="CS61B(3): References, Recursion and Lists">
 <meta property="og:url" content="http://example.com/2021/06/23/CS61B-DSA/CS61B-3-References-Recursion-and-Lists/index.html">
 <meta property="og:site_name" content="GoGo-Wang&#39;s Blog">
-<meta property="og:description" content="Let’s learn about primitive types and reference types in Java, and use these concepts to learn our first data strucure - Linked Data Structures What’s your answer of the following question? Will the c">
+<meta property="og:description" content="This is the lecture note of CS61B - Lecture 3. Let’s learn about primitive types and reference types in Java, and use these concepts to learn our first data strucure - Linked Data Structures">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://example.com/2021/06/23/CS61B-DSA/CS61B-3-References-Recursion-and-Lists/3-1.JPG">
 <meta property="og:image" content="http://example.com/2021/06/23/CS61B-DSA/CS61B-3-References-Recursion-and-Lists/3-2.JPG">
@@ -125,7 +125,7 @@
 <meta property="og:image" content="http://example.com/2021/06/23/CS61B-DSA/CS61B-3-References-Recursion-and-Lists/3-5.JPG">
 <meta property="og:image" content="http://example.com/2021/06/23/CS61B-DSA/CS61B-3-References-Recursion-and-Lists/3-6.JPG">
 <meta property="article:published_time" content="2021-06-22T15:30:48.000Z">
-<meta property="article:modified_time" content="2021-07-14T16:02:11.783Z">
+<meta property="article:modified_time" content="2021-07-15T07:41:31.493Z">
 <meta property="article:author" content="gogo-wang">
 <meta property="article:tag" content="CS61B">
 <meta name="twitter:card" content="summary">
@@ -221,7 +221,7 @@
       
         
         <li class="menu-item menu-item-home">
-          <a href="/%20" rel="section">
+          <a href="/" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
@@ -231,7 +231,7 @@
       
         
         <li class="menu-item menu-item-tags">
-          <a href="/tags%20" rel="section">
+          <a href="/tags/" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
             
@@ -241,7 +241,7 @@
       
         
         <li class="menu-item menu-item-categories">
-          <a href="/categories%20" rel="section">
+          <a href="/categories/" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
             
@@ -251,7 +251,7 @@
       
         
         <li class="menu-item menu-item-archives">
-          <a href="/archives%20" rel="section">
+          <a href="/archives/" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
@@ -392,7 +392,10 @@
       
 
       
-        <p>Let’s learn about primitive types and reference types in Java, and use these concepts to learn our first data strucure - <code>Linked Data Structures</code></p>
+        <p>This is the lecture note of CS61B - Lecture 3.</p>
+<p>Let’s learn about primitive types and reference types in Java, and use these concepts to learn our first data strucure - <code>Linked Data Structures</code></p>
+<span id="more"></span>
+
 <p>What’s your answer of the following question? Will the change to b affect a?</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// class Walrus &#123;</span></span><br><span class="line"><span class="comment">//     int weight;</span></span><br><span class="line"><span class="comment">//     double tuskSize;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//     public Walrus(int w, double t) &#123;</span></span><br><span class="line"><span class="comment">//         weight = w;</span></span><br><span class="line"><span class="comment">//         tuskSize = t;</span></span><br><span class="line"><span class="comment">//     &#125;</span></span><br><span class="line"><span class="comment">// &#125;</span></span><br><span class="line"></span><br><span class="line">Walrus a = <span class="keyword">new</span> Walrus(<span class="number">1000</span>, <span class="number">8.3</span>);</span><br><span class="line">Walrus b;</span><br><span class="line">b = a;</span><br><span class="line">b.weight = <span class="number">5</span>;</span><br><span class="line">System.out.println(a);</span><br><span class="line">System.out.println(b);</span><br></pre></td></tr></table></figure>
 
@@ -404,8 +407,6 @@
 
 <p>The answer is no, and now x is 2 and y is 5.</p>
 <p>You may wonder why. To clear up your confusion, let’s explore data types in Java world.</p>
-<span id="more"></span>
-
 <h2 id="Primitive-Types"><a href="#Primitive-Types" class="headerlink" title="Primitive Types"></a>Primitive Types</h2><p>Anything you want to store on a computer is stored in so-called <code>memory</code>. And whatever the information you want to store, ultimately it will be encoded as a sequence of ones and zeros.</p>
 <p>Actually, sometimes, two different things will be stored as the same bits sequence. For example, number 72 stored as 01001000, and letter H stored as 01001000, too. So how computer interprets them correctly?</p>
 <p>The answer is <strong>the data type tells Java interpreter how to interpret it.</strong></p>
@@ -586,9 +587,9 @@
             
               <div class="site-state-item site-state-posts">
               
-                <a href="/archives%20%7C%7C%20archive">
+                <a href="/archives/%7C%7Carchive">
               
-                  <span class="site-state-item-count">36</span>
+                  <span class="site-state-item-count">62</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -599,7 +600,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-count">9</span>
                   <span class="site-state-item-name">categories</span>
                 </a>
               </div>
@@ -610,7 +611,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">8</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
@@ -627,6 +628,12 @@
                     <a href="https://github.com/rileywang0819" target="_blank" title="GitHub">
                       
                         <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:rileywang0819@gmail.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
                   </span>
                 
             </div>

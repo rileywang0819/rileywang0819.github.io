@@ -111,12 +111,12 @@
 
 
 
-<meta name="description" content="Review the IntList we implemented in lecture 3. We call it “naked linked list”. 1234567891011public class IntList &amp;#123;    public int first;    public IntList rest;    public IntList(int f, IntList r">
+<meta name="description" content="This is the lecture note of CS61B - Lecture 4. Review the IntList we implemented in lecture 3. We call it “naked linked list”. 1234567891011public class IntList &amp;#123;    public int first;    public I">
 <meta property="og:type" content="article">
 <meta property="og:title" content="CS61B(4): SLLists with Sentinel Nodes">
 <meta property="og:url" content="http://example.com/2021/06/23/CS61B-DSA/CS61B-4-SLLists-with-Sentinel-Nodes/index.html">
 <meta property="og:site_name" content="GoGo-Wang&#39;s Blog">
-<meta property="og:description" content="Review the IntList we implemented in lecture 3. We call it “naked linked list”. 1234567891011public class IntList &amp;#123;    public int first;    public IntList rest;    public IntList(int f, IntList r">
+<meta property="og:description" content="This is the lecture note of CS61B - Lecture 4. Review the IntList we implemented in lecture 3. We call it “naked linked list”. 1234567891011public class IntList &amp;#123;    public int first;    public I">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://example.com/2021/06/23/CS61B-DSA/CS61B-4-SLLists-with-Sentinel-Nodes/4-1.JPG">
 <meta property="og:image" content="http://example.com/2021/06/23/CS61B-DSA/CS61B-4-SLLists-with-Sentinel-Nodes/4-2.JPG">
@@ -124,7 +124,7 @@
 <meta property="og:image" content="http://example.com/2021/06/23/CS61B-DSA/CS61B-4-SLLists-with-Sentinel-Nodes/4-4.JPG">
 <meta property="og:image" content="http://example.com/2021/06/23/CS61B-DSA/CS61B-4-SLLists-with-Sentinel-Nodes/4-5.JPG">
 <meta property="article:published_time" content="2021-06-23T05:22:26.000Z">
-<meta property="article:modified_time" content="2021-07-14T16:02:08.413Z">
+<meta property="article:modified_time" content="2021-07-15T07:41:10.552Z">
 <meta property="article:author" content="gogo-wang">
 <meta property="article:tag" content="CS61B">
 <meta name="twitter:card" content="summary">
@@ -220,7 +220,7 @@
       
         
         <li class="menu-item menu-item-home">
-          <a href="/%20" rel="section">
+          <a href="/" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
@@ -230,7 +230,7 @@
       
         
         <li class="menu-item menu-item-tags">
-          <a href="/tags%20" rel="section">
+          <a href="/tags/" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
             
@@ -240,7 +240,7 @@
       
         
         <li class="menu-item menu-item-categories">
-          <a href="/categories%20" rel="section">
+          <a href="/categories/" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
             
@@ -250,7 +250,7 @@
       
         
         <li class="menu-item menu-item-archives">
-          <a href="/archives%20" rel="section">
+          <a href="/archives/" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
@@ -391,7 +391,8 @@
       
 
       
-        <p>Review the <code>IntList</code> we implemented in lecture 3. We call it “naked linked list”.</p>
+        <p>This is the lecture note of CS61B - Lecture 4.</p>
+<p>Review the <code>IntList</code> we implemented in lecture 3. We call it “naked linked list”.</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">IntList</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span> first;</span><br><span class="line">    <span class="keyword">public</span> IntList rest;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">IntList</span><span class="params">(<span class="keyword">int</span> f, IntList r)</span> </span>&#123;</span><br><span class="line">        first = f;</span><br><span class="line">        rest = r;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>While functional, “naked” linked lists like the one above are hard to use.</p>
@@ -596,9 +597,9 @@
             
               <div class="site-state-item site-state-posts">
               
-                <a href="/archives%20%7C%7C%20archive">
+                <a href="/archives/%7C%7Carchive">
               
-                  <span class="site-state-item-count">36</span>
+                  <span class="site-state-item-count">62</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -609,7 +610,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-count">9</span>
                   <span class="site-state-item-name">categories</span>
                 </a>
               </div>
@@ -620,7 +621,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">8</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
@@ -637,6 +638,12 @@
                     <a href="https://github.com/rileywang0819" target="_blank" title="GitHub">
                       
                         <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:rileywang0819@gmail.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
                   </span>
                 
             </div>

@@ -111,17 +111,17 @@
 
 
 
-<meta name="description" content="ExpressionAn expression describes a computation and evaluates to a value. All expressions can use function call notation. 12345678910# primitive expression2000 + 15# call expressionsmax(2, 3)min(1, -2">
+<meta name="description" content="This is the lecture note of CS61A - Lecture 2.">
 <meta property="og:type" content="article">
 <meta property="og:title" content="CS61A(2): Expressions and Functions">
 <meta property="og:url" content="http://example.com/2021/07/02/CS61A-SICP/CS61A-2-Expressions-and-Functions/index.html">
 <meta property="og:site_name" content="GoGo-Wang&#39;s Blog">
-<meta property="og:description" content="ExpressionAn expression describes a computation and evaluates to a value. All expressions can use function call notation. 12345678910# primitive expression2000 + 15# call expressionsmax(2, 3)min(1, -2">
+<meta property="og:description" content="This is the lecture note of CS61A - Lecture 2.">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://example.com/2021/07/02/CS61A-SICP/CS61A-2-Expressions-and-Functions/lec2-1.png">
 <meta property="og:image" content="http://example.com/2021/07/02/CS61A-SICP/CS61A-2-Expressions-and-Functions/lec2-2.png">
 <meta property="article:published_time" content="2021-07-01T16:07:24.000Z">
-<meta property="article:modified_time" content="2021-07-14T16:00:05.056Z">
+<meta property="article:modified_time" content="2021-07-15T07:32:31.244Z">
 <meta property="article:author" content="gogo-wang">
 <meta property="article:tag" content="CS61A">
 <meta name="twitter:card" content="summary">
@@ -217,7 +217,7 @@
       
         
         <li class="menu-item menu-item-home">
-          <a href="/%20" rel="section">
+          <a href="/" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
@@ -227,7 +227,7 @@
       
         
         <li class="menu-item menu-item-tags">
-          <a href="/tags%20" rel="section">
+          <a href="/tags/" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
             
@@ -237,7 +237,7 @@
       
         
         <li class="menu-item menu-item-categories">
-          <a href="/categories%20" rel="section">
+          <a href="/categories/" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
             
@@ -247,7 +247,7 @@
       
         
         <li class="menu-item menu-item-archives">
-          <a href="/archives%20" rel="section">
+          <a href="/archives/" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
@@ -388,12 +388,13 @@
       
 
       
-        <h2 id="Expression"><a href="#Expression" class="headerlink" title="Expression"></a>Expression</h2><p>An <code>expression</code> describes a computation and evaluates to a value. All expressions can use function call notation.</p>
+        <p>This is the lecture note of CS61A - Lecture 2.</p>
+<span id="more"></span>
+
+<h2 id="Expression"><a href="#Expression" class="headerlink" title="Expression"></a>Expression</h2><p>An <code>expression</code> describes a computation and evaluates to a value. All expressions can use function call notation.</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># primitive expression</span></span><br><span class="line"><span class="number">2000</span> + <span class="number">15</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># call expressions</span></span><br><span class="line"><span class="built_in">max</span>(<span class="number">2</span>, <span class="number">3</span>)</span><br><span class="line"><span class="built_in">min</span>(<span class="number">1</span>, -<span class="number">2</span>, <span class="number">3</span>, -<span class="number">4</span>, <span class="number">5</span>)</span><br><span class="line"><span class="built_in">pow</span>(<span class="number">100</span>, <span class="number">2</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> operator <span class="keyword">import</span> add, mul</span><br><span class="line">mul(add(<span class="number">4</span>, mul(<span class="number">4</span>, <span class="number">6</span>)), add(<span class="number">3</span>, <span class="number">5</span>))  <span class="comment"># 224</span></span><br></pre></td></tr></table></figure>
 
 <h3 id="Anatomy-of-a-call-expression"><a href="#Anatomy-of-a-call-expression" class="headerlink" title="Anatomy of a call expression"></a>Anatomy of a call expression</h3><p>Operators and operands can also be expression. An expression tree is as follows:</p>
-<span id="more"></span>
-
 <img src="/2021/07/02/CS61A-SICP/CS61A-2-Expressions-and-Functions/lec2-1.png" class="">
 
 <p>Evaluation procedure for call expressions:</p>
@@ -562,9 +563,9 @@
             
               <div class="site-state-item site-state-posts">
               
-                <a href="/archives%20%7C%7C%20archive">
+                <a href="/archives/%7C%7Carchive">
               
-                  <span class="site-state-item-count">36</span>
+                  <span class="site-state-item-count">62</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -575,7 +576,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-count">9</span>
                   <span class="site-state-item-name">categories</span>
                 </a>
               </div>
@@ -586,7 +587,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">8</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
@@ -603,6 +604,12 @@
                     <a href="https://github.com/rileywang0819" target="_blank" title="GitHub">
                       
                         <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:rileywang0819@gmail.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
                   </span>
                 
             </div>

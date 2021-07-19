@@ -137,8 +137,10 @@
 <meta property="og:image" content="http://example.com/2021/06/22/Blog/Build-Your-Own-Blog-with-GitHub-Pages-Hexo/17.JPG">
 <meta property="og:image" content="http://example.com/2021/06/22/Blog/Build-Your-Own-Blog-with-GitHub-Pages-Hexo/18.JPG">
 <meta property="og:image" content="http://example.com/2021/06/22/Blog/Build-Your-Own-Blog-with-GitHub-Pages-Hexo/19.JPG">
+<meta property="og:image" content="http://example.com/2021/06/22/Blog/Build-Your-Own-Blog-with-GitHub-Pages-Hexo/20.JPG">
+<meta property="og:image" content="http://example.com/2021/06/22/Blog/Build-Your-Own-Blog-with-GitHub-Pages-Hexo/21.JPG">
 <meta property="article:published_time" content="2021-06-22T13:50:07.000Z">
-<meta property="article:modified_time" content="2021-07-14T18:03:28.439Z">
+<meta property="article:modified_time" content="2021-07-17T08:12:24.186Z">
 <meta property="article:author" content="gogo-wang">
 <meta property="article:tag" content="blog">
 <meta name="twitter:card" content="summary">
@@ -234,7 +236,7 @@
       
         
         <li class="menu-item menu-item-home">
-          <a href="/%20" rel="section">
+          <a href="/" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
@@ -244,7 +246,7 @@
       
         
         <li class="menu-item menu-item-tags">
-          <a href="/tags%20" rel="section">
+          <a href="/tags/" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
             
@@ -254,7 +256,7 @@
       
         
         <li class="menu-item menu-item-categories">
-          <a href="/categories%20" rel="section">
+          <a href="/categories/" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
             
@@ -264,7 +266,7 @@
       
         
         <li class="menu-item menu-item-archives">
-          <a href="/archives%20" rel="section">
+          <a href="/archives/" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
@@ -618,12 +620,22 @@
 <p>根据报错信息，打开 <code>themes/next/source/js/src/post-details.js</code> 文件：</p>
 <img src="/2021/06/22/Blog/Build-Your-Own-Blog-with-GitHub-Pages-Hexo/19.JPG" class="">
 
-<p>原因是</p>
-<h2 id="参考链接："><a href="#参考链接：" class="headerlink" title="参考链接："></a>参考链接：</h2><p>[1] <a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/">Hexo Docs</a></p>
+<p>原因是UTF-8解析有问题，按照如图修改 <code>post-details.js</code> 文件：</p>
+<img src="/2021/06/22/Blog/Build-Your-Own-Blog-with-GitHub-Pages-Hexo/20.JPG" class="">
+
+<hr>
+<p>Q7. 点击目录栏里的 <code>Tags</code> or <code>Categories</code> or <code>Archives</code> 404？</p>
+<p>请参考<a target="_blank" rel="noopener" href="http://theme-next.iissnan.com/theme-settings.html">官方文档:主题配置</a></p>
+<p>但注意一点，生成相关的页面后，在主题配置文件 <code>_config.yml</code> 中，menu栏请按照下面进行修改。</p>
+<img src="/2021/06/22/Blog/Build-Your-Own-Blog-with-GitHub-Pages-Hexo/21.JPG" class="">
+
+<p>一定不能有空格，否则会404！！！</p>
+<h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><p>🤗 在搭建个人博客的过程，我参考了网上的多种解决方案，在此就不一一列出了。感谢前人总结的经验，让我少走了很多弯路。</p>
+<p>下面是我觉得比较有用的几个链接，希望可以帮助到你。</p>
+<p>[1] <a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/">Hexo Docs</a></p>
 <p>[2] <a target="_blank" rel="noopener" href="http://theme-next.iissnan.com/theme-settings.html">NexT主题配置</a></p>
 <p>[3] <a target="_blank" rel="noopener" href="https://github.com/iissnan/hexo-theme-next/issues">Github：NexT主题常见问题汇总</a></p>
 <p>[4] <a target="_blank" rel="noopener" href="http://yearito.cn/posts/hexo-advanced-settings.html">Hexo 搭建个人博客系列：进阶设置篇</a></p>
-<p>Hexo：背景图片</p>
 
       
     </div>
@@ -769,9 +781,9 @@
             
               <div class="site-state-item site-state-posts">
               
-                <a href="/archives%20%7C%7C%20archive">
+                <a href="/archives/%7C%7Carchive">
               
-                  <span class="site-state-item-count">36</span>
+                  <span class="site-state-item-count">62</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -782,7 +794,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-count">9</span>
                   <span class="site-state-item-name">categories</span>
                 </a>
               </div>
@@ -793,7 +805,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">8</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
@@ -810,6 +822,12 @@
                     <a href="https://github.com/rileywang0819" target="_blank" title="GitHub">
                       
                         <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:rileywang0819@gmail.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
                   </span>
                 
             </div>
@@ -836,7 +854,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BC%80%E5%A7%8B%E4%B9%8B%E5%89%8D"><span class="nav-number">2.</span> <span class="nav-text">开始之前</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-Github"><span class="nav-number">2.1.</span> <span class="nav-text">1. Github</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-node-js-amp-npm"><span class="nav-number">2.2.</span> <span class="nav-text">2. node.js &amp; npm</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-Git"><span class="nav-number">2.3.</span> <span class="nav-text">3. Git</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%90%AD%E5%BB%BAGithub%E5%8D%9A%E5%AE%A2"><span class="nav-number">3.</span> <span class="nav-text">搭建Github博客</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E5%88%9B%E5%BB%BA%E4%BB%93%E5%BA%93"><span class="nav-number">3.1.</span> <span class="nav-text">1. 创建仓库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E9%85%8D%E7%BD%AESSH-key"><span class="nav-number">3.2.</span> <span class="nav-text">2. 配置SSH key</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8Hexo%E5%8D%9A%E5%AE%A2%E6%A1%86%E6%9E%B6"><span class="nav-number">4.</span> <span class="nav-text">使用Hexo博客框架</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E4%BB%80%E4%B9%88%E6%98%AFHexo"><span class="nav-number">4.1.</span> <span class="nav-text">1. 什么是Hexo</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E7%94%A8Hexo"><span class="nav-number">4.2.</span> <span class="nav-text">2. 为什么要用Hexo</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE"><span class="nav-number">4.3.</span> <span class="nav-text">3. 安装与配置</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E5%AE%89%E8%A3%85%E4%B8%8E%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="nav-number">4.3.1.</span> <span class="nav-text">1. 安装与初始化</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E7%94%9F%E6%88%90%E9%9D%99%E6%80%81%E6%96%87%E4%BB%B6"><span class="nav-number">4.3.2.</span> <span class="nav-text">2. 生成静态文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-%E6%9C%AC%E5%9C%B0%E9%A2%84%E8%A7%88"><span class="nav-number">4.3.3.</span> <span class="nav-text">3. 本地预览</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-%E4%B8%8A%E4%BC%A0%E5%88%B0Github"><span class="nav-number">4.4.</span> <span class="nav-text">4. 上传到Github</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E9%85%8D%E7%BD%AE%E7%AB%99%E7%82%B9%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6"><span class="nav-number">4.4.1.</span> <span class="nav-text">1. 配置站点配置文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E5%AE%89%E8%A3%85%E9%83%A8%E7%BD%B2%E6%8F%92%E4%BB%B6"><span class="nav-number">4.4.2.</span> <span class="nav-text">2. 安装部署插件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-%E9%83%A8%E7%BD%B2%E5%88%B0-GitHub"><span class="nav-number">4.4.3.</span> <span class="nav-text">3. 部署到 GitHub</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Hexo%E5%8D%9A%E5%AE%A2%E6%95%85%E9%9A%9C%E8%AE%B0%E5%BD%95%E5%8F%8A%E7%BE%8E%E5%8C%96%E6%96%B9%E6%A1%88%EF%BC%88%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0%EF%BC%89"><span class="nav-number">5.</span> <span class="nav-text">Hexo博客故障记录及美化方案（持续更新）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Hexo%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4"><span class="nav-number">5.1.</span> <span class="nav-text">Hexo常用命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9B%B4%E6%94%B9%E4%B8%BB%E9%A2%98"><span class="nav-number">5.2.</span> <span class="nav-text">更改主题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE%E7%AB%99%E7%82%B9%E4%BF%A1%E6%81%AF"><span class="nav-number">5.3.</span> <span class="nav-text">配置站点信息</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E5%8D%9A%E6%96%87"><span class="nav-number">5.4.</span> <span class="nav-text">创建博文</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">5.5.</span> <span class="nav-text"></span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9D%82%E4%B8%83%E6%9D%82%E5%85%AB"><span class="nav-number">5.6.</span> <span class="nav-text">杂七杂八</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E9%93%BE%E6%8E%A5%EF%BC%9A"><span class="nav-number">6.</span> <span class="nav-text">参考链接：</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BC%80%E5%A7%8B%E4%B9%8B%E5%89%8D"><span class="nav-number">2.</span> <span class="nav-text">开始之前</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-Github"><span class="nav-number">2.1.</span> <span class="nav-text">1. Github</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-node-js-amp-npm"><span class="nav-number">2.2.</span> <span class="nav-text">2. node.js &amp; npm</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-Git"><span class="nav-number">2.3.</span> <span class="nav-text">3. Git</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%90%AD%E5%BB%BAGithub%E5%8D%9A%E5%AE%A2"><span class="nav-number">3.</span> <span class="nav-text">搭建Github博客</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E5%88%9B%E5%BB%BA%E4%BB%93%E5%BA%93"><span class="nav-number">3.1.</span> <span class="nav-text">1. 创建仓库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E9%85%8D%E7%BD%AESSH-key"><span class="nav-number">3.2.</span> <span class="nav-text">2. 配置SSH key</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8Hexo%E5%8D%9A%E5%AE%A2%E6%A1%86%E6%9E%B6"><span class="nav-number">4.</span> <span class="nav-text">使用Hexo博客框架</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E4%BB%80%E4%B9%88%E6%98%AFHexo"><span class="nav-number">4.1.</span> <span class="nav-text">1. 什么是Hexo</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E7%94%A8Hexo"><span class="nav-number">4.2.</span> <span class="nav-text">2. 为什么要用Hexo</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE"><span class="nav-number">4.3.</span> <span class="nav-text">3. 安装与配置</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E5%AE%89%E8%A3%85%E4%B8%8E%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="nav-number">4.3.1.</span> <span class="nav-text">1. 安装与初始化</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E7%94%9F%E6%88%90%E9%9D%99%E6%80%81%E6%96%87%E4%BB%B6"><span class="nav-number">4.3.2.</span> <span class="nav-text">2. 生成静态文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-%E6%9C%AC%E5%9C%B0%E9%A2%84%E8%A7%88"><span class="nav-number">4.3.3.</span> <span class="nav-text">3. 本地预览</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-%E4%B8%8A%E4%BC%A0%E5%88%B0Github"><span class="nav-number">4.4.</span> <span class="nav-text">4. 上传到Github</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E9%85%8D%E7%BD%AE%E7%AB%99%E7%82%B9%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6"><span class="nav-number">4.4.1.</span> <span class="nav-text">1. 配置站点配置文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E5%AE%89%E8%A3%85%E9%83%A8%E7%BD%B2%E6%8F%92%E4%BB%B6"><span class="nav-number">4.4.2.</span> <span class="nav-text">2. 安装部署插件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-%E9%83%A8%E7%BD%B2%E5%88%B0-GitHub"><span class="nav-number">4.4.3.</span> <span class="nav-text">3. 部署到 GitHub</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Hexo%E5%8D%9A%E5%AE%A2%E6%95%85%E9%9A%9C%E8%AE%B0%E5%BD%95%E5%8F%8A%E7%BE%8E%E5%8C%96%E6%96%B9%E6%A1%88%EF%BC%88%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0%EF%BC%89"><span class="nav-number">5.</span> <span class="nav-text">Hexo博客故障记录及美化方案（持续更新）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Hexo%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4"><span class="nav-number">5.1.</span> <span class="nav-text">Hexo常用命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9B%B4%E6%94%B9%E4%B8%BB%E9%A2%98"><span class="nav-number">5.2.</span> <span class="nav-text">更改主题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE%E7%AB%99%E7%82%B9%E4%BF%A1%E6%81%AF"><span class="nav-number">5.3.</span> <span class="nav-text">配置站点信息</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E5%8D%9A%E6%96%87"><span class="nav-number">5.4.</span> <span class="nav-text">创建博文</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">5.5.</span> <span class="nav-text"></span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9D%82%E4%B8%83%E6%9D%82%E5%85%AB"><span class="nav-number">5.6.</span> <span class="nav-text">杂七杂八</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E9%93%BE%E6%8E%A5"><span class="nav-number">6.</span> <span class="nav-text">参考链接</span></a></li></ol></div>
             
 
           </div>
