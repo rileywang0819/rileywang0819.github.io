@@ -1,0 +1,960 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="en,zh-Hans,default">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Roboto Slab:300,300italic,400,400italic,700,700italic|Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="web," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="Until now, we have learned how to develop app on MVC pattern, and how to add READ and CREATE functionality. We have also learned how to send request asynchronously using AJAX. In this section, we will">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Web Dev(1): SQL and Data Modeling(IIII)">
+<meta property="og:url" content="http://example.com/2021/07/14/Web%20Development/Web-Dev-1-SQL-and-Data-Modeling-IIII/index.html">
+<meta property="og:site_name" content="GoGo-Wang&#39;s Blog">
+<meta property="og:description" content="Until now, we have learned how to develop app on MVC pattern, and how to add READ and CREATE functionality. We have also learned how to send request asynchronously using AJAX. In this section, we will">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/2021/07/14/Web%20Development/Web-Dev-1-SQL-and-Data-Modeling-IIII/migration-examplel.JPG">
+<meta property="og:image" content="http://example.com/2021/07/14/Web%20Development/Web-Dev-1-SQL-and-Data-Modeling-IIII/manage-changes-to-the-schema.JPG">
+<meta property="og:image" content="http://example.com/2021/07/14/Web%20Development/Web-Dev-1-SQL-and-Data-Modeling-IIII/without-migration.JPG">
+<meta property="og:image" content="http://example.com/2021/07/14/Web%20Development/Web-Dev-1-SQL-and-Data-Modeling-IIII/with-migration.JPG">
+<meta property="og:image" content="http://example.com/2021/07/14/Web%20Development/Web-Dev-1-SQL-and-Data-Modeling-IIII/model-change.JPG">
+<meta property="article:published_time" content="2021-07-14T12:08:04.000Z">
+<meta property="article:modified_time" content="2021-07-24T02:06:21.450Z">
+<meta property="article:author" content="gogo-wang">
+<meta property="article:tag" content="web">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2021/07/14/Web%20Development/Web-Dev-1-SQL-and-Data-Modeling-IIII/migration-examplel.JPG">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://example.com/2021/07/14/Web Development/Web-Dev-1-SQL-and-Data-Modeling-IIII/"/>
+
+
+
+
+
+  <title>Web Dev(1): SQL and Data Modeling(IIII) | GoGo-Wang's Blog</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">GoGo-Wang's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">"Say something." <br> - "Something."</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/07/14/Web%20Development/Web-Dev-1-SQL-and-Data-Modeling-IIII/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="GoGo-Wang's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Web Dev(1): SQL and Data Modeling(IIII)</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2021-07-14T21:08:04+09:00">
+                2021-07-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Web-Development/" itemprop="url" rel="index">
+                    <span itemprop="name">Web Development</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2021/07/14/Web%20Development/Web-Dev-1-SQL-and-Data-Modeling-IIII/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2021/07/14/Web Development/Web-Dev-1-SQL-and-Data-Modeling-IIII/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>Until now, we have learned how to develop app on MVC pattern, and how to add READ and CREATE functionality. We have also learned how to send request asynchronously using AJAX.</p>
+<p>In this section, we will learn how to change our data models over time, and buil our todo app further.</p>
+<h2 id="Migrations"><a href="#Migrations" class="headerlink" title="Migrations"></a>Migrations</h2><h3 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h3><p>Requirements can change, thus sometimes we need to modify our data schema over time. <strong>Migrations</strong> deal with how we manage modifications to our data schema.</p>
+<img src="/2021/07/14/Web%20Development/Web-Dev-1-SQL-and-Data-Modeling-IIII/migration-examplel.JPG" class="">
+
+<p>So, migration is a file that keep track of changes to our database schema (structure of our database). You can think them as <code>git commits</code>, which offers version control on data schema.</p>
+<ul>
+<li>Migrations stack together in order to form the latest version of our database schema.</li>
+<li>We can <strong>upgrade</strong> our database schema by applying migrations;</li>
+<li>We can <strong>roll back</strong> our database schema to a former version by reverting migrations that we applied</li>
+</ul>
+<p>Migrations are applied using command line scripts. There are generally 3 migration command line scripts needed :</p>
+<ul>
+<li><strong>migrate</strong>: creating a migration script template to fill out; generating a migration file based on changes to be made</li>
+<li><strong>upgrade</strong>: applying migrations that hadn’t been applied yet (“upgrading” our database)</li>
+<li><strong>downgrade</strong>: rolling back applied migrations that were problematic (“downgrading” our database)</li>
+</ul>
+<p>The migration tool that we use is going to differ based on which framework we use. For Flask, we typically use <strong>FLASK-Migrate</strong> and <strong>Flask-Script</strong>.</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://flask-migrate.readthedocs.io/en/latest/">Flask-Migrate</a> is our migration manager for migrating changes using SQLAlchemy. It uses a library called <a target="_blank" rel="noopener" href="https://alembic.sqlalchemy.org/en/latest/index.html">Alembic</a> underneath the hood.</li>
+<li><code>Flask-Script</code> lets us run migration scripts we defined, from the terminal</li>
+</ul>
+<p>Finally, let’s talk about why use migrations.</p>
+<img src="/2021/07/14/Web%20Development/Web-Dev-1-SQL-and-Data-Modeling-IIII/manage-changes-to-the-schema.JPG" class="">
+
+<img src="/2021/07/14/Web%20Development/Web-Dev-1-SQL-and-Data-Modeling-IIII/without-migration.JPG" class="" title="Without Migrations">
+<img src="/2021/07/14/Web%20Development/Web-Dev-1-SQL-and-Data-Modeling-IIII/with-migration.JPG" class="" title="With Migrations">
+
+<hr>
+<p>🦊 Self Opinion on Migration</p>
+<p>Migration are some physical files that manage data schema (database structure). Actually these files are abstracted SQL implemented with Python. You can run these migration script to change database structure. These files are also the part of a project.</p>
+<p>Even without migration, we can also change db structure using SQL. However, writing SQL is tedious and verbose, especially in group development. Even if a small change in a table, it needs every team member to update it with SQL manually, which  is troublesome.</p>
+<p>On the contrary, with migration, what he/she/it needs to do is just generating a migration file, push it to the version control system, such as git, and notify other members. Other team members can just pull the migration fileoff and run it, and change the db structure. In the future, if we want to rollback to the previous db structure, we can also rollback easily and quickly.</p>
+<hr>
+<h3 id="Flask-Migrations"><a href="#Flask-Migrations" class="headerlink" title="Flask Migrations"></a>Flask Migrations</h3><h4 id="Install"><a href="#Install" class="headerlink" title="Install"></a>Install</h4><p>Running the following command to install Flask-Migrate:</p>
+<blockquote>
+<p>pip3 install Flask-Migrate, or<br>pip install Flask-Migrate</p>
+</blockquote>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://flask-migrate.readthedocs.io/en/latest/">Flask-Migrate documentation</a></li>
+<li><a target="_blank" rel="noopener" href="https://alembic.sqlalchemy.org/en/latest/">Alembic documentation</a></li>
+</ul>
+<h4 id="Usage-of-Migration"><a href="#Usage-of-Migration" class="headerlink" title="Usage of Migration"></a>Usage of Migration</h4><ol>
+<li>Import migrate library and create instance of the migrate class</li>
+</ol>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> flask_migrate <span class="keyword">import</span> Migrate</span><br><span class="line"></span><br><span class="line">app = Flask(__name__)</span><br><span class="line"><span class="comment"># ....</span></span><br><span class="line"><span class="comment"># ....</span></span><br><span class="line">db = SQLAlchemy(app)</span><br><span class="line"></span><br><span class="line">migrate = Migrate(app, db)</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>Creating the migrations directory structure</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> create initial migration directory structure</span></span><br><span class="line"><span class="meta">~$</span><span class="bash"> flask db init</span></span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>Sync models</li>
+</ol>
+<p>🦁 Reminder: Since we use migration now, so we don’t use <code>db.create_all()</code> anymore. Please delete this code or comment it. Besides, if you have already a todoapp database but not intialize it, please drop it.</p>
+<p>We use the following command to detect the model’s changes, and create a migration file with upgrade and downgrade logic set up, replacing use of <code>db.create_all()</code> :</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">~$</span><span class="bash"> flask db migrate</span></span><br><span class="line"><span class="meta">~$</span><span class="bash"> flask db migrate -m <span class="string">&quot;Initial migration.&quot;</span>   <span class="comment"># with message</span></span></span><br></pre></td></tr></table></figure>
+
+<ol start="4">
+<li>Upgrade and downgrade</li>
+</ol>
+<p>Runs the upgrade/downgrade command in the migration file, to apply the migration.</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">~$</span><span class="bash"> flask db upgrade</span></span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">~$</span><span class="bash"> flask db downgrade</span></span><br></pre></td></tr></table></figure>
+
+<ol start="5">
+<li>Add the completed column</li>
+</ol>
+<p>Our goal is to add a new column name “completed”, it is boolean data type, so we need to change the existing model.</p>
+<p>First, change our data model,</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Todo</span>(<span class="params">db.Model</span>):</span></span><br><span class="line">    __tablename__ = <span class="string">&#x27;todos&#x27;</span></span><br><span class="line">    <span class="built_in">id</span> = db.Column(db.Integer, primary_key=<span class="literal">True</span>)</span><br><span class="line">    description = db.Column(db.String(), nullable=<span class="literal">False</span>)</span><br><span class="line">    <span class="comment"># add a new column</span></span><br><span class="line">    completed = db.Column(db.Boolean, nullable=<span class="literal">False</span>, default=<span class="literal">False</span>)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__repr__</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="keyword">return</span> <span class="string">f&#x27;&lt;Todo <span class="subst">&#123;self.<span class="built_in">id</span>&#125;</span> <span class="subst">&#123;self.description&#125;</span> <span class="subst">&#123;self.completed&#125;</span>&gt;&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<p>then, run the command,</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">~$</span><span class="bash"> flask db migrate</span></span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">~$</span><span class="bash"> flask db upgrade</span></span><br></pre></td></tr></table></figure>
+
+<p>Now, the data schema has changed.</p>
+<img src="/2021/07/14/Web%20Development/Web-Dev-1-SQL-and-Data-Modeling-IIII/model-change.JPG" class="">
+
+
+<ol start="6">
+<li>Work with existing data</li>
+</ol>
+<p>If we have already have some records in the todos table which has the original data schema,</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"> id | description</span><br><span class="line">----+-------------</span><br><span class="line">  1 | todo 1</span><br><span class="line">  2 | todo 2</span><br><span class="line">  3 | todo 3</span><br></pre></td></tr></table></figure>
+
+<p>Then we change our data schema with running <code>flask db upgrade</code>, it will cause <code>NotNullViolation Error</code>. This is because we declared that the completed column shouldn’t be null previously. In this context, we can revise the migration file like below:</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># a68fdf8c772b_add_completed_column.py</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">upgrade</span>():</span></span><br><span class="line">    <span class="comment"># ### commands auto generated by Alembic - please adjust! ###</span></span><br><span class="line">    <span class="comment"># op.add_column(&#x27;todos&#x27;, sa.Column(&#x27;completed&#x27;, sa.Boolean(), nullable=False))</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="string">&quot;&quot;&quot; Modify from False to True, so we can add a column that applies to our</span></span><br><span class="line"><span class="string">    existing data successfully. &quot;&quot;&quot;</span></span><br><span class="line">    op.add_column(<span class="string">&#x27;todos&#x27;</span>, sa.Column(<span class="string">&#x27;completed&#x27;</span>, sa.Boolean(), nullable=<span class="literal">True</span>))</span><br><span class="line"></span><br><span class="line">    <span class="string">&quot;&quot;&quot; add the following two lines &quot;&quot;&quot;</span></span><br><span class="line">    <span class="comment"># update the existing recoreds that don&#x27;t yet have a completed column with SQL</span></span><br><span class="line">    op.execute(<span class="string">&#x27;UPDATE todos SET completed = False WHERE completed IS NULL;&#x27;</span>)</span><br><span class="line">     <span class="comment"># update the column on todos</span></span><br><span class="line">    op.alter_column(<span class="string">&#x27;todos&#x27;</span>, <span class="string">&#x27;completed&#x27;</span>, nullable=<span class="literal">False</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment"># ### end Alembic commands ###</span></span><br></pre></td></tr></table></figure>
+
+<p>Then upgrade again, you will get the following result,</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"> id | description | completed</span><br><span class="line">----+-------------+-----------</span><br><span class="line">  1 | todo 1      | f</span><br><span class="line">  2 | todo 2      | f</span><br><span class="line">  3 | todo 3      | f</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="Build-Todo-App-Further"><a href="#Build-Todo-App-Further" class="headerlink" title="Build Todo App Further"></a>Build Todo App Further</h2><p>🏃 We have already finish “Read” and “Create” functionality among “CRUD”. In this part, let’s continue build our todo app, and try to finish “Update” and “Delete” functionality. </p>
+<h3 id="“U”-in-CRUD"><a href="#“U”-in-CRUD" class="headerlink" title="“U” in CRUD"></a>“U” in CRUD</h3><p>An update involves setting the attributes of an existing object in the database.</p>
+<p>In SQL, we use SQL command to update, where in SQLAlchemy ORM, we use python code to update.</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- SQL</span></span><br><span class="line"></span><br><span class="line">UPDATE table_name</span><br><span class="line"><span class="keyword">SET</span> column1 <span class="operator">=</span> value1, column2 <span class="operator">=</span> value2, ...</span><br><span class="line"><span class="keyword">WHERE</span> <span class="keyword">condition</span>;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># SQlAlchemy ORM</span></span><br><span class="line"></span><br><span class="line">some_object = User.query.get(some_id)</span><br><span class="line">some_object.attribute = <span class="string">&#x27;Some new name&#x27;</span></span><br><span class="line">db.session.commit()</span><br></pre></td></tr></table></figure>
+
+<p>Now. let’s try to modify the view to add checkboxes, and having the checkboxes send off POST request. Then defining the route handler, you should get the following code.</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">title</span>&gt;</span>Todo App<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="css"></span></span><br><span class="line"><span class="css">            <span class="selector-class">.hidden</span> &#123;</span></span><br><span class="line"><span class="css">                <span class="attribute">display</span>: none;</span></span><br><span class="line"><span class="css">            &#125;</span></span><br><span class="line"><span class="css">            <span class="selector-tag">ul</span> &#123;</span></span><br><span class="line"><span class="css">                <span class="attribute">list-style</span>: none;</span></span><br><span class="line"><span class="css">                <span class="attribute">padding</span>: <span class="number">0</span>;</span></span><br><span class="line"><span class="css">                <span class="attribute">margin</span>: <span class="number">0</span>;</span></span><br><span class="line"><span class="css">                <span class="attribute">width</span>: <span class="number">300px</span>;</span></span><br><span class="line"><span class="css">            &#125;</span></span><br><span class="line"><span class="css">        </span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">form</span> <span class="attr">id</span>=<span class="string">&#x27;form&#x27;</span> <span class="attr">action</span>=<span class="string">&quot;/todos/create&quot;</span> <span class="attr">method</span>=<span class="string">&quot;post&quot;</span>&gt;</span></span><br><span class="line">            <span class="comment">&lt;!-- &lt;label for=&quot;name&quot;&gt;create a todo item&lt;/label&gt; --&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">id</span>=<span class="string">&quot;description&quot;</span> <span class="attr">name</span>=<span class="string">&quot;description&quot;</span> /&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;submit&quot;</span> <span class="attr">id</span>=<span class="string">&quot;submit&quot;</span> <span class="attr">value</span>=<span class="string">&quot;Create&quot;</span> /&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;error&quot;</span> <span class="attr">class</span>=<span class="string">&quot;hidden&quot;</span>&gt;</span>Something went wrong!<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">ul</span> <span class="attr">id</span>=<span class="string">&#x27;todos&#x27;</span>&gt;</span></span><br><span class="line">            &#123;% for todo in todos %&#125;</span><br><span class="line">            <span class="tag">&lt;<span class="name">li</span>&gt;</span></span><br><span class="line">                <span class="comment">&lt;!-- add checkboxes --&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">input</span> <span class="attr">class</span>=<span class="string">&quot;check-completed&quot;</span> <span class="attr">data-id</span>=<span class="string">&quot;&#123;&#123; todo.id &#125;&#125;&quot;</span> <span class="attr">type</span>=<span class="string">&quot;checkbox&quot;</span> &#123;% <span class="attr">if</span> <span class="attr">todo.completed</span> %&#125; <span class="attr">checked</span> &#123;% <span class="attr">endif</span> %&#125;&gt;</span>  </span><br><span class="line">                &#123;&#123; todo.description &#125;&#125;</span><br><span class="line">            <span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">            &#123;% endfor %&#125;</span><br><span class="line">        <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></span><br><span class="line"><span class="javascript">            <span class="comment">/** Sets todo completed. */</span></span></span><br><span class="line"><span class="javascript">            <span class="keyword">const</span> checkboxes = <span class="built_in">document</span>.querySelectorAll(<span class="string">&#x27;.check-completed&#x27;</span>);</span></span><br><span class="line"><span class="javascript">            <span class="keyword">for</span>(<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; checkboxes.length; i++) &#123;</span></span><br><span class="line"><span class="javascript">                <span class="keyword">const</span> checkbox = checkboxes[i];</span></span><br><span class="line"><span class="javascript">                checkbox.onchange = <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">                    <span class="comment">// console.log(&#x27;event&#x27;, e);</span></span></span><br><span class="line"><span class="javascript">                    <span class="keyword">const</span> newCompleted = e.target.checked;</span></span><br><span class="line"><span class="javascript">                    <span class="keyword">const</span> todoId = e.target.dataset[<span class="string">&#x27;id&#x27;</span>];</span></span><br><span class="line"><span class="javascript">                    fetch(<span class="string">&#x27;/todos/&#x27;</span> + todoId + <span class="string">&#x27;/set-completed&#x27;</span>, &#123;</span></span><br><span class="line"><span class="javascript">                        <span class="attr">method</span>: <span class="string">&#x27;POST&#x27;</span>,</span></span><br><span class="line"><span class="javascript">                        <span class="attr">body</span>: <span class="built_in">JSON</span>.stringify(&#123;</span></span><br><span class="line"><span class="javascript">                            <span class="string">&#x27;completed&#x27;</span>: newCompleted</span></span><br><span class="line"><span class="javascript">                        &#125;),</span></span><br><span class="line"><span class="javascript">                        <span class="attr">headers</span>: &#123;</span></span><br><span class="line"><span class="javascript">                            <span class="string">&#x27;Content-Type&#x27;</span>: <span class="string">&#x27;application/json&#x27;</span></span></span><br><span class="line"><span class="javascript">                        &#125;</span></span><br><span class="line"><span class="javascript">                    &#125;)</span></span><br><span class="line"><span class="javascript">                    .then(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">                        <span class="built_in">document</span>.getElementById(<span class="string">&#x27;error&#x27;</span>).className = <span class="string">&#x27;hidden&#x27;</span>;</span></span><br><span class="line"><span class="javascript">                    &#125;)</span></span><br><span class="line"><span class="javascript">                    .catch(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">                        <span class="built_in">document</span>.getElementById(<span class="string">&#x27;error&#x27;</span>).className = <span class="string">&#x27;&#x27;</span>;</span></span><br><span class="line"><span class="javascript">                    &#125;)</span></span><br><span class="line"><span class="javascript">                &#125;</span></span><br><span class="line"><span class="javascript">            &#125;</span></span><br><span class="line"><span class="javascript"></span></span><br><span class="line"><span class="javascript">            <span class="comment">/** Creates new todo. */</span></span></span><br><span class="line"><span class="javascript">            <span class="built_in">document</span>.getElementById(<span class="string">&#x27;form&#x27;</span>).onsubmit = <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;  <span class="comment">// e: event handler</span></span></span><br><span class="line"><span class="javascript">                <span class="comment">// default behavior: full page refresh and submit it using the method and action attributes</span></span></span><br><span class="line"><span class="javascript">                e.preventDefault();</span></span><br><span class="line"><span class="javascript"></span></span><br><span class="line"><span class="javascript">                <span class="comment">// use fetch method to send request async</span></span></span><br><span class="line"><span class="javascript">                fetch(<span class="string">&#x27;todos/create&#x27;</span>, &#123;</span></span><br><span class="line"><span class="javascript">                    <span class="attr">method</span>: <span class="string">&#x27;POST&#x27;</span>,</span></span><br><span class="line"><span class="javascript">                    <span class="attr">body</span>: <span class="built_in">JSON</span>.stringify(&#123;  <span class="comment">// JSON.stringify(): stringify JSON object</span></span></span><br><span class="line"><span class="javascript">                        <span class="string">&#x27;description&#x27;</span>: <span class="built_in">document</span>.getElementById(<span class="string">&#x27;description&#x27;</span>).value</span></span><br><span class="line"><span class="javascript">                    &#125;),</span></span><br><span class="line"><span class="javascript">                    <span class="attr">headers</span>: &#123;</span></span><br><span class="line"><span class="javascript">                        <span class="string">&#x27;Content-Type&#x27;</span>: <span class="string">&#x27;application/json&#x27;</span></span></span><br><span class="line"><span class="javascript">                    &#125;</span></span><br><span class="line"><span class="javascript">                &#125;)  <span class="comment">// return a promise</span></span></span><br><span class="line"><span class="javascript">                .then(<span class="function"><span class="keyword">function</span>(<span class="params">response</span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">                    <span class="keyword">return</span> response.json();</span></span><br><span class="line"><span class="javascript">                &#125;)</span></span><br><span class="line"><span class="javascript">                .then(<span class="function"><span class="keyword">function</span>(<span class="params">jsonResponse</span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">                    <span class="built_in">console</span>.log(jsonResponse);</span></span><br><span class="line"><span class="javascript">                    <span class="keyword">const</span> liItem = <span class="built_in">document</span>.createElement(<span class="string">&#x27;li&#x27;</span>);</span></span><br><span class="line"><span class="javascript">                    liItem.innerHTML = jsonResponse[<span class="string">&#x27;description&#x27;</span>];</span></span><br><span class="line"><span class="javascript">                    <span class="built_in">document</span>.getElementById(<span class="string">&#x27;todos&#x27;</span>).appendChild(liItem);</span></span><br><span class="line"><span class="javascript">                    <span class="comment">// if succeed: no display error info</span></span></span><br><span class="line"><span class="javascript">                    <span class="built_in">document</span>.getElementById(<span class="string">&#x27;error&#x27;</span>).className = <span class="string">&#x27;hidden&#x27;</span>;</span></span><br><span class="line"><span class="javascript">                    <span class="built_in">window</span>.location.reload(<span class="literal">true</span>);</span></span><br><span class="line"><span class="javascript">                &#125;)</span></span><br><span class="line"><span class="javascript">                .catch(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">                    <span class="built_in">document</span>.getElementById(<span class="string">&#x27;error&#x27;</span>).className = <span class="string">&#x27;&#x27;</span>;</span></span><br><span class="line"><span class="javascript">                &#125;)</span></span><br><span class="line"><span class="javascript">            &#125;</span></span><br><span class="line"><span class="javascript">        </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> Flask, render_template, request, redirect, url_for, abort, jsonify</span><br><span class="line"><span class="keyword">from</span> flask_sqlalchemy <span class="keyword">import</span> SQLAlchemy</span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"><span class="keyword">from</span> flask_migrate <span class="keyword">import</span> Migrate</span><br><span class="line"></span><br><span class="line">app = Flask(__name__)</span><br><span class="line">db_info = <span class="string">&#x27;postgresql://postgres:password@localhost:5432/todoapp&#x27;</span></span><br><span class="line">app.config[<span class="string">&#x27;SQLALCHEMY_DATABASE_URI&#x27;</span>] = db_info</span><br><span class="line">app.config[<span class="string">&#x27;SQLALCHEMY_TRACK_MODIFICATIONS&#x27;</span>] = <span class="literal">False</span></span><br><span class="line">db = SQLAlchemy(app)</span><br><span class="line"></span><br><span class="line">migrate = Migrate(app, db)</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Todo</span>(<span class="params">db.Model</span>):</span></span><br><span class="line">    __tablename__ = <span class="string">&#x27;todos&#x27;</span></span><br><span class="line">    <span class="built_in">id</span> = db.Column(db.Integer, primary_key=<span class="literal">True</span>)</span><br><span class="line">    description = db.Column(db.String(), nullable=<span class="literal">False</span>)</span><br><span class="line">    completed = db.Column(db.Boolean, nullable=<span class="literal">False</span>, default=<span class="literal">False</span>)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__repr__</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="keyword">return</span> <span class="string">f&#x27;&lt;Todo <span class="subst">&#123;self.<span class="built_in">id</span>&#125;</span> <span class="subst">&#123;self.description&#125;</span> <span class="subst">&#123;self.completed&#125;</span>&gt;&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># db.create_all() since we use migration</span></span><br><span class="line"></span><br><span class="line"><span class="string">&quot;&quot;&quot; controller listens to the view &#x27;/todos/create&#x27; : create a new todo &quot;&quot;&quot;</span></span><br><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/todos/create&#x27;</span>, methods=[<span class="string">&#x27;POST&#x27;</span>]</span>)</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">create_todo</span>():</span></span><br><span class="line">    error = <span class="literal">False</span></span><br><span class="line">    body = &#123;&#125;</span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        desc = request.get_json()[<span class="string">&#x27;description&#x27;</span>]</span><br><span class="line">        new_todo = Todos(description=desc)</span><br><span class="line">        db.session.add(new_todo)</span><br><span class="line">        db.session.commit()</span><br><span class="line">        body[<span class="string">&#x27;description&#x27;</span>] = new_todo.description</span><br><span class="line">    <span class="keyword">except</span>:</span><br><span class="line">        error = <span class="literal">True</span></span><br><span class="line">        db.session.rollback()</span><br><span class="line">        <span class="built_in">print</span>(sys.exc_info())</span><br><span class="line">    <span class="keyword">finally</span>:</span><br><span class="line">        db.session.close()</span><br><span class="line">    <span class="keyword">if</span> error:</span><br><span class="line">        abort(<span class="number">400</span>)</span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> error:</span><br><span class="line">        <span class="comment"># jsonify:return json data to the client</span></span><br><span class="line">        <span class="keyword">return</span> jsonify(body)</span><br><span class="line"></span><br><span class="line"><span class="string">&quot;&quot;&quot; controller listens to the view &#x27;/todos/&lt;todo_id&gt;/set-completed&#x27; : set todo completed &quot;&quot;&quot;</span></span><br><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/todos/&lt;todo_id&gt;/set-completed&#x27;</span>, methods=[<span class="string">&#x27;POST&#x27;</span>]</span>)</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">update_todo</span>(<span class="params">todo_id</span>):</span></span><br><span class="line">    error = <span class="literal">False</span></span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        completed = request.get_json()[<span class="string">&#x27;completed&#x27;</span>]</span><br><span class="line">        todo = Todos.query.get(todo_id)</span><br><span class="line">        todo.completed = completed</span><br><span class="line">        db.session.commit()</span><br><span class="line">    <span class="keyword">except</span>():</span><br><span class="line">        db.session.rollback()</span><br><span class="line">        error = <span class="literal">True</span></span><br><span class="line">        <span class="built_in">print</span>(sys.exc_info())</span><br><span class="line">    <span class="keyword">finally</span>:</span><br><span class="line">        db.session.close()</span><br><span class="line">    <span class="keyword">if</span> error:</span><br><span class="line">        abort(<span class="number">400</span>)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="comment"># return redirect(url_for(&#x27;index&#x27;))</span></span><br><span class="line">        <span class="keyword">return</span> jsonify(&#123;<span class="string">&#x27;success&#x27;</span>: <span class="literal">True</span>&#125;)</span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/&#x27;</span></span>)</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">index</span>():</span></span><br><span class="line">    <span class="keyword">return</span> render_template(<span class="string">&#x27;hp.html&#x27;</span>, todos=Todos.query.order_by(<span class="string">&#x27;id&#x27;</span>).<span class="built_in">all</span>())  <span class="comment"># fix the ordering</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="“D”-in-CRUD"><a href="#“D”-in-CRUD" class="headerlink" title="“D” in CRUD"></a>“D” in CRUD</h3><p>Deletes deal with removing existing objects in our database.</p>
+<p>In SQL, we use SQL command to delete, where in SQLAlchemy ORM, we use python code to delete.</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- SQL</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">DELETE</span> <span class="keyword">FROM</span> table_name</span><br><span class="line"><span class="keyword">WHERE</span> <span class="keyword">condition</span>;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># SQLAlchemy ORM</span></span><br><span class="line"></span><br><span class="line">todo = Todos.query.get(todo_id) </span><br><span class="line">db.session.delete(todo) <span class="comment"># or...</span></span><br><span class="line">Todo.query.filter_by(<span class="built_in">id</span>=todo_id).delete()</span><br><span class="line">db.session.commit()</span><br></pre></td></tr></table></figure>
+
+<p>Steps that we implement delete are as follows,</p>
+<ul>
+<li>Loop through every To-Do item and show a delete button</li>
+<li>Pressing the delete button sends a request that includes which to-do item to delete</li>
+<li>The controller takes the user input, and notifies the models to delete the To-Do object by ID</li>
+<li>On successful deletion by the models, the controller should notify the view to refresh the page and redirect to our homepage, showing a fresh fetch of all To-Do items to now exclude the removed item.</li>
+</ul>
+<p>Try it before you look at the solution.</p>
+<hr>
+<p><strong>Solution:</strong></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">title</span>&gt;</span>Todo App<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="css"></span></span><br><span class="line"><span class="css">            <span class="selector-class">.hidden</span> &#123;</span></span><br><span class="line"><span class="css">                <span class="attribute">display</span>: none;</span></span><br><span class="line"><span class="css">            &#125;</span></span><br><span class="line"><span class="css">            <span class="selector-tag">ul</span> &#123;</span></span><br><span class="line"><span class="css">                <span class="attribute">list-style</span>: none;</span></span><br><span class="line"><span class="css">                <span class="attribute">padding</span>: <span class="number">0</span>;</span></span><br><span class="line"><span class="css">                <span class="attribute">margin</span>: <span class="number">0</span>;</span></span><br><span class="line"><span class="css">                <span class="attribute">width</span>: <span class="number">300px</span>;</span></span><br><span class="line"><span class="css">            &#125;</span></span><br><span class="line"><span class="css">            <span class="selector-tag">li</span> <span class="selector-tag">button</span> &#123;</span></span><br><span class="line"><span class="css">                -webkit-appearance: none;</span></span><br><span class="line"><span class="css">                <span class="attribute">border</span>: none;</span></span><br><span class="line"><span class="css">                <span class="attribute">outline</span>: none;</span></span><br><span class="line"><span class="css">                <span class="attribute">color</span>: red;</span></span><br><span class="line"><span class="css">                <span class="attribute">float</span>: right;</span></span><br><span class="line"><span class="css">                <span class="attribute">cursor</span>: pointer;</span></span><br><span class="line"><span class="css">                <span class="attribute">font-size</span>: <span class="number">10px</span>;</span></span><br><span class="line"><span class="css">            &#125;</span></span><br><span class="line"><span class="css">        </span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">form</span> <span class="attr">id</span>=<span class="string">&#x27;form&#x27;</span> <span class="attr">action</span>=<span class="string">&quot;/todos/create&quot;</span> <span class="attr">method</span>=<span class="string">&quot;post&quot;</span>&gt;</span></span><br><span class="line">            <span class="comment">&lt;!-- &lt;label for=&quot;name&quot;&gt;create a todo item&lt;/label&gt; --&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">id</span>=<span class="string">&quot;description&quot;</span> <span class="attr">name</span>=<span class="string">&quot;description&quot;</span> /&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;submit&quot;</span> <span class="attr">id</span>=<span class="string">&quot;submit&quot;</span> <span class="attr">value</span>=<span class="string">&quot;Create&quot;</span> /&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;error&quot;</span> <span class="attr">class</span>=<span class="string">&quot;hidden&quot;</span>&gt;</span>Something went wrong!<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">ul</span> <span class="attr">id</span>=<span class="string">&#x27;todos&#x27;</span>&gt;</span></span><br><span class="line">            &#123;% for todo in todos %&#125;</span><br><span class="line">            <span class="tag">&lt;<span class="name">li</span>&gt;</span></span><br><span class="line">                <span class="comment">&lt;!-- add checkboxes --&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">input</span> <span class="attr">class</span>=<span class="string">&quot;check-completed&quot;</span> <span class="attr">data-id</span>=<span class="string">&quot;&#123;&#123; todo.id &#125;&#125;&quot;</span> <span class="attr">type</span>=<span class="string">&quot;checkbox&quot;</span> &#123;% <span class="attr">if</span> <span class="attr">todo.completed</span> %&#125; <span class="attr">checked</span> &#123;% <span class="attr">endif</span> %&#125;&gt;</span>  </span><br><span class="line">                &#123;&#123; todo.description &#125;&#125;</span><br><span class="line">                <span class="tag">&lt;<span class="name">button</span> <span class="attr">class</span>=<span class="string">&quot;delete-btn&quot;</span> <span class="attr">data-id</span>=<span class="string">&quot;&#123;&#123; todo.id &#125;&#125;&quot;</span>&gt;</span><span class="symbol">&amp;cross;</span><span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">            &#123;% endfor %&#125;</span><br><span class="line">        <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></span><br><span class="line"><span class="javascript">            <span class="comment">/** Deletes todo item. */</span></span></span><br><span class="line"><span class="javascript">            <span class="keyword">const</span> deleteBtns = <span class="built_in">document</span>.querySelectorAll(<span class="string">&#x27;.delete-btn&#x27;</span>);</span></span><br><span class="line"><span class="javascript">            <span class="keyword">for</span>(<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; deleteBtns.length; i++) &#123;</span></span><br><span class="line"><span class="javascript">                <span class="keyword">const</span> btn = deleteBtns[i];</span></span><br><span class="line"><span class="javascript">                btn.onclick = <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">                    <span class="built_in">console</span>.log(<span class="string">&#x27;event&#x27;</span>, e);</span></span><br><span class="line"><span class="javascript">                    <span class="keyword">const</span> todoId = e.target.dataset[<span class="string">&#x27;id&#x27;</span>];</span></span><br><span class="line"><span class="javascript">                    fetch(<span class="string">&#x27;/todos/&#x27;</span> + todoId, &#123;</span></span><br><span class="line"><span class="javascript">                        <span class="attr">method</span>: <span class="string">&#x27;DELETE&#x27;</span></span></span><br><span class="line"><span class="javascript">                    &#125;)</span></span><br><span class="line"><span class="javascript">                    .then(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">                        <span class="built_in">document</span>.getElementById(<span class="string">&#x27;error&#x27;</span>).className = <span class="string">&#x27;hidden&#x27;</span>;</span></span><br><span class="line"><span class="javascript">                        <span class="keyword">const</span> item = e.target.parentElement;</span></span><br><span class="line"><span class="javascript">                        item.remove();</span></span><br><span class="line"><span class="javascript">                    &#125;)</span></span><br><span class="line"><span class="javascript">                    .catch(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">                        <span class="built_in">document</span>.getElementById(<span class="string">&#x27;error&#x27;</span>).className = <span class="string">&#x27;&#x27;</span>;</span></span><br><span class="line"><span class="javascript">                    &#125;)</span></span><br><span class="line"><span class="javascript">                &#125;</span></span><br><span class="line"><span class="javascript">            &#125;</span></span><br><span class="line"><span class="javascript"></span></span><br><span class="line"><span class="javascript">            <span class="comment">/** Sets todo completed. */</span></span></span><br><span class="line"><span class="javascript">            <span class="keyword">const</span> checkboxes = <span class="built_in">document</span>.querySelectorAll(<span class="string">&#x27;.check-completed&#x27;</span>);</span></span><br><span class="line"><span class="javascript">            <span class="keyword">for</span>(<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; checkboxes.length; i++) &#123;</span></span><br><span class="line"><span class="javascript">                <span class="keyword">const</span> checkbox = checkboxes[i];</span></span><br><span class="line"><span class="javascript">                checkbox.onchange = <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">                    <span class="comment">// console.log(&#x27;event&#x27;, e);</span></span></span><br><span class="line"><span class="javascript">                    <span class="keyword">const</span> newCompleted = e.target.checked;</span></span><br><span class="line"><span class="javascript">                    <span class="keyword">const</span> todoId = e.target.dataset[<span class="string">&#x27;id&#x27;</span>];</span></span><br><span class="line"><span class="javascript">                    fetch(<span class="string">&#x27;/todos/&#x27;</span> + todoId + <span class="string">&#x27;/set-completed&#x27;</span>, &#123;</span></span><br><span class="line"><span class="javascript">                        <span class="attr">method</span>: <span class="string">&#x27;POST&#x27;</span>,</span></span><br><span class="line"><span class="javascript">                        <span class="attr">body</span>: <span class="built_in">JSON</span>.stringify(&#123;</span></span><br><span class="line"><span class="javascript">                            <span class="string">&#x27;completed&#x27;</span>: newCompleted</span></span><br><span class="line"><span class="javascript">                        &#125;),</span></span><br><span class="line"><span class="javascript">                        <span class="attr">headers</span>: &#123;</span></span><br><span class="line"><span class="javascript">                            <span class="string">&#x27;Content-Type&#x27;</span>: <span class="string">&#x27;application/json&#x27;</span></span></span><br><span class="line"><span class="javascript">                        &#125;</span></span><br><span class="line"><span class="javascript">                    &#125;)</span></span><br><span class="line"><span class="javascript">                    .then(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">                        <span class="built_in">document</span>.getElementById(<span class="string">&#x27;error&#x27;</span>).className = <span class="string">&#x27;hidden&#x27;</span>;</span></span><br><span class="line"><span class="javascript">                    &#125;)</span></span><br><span class="line"><span class="javascript">                    .catch(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">                        <span class="built_in">document</span>.getElementById(<span class="string">&#x27;error&#x27;</span>).className = <span class="string">&#x27;&#x27;</span>;</span></span><br><span class="line"><span class="javascript">                    &#125;)</span></span><br><span class="line"><span class="javascript">                &#125;</span></span><br><span class="line"><span class="javascript">            &#125;</span></span><br><span class="line"><span class="javascript"></span></span><br><span class="line"><span class="javascript">            <span class="comment">/** Creates new todo. */</span></span></span><br><span class="line"><span class="javascript">            <span class="built_in">document</span>.getElementById(<span class="string">&#x27;form&#x27;</span>).onsubmit = <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;  <span class="comment">// e: event handler</span></span></span><br><span class="line"><span class="javascript">                <span class="comment">// default behavior: full page refresh and submit it using the method and action attributes</span></span></span><br><span class="line"><span class="javascript">                e.preventDefault();</span></span><br><span class="line"><span class="javascript"></span></span><br><span class="line"><span class="javascript">                <span class="comment">// use fetch method to send request async</span></span></span><br><span class="line"><span class="javascript">                fetch(<span class="string">&#x27;todos/create&#x27;</span>, &#123;</span></span><br><span class="line"><span class="javascript">                    <span class="attr">method</span>: <span class="string">&#x27;POST&#x27;</span>,</span></span><br><span class="line"><span class="javascript">                    <span class="attr">body</span>: <span class="built_in">JSON</span>.stringify(&#123;  <span class="comment">// JSON.stringify(): stringify JSON object</span></span></span><br><span class="line"><span class="javascript">                        <span class="string">&#x27;description&#x27;</span>: <span class="built_in">document</span>.getElementById(<span class="string">&#x27;description&#x27;</span>).value</span></span><br><span class="line"><span class="javascript">                    &#125;),</span></span><br><span class="line"><span class="javascript">                    <span class="attr">headers</span>: &#123;</span></span><br><span class="line"><span class="javascript">                        <span class="string">&#x27;Content-Type&#x27;</span>: <span class="string">&#x27;application/json&#x27;</span></span></span><br><span class="line"><span class="javascript">                    &#125;</span></span><br><span class="line"><span class="javascript">                &#125;)  <span class="comment">// return a promise</span></span></span><br><span class="line"><span class="javascript">                .then(<span class="function"><span class="keyword">function</span>(<span class="params">response</span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">                    <span class="keyword">return</span> response.json();</span></span><br><span class="line"><span class="javascript">                &#125;)</span></span><br><span class="line"><span class="javascript">                .then(<span class="function"><span class="keyword">function</span>(<span class="params">jsonResponse</span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">                    <span class="built_in">console</span>.log(jsonResponse);</span></span><br><span class="line"><span class="javascript">                    <span class="keyword">const</span> liItem = <span class="built_in">document</span>.createElement(<span class="string">&#x27;li&#x27;</span>);</span></span><br><span class="line"><span class="javascript">                    liItem.innerHTML = jsonResponse[<span class="string">&#x27;description&#x27;</span>];</span></span><br><span class="line"><span class="javascript">                    <span class="built_in">document</span>.getElementById(<span class="string">&#x27;todos&#x27;</span>).appendChild(liItem);</span></span><br><span class="line"><span class="javascript">                    <span class="comment">// if succeed: no display error info</span></span></span><br><span class="line"><span class="javascript">                    <span class="built_in">document</span>.getElementById(<span class="string">&#x27;error&#x27;</span>).className = <span class="string">&#x27;hidden&#x27;</span>;</span></span><br><span class="line"><span class="javascript">                    <span class="built_in">window</span>.location.reload(<span class="literal">true</span>);</span></span><br><span class="line"><span class="javascript">                &#125;)</span></span><br><span class="line"><span class="javascript">                .catch(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">                    <span class="built_in">document</span>.getElementById(<span class="string">&#x27;error&#x27;</span>).className = <span class="string">&#x27;&#x27;</span>;</span></span><br><span class="line"><span class="javascript">                &#125;)</span></span><br><span class="line"><span class="javascript">            &#125;</span></span><br><span class="line"><span class="javascript">        </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> Flask, render_template, request, redirect, url_for, abort, jsonify</span><br><span class="line"><span class="keyword">from</span> flask_sqlalchemy <span class="keyword">import</span> SQLAlchemy</span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"><span class="keyword">from</span> flask_migrate <span class="keyword">import</span> Migrate</span><br><span class="line"></span><br><span class="line">app = Flask(__name__)</span><br><span class="line">db_info = <span class="string">&#x27;postgresql://postgres:pupu0819@localhost:5432/todoapp&#x27;</span></span><br><span class="line">app.config[<span class="string">&#x27;SQLALCHEMY_DATABASE_URI&#x27;</span>] = db_info</span><br><span class="line">app.config[<span class="string">&#x27;SQLALCHEMY_TRACK_MODIFICATIONS&#x27;</span>] = <span class="literal">False</span></span><br><span class="line">db = SQLAlchemy(app)</span><br><span class="line"></span><br><span class="line">migrate = Migrate(app, db)</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Todo</span>(<span class="params">db.Model</span>):</span></span><br><span class="line">    __tablename__ = <span class="string">&#x27;todos&#x27;</span></span><br><span class="line">    <span class="built_in">id</span> = db.Column(db.Integer, primary_key=<span class="literal">True</span>)</span><br><span class="line">    description = db.Column(db.String(), nullable=<span class="literal">False</span>)</span><br><span class="line">    completed = db.Column(db.Boolean, nullable=<span class="literal">False</span>, default=<span class="literal">False</span>)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__repr__</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="keyword">return</span> <span class="string">f&#x27;&lt;Todo <span class="subst">&#123;self.<span class="built_in">id</span>&#125;</span> <span class="subst">&#123;self.description&#125;</span> <span class="subst">&#123;self.completed&#125;</span>&gt;&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># db.create_all() since we use migration</span></span><br><span class="line"></span><br><span class="line"><span class="string">&quot;&quot;&quot; controller listens to the view &#x27;/todos/create&#x27; : create a new todo &quot;&quot;&quot;</span></span><br><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/todos/create&#x27;</span>, methods=[<span class="string">&#x27;POST&#x27;</span>]</span>)</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">create_todo</span>():</span></span><br><span class="line">    error = <span class="literal">False</span></span><br><span class="line">    body = &#123;&#125;</span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        desc = request.get_json()[<span class="string">&#x27;description&#x27;</span>]</span><br><span class="line">        new_todo = Todos(description=desc)</span><br><span class="line">        db.session.add(new_todo)</span><br><span class="line">        db.session.commit()</span><br><span class="line">        body[<span class="string">&#x27;description&#x27;</span>] = new_todo.description</span><br><span class="line">    <span class="keyword">except</span>:</span><br><span class="line">        error = <span class="literal">True</span></span><br><span class="line">        db.session.rollback()</span><br><span class="line">        <span class="built_in">print</span>(sys.exc_info())</span><br><span class="line">    <span class="keyword">finally</span>:</span><br><span class="line">        db.session.close()</span><br><span class="line">    <span class="keyword">if</span> error:</span><br><span class="line">        abort(<span class="number">400</span>)</span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> error:</span><br><span class="line">        <span class="comment"># jsonify:return json data to the client</span></span><br><span class="line">        <span class="keyword">return</span> jsonify(body)</span><br><span class="line"></span><br><span class="line"><span class="string">&quot;&quot;&quot; controller listens to the view &#x27;/todos/&lt;todo_id&gt;/set-completed&#x27; : set todo completed &quot;&quot;&quot;</span></span><br><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/todos/&lt;todo_id&gt;/set-completed&#x27;</span>, methods=[<span class="string">&#x27;POST&#x27;</span>]</span>)</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">update_todo</span>(<span class="params">todo_id</span>):</span></span><br><span class="line">    error = <span class="literal">False</span></span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        completed = request.get_json()[<span class="string">&#x27;completed&#x27;</span>]</span><br><span class="line">        todo = Todos.query.get(todo_id)</span><br><span class="line">        todo.completed = completed</span><br><span class="line">        db.session.commit()</span><br><span class="line">    <span class="keyword">except</span>():</span><br><span class="line">        db.session.rollback()</span><br><span class="line">        error = <span class="literal">True</span></span><br><span class="line">        <span class="built_in">print</span>(sys.exc_info())</span><br><span class="line">    <span class="keyword">finally</span>:</span><br><span class="line">        db.session.close()</span><br><span class="line">    <span class="keyword">if</span> error:</span><br><span class="line">        abort(<span class="number">400</span>)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="comment"># return redirect(url_for(&#x27;index&#x27;))</span></span><br><span class="line">        <span class="keyword">return</span> jsonify(&#123;<span class="string">&#x27;success&#x27;</span>: <span class="literal">True</span>&#125;)</span><br><span class="line"></span><br><span class="line"><span class="string">&quot;&quot;&quot; controller listens to the view &#x27;/todos/&lt;todo_id&gt;&#x27; : delete a todo item &quot;&quot;&quot;</span></span><br><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/todos/&lt;todo_id&gt;&#x27;</span>, methods=[<span class="string">&#x27;DELETE&#x27;</span>]</span>)</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">delete_todo</span>(<span class="params">todo_id</span>):</span></span><br><span class="line">    error = <span class="literal">False</span></span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        todo = Todos.query.get(todo_id)</span><br><span class="line">        db.session.delete(todo)</span><br><span class="line">        db.session.commit()</span><br><span class="line">    <span class="keyword">except</span>:</span><br><span class="line">        error = <span class="literal">True</span></span><br><span class="line">        db.session.rollback()</span><br><span class="line">        <span class="built_in">print</span>(sys.exc_info())</span><br><span class="line">    <span class="keyword">finally</span>:</span><br><span class="line">        db.session.close()</span><br><span class="line">    <span class="keyword">if</span> error:</span><br><span class="line">        abort(<span class="number">400</span>)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="comment"># return redirect(url_for(&#x27;index&#x27;))  # 405 error</span></span><br><span class="line">        <span class="string">&#x27;&#x27;&#x27; either is ok &#x27;&#x27;&#x27;</span></span><br><span class="line">        <span class="keyword">return</span> jsonify(&#123;<span class="string">&#x27;success&#x27;</span>: <span class="literal">True</span>&#125;)</span><br><span class="line">        <span class="comment"># return render_template(&#x27;index.html&#x27;, todos=Todo.query.order_by(&#x27;id&#x27;).all())</span></span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/&#x27;</span></span>)</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">index</span>():</span></span><br><span class="line">    <span class="keyword">return</span> render_template(<span class="string">&#x27;hp.html&#x27;</span>, todos=Todos.query.order_by(<span class="string">&#x27;id&#x27;</span>).<span class="built_in">all</span>())  <span class="comment"># fix the ordering</span></span><br></pre></td></tr></table></figure>
+
+
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>Post author:</strong>
+    gogo-wang
+  </li>
+  <li class="post-copyright-link">
+    <strong>Post link:</strong>
+    <a href="http://example.com/2021/07/14/Web%20Development/Web-Dev-1-SQL-and-Data-Modeling-IIII/" title="Web Dev(1): SQL and Data Modeling(IIII)">http://example.com/2021/07/14/Web%20Development/Web-Dev-1-SQL-and-Data-Modeling-IIII/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice: </strong>
+    All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> unless stating additionally.
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/web/" rel="tag"># web</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2021/07/14/CS61A-SICP/CS61A-11-Mutable-Sequences/" rel="next" title="CS61A(11): Mutable Sequences">
+                <i class="fa fa-chevron-left"></i> CS61A(11): Mutable Sequences
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2021/07/15/Web%20Development/Web-Dev-1-SQL-and-Data-Modeling-V/" rel="prev" title="Web Dev(1): SQL and Data Modeling(V)">
+                Web Dev(1): SQL and Data Modeling(V) <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a target="_blank" rel="noopener" href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name"></p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/%7C%7Carchive">
+              
+                  <span class="site-state-item-count">65</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/rileywang0819" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Migrations"><span class="nav-number">1.</span> <span class="nav-text">Migrations</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Introduction"><span class="nav-number">1.1.</span> <span class="nav-text">Introduction</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Flask-Migrations"><span class="nav-number">1.2.</span> <span class="nav-text">Flask Migrations</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Install"><span class="nav-number">1.2.1.</span> <span class="nav-text">Install</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Usage-of-Migration"><span class="nav-number">1.2.2.</span> <span class="nav-text">Usage of Migration</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Build-Todo-App-Further"><span class="nav-number">2.</span> <span class="nav-text">Build Todo App Further</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%80%9CU%E2%80%9D-in-CRUD"><span class="nav-number">2.1.</span> <span class="nav-text">“U” in CRUD</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%80%9CD%E2%80%9D-in-CRUD"><span class="nav-number">2.2.</span> <span class="nav-text">“D” in CRUD</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">GoGo-Wang</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+    
+      <script id="dsq-count-scr" src="https://author.disqus.com/count.js" async></script>
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'http://example.com/2021/07/14/Web%20Development/Web-Dev-1-SQL-and-Data-Modeling-IIII/';
+          this.page.identifier = '2021/07/14/Web Development/Web-Dev-1-SQL-and-Data-Modeling-IIII/';
+          this.page.title = 'Web Dev(1): SQL and Data Modeling(IIII)';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://author.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

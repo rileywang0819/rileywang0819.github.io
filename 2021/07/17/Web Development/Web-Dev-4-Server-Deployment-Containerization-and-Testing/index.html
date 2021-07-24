@@ -111,13 +111,15 @@
 
 
 
+<meta name="description" content="In this part, I will talk about Containerization, Deplyment, and Testing.">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Web Dev(4): Server Deployment, Containerization and Testing">
+<meta property="og:title" content="Web Dev(4): Server Deployment, Containerization and Testing(I)">
 <meta property="og:url" content="http://example.com/2021/07/17/Web%20Development/Web-Dev-4-Server-Deployment-Containerization-and-Testing/index.html">
 <meta property="og:site_name" content="GoGo-Wang&#39;s Blog">
+<meta property="og:description" content="In this part, I will talk about Containerization, Deplyment, and Testing.">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2021-07-17T08:06:25.000Z">
-<meta property="article:modified_time" content="2021-07-17T08:29:57.873Z">
+<meta property="article:modified_time" content="2021-07-20T09:36:21.451Z">
 <meta property="article:author" content="gogo-wang">
 <meta property="article:tag" content="web">
 <meta name="twitter:card" content="summary">
@@ -156,7 +158,7 @@
 
 
 
-  <title>Web Dev(4): Server Deployment, Containerization and Testing | GoGo-Wang's Blog</title>
+  <title>Web Dev(4): Server Deployment, Containerization and Testing(I) | GoGo-Wang's Blog</title>
   
 
 
@@ -300,7 +302,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Web Dev(4): Server Deployment, Containerization and Testing</h1>
+          <h1 class="post-title" itemprop="name headline">Web Dev(4): Server Deployment, Containerization and Testing(I)</h1>
         
 
         <div class="post-meta">
@@ -383,7 +385,15 @@
       
 
       
-        
+        <p>In this part, I will talk about Containerization, Deplyment, and Testing.</p>
+<span id="more"></span>
+
+<p>A container is a running piece of software that bundles code along with all of its dependencies, including system tools, libraries, or configuration files. Building applications in a container allows the applications to run consistently in any environment, whether that is environment is another computer’s operating system or a cloud deployment.</p>
+<p>We will learn about <a target="_blank" rel="noopener" href="https://www.docker.com/">Docker</a>, which is the industry-standard tool for creating and deploying containers. </p>
+<p>We’ll aslo learn about <a target="_blank" rel="noopener" href="https://kubernetes.io/">Kubernetes</a>, which is a container orchestration system that automates container deployment, scaling, and managment. We’ll learn how to deploy your own Docker container to a Kubernetes cluster using <a target="_blank" rel="noopener" href="https://aws.amazon.com/cn/eks/?whats-new-cards.sort-by=item.additionalFields.postDateTime&whats-new-cards.sort-order=desc&eks-blogs.sort-by=item.additionalFields.createdDate&eks-blogs.sort-order=desc">AWS’ Elastic Kubernetes Service (EKS)</a>, and also learn about continuous integration and continuous delivery and their corresponding AWS services: <a target="_blank" rel="noopener" href="https://aws.amazon.com/cn/codebuild/">CodeBuild</a> and <a target="_blank" rel="noopener" href="https://aws.amazon.com/cn/codepipeline/">CodePipeline</a>.</p>
+<h2 id="Docker"><a href="#Docker" class="headerlink" title="Docker"></a>Docker</h2><h3 id="Docker-Image"><a href="#Docker-Image" class="headerlink" title="Docker Image"></a>Docker Image</h3><p>Docker images(镜像), which are snapshots of a container. An image packages all the code, files, and environment variables needed to build the container, and images can be shared with others.</p>
+<h3 id="Dockerfile"><a href="#Dockerfile" class="headerlink" title="Dockerfile"></a>Dockerfile</h3><p>You will learn about Dockerfiles, which are text files that allow you to assemble your own custom images, and we will also point you to some resources, such as Dockerhub, which contain prebuilt images that you can use when getting started with your own containerized applications.</p>
+
       
     </div>
     
@@ -403,7 +413,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>Post link:</strong>
-    <a href="http://example.com/2021/07/17/Web%20Development/Web-Dev-4-Server-Deployment-Containerization-and-Testing/" title="Web Dev(4): Server Deployment, Containerization and Testing">http://example.com/2021/07/17/Web%20Development/Web-Dev-4-Server-Deployment-Containerization-and-Testing/</a>
+    <a href="http://example.com/2021/07/17/Web%20Development/Web-Dev-4-Server-Deployment-Containerization-and-Testing/" title="Web Dev(4): Server Deployment, Containerization and Testing(I)">http://example.com/2021/07/17/Web%20Development/Web-Dev-4-Server-Deployment-Containerization-and-Testing/</a>
   </li>
   <li class="post-copyright-license">
     <strong>Copyright Notice: </strong>
@@ -505,8 +515,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -521,7 +540,7 @@
               
                 <a href="/archives/%7C%7Carchive">
               
-                  <span class="site-state-item-count">62</span>
+                  <span class="site-state-item-count">65</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -562,12 +581,6 @@
                         <i class="fa fa-fw fa-github"></i>GitHub</a>
                   </span>
                 
-                  <span class="links-of-author-item">
-                    <a href="mailto:rileywang0819@gmail.com" target="_blank" title="E-Mail">
-                      
-                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
-                  </span>
-                
             </div>
           
 
@@ -582,6 +595,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Docker"><span class="nav-number">1.</span> <span class="nav-text">Docker</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Docker-Image"><span class="nav-number">1.1.</span> <span class="nav-text">Docker Image</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Dockerfile"><span class="nav-number">1.2.</span> <span class="nav-text">Dockerfile</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -748,7 +777,7 @@
         var disqus_config = function () {
           this.page.url = 'http://example.com/2021/07/17/Web%20Development/Web-Dev-4-Server-Deployment-Containerization-and-Testing/';
           this.page.identifier = '2021/07/17/Web Development/Web-Dev-4-Server-Deployment-Containerization-and-Testing/';
-          this.page.title = 'Web Dev(4): Server Deployment, Containerization and Testing';
+          this.page.title = 'Web Dev(4): Server Deployment, Containerization and Testing(I)';
         };
         var d = document, s = d.createElement('script');
         s.src = 'https://author.disqus.com/embed.js';
