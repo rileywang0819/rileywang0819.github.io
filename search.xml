@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>CS61B(29): Shortest Paths</title>
+    <url>/2021/08/01/CS61B-29-Shortest-Paths/</url>
+    <content><![CDATA[]]></content>
+  </entry>
+  <entry>
     <title>15213(1): Overview</title>
     <url>/2021/07/07/15213-CSAPP/15213-1-Overview/</url>
     <content><![CDATA[<p>This is the lecture note of 15213 - Lecture 1.</p>
@@ -139,32 +144,6 @@
       </categories>
       <tags>
         <tag>15213</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Hello World</title>
-    <url>/2021/06/22/Blog/hello-world/</url>
-    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><span id="more"></span>
-
-<h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-]]></content>
-      <categories>
-        <category>Blog</category>
-      </categories>
-      <tags>
-        <tag>blog</tag>
       </tags>
   </entry>
   <entry>
@@ -408,6 +387,32 @@
       </tags>
   </entry>
   <entry>
+    <title>Hello World</title>
+    <url>/2021/06/22/Blog/hello-world/</url>
+    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><span id="more"></span>
+
+<h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+]]></content>
+      <categories>
+        <category>Blog</category>
+      </categories>
+      <tags>
+        <tag>blog</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>CS61A(1): Introduction</title>
     <url>/2021/07/02/CS61A-SICP/CS61A-1-Introduction/</url>
     <content><![CDATA[<p>This is the lecture note of CS61A - Lecture 1.</p>
@@ -471,6 +476,59 @@
 <h2 id="Demo-Summing-Paths"><a href="#Demo-Summing-Paths" class="headerlink" title="Demo: Summing Paths"></a>Demo: Summing Paths</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Order</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">fact</span>(<span class="params">n</span>):</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;Return n * n-1 * ... * 1.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    &gt;&gt;&gt; fact(4)</span></span><br><span class="line"><span class="string">    24</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    <span class="keyword">if</span> n == <span class="number">0</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">return</span> n * fact(n - <span class="number">1</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">#  非尾递归: 下一个函数结束以后此函数还有后续，所以必须保存本身的环境以供处理返回值。</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">fact_tail</span>(<span class="params">n</span>):</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;Return n * n-1 * ... * 1.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    &gt;&gt;&gt; fact_tail(4)</span></span><br><span class="line"><span class="string">    24</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    <span class="keyword">return</span> fact_times(n, <span class="number">1</span>)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">fact_times</span>(<span class="params">n, k</span>):</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;Return k * n * n-1 * ... * 1.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    &gt;&gt;&gt; fact_times(4, 3)</span></span><br><span class="line"><span class="string">    72</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    <span class="keyword">if</span> n == <span class="number">0</span>:</span><br><span class="line">        <span class="keyword">return</span> k</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">return</span> fact_times(n - <span class="number">1</span>, k * n)</span><br><span class="line">        </span><br><span class="line"><span class="comment"># 尾递归: 进入下一个函数不再需要上一个函数的环境了，得出结果以后直接返回。</span></span><br><span class="line"><span class="comment"># 尾递归是一种编程技巧。</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># ordinary recursion: we need call stack to record; if too many recursive calls, sometimes stack overflow occurs.</span></span><br><span class="line"><span class="comment"># tail recursion: in tail recursion, the recursive call is the last thing logically, and there is nothing left in the current function. And the compiler will optimize tail recursion. (we don&#x27;t need stack frame anymore, and tail recursion can be optimized as ordinary loop)</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> tree <span class="keyword">import</span> *</span><br><span class="line"></span><br><span class="line">numbers = tree(<span class="number">3</span>, [tree(<span class="number">4</span>), tree(<span class="number">5</span>, [tree(<span class="number">6</span>)])])</span><br><span class="line">haste = tree(<span class="string">&#x27;h&#x27;</span>, [tree(<span class="string">&#x27;a&#x27;</span>, [tree(<span class="string">&#x27;s&#x27;</span>), tree(<span class="string">&#x27;t&#x27;</span>)]), tree(<span class="string">&#x27;e&#x27;</span>)])</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">print_sums</span>(<span class="params">t, so_far</span>):</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;Print the sum of labels along the path from the root to each leaf.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    &gt;&gt;&gt; print_sums(tree(3, [tree(4), tree(5, [tree(6)])]), 0)</span></span><br><span class="line"><span class="string">    7</span></span><br><span class="line"><span class="string">    14</span></span><br><span class="line"><span class="string">    &gt;&gt;&gt; print_sums(haste, &#x27;&#x27;)</span></span><br><span class="line"><span class="string">    has</span></span><br><span class="line"><span class="string">    hat</span></span><br><span class="line"><span class="string">    he</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    so_far = so_far + label(t)</span><br><span class="line">    <span class="keyword">if</span> is_leaf(t):</span><br><span class="line">        <span class="built_in">print</span>(so_far)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">for</span> branch <span class="keyword">in</span> branches(t):</span><br><span class="line">            print_sums(branch, so_far)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>CS61A-SICP</category>
+      </categories>
+      <tags>
+        <tag>CS61A</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>CS61A(11): Mutable Sequences</title>
+    <url>/2021/07/14/CS61A-SICP/CS61A-11-Mutable-Sequences/</url>
+    <content><![CDATA[<p>This is the lecture note of CS61A - Lecture 11.</p>
+<span id="more"></span>]]></content>
+      <categories>
+        <category>CS61A-SICP</category>
+      </categories>
+      <tags>
+        <tag>CS61A</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>CS61A(2): Expressions and Functions</title>
+    <url>/2021/07/02/CS61A-SICP/CS61A-2-Expressions-and-Functions/</url>
+    <content><![CDATA[<p>This is the lecture note of CS61A - Lecture 2.</p>
+<span id="more"></span>
+
+<h2 id="Expression"><a href="#Expression" class="headerlink" title="Expression"></a>Expression</h2><p>An <code>expression</code> describes a computation and evaluates to a value. All expressions can use function call notation.</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># primitive expression</span></span><br><span class="line"><span class="number">2000</span> + <span class="number">15</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># call expressions</span></span><br><span class="line"><span class="built_in">max</span>(<span class="number">2</span>, <span class="number">3</span>)</span><br><span class="line"><span class="built_in">min</span>(<span class="number">1</span>, -<span class="number">2</span>, <span class="number">3</span>, -<span class="number">4</span>, <span class="number">5</span>)</span><br><span class="line"><span class="built_in">pow</span>(<span class="number">100</span>, <span class="number">2</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> operator <span class="keyword">import</span> add, mul</span><br><span class="line">mul(add(<span class="number">4</span>, mul(<span class="number">4</span>, <span class="number">6</span>)), add(<span class="number">3</span>, <span class="number">5</span>))  <span class="comment"># 224</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="Anatomy-of-a-call-expression"><a href="#Anatomy-of-a-call-expression" class="headerlink" title="Anatomy of a call expression"></a>Anatomy of a call expression</h3><p>Operators and operands can also be expression. An expression tree is as follows:</p>
+<img src="/2021/07/02/CS61A-SICP/CS61A-2-Expressions-and-Functions/lec2-1.png" class="">
+
+<p>Evaluation procedure for call expressions:</p>
+<ul>
+<li>Evaluate the operator</li>
+<li>Evaluate the operands from left to right</li>
+<li>Apply the operator (a function) to the<br>evaluated operands (arguments)</li>
+</ul>
+<h2 id="Names-Assignment-and-User-defined-Functions"><a href="#Names-Assignment-and-User-defined-Functions" class="headerlink" title="Names, Assignment, and User-defined Functions"></a>Names, Assignment, and User-defined Functions</h2><p>Assignment is a simple means of abstraction: binds names to values.</p>
+<p>Function definition is a more powerful means of abstraction: binds names to expressions.</p>
+<h3 id="Defining-Functions"><a href="#Defining-Functions" class="headerlink" title="Defining Functions"></a>Defining Functions</h3><p>We programmers can build our own functions.</p>
+<figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">def <span class="xml"><span class="tag">&lt;<span class="name">name</span>&gt;</span></span>(<span class="xml"><span class="tag">&lt;<span class="name">formal</span> <span class="attr">parameters</span>&gt;</span></span>):</span><br><span class="line"><span class="code">    return &lt;return expression&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># User-defined functions</span></span><br><span class="line"><span class="keyword">from</span> operator <span class="keyword">import</span> add, mul  </span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">square</span>(<span class="params">x</span>):</span></span><br><span class="line">    <span class="keyword">return</span> mul(x, x)</span><br><span class="line"></span><br><span class="line">square(<span class="number">21</span>)  <span class="comment"># 441</span></span><br><span class="line">square(add(<span class="number">2</span>, <span class="number">5</span>))  <span class="comment"># 49</span></span><br><span class="line">square(square(<span class="number">3</span>))  <span class="comment"># 81</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">sum_squares</span>(<span class="params">x, y</span>):</span></span><br><span class="line">    <span class="keyword">return</span> add(square(x), square(y))</span><br><span class="line"></span><br><span class="line">sum_squares(<span class="number">3</span>, <span class="number">4</span>)  <span class="comment"># 9 + 16 = 25</span></span><br><span class="line">sum_squares(<span class="number">5</span>, <span class="number">12</span>)  <span class="comment"># 25 + 144 = 169</span></span><br></pre></td></tr></table></figure>
+
+<p>Procedure for calling user-defined functions:</p>
+<img src="/2021/07/02/CS61A-SICP/CS61A-2-Expressions-and-Functions/lec2-2.png" class="">
+
+
+
+<h3 id="Modules"><a href="#Modules" class="headerlink" title="Modules"></a>Modules</h3><p>Functions are organized into <code>modules</code>, which together comprise the Python Library. However, we programmer can define our own functions.</p>
+<p><a href="https://docs.python.org/3/library/index.html">The Python Standard Library</a></p>
 ]]></content>
       <categories>
         <category>CS61A-SICP</category>
@@ -552,47 +610,6 @@
       </tags>
   </entry>
   <entry>
-    <title>CS61A(2): Expressions and Functions</title>
-    <url>/2021/07/02/CS61A-SICP/CS61A-2-Expressions-and-Functions/</url>
-    <content><![CDATA[<p>This is the lecture note of CS61A - Lecture 2.</p>
-<span id="more"></span>
-
-<h2 id="Expression"><a href="#Expression" class="headerlink" title="Expression"></a>Expression</h2><p>An <code>expression</code> describes a computation and evaluates to a value. All expressions can use function call notation.</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># primitive expression</span></span><br><span class="line"><span class="number">2000</span> + <span class="number">15</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># call expressions</span></span><br><span class="line"><span class="built_in">max</span>(<span class="number">2</span>, <span class="number">3</span>)</span><br><span class="line"><span class="built_in">min</span>(<span class="number">1</span>, -<span class="number">2</span>, <span class="number">3</span>, -<span class="number">4</span>, <span class="number">5</span>)</span><br><span class="line"><span class="built_in">pow</span>(<span class="number">100</span>, <span class="number">2</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> operator <span class="keyword">import</span> add, mul</span><br><span class="line">mul(add(<span class="number">4</span>, mul(<span class="number">4</span>, <span class="number">6</span>)), add(<span class="number">3</span>, <span class="number">5</span>))  <span class="comment"># 224</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="Anatomy-of-a-call-expression"><a href="#Anatomy-of-a-call-expression" class="headerlink" title="Anatomy of a call expression"></a>Anatomy of a call expression</h3><p>Operators and operands can also be expression. An expression tree is as follows:</p>
-<img src="/2021/07/02/CS61A-SICP/CS61A-2-Expressions-and-Functions/lec2-1.png" class="">
-
-<p>Evaluation procedure for call expressions:</p>
-<ul>
-<li>Evaluate the operator</li>
-<li>Evaluate the operands from left to right</li>
-<li>Apply the operator (a function) to the<br>evaluated operands (arguments)</li>
-</ul>
-<h2 id="Names-Assignment-and-User-defined-Functions"><a href="#Names-Assignment-and-User-defined-Functions" class="headerlink" title="Names, Assignment, and User-defined Functions"></a>Names, Assignment, and User-defined Functions</h2><p>Assignment is a simple means of abstraction: binds names to values.</p>
-<p>Function definition is a more powerful means of abstraction: binds names to expressions.</p>
-<h3 id="Defining-Functions"><a href="#Defining-Functions" class="headerlink" title="Defining Functions"></a>Defining Functions</h3><p>We programmers can build our own functions.</p>
-<figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">def <span class="xml"><span class="tag">&lt;<span class="name">name</span>&gt;</span></span>(<span class="xml"><span class="tag">&lt;<span class="name">formal</span> <span class="attr">parameters</span>&gt;</span></span>):</span><br><span class="line"><span class="code">    return &lt;return expression&gt;</span></span><br></pre></td></tr></table></figure>
-
-
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># User-defined functions</span></span><br><span class="line"><span class="keyword">from</span> operator <span class="keyword">import</span> add, mul  </span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">square</span>(<span class="params">x</span>):</span></span><br><span class="line">    <span class="keyword">return</span> mul(x, x)</span><br><span class="line"></span><br><span class="line">square(<span class="number">21</span>)  <span class="comment"># 441</span></span><br><span class="line">square(add(<span class="number">2</span>, <span class="number">5</span>))  <span class="comment"># 49</span></span><br><span class="line">square(square(<span class="number">3</span>))  <span class="comment"># 81</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">sum_squares</span>(<span class="params">x, y</span>):</span></span><br><span class="line">    <span class="keyword">return</span> add(square(x), square(y))</span><br><span class="line"></span><br><span class="line">sum_squares(<span class="number">3</span>, <span class="number">4</span>)  <span class="comment"># 9 + 16 = 25</span></span><br><span class="line">sum_squares(<span class="number">5</span>, <span class="number">12</span>)  <span class="comment"># 25 + 144 = 169</span></span><br></pre></td></tr></table></figure>
-
-<p>Procedure for calling user-defined functions:</p>
-<img src="/2021/07/02/CS61A-SICP/CS61A-2-Expressions-and-Functions/lec2-2.png" class="">
-
-
-
-<h3 id="Modules"><a href="#Modules" class="headerlink" title="Modules"></a>Modules</h3><p>Functions are organized into <code>modules</code>, which together comprise the Python Library. However, we programmer can define our own functions.</p>
-<p><a href="https://docs.python.org/3/library/index.html">The Python Standard Library</a></p>
-]]></content>
-      <categories>
-        <category>CS61A-SICP</category>
-      </categories>
-      <tags>
-        <tag>CS61A</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>CS61A(4): Higher-Order Functions</title>
     <url>/2021/07/03/CS61A-SICP/CS61A-4-Higher-Order-Functions/</url>
     <content><![CDATA[<p>This is the lecture note of CS61A - Lecture 4.</p>
@@ -655,6 +672,38 @@
       </tags>
   </entry>
   <entry>
+    <title>CS61A(5): Environments</title>
+    <url>/2021/07/04/CS61A-SICP/CS61A-5-Environments/</url>
+    <content><![CDATA[<p>This is the lecture note of CS61A - Lecture 5.</p>
+<span id="more"></span>
+
+<h2 id="Environments-for-Higher-Order-Functions"><a href="#Environments-for-Higher-Order-Functions" class="headerlink" title="Environments for Higher-Order Functions"></a>Environments for Higher-Order Functions</h2><p><strong>Higher-order function:</strong> A function that takes a function as an argument value or return a function as a return value.</p>
+<img src="/2021/07/04/CS61A-SICP/CS61A-5-Environments/lec5-1.png" class="">
+
+
+<h2 id="Environments-for-Nested-Definitions"><a href="#Environments-for-Nested-Definitions" class="headerlink" title="Environments for Nested Definitions"></a>Environments for Nested Definitions</h2><img src="/2021/07/04/CS61A-SICP/CS61A-5-Environments/lec5-2.png" class="">
+
+
+<h2 id="Self-reference"><a href="#Self-reference" class="headerlink" title="Self-reference"></a>Self-reference</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Self Reference</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">print_all</span>(<span class="params">k</span>):</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;Print all arguments of repeated calls.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    &gt;&gt;&gt; f = print_all(1)(2)(3)(4)(5)</span></span><br><span class="line"><span class="string">    1</span></span><br><span class="line"><span class="string">    2</span></span><br><span class="line"><span class="string">    3</span></span><br><span class="line"><span class="string">    4</span></span><br><span class="line"><span class="string">    5</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    <span class="built_in">print</span>(k)</span><br><span class="line">    <span class="keyword">return</span> print_all</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">print_sums</span>(<span class="params">n</span>):</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;Print all sums of arguments of repeated calls.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    &gt;&gt;&gt; f = print_sums(1)(2)(3)(4)(5)</span></span><br><span class="line"><span class="string">    1</span></span><br><span class="line"><span class="string">    3</span></span><br><span class="line"><span class="string">    6</span></span><br><span class="line"><span class="string">    10</span></span><br><span class="line"><span class="string">    15</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    <span class="built_in">print</span>(n)</span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">next_sum</span>(<span class="params">k</span>):</span></span><br><span class="line">        <span class="keyword">return</span> print_sums(n+k)</span><br><span class="line">    <span class="keyword">return</span> next_sum</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="Currying"><a href="#Currying" class="headerlink" title="Currying"></a>Currying</h2><p><strong>Currying:</strong> Transforming a multi-argument function into a single-argument, higher-order function.</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Currying</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> operator <span class="keyword">import</span> add, mul</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">curry2</span>(<span class="params">f</span>):</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;Curry a two-argument function.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    &gt;&gt;&gt; m = curry2(add)</span></span><br><span class="line"><span class="string">    &gt;&gt;&gt; add_three = m(3)</span></span><br><span class="line"><span class="string">    &gt;&gt;&gt; add_three(4)</span></span><br><span class="line"><span class="string">    7</span></span><br><span class="line"><span class="string">    &gt;&gt;&gt; m(2)(1)</span></span><br><span class="line"><span class="string">    3</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">g</span>(<span class="params">x</span>):</span></span><br><span class="line">        <span class="function"><span class="keyword">def</span> <span class="title">h</span>(<span class="params">y</span>):</span></span><br><span class="line">            <span class="keyword">return</span> f(x, y)</span><br><span class="line">        <span class="keyword">return</span> h</span><br><span class="line">    <span class="keyword">return</span> g</span><br><span class="line"></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27; Use lambda expression &#x27;&#x27;&#x27;</span></span><br><span class="line">curry2 = <span class="keyword">lambda</span> f: <span class="keyword">lambda</span> x: <span class="keyword">lambda</span> y: f(x, y)</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="Exercise-Implementing-Functions"><a href="#Exercise-Implementing-Functions" class="headerlink" title="Exercise: Implementing Functions"></a>Exercise: Implementing Functions</h2><figure class="highlight py"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">remove</span>(<span class="params">n, digit</span>):</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;Return all digits of non-negative N </span></span><br><span class="line"><span class="string">    that are not DIGIT, for some non-negative</span></span><br><span class="line"><span class="string">    DIGIT less than 10.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    &gt;&gt;&gt; remove(231, 3)</span></span><br><span class="line"><span class="string">    21</span></span><br><span class="line"><span class="string">    &gt;&gt;&gt; remove(243132, 2)</span></span><br><span class="line"><span class="string">    4313</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    kept, digits = <span class="number">0</span>, <span class="number">0</span></span><br><span class="line">    <span class="keyword">while</span> ______________________:</span><br><span class="line">        n, last = n // <span class="number">10</span>, n % <span class="number">10</span></span><br><span class="line">        <span class="keyword">if</span> _____________________:</span><br><span class="line">            kept = _____________</span><br><span class="line">            digits = ___________</span><br><span class="line">    <span class="keyword">return</span> _____________________</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line"><span class="comment"># solution</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">remove</span>(<span class="params">n, digit</span>):</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;Return all digits of non-negative N </span></span><br><span class="line"><span class="string">    that are not DIGIT, for some non-negative</span></span><br><span class="line"><span class="string">    DIGIT less than 10.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    &gt;&gt;&gt; remove(231, 3)</span></span><br><span class="line"><span class="string">    21</span></span><br><span class="line"><span class="string">    &gt;&gt;&gt; remove(243132, 2)</span></span><br><span class="line"><span class="string">    4313</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    kept, digits = <span class="number">0</span>, <span class="number">0</span></span><br><span class="line">    <span class="keyword">while</span> n &gt; <span class="number">0</span>:</span><br><span class="line">        n, last = n // <span class="number">10</span>, n % <span class="number">10</span></span><br><span class="line">        <span class="keyword">if</span> last != digit:</span><br><span class="line">            kept = kept + last * <span class="number">10</span> ** digits</span><br><span class="line">            digits = digits + <span class="number">1</span></span><br><span class="line">    <span class="keyword">return</span> kept</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>CS61A-SICP</category>
+      </categories>
+      <tags>
+        <tag>CS61A</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>CS61A(6): Recursion</title>
     <url>/2021/07/04/CS61A-SICP/CS61A-6-Recursion/</url>
     <content><![CDATA[<p>This is the lecture note of CS61A - Lecture 6.</p>
@@ -700,38 +749,6 @@
       </tags>
   </entry>
   <entry>
-    <title>CS61A(5): Environments</title>
-    <url>/2021/07/04/CS61A-SICP/CS61A-5-Environments/</url>
-    <content><![CDATA[<p>This is the lecture note of CS61A - Lecture 5.</p>
-<span id="more"></span>
-
-<h2 id="Environments-for-Higher-Order-Functions"><a href="#Environments-for-Higher-Order-Functions" class="headerlink" title="Environments for Higher-Order Functions"></a>Environments for Higher-Order Functions</h2><p><strong>Higher-order function:</strong> A function that takes a function as an argument value or return a function as a return value.</p>
-<img src="/2021/07/04/CS61A-SICP/CS61A-5-Environments/lec5-1.png" class="">
-
-
-<h2 id="Environments-for-Nested-Definitions"><a href="#Environments-for-Nested-Definitions" class="headerlink" title="Environments for Nested Definitions"></a>Environments for Nested Definitions</h2><img src="/2021/07/04/CS61A-SICP/CS61A-5-Environments/lec5-2.png" class="">
-
-
-<h2 id="Self-reference"><a href="#Self-reference" class="headerlink" title="Self-reference"></a>Self-reference</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Self Reference</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">print_all</span>(<span class="params">k</span>):</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;Print all arguments of repeated calls.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    &gt;&gt;&gt; f = print_all(1)(2)(3)(4)(5)</span></span><br><span class="line"><span class="string">    1</span></span><br><span class="line"><span class="string">    2</span></span><br><span class="line"><span class="string">    3</span></span><br><span class="line"><span class="string">    4</span></span><br><span class="line"><span class="string">    5</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    <span class="built_in">print</span>(k)</span><br><span class="line">    <span class="keyword">return</span> print_all</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">print_sums</span>(<span class="params">n</span>):</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;Print all sums of arguments of repeated calls.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    &gt;&gt;&gt; f = print_sums(1)(2)(3)(4)(5)</span></span><br><span class="line"><span class="string">    1</span></span><br><span class="line"><span class="string">    3</span></span><br><span class="line"><span class="string">    6</span></span><br><span class="line"><span class="string">    10</span></span><br><span class="line"><span class="string">    15</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    <span class="built_in">print</span>(n)</span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">next_sum</span>(<span class="params">k</span>):</span></span><br><span class="line">        <span class="keyword">return</span> print_sums(n+k)</span><br><span class="line">    <span class="keyword">return</span> next_sum</span><br></pre></td></tr></table></figure>
-
-
-<h2 id="Currying"><a href="#Currying" class="headerlink" title="Currying"></a>Currying</h2><p><strong>Currying:</strong> Transforming a multi-argument function into a single-argument, higher-order function.</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Currying</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> operator <span class="keyword">import</span> add, mul</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">curry2</span>(<span class="params">f</span>):</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;Curry a two-argument function.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    &gt;&gt;&gt; m = curry2(add)</span></span><br><span class="line"><span class="string">    &gt;&gt;&gt; add_three = m(3)</span></span><br><span class="line"><span class="string">    &gt;&gt;&gt; add_three(4)</span></span><br><span class="line"><span class="string">    7</span></span><br><span class="line"><span class="string">    &gt;&gt;&gt; m(2)(1)</span></span><br><span class="line"><span class="string">    3</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">g</span>(<span class="params">x</span>):</span></span><br><span class="line">        <span class="function"><span class="keyword">def</span> <span class="title">h</span>(<span class="params">y</span>):</span></span><br><span class="line">            <span class="keyword">return</span> f(x, y)</span><br><span class="line">        <span class="keyword">return</span> h</span><br><span class="line">    <span class="keyword">return</span> g</span><br><span class="line"></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27; Use lambda expression &#x27;&#x27;&#x27;</span></span><br><span class="line">curry2 = <span class="keyword">lambda</span> f: <span class="keyword">lambda</span> x: <span class="keyword">lambda</span> y: f(x, y)</span><br></pre></td></tr></table></figure>
-
-
-<h2 id="Exercise-Implementing-Functions"><a href="#Exercise-Implementing-Functions" class="headerlink" title="Exercise: Implementing Functions"></a>Exercise: Implementing Functions</h2><figure class="highlight py"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">remove</span>(<span class="params">n, digit</span>):</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;Return all digits of non-negative N </span></span><br><span class="line"><span class="string">    that are not DIGIT, for some non-negative</span></span><br><span class="line"><span class="string">    DIGIT less than 10.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    &gt;&gt;&gt; remove(231, 3)</span></span><br><span class="line"><span class="string">    21</span></span><br><span class="line"><span class="string">    &gt;&gt;&gt; remove(243132, 2)</span></span><br><span class="line"><span class="string">    4313</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    kept, digits = <span class="number">0</span>, <span class="number">0</span></span><br><span class="line">    <span class="keyword">while</span> ______________________:</span><br><span class="line">        n, last = n // <span class="number">10</span>, n % <span class="number">10</span></span><br><span class="line">        <span class="keyword">if</span> _____________________:</span><br><span class="line">            kept = _____________</span><br><span class="line">            digits = ___________</span><br><span class="line">    <span class="keyword">return</span> _____________________</span><br></pre></td></tr></table></figure>
-
-
-<figure class="highlight py"><table><tr><td class="code"><pre><span class="line"><span class="comment"># solution</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">remove</span>(<span class="params">n, digit</span>):</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;Return all digits of non-negative N </span></span><br><span class="line"><span class="string">    that are not DIGIT, for some non-negative</span></span><br><span class="line"><span class="string">    DIGIT less than 10.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    &gt;&gt;&gt; remove(231, 3)</span></span><br><span class="line"><span class="string">    21</span></span><br><span class="line"><span class="string">    &gt;&gt;&gt; remove(243132, 2)</span></span><br><span class="line"><span class="string">    4313</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    kept, digits = <span class="number">0</span>, <span class="number">0</span></span><br><span class="line">    <span class="keyword">while</span> n &gt; <span class="number">0</span>:</span><br><span class="line">        n, last = n // <span class="number">10</span>, n % <span class="number">10</span></span><br><span class="line">        <span class="keyword">if</span> last != digit:</span><br><span class="line">            kept = kept + last * <span class="number">10</span> ** digits</span><br><span class="line">            digits = digits + <span class="number">1</span></span><br><span class="line">    <span class="keyword">return</span> kept</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>CS61A-SICP</category>
-      </categories>
-      <tags>
-        <tag>CS61A</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>CS61A(7): Tree Recursion</title>
     <url>/2021/07/06/CS61A-SICP/CS61A-7-Tree-Recursion/</url>
     <content><![CDATA[<p>This is the lecture note of CS61A - Lecture 7.</p>
@@ -754,46 +771,6 @@
 <img src="/2021/07/06/CS61A-SICP/CS61A-7-Tree-Recursion/lec7-3.png" class="">
 
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">count_partitions</span>(<span class="params">n, m</span>):</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;Count the partitions of n using parts up to size m.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    &gt;&gt;&gt; count_partitions(6, 4)</span></span><br><span class="line"><span class="string">    9</span></span><br><span class="line"><span class="string">    &gt;&gt;&gt; count_partitions(10, 10)</span></span><br><span class="line"><span class="string">    42</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    <span class="comment"># base case</span></span><br><span class="line">    <span class="keyword">if</span> n == <span class="number">0</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span></span><br><span class="line">    <span class="keyword">elif</span> n &lt; <span class="number">0</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">    <span class="keyword">elif</span> m == <span class="number">0</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">#recursive case</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        with_m = count_partitions(n-m, m)</span><br><span class="line">        without_m = count_partitions(n, m-<span class="number">1</span>)</span><br><span class="line">        <span class="keyword">return</span> with_m + without_m</span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <categories>
-        <category>CS61A-SICP</category>
-      </categories>
-      <tags>
-        <tag>CS61A</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>CS61A(8): Diagnostic Review &amp; Debugging</title>
-    <url>/2021/07/14/CS61A-SICP/CS61A-8-Diagnostic-Review-Debugging/</url>
-    <content><![CDATA[<p>This is the lecture note of CS61A - Lecture 8.</p>
-<p>🦩 Just two things in this lecture:</p>
-<ul>
-<li>Compare <strong>Iteration</strong> vs <strong>Recursion</strong> vs <strong>Higher Order Functions</strong></li>
-<li>Debugging</li>
-</ul>
-<span id="more"></span>
-
-
-<h2 id="Iteration-vs-Recursion-vs-Higher-Order-Functions"><a href="#Iteration-vs-Recursion-vs-Higher-Order-Functions" class="headerlink" title="Iteration vs Recursion vs Higher Order Functions"></a>Iteration vs Recursion vs Higher Order Functions</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Write a function that adds all the digits</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Iterative</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">sum_digits_iterative</span>(<span class="params">n</span>):</span></span><br><span class="line">    result = <span class="number">0</span></span><br><span class="line">    <span class="keyword">while</span> n:</span><br><span class="line">        result += n % <span class="number">10</span></span><br><span class="line">        n //= <span class="number">10</span></span><br><span class="line">    <span class="keyword">return</span> result</span><br><span class="line"></span><br><span class="line">sum_digits_iterative(<span class="number">1234</span>) == <span class="number">10</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># Recursive</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">sum_digits_recursive</span>(<span class="params">n</span>):</span></span><br><span class="line">    <span class="keyword">if</span> n == <span class="number">0</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">    <span class="keyword">return</span> n % <span class="number">10</span> + sum_digits_recursive(n // <span class="number">10</span>)</span><br><span class="line"></span><br><span class="line">sum_digits_recursive(<span class="number">1234</span>) == <span class="number">10</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># HOF</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">sum_digits_hof</span>(<span class="params">n</span>):</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">inner</span>(<span class="params">total</span>):</span></span><br><span class="line">        <span class="keyword">if</span> total == -<span class="number">1</span>:</span><br><span class="line">            <span class="keyword">return</span> n</span><br><span class="line">        <span class="keyword">return</span> sum_digits_hof(n + total)</span><br><span class="line">    <span class="keyword">return</span> inner</span><br><span class="line"></span><br><span class="line">sum_digits_hof(<span class="number">1</span>)(<span class="number">2</span>)(<span class="number">3</span>)(<span class="number">4</span>)(-<span class="number">1</span>) == <span class="number">10</span></span><br></pre></td></tr></table></figure>
-
-
-<h2 id="Debugging"><a href="#Debugging" class="headerlink" title="Debugging"></a>Debugging</h2><p>To debugging successfully, you should distinguish different kinds of error and know its meanings:</p>
-<ul>
-<li><strong>SyntaxError:</strong> invalid python syntax</li>
-<li><strong>IndentationError/TabError:</strong> indentation inconsistency<ul>
-<li><code>cat -A filename.py</code> will show tabs and spaces</li>
-</ul>
-</li>
-<li><strong>TypeError:</strong><ul>
-<li>X object is not callable … : type X cannot be treated as functions </li>
-<li>NoneType … : used None in some operation it wasn’t meant for</li>
-</ul>
-</li>
-<li><strong>NameError:</strong> cannot find the name</li>
-<li><strong>UnboundLocalError:</strong> a local to a frame variable is used before it is assigned</li>
-</ul>
-<img src="/2021/07/14/CS61A-SICP/CS61A-8-Diagnostic-Review-Debugging/1.JPG" class="">
 
 ]]></content>
       <categories>
@@ -1041,7 +1018,103 @@
 <img src="/2021/07/12/CS61B-DSA/CS61B-11-Libraries-Abstract-Classes-Packages/6.JPG" class="">
 
 
-<h2 id="Interfaces-and-Abstract-Classes"><a href="#Interfaces-and-Abstract-Classes" class="headerlink" title="Interfaces and Abstract Classes"></a>Interfaces and Abstract Classes</h2><h2 id="Packages"><a href="#Packages" class="headerlink" title="Packages"></a>Packages</h2>]]></content>
+<h2 id="Demos-of-Collection"><a href="#Demos-of-Collection" class="headerlink" title="Demos of Collection"></a>Demos of Collection</h2><p>Now, let’s look at examples of <strong>java.util.Colloction</strong> interface.</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"><span class="keyword">import</span> java.util.ArrayList;</span><br><span class="line"><span class="keyword">import</span> java.util.Set;</span><br><span class="line"><span class="keyword">import</span> java.util.HashSet;</span><br><span class="line"><span class="keyword">import</span> java.util.Map;</span><br><span class="line"><span class="keyword">import</span> java.util.HashMap;</span><br><span class="line"></span><br><span class="line"><span class="comment">/** Given the text of a book. Try to complete 3 tasks using</span></span><br><span class="line"><span class="comment"> * List, Set and Map interface that extend the Collection interface.</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * Task 1: Create a list of all words in the book.</span></span><br><span class="line"><span class="comment"> * Task 2: Count the number of unique words.</span></span><br><span class="line"><span class="comment"> * Task 3: Keep track of the number of times that specific words are mentioned.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DemoCollection</span> </span>&#123;</span><br><span class="line">	<span class="comment">// task1</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> List&lt;String&gt; <span class="title">getWords</span><span class="params">(String inputFile)</span> </span>&#123;</span><br><span class="line">		List&lt;String&gt; words = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">		In in = <span class="keyword">new</span> In(inputFile);</span><br><span class="line">		<span class="keyword">while</span> (!in.empty()) &#123;</span><br><span class="line">			String nextWord = cleanString(in.readString());</span><br><span class="line">			words.add(nextWord);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> words;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// task2</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">countUniqueWord</span><span class="params">(List&lt;String&gt; words)</span> </span>&#123;</span><br><span class="line">		Set&lt;String&gt; wordSet = <span class="keyword">new</span> HashSet&lt;&gt;();</span><br><span class="line">		<span class="keyword">for</span> (String word: words) &#123;</span><br><span class="line">			wordSet.add(word);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">int</span> count = wordSet.size();</span><br><span class="line">		<span class="keyword">return</span> count;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// task3</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Map&lt;String, Integer&gt; <span class="title">collectWordCount</span><span class="params">(List&lt;String&gt; words, List&lt;String&gt; targets)</span> </span>&#123;</span><br><span class="line">		Map&lt;String, Integer&gt; counts = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">		<span class="keyword">for</span> (String t: targets) &#123;</span><br><span class="line">			counts.put(t, <span class="number">0</span>);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">for</span> (String s: words) &#123;</span><br><span class="line">			<span class="keyword">if</span> (counts.containsKey(s)) &#123;</span><br><span class="line">				<span class="keyword">int</span> oldCount = counts.get(s);</span><br><span class="line">				counts.put(s, oldCount + <span class="number">1</span>);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> counts;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="Interfaces-and-Abstract-Classes"><a href="#Interfaces-and-Abstract-Classes" class="headerlink" title="Interfaces and Abstract Classes"></a>Interfaces and Abstract Classes</h2><h3 id="Interfaces"><a href="#Interfaces" class="headerlink" title="Interfaces"></a>Interfaces</h3><img src="/2021/07/12/CS61B-DSA/CS61B-11-Libraries-Abstract-Classes-Packages/7.JPG" class="">
+<img src="/2021/07/12/CS61B-DSA/CS61B-11-Libraries-Abstract-Classes-Packages/8.JPG" class="">
+
+<p>So, in summary, interfaces:</p>
+<ul>
+<li>Cannot be instantiated.</li>
+<li>Can provide either <strong>abstract</strong> or <strong>concrete</strong> methods.<ul>
+<li>Use no keyword for abstract methods.</li>
+<li>Use default keyword for concrete methods.</li>
+</ul>
+</li>
+<li>Can provide only public static final variables.</li>
+<li>Can provide only public methods.<ul>
+<li>Java 9 added private methods to interfaces. *</li>
+</ul>
+</li>
+</ul>
+<h3 id="Abstract-Classes"><a href="#Abstract-Classes" class="headerlink" title="Abstract Classes"></a>Abstract Classes</h3><img src="/2021/07/12/CS61B-DSA/CS61B-11-Libraries-Abstract-Classes-Packages/9.JPG" class="">
+
+<p>Implementations must override ALL abstract methods.</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Circle</span> <span class="keyword">extends</span> <span class="title">GraphicObject</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">draw</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">resize</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="Packages"><a href="#Packages" class="headerlink" title="Packages"></a>Packages</h2><p>A package is a namespace that organizes classes and interfaces. </p>
+<p>We can use <strong>import</strong> statement to provide shorthand notation for usage of a single class in a package.</p>
+]]></content>
+      <categories>
+        <category>CS61B-Data Strucutes</category>
+      </categories>
+      <tags>
+        <tag>CS61B</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>CS61A(8): Diagnostic Review &amp; Debugging</title>
+    <url>/2021/07/14/CS61A-SICP/CS61A-8-Diagnostic-Review-Debugging/</url>
+    <content><![CDATA[<p>This is the lecture note of CS61A - Lecture 8.</p>
+<p>🦩 Just two things in this lecture:</p>
+<ul>
+<li>Compare <strong>Iteration</strong> vs <strong>Recursion</strong> vs <strong>Higher Order Functions</strong></li>
+<li>Debugging</li>
+</ul>
+<span id="more"></span>
+
+
+<h2 id="Iteration-vs-Recursion-vs-Higher-Order-Functions"><a href="#Iteration-vs-Recursion-vs-Higher-Order-Functions" class="headerlink" title="Iteration vs Recursion vs Higher Order Functions"></a>Iteration vs Recursion vs Higher Order Functions</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Write a function that adds all the digits</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Iterative</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">sum_digits_iterative</span>(<span class="params">n</span>):</span></span><br><span class="line">    result = <span class="number">0</span></span><br><span class="line">    <span class="keyword">while</span> n:</span><br><span class="line">        result += n % <span class="number">10</span></span><br><span class="line">        n //= <span class="number">10</span></span><br><span class="line">    <span class="keyword">return</span> result</span><br><span class="line"></span><br><span class="line">sum_digits_iterative(<span class="number">1234</span>) == <span class="number">10</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># Recursive</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">sum_digits_recursive</span>(<span class="params">n</span>):</span></span><br><span class="line">    <span class="keyword">if</span> n == <span class="number">0</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">    <span class="keyword">return</span> n % <span class="number">10</span> + sum_digits_recursive(n // <span class="number">10</span>)</span><br><span class="line"></span><br><span class="line">sum_digits_recursive(<span class="number">1234</span>) == <span class="number">10</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># HOF</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">sum_digits_hof</span>(<span class="params">n</span>):</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">inner</span>(<span class="params">total</span>):</span></span><br><span class="line">        <span class="keyword">if</span> total == -<span class="number">1</span>:</span><br><span class="line">            <span class="keyword">return</span> n</span><br><span class="line">        <span class="keyword">return</span> sum_digits_hof(n + total)</span><br><span class="line">    <span class="keyword">return</span> inner</span><br><span class="line"></span><br><span class="line">sum_digits_hof(<span class="number">1</span>)(<span class="number">2</span>)(<span class="number">3</span>)(<span class="number">4</span>)(-<span class="number">1</span>) == <span class="number">10</span></span><br></pre></td></tr></table></figure>
+
+
+<h2 id="Debugging"><a href="#Debugging" class="headerlink" title="Debugging"></a>Debugging</h2><p>To debugging successfully, you should distinguish different kinds of error and know its meanings:</p>
+<ul>
+<li><strong>SyntaxError:</strong> invalid python syntax</li>
+<li><strong>IndentationError/TabError:</strong> indentation inconsistency<ul>
+<li><code>cat -A filename.py</code> will show tabs and spaces</li>
+</ul>
+</li>
+<li><strong>TypeError:</strong><ul>
+<li>X object is not callable … : type X cannot be treated as functions </li>
+<li>NoneType … : used None in some operation it wasn’t meant for</li>
+</ul>
+</li>
+<li><strong>NameError:</strong> cannot find the name</li>
+<li><strong>UnboundLocalError:</strong> a local to a frame variable is used before it is assigned</li>
+</ul>
+<img src="/2021/07/14/CS61A-SICP/CS61A-8-Diagnostic-Review-Debugging/1.JPG" class="">
+
+]]></content>
+      <categories>
+        <category>CS61A-SICP</category>
+      </categories>
+      <tags>
+        <tag>CS61A</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>CS61B(12): Command Line, Git(2021sp)</title>
+    <url>/2021/07/14/CS61B-DSA/CS61B-12-Command-Line-Git-2021sp/</url>
+    <content><![CDATA[<p>This is the lecture note of CS61B - Lecture 12.</p>
+<span id="more"></span>]]></content>
+      <categories>
+        <category>CS61B-Data Strucutes</category>
+      </categories>
+      <tags>
+        <tag>CS61B</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>CS61B(13): Generics, Autoboxing</title>
+    <url>/2021/07/14/CS61B-DSA/CS61B-13-Generics-Autoboxing/</url>
+    <content><![CDATA[<p>This is the lecture note of CS61B - Lecture 13.</p>
+<span id="more"></span>
+
+
+]]></content>
       <categories>
         <category>CS61B-Data Strucutes</category>
       </categories>
@@ -1551,6 +1624,49 @@
       </tags>
   </entry>
   <entry>
+    <title>Project0: NBody</title>
+    <url>/2021/06/24/CS61B-DSA/CS61B-Project0-Summary/</url>
+    <content><![CDATA[<h2 id="Overview"><a href="#Overview" class="headerlink" title="Overview"></a>Overview</h2><p>This is the first project of CS61B, 2018sp version. </p>
+<p>The goal for this project is to write a program simulating the motion of N objects in a plane, accounting for the gravitational forces mutually affecting each object as demonstrated by Sir Isaac Newton’s Law of Universal Gravitation. Ultimately, a program <code>NBody.java</code> that draws an animation of bodies floating around in space tugging on each other with the power of gravity will be created.</p>
+<p>All prerequisite of this assignment is basic Java knowledge. Since this is an easy project with a great deal of scaffolding, I recommend using text editor, such as VS Code, to finish it. But it is fine if you prefer to use IDE. </p>
+<p>Try it, you can finish this project quickly 🚀</p>
+<span id="more"></span>
+
+<h2 id="Live-Demo"><a href="#Live-Demo" class="headerlink" title="Live Demo"></a>Live Demo</h2><p>I create a simulation which looks like below. You can add audio files to make the project cooler.</p>
+<p><video src='5bodies_simulation_Trim.mp4' 
+       type='video/mp4' 
+       controls='controls'  
+       preload="auto"
+       width='60%' 
+       height='60%'><br></video></p>
+<h2 id="Troubleshooting"><a href="#Troubleshooting" class="headerlink" title="Troubleshooting"></a>Troubleshooting</h2><p>如果你的操作系统为中文，当你使用<code>javac fileName.java</code>编译NBody.java时，你可能会遇到如下错误：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">错误：编码GBK的不可映射字符</span><br></pre></td></tr></table></figure>
+
+<p>原因分析：</p>
+<p>由于JDK是国际版的，我们在用<code>javac</code>编译时，编译程序首先会获得我们操作系统默认采用的编码格式（<code>GBK</code>），然后JDK就把Java源文件从GBK编码格式转换为Java内部默认的<code>Unicode</code>格式放入内存中，然后javac把转换后的Unicode格式的文件编译成class类文件。</p>
+<p>此时，class文件是Unicode编码的，它暂存在内存中，紧接着，JDK将此以Unicode格式编码的class文件保存到操作系统中形成我们见到的class文件。当我们不加设置就编译时，相当于使用了参数：<code>javac -encoding GBK Test.java</code>，就会出现不兼容的情况。</p>
+<p>解决方法：</p>
+<p>在terminal中输入<code>javac -encoding utf-8 fileName.java</code>即可。</p>
+]]></content>
+      <categories>
+        <category>CS61B-Data Strucutes</category>
+      </categories>
+      <tags>
+        <tag>CS61B</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Project1Gold: Autograding</title>
+    <url>/2021/07/11/CS61B-DSA/Project1-Gold-Autograding/</url>
+    <content><![CDATA[]]></content>
+      <categories>
+        <category>CS61B-Data Strucutes</category>
+      </categories>
+      <tags>
+        <tag>CS61B</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Project1A: Data Structures</title>
     <url>/2021/07/08/CS61B-DSA/Project1A-Data-Structures/</url>
     <content><![CDATA[<h2 id="Overview"><a href="#Overview" class="headerlink" title="Overview"></a>Overview</h2><p>This is the first part of the second project of CS61B (2018sp version). 🐷</p>
@@ -1570,7 +1686,7 @@
 <span id="more"></span>
 
 
-<h2 id="Demo"><a href="#Demo" class="headerlink" title="Demo"></a>Demo</h2><h3 id="provided-LinkedListDequeTest-java"><a href="#provided-LinkedListDequeTest-java" class="headerlink" title="provided LinkedListDequeTest.java"></a>provided LinkedListDequeTest.java</h3><p>Firstly, use the provided class <code>LinkedListDequeTest.java</code> to test my implementation.</p>
+<h2 id="Deliverables"><a href="#Deliverables" class="headerlink" title="Deliverables"></a>Deliverables</h2><h3 id="provided-LinkedListDequeTest-java"><a href="#provided-LinkedListDequeTest-java" class="headerlink" title="provided LinkedListDequeTest.java"></a>provided LinkedListDequeTest.java</h3><p>Firstly, use the provided class <code>LinkedListDequeTest.java</code> to test my implementation.</p>
 <p><video src='LinkedListDequeTest1.mp4' 
        type='video/mp4' 
        controls='controls'  
@@ -1838,19 +1954,51 @@
       </tags>
   </entry>
   <entry>
-    <title>Complexity Problems</title>
-    <url>/2021/07/14/Data%20Structures%20and%20Algorithms/Complexity-Problems/</url>
-    <content><![CDATA[]]></content>
+    <title>Project1B: Applying and Testing Data Structures</title>
+    <url>/2021/07/09/CS61B-DSA/Project1B-Applying-and-Testing-Data-Structures/</url>
+    <content><![CDATA[<h2 id="Overview"><a href="#Overview" class="headerlink" title="Overview"></a>Overview</h2><p>This is the second part of the second project of CS61B (2018sp version). 🦄</p>
+<p>The goal for this project is to using deque, which is implemented in project 1A, to solove a real world problem, and also, writing tests by yourself to make sure that everything works correctly.</p>
+<span id="more"></span>
+
+
+<h2 id="Deliverables"><a href="#Deliverables" class="headerlink" title="Deliverables"></a>Deliverables</h2><p>This project has nothing to display but lots of JUnit tests, so no deliverables.</p>
+<h2 id="Project-Structure"><a href="#Project-Structure" class="headerlink" title="Project Structure"></a>Project Structure</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">├── PalindromeFinder.java  *** class that helps identify generalized Palindromes</span><br><span class="line">├── CharacterComparator.java  *** interface used for comparing characters</span><br><span class="line">├── Palindrome.java  *** class for palindrome operations</span><br><span class="line">├── OffByOne.java  *** class for off-by-1 comparators</span><br><span class="line">├── OffByN.java  *** class for off-by-N comparators</span><br><span class="line">├── TestPalindrome.java  ** class of JUnit tests for Palindrome</span><br><span class="line">├── TestOffByOne.java  *** class for JUnit tests for OffByOne</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="Tips"><a href="#Tips" class="headerlink" title="Tips"></a>Tips</h2><p>💁‍♀️</p>
+<ol>
+<li>In “Task 3B: isPalindrome”, there are many ways to implement <code>isPalindrome</code> method. I use <code>ArrayDeuqe</code> in my solution, as follows,</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/** A class for palindrome operations. */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Palindrome</span> </span>&#123;</span><br><span class="line">	<span class="comment">/** Returns a characters deque, where the order of characters</span></span><br><span class="line"><span class="comment">	 * is the same as the given string.</span></span><br><span class="line"><span class="comment">	 *</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> word the given string, should be separated into characters.</span></span><br><span class="line"><span class="comment">	 * */</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> Deque&lt;Character&gt; <span class="title">wordToDeque</span><span class="params">(String word)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// ...</span></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/** Returns true if the given word is a palindrome, otherwise false. */</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isPalindrome</span><span class="params">(String word)</span> </span>&#123;</span><br><span class="line">		Deque&lt;Character&gt; wordDeque = wordToDeque(word);</span><br><span class="line">		<span class="keyword">return</span> isPalindrome(wordDeque);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">private</span> <span class="keyword">boolean</span> <span class="title">isPalindrome</span><span class="params">(Deque deque)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">if</span> (deque.size() &lt; <span class="number">2</span>) &#123;</span><br><span class="line">			<span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">		&#125; <span class="keyword">else</span> <span class="keyword">if</span> (!deque.removeFirst().equals(deque.removeLast())) &#123;</span><br><span class="line">			<span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> isPalindrome(deque);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>The following is my implementation of <code>equalChars</code> method in <code>OffByOne.java</code> :</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">OffByOne</span> <span class="keyword">implements</span> <span class="title">CharacterComparator</span> </span>&#123;</span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">equalChars</span><span class="params">(<span class="keyword">char</span> x, <span class="keyword">char</span> y)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> Math.abs(x - y) == <span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>I met a strange scene when completing the project. When I try to create the <code>OffByOne</code> class, IntelliJ tells me that “OffByOne cannot access CharacterComparator”,</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/* The following line will be marked with red wavy line. */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">OffByOne</span> <span class="keyword">implements</span> <span class="title">CharacterComparator</span> </span>&#123;</span><br><span class="line">	<span class="comment">// ...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>According to <a href="https://stackoverflow.com/questions/38549649/java-cannot-access-class-class-file-not-found">this answer</a>, it seems that it is the problem of IntelliJ.</p>
+<p>The following solution works for me.</p>
+<ul>
+<li>click <strong>File</strong></li>
+<li>choose <strong>Invalidate Caches/Restart</strong></li>
+<li>click only <strong>Invalidate and restart</strong>, and reopen the project</li>
+</ul>
+]]></content>
       <categories>
-        <category>Data Structures and Algorithms</category>
+        <category>CS61B-Data Strucutes</category>
       </categories>
       <tags>
-        <tag>DSA</tag>
+        <tag>CS61B</tag>
       </tags>
   </entry>
   <entry>
     <title>Web Dev(1): SQL and Data Modelding(II)</title>
-    <url>/2021/07/13/Web%20Development/Web-Dev-1-SQL-and-Data-Modelding-II/</url>
+    <url>/2021/07/13/Web%20Development/Full%20Stack%20Web%20Dev%20Program/Web-Dev-1-SQL-and-Data-Modelding-II/</url>
     <content><![CDATA[<p>As said previously, using <code>psycopg2</code> still requires us to write SQL, and writing SQL directly is a fairly clunky way. </p>
 <p>In this blog, I will introduce a powerful Python libraries called <code>SQLAlchemy</code> which is for interacting with databases.</p>
 <span id="more"></span>
@@ -1873,8 +2021,8 @@
 <p>An ORM is considered to be the highest level of abstraction you can add to a web application for database management. Query Builder libraries are somewhere in the middle. There are many mixed opinions about whether ORMs are a best practice approach in all cases, such as this opinion on <a href="https://blog.logrocket.com/why-you-should-avoid-orms-with-examples-in-node-js-e0baab73fa5/">“Why you should avoid ORMs”</a>.</p>
 <p>Thankfully, <code>SQLAlchemy</code> happens to offer multiple levels of abstraction you can prefer, between the database driver(驱动) and the ORM, so you can customize the development of your web application to your own liking. The many granular levels of abstraction that SQLAlchemy offers is one of the reasons that has led to its widespread popularity and diverse ways of using the library and approaching your database programming.</p>
 <hr>
-<h3 id="SQLAlchemy’s-Layers-of-Abstraction"><a href="#SQLAlchemy’s-Layers-of-Abstraction" class="headerlink" title="SQLAlchemy’s Layers of Abstraction"></a>SQLAlchemy’s Layers of Abstraction</h3><h4 id="Overview"><a href="#Overview" class="headerlink" title="Overview"></a>Overview</h4><img src="/2021/07/13/Web%20Development/Web-Dev-1-SQL-and-Data-Modelding-II/sqlalchemy-abstract.JPG" class="">
-<img src="/2021/07/13/Web%20Development/Web-Dev-1-SQL-and-Data-Modelding-II/sqlalchemy-abstract.JPG" class="">
+<h3 id="SQLAlchemy’s-Layers-of-Abstraction"><a href="#SQLAlchemy’s-Layers-of-Abstraction" class="headerlink" title="SQLAlchemy’s Layers of Abstraction"></a>SQLAlchemy’s Layers of Abstraction</h3><h4 id="Overview"><a href="#Overview" class="headerlink" title="Overview"></a>Overview</h4><img src="/2021/07/13/Web%20Development/Full%20Stack%20Web%20Dev%20Program/Web-Dev-1-SQL-and-Data-Modelding-II/sqlalchemy-abstract.JPG" class="">
+<img src="/2021/07/13/Web%20Development/Full%20Stack%20Web%20Dev%20Program/Web-Dev-1-SQL-and-Data-Modelding-II/sqlalchemy-abstract.JPG" class="">
 
 <p>SQLAlchemy vs psycopg2 :</p>
 <ul>
@@ -1897,10 +2045,10 @@
 <h4 id="2-The-Connection-Pool"><a href="#2-The-Connection-Pool" class="headerlink" title="2) The Connection Pool"></a>2) The Connection Pool</h4><p>A connection pool is a standard technique used to maintain long running connections in memory for efficient re-use. It lets us avoid open and close connection manually using DBAPI alone.</p>
 <p>Also, a connection pool provides management for the total number of connections an application might use simultaneously.</p>
 <p>With connection pool, the opening and closing of connections and which connection you are using when you’re executing statements within a session is completely abstracted.</p>
-<img src="/2021/07/13/Web%20Development/Web-Dev-1-SQL-and-Data-Modelding-II/connecting-pool.JPG" class="">
+<img src="/2021/07/13/Web%20Development/Full%20Stack%20Web%20Dev%20Program/Web-Dev-1-SQL-and-Data-Modelding-II/connecting-pool.JPG" class="">
 
 <p>🌞 Resources: <a href="https://docs.sqlalchemy.org/en/14/core/pooling.html">SQLAlchemy Docs on its Connection Pooling</a></p>
-<h4 id="3-The-Engine"><a href="#3-The-Engine" class="headerlink" title="3) The Engine"></a>3) The Engine</h4><img src="/2021/07/13/Web%20Development/Web-Dev-1-SQL-and-Data-Modelding-II/sqlalchemy-engine1.JPG" class="">
+<h4 id="3-The-Engine"><a href="#3-The-Engine" class="headerlink" title="3) The Engine"></a>3) The Engine</h4><img src="/2021/07/13/Web%20Development/Full%20Stack%20Web%20Dev%20Program/Web-Dev-1-SQL-and-Data-Modelding-II/sqlalchemy-engine1.JPG" class="">
 
 <p>You should notice that,</p>
 <ul>
@@ -1909,7 +2057,7 @@
 </ul>
 <p>🌞 Resources: <a href="https://docs.sqlalchemy.org/en/14/core/engines.html">SQLAlchemy Docs on the Engine</a></p>
 <h4 id="4-SQL-Expressions"><a href="#4-SQL-Expressions" class="headerlink" title="4) SQL Expressions"></a>4) SQL Expressions</h4><p>Instead of sending raw SQL (using the Engine), we can compose SQL statements by building Python objects.</p>
-<img src="/2021/07/13/Web%20Development/Web-Dev-1-SQL-and-Data-Modelding-II/sqlalchemy-sql-expression.JPG" class="">
+<img src="/2021/07/13/Web%20Development/Full%20Stack%20Web%20Dev%20Program/Web-Dev-1-SQL-and-Data-Modelding-II/sqlalchemy-sql-expression.JPG" class="">
 
 <p>You still need to know how to use SQL to interact with databse.</p>
 <h4 id="5-SQLAlchemy-ORM"><a href="#5-SQLAlchemy-ORM" class="headerlink" title="5) SQLAlchemy ORM"></a>5) SQLAlchemy ORM</h4><p>SQLAlchemy ORM is the highest layer of abstraction in SQLALchemy. With it, you can compose SQL expressions by mapping python classes of objects to tables in the database –&gt; <strong>Maps classes to tables</strong>. It wraps the SQL Expressions and Engine to work together to interact with the database.</p>
@@ -1924,10 +2072,10 @@
 </li>
 </ul>
 <p><strong>SQLAlchemy Layers of Abstraction Overview (Diagram)</strong></p>
-<img src="/2021/07/13/Web%20Development/Web-Dev-1-SQL-and-Data-Modelding-II/sqlalchemy-layers-of-abstraction.JPG" class="">
+<img src="/2021/07/13/Web%20Development/Full%20Stack%20Web%20Dev%20Program/Web-Dev-1-SQL-and-Data-Modelding-II/sqlalchemy-layers-of-abstraction.JPG" class="">
 
 
-<h3 id="Mapping-Between-Tables-and-Classes"><a href="#Mapping-Between-Tables-and-Classes" class="headerlink" title="Mapping Between Tables and Classes"></a>Mapping Between Tables and Classes</h3><img src="/2021/07/13/Web%20Development/Web-Dev-1-SQL-and-Data-Modelding-II/map-class-table.JPG" class="">
+<h3 id="Mapping-Between-Tables-and-Classes"><a href="#Mapping-Between-Tables-and-Classes" class="headerlink" title="Mapping Between Tables and Classes"></a>Mapping Between Tables and Classes</h3><img src="/2021/07/13/Web%20Development/Full%20Stack%20Web%20Dev%20Program/Web-Dev-1-SQL-and-Data-Modelding-II/map-class-table.JPG" class="">
 
 
 
@@ -1952,7 +2100,7 @@
 
 
 <h4 id="Connect-App-to-DB"><a href="#Connect-App-to-DB" class="headerlink" title="Connect App to DB"></a>Connect App to DB</h4><p>Database Connection URI Parts:</p>
-<img src="/2021/07/13/Web%20Development/Web-Dev-1-SQL-and-Data-Modelding-II/database-connection-uri-parts.JPG" class="">
+<img src="/2021/07/13/Web%20Development/Full%20Stack%20Web%20Dev%20Program/Web-Dev-1-SQL-and-Data-Modelding-II/database-connection-uri-parts.JPG" class="">
 
 <p>By default, SQLAlchemy will automatically choose which DBAPI you use underneath. You can also optionally specify it. For Python application, psycopg2 is the default database adpater).</p>
 <blockquote>
@@ -1997,7 +2145,7 @@
 <p>Finally run as the following in Python’s interpreter,</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ python</span><br><span class="line">&gt;&gt;&gt;</span><br><span class="line">&gt;&gt;&gt; import flask_hello_app</span><br><span class="line">&gt;&gt;&gt; from flask_hello_app import Person</span><br><span class="line">&gt;&gt;&gt; Person.query.first()</span><br><span class="line">&lt;Person ID: 1, name: Amy&gt;</span><br><span class="line">&gt;&gt;&gt; Person.query.all()</span><br><span class="line">[&lt;Person ID: 1, name: Amy&gt;, &lt;Person ID: 2, name: Emma&gt;]</span><br></pre></td></tr></table></figure>
 
-<h4 id="SQLALchemy-Data-Type"><a href="#SQLALchemy-Data-Type" class="headerlink" title="SQLALchemy Data Type"></a>SQLALchemy Data Type</h4><img src="/2021/07/13/Web%20Development/Web-Dev-1-SQL-and-Data-Modelding-II/screen-shot-2019-08-18-at-11.36.57-pm.JPG" class="">
+<h4 id="SQLALchemy-Data-Type"><a href="#SQLALchemy-Data-Type" class="headerlink" title="SQLALchemy Data Type"></a>SQLALchemy Data Type</h4><img src="/2021/07/13/Web%20Development/Full%20Stack%20Web%20Dev%20Program/Web-Dev-1-SQL-and-Data-Modelding-II/screen-shot-2019-08-18-at-11.36.57-pm.JPG" class="">
 
 <p>🌞 Resources: </p>
 <ol>
@@ -2020,14 +2168,14 @@
 </ul>
 </li>
 </ul>
-<img src="/2021/07/13/Web%20Development/Web-Dev-1-SQL-and-Data-Modelding-II/model-query-2-ways.JPG" class="">
+<img src="/2021/07/13/Web%20Development/Full%20Stack%20Web%20Dev%20Program/Web-Dev-1-SQL-and-Data-Modelding-II/model-query-2-ways.JPG" class="">
 
 <p>🦜 <strong>Resource:</strong> <a href="https://github.com/rileywang0819/demo-todoapp/blob/master/query-cheat-sheet.pdf">SQLAlchemy Query methods Cheat Sheet</a></p>
 <h3 id="SQLAlchemy-Object-Lifecycle"><a href="#SQLAlchemy-Object-Lifecycle" class="headerlink" title="SQLAlchemy Object Lifecycle"></a>SQLAlchemy Object Lifecycle</h3><p>We can insert new records into the database by writing the raw SQL. We can also use SQLAlchemy by running the following code, which will build a <em>transaction</em> for inserting in a person instance in our model/table, and persist it to the database upon calling <code>commit()</code>.</p>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line">person = Person(name=<span class="string">&#x27;Amy&#x27;</span>)</span><br><span class="line">db.session.add(person)</span><br><span class="line">db.session.commit()</span><br></pre></td></tr></table></figure>
 
 <p>Let’s dive into the process, learn how an object goes from pending tp persistent, i.e. <strong>the SQLAlchemy object life cycle</strong>.</p>
-<img src="/2021/07/13/Web%20Development/Web-Dev-1-SQL-and-Data-Modelding-II/session2.JPG" class="">
+<img src="/2021/07/13/Web%20Development/Full%20Stack%20Web%20Dev%20Program/Web-Dev-1-SQL-and-Data-Modelding-II/session2.JPG" class="">
 
 <p>It isn’t until we execute <code>db.session.commit()</code> that we commit anything to the database.</p>
 <ul>
@@ -2036,36 +2184,37 @@
 <li>The ability to undo is allowed via <code>db.session.rollback()</code></li>
 </ul>
 <p>Let’s look at different stages of object lifecycle.</p>
-<img src="/2021/07/13/Web%20Development/Web-Dev-1-SQL-and-Data-Modelding-II/life-cycle.JPG" class="">
-<img src="/2021/07/13/Web%20Development/Web-Dev-1-SQL-and-Data-Modelding-II/life-cycle2.JPG" class="">
-<img src="/2021/07/13/Web%20Development/Web-Dev-1-SQL-and-Data-Modelding-II/life-cycle3.JPG" class="">
+<img src="/2021/07/13/Web%20Development/Full%20Stack%20Web%20Dev%20Program/Web-Dev-1-SQL-and-Data-Modelding-II/life-cycle.JPG" class="">
+<img src="/2021/07/13/Web%20Development/Full%20Stack%20Web%20Dev%20Program/Web-Dev-1-SQL-and-Data-Modelding-II/life-cycle2.JPG" class="">
+<img src="/2021/07/13/Web%20Development/Full%20Stack%20Web%20Dev%20Program/Web-Dev-1-SQL-and-Data-Modelding-II/life-cycle3.JPG" class="">
 
 <p>Let’s dive into <code>Flush</code> stage.</p>
-<img src="/2021/07/13/Web%20Development/Web-Dev-1-SQL-and-Data-Modelding-II/flush.JPG" class="">
-<img src="/2021/07/13/Web%20Development/Web-Dev-1-SQL-and-Data-Modelding-II/life-cycle4.JPG" class="">
+<img src="/2021/07/13/Web%20Development/Full%20Stack%20Web%20Dev%20Program/Web-Dev-1-SQL-and-Data-Modelding-II/flush.JPG" class="">
+<img src="/2021/07/13/Web%20Development/Full%20Stack%20Web%20Dev%20Program/Web-Dev-1-SQL-and-Data-Modelding-II/life-cycle4.JPG" class="">
 
 <p>Especially, when a statement has been flushed already, SQLAlchemy knows not to do the work again of translating actions to SQL statements (caching).</p>
 <p>Look at the original table, there are 8 records,</p>
-<img src="/2021/07/13/Web%20Development/Web-Dev-1-SQL-and-Data-Modelding-II/flushed1.JPG" class="" title="original table">
+<img src="/2021/07/13/Web%20Development/Full%20Stack%20Web%20Dev%20Program/Web-Dev-1-SQL-and-Data-Modelding-II/flushed1.JPG" class="" title="original table">
 
 <p>Then we use SQLAlchemy to add a new record, and look at the table once again. Since we still don;t do commit operation, so the database has no changes. </p>
-<img src="/2021/07/13/Web%20Development/Web-Dev-1-SQL-and-Data-Modelding-II/flushed2.JPG" class="" title="terminal">
-<img src="/2021/07/13/Web%20Development/Web-Dev-1-SQL-and-Data-Modelding-II/flushed3.JPG" class="">
+<img src="/2021/07/13/Web%20Development/Full%20Stack%20Web%20Dev%20Program/Web-Dev-1-SQL-and-Data-Modelding-II/flushed2.JPG" class="" title="terminal">
+<img src="/2021/07/13/Web%20Development/Full%20Stack%20Web%20Dev%20Program/Web-Dev-1-SQL-and-Data-Modelding-II/flushed3.JPG" class="">
 
 <p>However, if we do some queries, meaning the statements have been flushed, we can that the action has already been translated into SQL commands though database is not persisted.</p>
-<img src="/2021/07/13/Web%20Development/Web-Dev-1-SQL-and-Data-Modelding-II/flushed4.JPG" class="">
-<img src="/2021/07/13/Web%20Development/Web-Dev-1-SQL-and-Data-Modelding-II/flushed3.JPG" class="">
+<img src="/2021/07/13/Web%20Development/Full%20Stack%20Web%20Dev%20Program/Web-Dev-1-SQL-and-Data-Modelding-II/flushed4.JPG" class="">
+<img src="/2021/07/13/Web%20Development/Full%20Stack%20Web%20Dev%20Program/Web-Dev-1-SQL-and-Data-Modelding-II/flushed3.JPG" class="">
 
 <p>Finally, make commit to change the database permanetly.</p>
 <blockquote>
 <p>db.session.commit()</p>
 </blockquote>
-<img src="/2021/07/13/Web%20Development/Web-Dev-1-SQL-and-Data-Modelding-II/flushed5.JPG" class="">
+<img src="/2021/07/13/Web%20Development/Full%20Stack%20Web%20Dev%20Program/Web-Dev-1-SQL-and-Data-Modelding-II/flushed5.JPG" class="">
 
 
 ]]></content>
       <categories>
         <category>Web Development</category>
+        <category>Full Stack Web Dev Program</category>
       </categories>
       <tags>
         <tag>web</tag>
@@ -2073,7 +2222,7 @@
   </entry>
   <entry>
     <title>Web Dev(1): SQL and Data Modeling(I)</title>
-    <url>/2021/07/12/Web%20Development/Web-Dev-1-SQL-and-Data-Modeling-I/</url>
+    <url>/2021/07/12/Web%20Development/Full%20Stack%20Web%20Dev%20Program/Web-Dev-1-SQL-and-Data-Modeling-I/</url>
     <content><![CDATA[<h2 id="Overview"><a href="#Overview" class="headerlink" title="Overview"></a>Overview</h2><p>In this serials, I will talk about skills needed to develop an entire database-backed web application.</p>
 <p>You will learn:</p>
 <ul>
@@ -2116,22 +2265,22 @@
 <h3 id="Relational-Databases"><a href="#Relational-Databases" class="headerlink" title="Relational Databases"></a>Relational Databases</h3><ul>
 <li>key characteristics of database:</li>
 </ul>
-<img src="/2021/07/12/Web%20Development/Web-Dev-1-SQL-and-Data-Modeling-I/key-characteristic-of-database.JPG" class="">
+<img src="/2021/07/12/Web%20Development/Full%20Stack%20Web%20Dev%20Program/Web-Dev-1-SQL-and-Data-Modeling-I/key-characteristic-of-database.JPG" class="">
 
 <ul>
 <li>qualities of relational DBMS:</li>
 </ul>
-<img src="/2021/07/12/Web%20Development/Web-Dev-1-SQL-and-Data-Modeling-I/qualities-of-relational-dbms.JPG" class="">
+<img src="/2021/07/12/Web%20Development/Full%20Stack%20Web%20Dev%20Program/Web-Dev-1-SQL-and-Data-Modeling-I/qualities-of-relational-dbms.JPG" class="">
 
 <p>Next, let us review concepts of <code>primary key</code> and <code>foreign key</code> .</p>
-<img src="/2021/07/12/Web%20Development/Web-Dev-1-SQL-and-Data-Modeling-I/primary-key.JPG" class="">
-<img src="/2021/07/12/Web%20Development/Web-Dev-1-SQL-and-Data-Modeling-I/foreign-key.JPG" class="">
+<img src="/2021/07/12/Web%20Development/Full%20Stack%20Web%20Dev%20Program/Web-Dev-1-SQL-and-Data-Modeling-I/primary-key.JPG" class="">
+<img src="/2021/07/12/Web%20Development/Full%20Stack%20Web%20Dev%20Program/Web-Dev-1-SQL-and-Data-Modeling-I/foreign-key.JPG" class="">
 
 
-<h3 id="SQL"><a href="#SQL" class="headerlink" title="SQL"></a>SQL</h3><img src="/2021/07/12/Web%20Development/Web-Dev-1-SQL-and-Data-Modeling-I/SQL.JPG" class="">
+<h3 id="SQL"><a href="#SQL" class="headerlink" title="SQL"></a>SQL</h3><img src="/2021/07/12/Web%20Development/Full%20Stack%20Web%20Dev%20Program/Web-Dev-1-SQL-and-Data-Modeling-I/SQL.JPG" class="">
 
 <p>✨ Read <a href="https://www.postgresqltutorial.com/">PostgreSQL Tutorial</a> to learn more about PostgreSQL.</p>
-<img src="/2021/07/12/Web%20Development/Web-Dev-1-SQL-and-Data-Modeling-I/execution-plan.JPG" class="">
+<img src="/2021/07/12/Web%20Development/Full%20Stack%20Web%20Dev%20Program/Web-Dev-1-SQL-and-Data-Modeling-I/execution-plan.JPG" class="">
 
 <p>The <code>execution plan</code> gives important insight into the performance of the query. Since there can multiple ways of performing queries against a database with various performance tradeoffs, it’s important to choose the one with the best execution plan for quickly and efficiently returning the results that you need.</p>
 <p>🤠 You can also register this <a href="https://www.udemy.com/course/complete-sql-databases-bootcamp-zero-to-mastery/">database bootcamp course</a> to learn more SQL.</p>
@@ -2143,7 +2292,7 @@
 <li><a href="https://use-the-index-luke.com/">optimize SQL queries: Use the Index, Luke!</a></li>
 </ul>
 <h3 id="Client-Server-Model"><a href="#Client-Server-Model" class="headerlink" title="Client-Server Model"></a>Client-Server Model</h3><p>In order to build database-backed web applications, we first need to understand how servers, clients, and databases interact. A major part of this is the <code>client-server model</code>, and the basic idea is very simple:</p>
-<img src="/2021/07/12/Web%20Development/Web-Dev-1-SQL-and-Data-Modeling-I/basic-idea-of-client-server-model.JPG" class="">
+<img src="/2021/07/12/Web%20Development/Full%20Stack%20Web%20Dev%20Program/Web-Dev-1-SQL-and-Data-Modeling-I/basic-idea-of-client-server-model.JPG" class="">
 
 <ul>
 <li>Servers and clients are programs that run on a <strong>host</strong>.<ul>
@@ -2155,15 +2304,15 @@
 </li>
 </ul>
 <p>Now, adding a relational databases to this basic client-server model. This modern-day database systems also follow the client-server model.</p>
-<img src="/2021/07/12/Web%20Development/Web-Dev-1-SQL-and-Data-Modeling-I/db-web-server-with-client.JPG" class="">
+<img src="/2021/07/12/Web%20Development/Full%20Stack%20Web%20Dev%20Program/Web-Dev-1-SQL-and-Data-Modeling-I/db-web-server-with-client.JPG" class="">
 
 <p><em>Basically, we call things clients when they are making a request and servers when they are fulfilling a request with a repsonse. Since a web server can do both, it sometimes acts as a server and sometimes acts as a client.</em></p>
 <h4 id="Client-Server-Model-Example-Onlinr-Store"><a href="#Client-Server-Model-Example-Onlinr-Store" class="headerlink" title="Client-Server Model Example: Onlinr Store"></a>Client-Server Model Example: Onlinr Store</h4><hr>
 <p><strong>Background</strong></p>
-<img src="/2021/07/12/Web%20Development/Web-Dev-1-SQL-and-Data-Modeling-I/ex-jane-online-store.JPG" class="">
+<img src="/2021/07/12/Web%20Development/Full%20Stack%20Web%20Dev%20Program/Web-Dev-1-SQL-and-Data-Modeling-I/ex-jane-online-store.JPG" class="">
 
 <p>Click the Polo product and show a product detail page as follows :</p>
-<img src="/2021/07/12/Web%20Development/Web-Dev-1-SQL-and-Data-Modeling-I/ex-jane-online-store2.JPG" class="">
+<img src="/2021/07/12/Web%20Development/Full%20Stack%20Web%20Dev%20Program/Web-Dev-1-SQL-and-Data-Modeling-I/ex-jane-online-store2.JPG" class="">
 
 <hr>
 <p>Let’s look the steps under the hood :</p>
@@ -2210,8 +2359,8 @@
 <li>Close a connection to end communications. </li>
 <li>Deliveries over the connection are <code>error-checked</code>: if packets arrive damaged or lost, then they are resent (known as retransmission).</li>
 </ul>
-<img src="/2021/07/12/Web%20Development/Web-Dev-1-SQL-and-Data-Modeling-I/session1.JPG" class="">
-<img src="/2021/07/12/Web%20Development/Web-Dev-1-SQL-and-Data-Modeling-I/session2.JPG" class="">
+<img src="/2021/07/12/Web%20Development/Full%20Stack%20Web%20Dev%20Program/Web-Dev-1-SQL-and-Data-Modeling-I/session1.JPG" class="">
+<img src="/2021/07/12/Web%20Development/Full%20Stack%20Web%20Dev%20Program/Web-Dev-1-SQL-and-Data-Modeling-I/session2.JPG" class="">
 
 
 <hr>
@@ -2222,13 +2371,13 @@
 <p>When speed is more important than reliability, especially when applications need to stream very small amounts of information quickly (smaller packages of information means less issues with reliability), then UDP is preferred. A lot of real time streaming applications, (e.g. live TV streaming, Voice over IP (VoIP)) prefer UDP over TCP. Since UDP does not need to retransmit lost datagrams, nor does it do any connection setup, there are fewer delays over UDP than TCP. TCP’s continuous connection is more reliable but has more latency(时延).</p>
 <hr>
 <h3 id="Transactions"><a href="#Transactions" class="headerlink" title="Transactions"></a>Transactions</h3><p><code>Transactions(事务)</code> are atomic units of work for the database to perform as a whole.</p>
-<img src="/2021/07/12/Web%20Development/Web-Dev-1-SQL-and-Data-Modeling-I/transaction.JPG" class="">
-<img src="/2021/07/12/Web%20Development/Web-Dev-1-SQL-and-Data-Modeling-I/transaction2.JPG" class="">
-<img src="/2021/07/12/Web%20Development/Web-Dev-1-SQL-and-Data-Modeling-I/transaction3.JPG" class="">
+<img src="/2021/07/12/Web%20Development/Full%20Stack%20Web%20Dev%20Program/Web-Dev-1-SQL-and-Data-Modeling-I/transaction.JPG" class="">
+<img src="/2021/07/12/Web%20Development/Full%20Stack%20Web%20Dev%20Program/Web-Dev-1-SQL-and-Data-Modeling-I/transaction2.JPG" class="">
+<img src="/2021/07/12/Web%20Development/Full%20Stack%20Web%20Dev%20Program/Web-Dev-1-SQL-and-Data-Modeling-I/transaction3.JPG" class="">
 
 
 <p><strong>Transactions capture logical bundles of work.</strong> Work is bundled into transactions, so that in case of system failures, data in your database is still kept in a valid state (by rolling back the entire transaction if any part of it fails). To ensure a database is consistent before and after work is done to it, databases uses atomic transactions, and actions like <code>commits</code> and <code>rollbacks</code> to handle failures appropriately. Transactions are, in other words, <a href="https://www.geeksforgeeks.org/acid-properties-in-dbms/">ACID</a> .</p>
-<img src="/2021/07/12/Web%20Development/Web-Dev-1-SQL-and-Data-Modeling-I/bundle-work.JPG" class="">
+<img src="/2021/07/12/Web%20Development/Full%20Stack%20Web%20Dev%20Program/Web-Dev-1-SQL-and-Data-Modeling-I/bundle-work.JPG" class="">
 
 
 <h3 id="DBAPIs-and-psycopg2"><a href="#DBAPIs-and-psycopg2" class="headerlink" title="DBAPIs and psycopg2"></a>DBAPIs and psycopg2</h3><h4 id="psql"><a href="#psql" class="headerlink" title="psql"></a>psql</h4><p><code>psql</code> is an interactive terminal application for connecting and interacting with your local postgres server on your machine. It lets you type and execute SQL commands to your database directly.</p>
@@ -2237,7 +2386,7 @@
 <p>🍁 <strong>Useful basic psql commands</strong></p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># connect</span></span><br><span class="line">$ psql -U postgres</span><br><span class="line"></span><br><span class="line">$ psql &lt;dbname&gt; [&lt;username&gt;]</span><br><span class="line"></span><br><span class="line"><span class="comment"># connection information</span></span><br><span class="line">$ postgres=<span class="comment"># \c </span></span><br><span class="line"></span><br><span class="line"><span class="comment"># connect to a specific db</span></span><br><span class="line">$ postgres=<span class="comment"># \c &lt;dbname&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># list all db on the server</span></span><br><span class="line">$ postgres=<span class="comment"># \l</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># show db tables</span></span><br><span class="line">$ postgres=<span class="comment"># \dt</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># describe table schema</span></span><br><span class="line">$ postgres=<span class="comment"># \d &lt;tablename&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># quit psql</span></span><br><span class="line">$ postgres=<span class="comment"># \q</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># helper</span></span><br><span class="line">$ postgres=<span class="comment"># \?</span></span><br></pre></td></tr></table></figure>
 
-<img src="/2021/07/12/Web%20Development/Web-Dev-1-SQL-and-Data-Modeling-I/psql.JPG" class="">
+<img src="/2021/07/12/Web%20Development/Full%20Stack%20Web%20Dev%20Program/Web-Dev-1-SQL-and-Data-Modeling-I/psql.JPG" class="">
 
 <hr>
 <h4 id="DBAPIs"><a href="#DBAPIs" class="headerlink" title="DBAPIs"></a>DBAPIs</h4><p>We will sometimes want to interact with our database and use its results in a specific programming language. E.g. to build web applications or data pipelines in a specific language (Ruby, Python, Javascript, etc.). That’s where <code>DBAPIs</code> come in.</p>
@@ -2252,7 +2401,7 @@
 <li>list of rows into an array of objects in Javascript for a NodeJS adapter;</li>
 <li>or a list of tuples in Python for a Python adapter</li>
 </ul>
-<img src="/2021/07/12/Web%20Development/Web-Dev-1-SQL-and-Data-Modeling-I/dbapis.jpg" class="">
+<img src="/2021/07/12/Web%20Development/Full%20Stack%20Web%20Dev%20Program/Web-Dev-1-SQL-and-Data-Modeling-I/dbapis.jpg" class="">
 
 <p>In this blog, I will use <code>psycopg2</code> to establish a connection to PostgreSQL server, and interact with it in python.</p>
 <h4 id="psycopg2"><a href="#psycopg2" class="headerlink" title="psycopg2"></a>psycopg2</h4><p>Intall psycopg2: <a href="https://pypi.org/project/psycopg2/">ref</a></p>
@@ -2278,6 +2427,7 @@
 ]]></content>
       <categories>
         <category>Web Development</category>
+        <category>Full Stack Web Dev Program</category>
       </categories>
       <tags>
         <tag>web</tag>
@@ -2285,7 +2435,7 @@
   </entry>
   <entry>
     <title>Web Dev(1): SQL and Data Modeling(V)</title>
-    <url>/2021/07/15/Web%20Development/Web-Dev-1-SQL-and-Data-Modeling-V/</url>
+    <url>/2021/07/15/Web%20Development/Full%20Stack%20Web%20Dev%20Program/Web-Dev-1-SQL-and-Data-Modeling-V/</url>
     <content><![CDATA[<p>We’ve completed built CRUD for a single model (todo item). However, in the real world, we often implement web apps with multiple models that have relationships with one another.</p>
 <p>The relationships between models can determine if certain actions on one model should happen on other models, so that when something happens to one model, related model objects should also be affected (by being CRUD).</p>
 <p>Examples are:</p>
@@ -2298,12 +2448,12 @@
 <p>So, in the rest of this blog, I’ll talk about how to build our todo app further to make it more pratical.</p>
 <span id="more"></span>
 
-<img src="/2021/07/15/Web%20Development/Web-Dev-1-SQL-and-Data-Modeling-V/todo-app.png" class="">
+<img src="/2021/07/15/Web%20Development/Full%20Stack%20Web%20Dev%20Program/Web-Dev-1-SQL-and-Data-Modeling-V/todo-app.png" class="">
 
 
 <h2 id="Model-Relationships"><a href="#Model-Relationships" class="headerlink" title="Model Relationships"></a>Model Relationships</h2><p>In order to handle CRUD across related models which have relationships with one another, we’ll need to learn about how to map relationships between models.</p>
 <h3 id="Relationship-amp-Join"><a href="#Relationship-amp-Join" class="headerlink" title="Relationship &amp; Join"></a>Relationship &amp; Join</h3><p>Relational databases can map relationships that occur between tables and bwetween rows across tables.</p>
-<img src="/2021/07/15/Web%20Development/Web-Dev-1-SQL-and-Data-Modeling-V/relational-mapping.JPG" class="" title="Figure 1.">
+<img src="/2021/07/15/Web%20Development/Full%20Stack%20Web%20Dev%20Program/Web-Dev-1-SQL-and-Data-Modeling-V/relational-mapping.JPG" class="" title="Figure 1.">
 
 <p>Query: What’s the make, model and year of vehicles that driver Sarah have?</p>
 <p>You can use the following SQL command to query, </p>
@@ -2312,7 +2462,7 @@
 <h3 id="db-relationship"><a href="#db-relationship" class="headerlink" title="db.relationship"></a>db.relationship</h3><p>SQLAlchemy configures the settings between model relationships once, and generates <code>JOIN</code> statements for us whenever we need them.</p>
 <p>We use an interface named <code>db.relationship</code>, which is provided by SQLAlchemy, to configure a mapped relationship between two models.</p>
 <p><code>db.relationship</code> is defined on the <strong>parent</strong> model.</p>
-<img src="/2021/07/15/Web%20Development/Web-Dev-1-SQL-and-Data-Modeling-V/db-relationship.JPG" class="">
+<img src="/2021/07/15/Web%20Development/Full%20Stack%20Web%20Dev%20Program/Web-Dev-1-SQL-and-Data-Modeling-V/db-relationship.JPG" class="">
 
 <h3 id="Configure-Relationships"><a href="#Configure-Relationships" class="headerlink" title="Configure Relationships"></a>Configure Relationships</h3><p>So when do we load <code>child1.some_parent</code> from the database?</p>
 
@@ -2349,11 +2499,11 @@
 <li>Whereas we set <code>db.relationship</code> on the <strong>parent</strong> model, we set the foreign key constraint on the <strong>child</strong> model.</li>
 <li>A foreign key constraint prefers <strong>referential integrity</strong> from one table to another, by ensuring that the foreign key column always maps a primary key in the foreign table.</li>
 </ul>
-<img src="/2021/07/15/Web%20Development/Web-Dev-1-SQL-and-Data-Modeling-V/foreign-key-constraint.JPG" class="" title="Refrence Foreign Key with Primary Key">
+<img src="/2021/07/15/Web%20Development/Full%20Stack%20Web%20Dev%20Program/Web-Dev-1-SQL-and-Data-Modeling-V/foreign-key-constraint.JPG" class="" title="Refrence Foreign Key with Primary Key">
 
 <p>So how this is done using SQLAlchemy?</p>
 <p>In SQLAlchemy, there is an option in <code>db.Column</code> called <code>db.ForeignKey</code> that you can use to specify a foreign key constraint, referring to the primary key of the other table / model.</p>
-<img src="/2021/07/15/Web%20Development/Web-Dev-1-SQL-and-Data-Modeling-V/setup-foreign-key-constraint.JPG" class="">
+<img src="/2021/07/15/Web%20Development/Full%20Stack%20Web%20Dev%20Program/Web-Dev-1-SQL-and-Data-Modeling-V/setup-foreign-key-constraint.JPG" class="">
 
 <hr>
 <p>🐿️ Exercise: Try to map relationships between models shown in Figure 1.(driver table &amp; vehicles table)</p>
@@ -2377,7 +2527,7 @@
 <blockquote>
 <p>~$ flask db upgrade</p>
 </blockquote>
-<img src="/2021/07/15/Web%20Development/Web-Dev-1-SQL-and-Data-Modeling-V/after-upgrade.JPG" class="">
+<img src="/2021/07/15/Web%20Development/Full%20Stack%20Web%20Dev%20Program/Web-Dev-1-SQL-and-Data-Modeling-V/after-upgrade.JPG" class="">
 
 <blockquote>
 <p>todoapp=# INSERT INTO todolists(name) VALUES(‘Default’);<br>todoapp=# UPDATE todos SET list_id = 1 WHERE list_id IS NULL;</p>
@@ -2388,7 +2538,7 @@
 <p>~$ flask db migrate<br>~$ flask db upgrade</p>
 </blockquote>
 <p>You’ve done!</p>
-<img src="/2021/07/15/Web%20Development/Web-Dev-1-SQL-and-Data-Modeling-V/final-schema.JPG" class="">
+<img src="/2021/07/15/Web%20Development/Full%20Stack%20Web%20Dev%20Program/Web-Dev-1-SQL-and-Data-Modeling-V/final-schema.JPG" class="">
 
 <p>By the way, you can also do the above things using migration files.</p>
 <hr>
@@ -2406,9 +2556,9 @@
 </ul>
 <p>🐣 <strong>Solution</strong>: You can visit my <a href="https://github.com/rileywang0819/demo-todoapp/tree/master/todo-app">Github repository</a> to see the source code.</p>
 <h3 id="Many-to-Many-Relationship"><a href="#Many-to-Many-Relationship" class="headerlink" title="Many-to-Many Relationship"></a>Many-to-Many Relationship</h3><p>Finally, let’s talk about the 3rd type of relationship –&gt; many-to-many relationship.</p>
-<h4 id="What-is-many-to-many-relationship"><a href="#What-is-many-to-many-relationship" class="headerlink" title="What is many-to-many relationship"></a>What is many-to-many relationship</h4><img src="/2021/07/15/Web%20Development/Web-Dev-1-SQL-and-Data-Modeling-V/relationship-type.JPG" class="">
-<img src="/2021/07/15/Web%20Development/Web-Dev-1-SQL-and-Data-Modeling-V/relationship-type2.JPG" class="">
-<img src="/2021/07/15/Web%20Development/Web-Dev-1-SQL-and-Data-Modeling-V/relationship-type3.JPG" class="">
+<h4 id="What-is-many-to-many-relationship"><a href="#What-is-many-to-many-relationship" class="headerlink" title="What is many-to-many relationship"></a>What is many-to-many relationship</h4><img src="/2021/07/15/Web%20Development/Full%20Stack%20Web%20Dev%20Program/Web-Dev-1-SQL-and-Data-Modeling-V/relationship-type.JPG" class="">
+<img src="/2021/07/15/Web%20Development/Full%20Stack%20Web%20Dev%20Program/Web-Dev-1-SQL-and-Data-Modeling-V/relationship-type2.JPG" class="">
+<img src="/2021/07/15/Web%20Development/Full%20Stack%20Web%20Dev%20Program/Web-Dev-1-SQL-and-Data-Modeling-V/relationship-type3.JPG" class="">
 
 <p>Takeaways</p>
 <ul>
@@ -2426,9 +2576,130 @@
 <figure class="highlight py"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Example</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> Flask</span><br><span class="line"><span class="keyword">from</span> flask_sqlalchemy <span class="keyword">import</span> SQLAlchemy</span><br><span class="line"></span><br><span class="line">app = Flask(__name__)</span><br><span class="line">app.config[<span class="string">&#x27;SQLALCHEMY_DATABASE_URI&#x27;</span>] = <span class="string">&#x27;postgres://password@localhost:5432/example&#x27;</span></span><br><span class="line">db = SQLAlchemy(app)</span><br><span class="line"></span><br><span class="line">order_items = db.Table(<span class="string">&#x27;order_items&#x27;</span>,</span><br><span class="line">    db.Column(<span class="string">&#x27;order_id&#x27;</span>, db.Integer, db.ForeignKey(<span class="string">&#x27;order.id&#x27;</span>), primary_key=<span class="literal">True</span>),</span><br><span class="line">    db.Column(<span class="string">&#x27;product_id&#x27;</span>, db.Integer, db.ForeignKey(<span class="string">&#x27;product.id&#x27;</span>), primary_key=<span class="literal">True</span>)</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Order</span>(<span class="params">db.Model</span>):</span></span><br><span class="line">  <span class="built_in">id</span> = db.Column(db.Integer, primary_key=<span class="literal">True</span>)</span><br><span class="line">  status = db.Column(db.String(), nullable=<span class="literal">False</span>)</span><br><span class="line">  products = db.relationship(<span class="string">&#x27;Product&#x27;</span>, secondary=order_items,</span><br><span class="line">      backref=db.backref(<span class="string">&#x27;orders&#x27;</span>, lazy=<span class="literal">True</span>))</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Product</span>(<span class="params">db.Model</span>):</span></span><br><span class="line">  <span class="built_in">id</span> = db.Column(db.Integer, primary_key=<span class="literal">True</span>)</span><br><span class="line">  name = db.Column(db.String(), nullable=<span class="literal">False</span>)</span><br></pre></td></tr></table></figure>
 
 <p>Until now, we’ve learnt how to model relationship in a relational database (PostgreSQL). We also have learnt how to build a web app connected to database using a Python library, i.e. SQLAlchemy. It supports CRUD operations.</p>
-<img src="/2021/07/15/Web%20Development/Web-Dev-1-SQL-and-Data-Modeling-V/congs.gif" class="">]]></content>
+<img src="/2021/07/15/Web%20Development/Full%20Stack%20Web%20Dev%20Program/Web-Dev-1-SQL-and-Data-Modeling-V/congs.gif" class="">]]></content>
       <categories>
         <category>Web Development</category>
+        <category>Full Stack Web Dev Program</category>
+      </categories>
+      <tags>
+        <tag>web</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Web Dev(2): API Dev and Doc(II)</title>
+    <url>/2021/07/17/Web%20Development/Full%20Stack%20Web%20Dev%20Program/Web-Dev-2-API-Dev-and-Doc-II/</url>
+    <content><![CDATA[<p>Until now, we’ve learnt,</p>
+<ul>
+<li>how to organize API endpoints</li>
+<li>how to handle CORS</li>
+<li>how to parse the request path and body<ul>
+<li>pagination</li>
+</ul>
+</li>
+<li>how to use POST/PATCH/GET/DELETE request in Flask</li>
+<li>How to handle error with <code>@app.errorhanlder()</code></li>
+</ul>
+<p>We need to test API to ensure its correctness. In this blog, I will talk about <strong>unit tests</strong>, which make the process of testing much more faster. Then, I will talk about API documentation.</p>
+<span id="more"></span>
+
+<h2 id="API-Testing"><a href="#API-Testing" class="headerlink" title="API Testing"></a>API Testing</h2><h3 id="Overview"><a href="#Overview" class="headerlink" title="Overview"></a>Overview</h3><p>As developers, we need to write unit tests for our APIs to verify its behavior, and besides, unit tests can ensure that when we update APIs, we can still easily test all previous functionality.</p>
+<p>For APIs, test should be written:</p>
+<ul>
+<li>To confirm expected request handling behavior</li>
+<li>To confirm success-response structure is correct</li>
+<li>To confirm expected errors are handled appropriately</li>
+<li>To confirm CRUD operations are correct and persistent</li>
+</ul>
+<p>The order of operations for application development should always be:</p>
+<ul>
+<li>Discovery: market research, technical documentation specification, feature map.</li>
+<li>Design: sketch, wireframe, mockup.</li>
+<li>Development: front-end and back-end.</li>
+<li>Quality Assurance</li>
+<li>Release to the store – deployment.</li>
+<li>Maintenance, technical support and further software development.</li>
+</ul>
+<img src="/2021/07/17/Web%20Development/Full%20Stack%20Web%20Dev%20Program/Web-Dev-2-API-Dev-and-Doc-II/app-quality-assurance.png" class="" title="Quality Assurance">
+
+
+<h3 id="Testing-in-Flask"><a href="#Testing-in-Flask" class="headerlink" title="Testing in Flask"></a>Testing in Flask</h3><p>Let’s look at an example.</p>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line"><span class="comment"># import dependencies</span></span><br><span class="line"><span class="keyword">from</span> flaskr <span class="keyword">import</span> create_app</span><br><span class="line"><span class="keyword">from</span> models <span class="keyword">import</span> setup_db</span><br><span class="line"><span class="keyword">import</span> json</span><br><span class="line"><span class="keyword">import</span> unittest</span><br><span class="line"></span><br><span class="line"><span class="comment"># define the test case class for app or section of app</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">AppNameTestCase</span>(<span class="params">unittest.TestCase</span>):</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot; This class represents the _____ test case. &quot;&quot;&quot;</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">setUp</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="string">&quot;&quot;&quot; Define test variables and initialize app. &quot;&quot;&quot;</span></span><br><span class="line">        self.app = create_app()</span><br><span class="line">        self.client = self.app.test_client</span><br><span class="line">        self.database_name = <span class="string">&quot;test_db&quot;</span></span><br><span class="line">        self.database_path = <span class="string">&quot;postgresql://&#123;&#125;/&#123;&#125;&quot;</span>.<span class="built_in">format</span>(</span><br><span class="line">            <span class="string">&#x27;localhost:5432&#x27;</span>, self.database_name</span><br><span class="line">        )</span><br><span class="line">        setup_db(self.app, self.database_path)</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">def</span> <span class="title">tearDown</span>(<span class="params">self</span>):</span></span><br><span class="line">            <span class="string">&quot;&quot;&quot; Run after each test. &quot;&quot;&quot;</span></span><br><span class="line">            <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">def</span> <span class="title">test_given_behavior</span>(<span class="params">self</span>):</span></span><br><span class="line">            <span class="string">&quot;&quot;&quot; Test the given behavior. &quot;&quot;&quot;</span></span><br><span class="line">            response = self.client().get(<span class="string">&#x27;/&#x27;</span>)</span><br><span class="line">            self.assertEqual(response.status_code, <span class="number">200</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># make the tests executable</span></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    unittest.main()</span><br></pre></td></tr></table></figure>
+
+
+<p>🍉 External Resource: </p>
+<ul>
+<li><a href="http://docs.jinkan.org/docs/flask/testing.html">Flask Testing</a></li>
+<li><a href="https://github.com/rileywang0819/demo-bookshelf-api/blob/master/backend/test_flaskr.py">tests of Bookshelf API</a></li>
+</ul>
+<h3 id="TDD"><a href="#TDD" class="headerlink" title="TDD"></a>TDD</h3><p>Test-Driven Development (or TDD) is a software development paradigm used very commonly in production. It is based on a short, rapid development cycle in which tests are written before the executable code and constantly iterated on.</p>
+<img src="/2021/07/17/Web%20Development/Full%20Stack%20Web%20Dev%20Program/Web-Dev-2-API-Dev-and-Doc-II/TDD-cycle.JPG" class="">
+
+
+<h2 id="Documentation"><a href="#Documentation" class="headerlink" title="Documentation"></a>Documentation</h2><h3 id="Doc-Examples"><a href="#Doc-Examples" class="headerlink" title="Doc Examples"></a>Doc Examples</h3><p>Let’s look at some examples of documentaion, which can help you to form intuitive impression about documantion.</p>
+<ul>
+<li><a href="https://developers.google.com/maps/documentation/">Google Maps API</a> : too large </li>
+<li><a href="https://restcountries.eu/">REST countries</a> : without response examples ☹️</li>
+<li><a href="https://stripe.com/docs/api?utm_source=zapier.com&utm_medium=referral&utm_campaign=zapier&utm_source=zapier.com&utm_medium=referral&utm_campaign=zapier">Stripe API</a> : strong and good 😁</li>
+</ul>
+<h3 id="API-Doc"><a href="#API-Doc" class="headerlink" title="API Doc"></a>API Doc</h3><p>Good API documentation allows any developer considering the API to quickly understand the purpose of the API, the data it works with, and how to send requests and parse the responses. Some documentation. particularly for large projects, even host samples which can run withing the doc.</p>
+<p>You’d better includes the following components in your API doc.</p>
+<ul>
+<li>Introduction</li>
+<li>Getting Started<ul>
+<li>Base URL</li>
+<li>API Keys /Authentication (if applicable)</li>
+</ul>
+</li>
+<li>Errors<ul>
+<li>Response codes</li>
+<li>Messages</li>
+<li>Error types</li>
+</ul>
+</li>
+<li>Resource endpoint library<ul>
+<li>Organized by resource</li>
+<li>Include each endpoint</li>
+<li>Sample request</li>
+<li>Arguments including data types</li>
+<li>Response object including status codes and data types</li>
+</ul>
+</li>
+</ul>
+<hr>
+<p>Example</p>
+<figure class="highlight md"><table><tr><td class="code"><pre><span class="line"><span class="section"># Getting started</span></span><br><span class="line"></span><br><span class="line">Now, add a Getting Started section to your documentation. </span><br><span class="line">Remember, this should include at least your base URL and an explanation of authentication.</span><br><span class="line">Feel free to provide other information that is relevant for your API.</span><br><span class="line"></span><br><span class="line"><span class="section"># Error Handling</span></span><br><span class="line">Now, add an Error Handling section to your documentation. </span><br><span class="line">It should include the format of the error responses the client can expect as well as which status codes you use.</span><br><span class="line"></span><br><span class="line"><span class="bullet">-</span> Response codes</span><br><span class="line"><span class="bullet">-</span> Messages</span><br><span class="line"><span class="bullet">-</span> Error types</span><br><span class="line"></span><br><span class="line"><span class="section"># Endpoint Library</span></span><br><span class="line"></span><br><span class="line">Now, add an Endpoint Library section to your documentation. </span><br><span class="line">Make sure that endpoints, methods and returned data are all clear. </span><br><span class="line">Consider including sample requests for clarity</span><br><span class="line"></span><br><span class="line"><span class="bullet">-</span> Organized by resource</span><br><span class="line"><span class="bullet">-</span> Include each endpoint</span><br><span class="line"><span class="bullet">-</span> Sample request</span><br><span class="line"><span class="bullet">-</span> Arguments including data types</span><br><span class="line"><span class="bullet">-</span> Response object including status codes and data types</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="Project-Doc"><a href="#Project-Doc" class="headerlink" title="Project Doc"></a>Project Doc</h3><p>All good, well-documented projects have a README.md file that should clearly explain the project and how to get started with it to any developers who may want to use or contribute to the project.</p>
+<p>Here is an example of how to constrcut the project’s doc.</p>
+<ul>
+<li><p>Project Title</p>
+<ul>
+<li>Description of project and motivation</li>
+<li>Screenshots (if applicable), with captions</li>
+<li>Code Style if you are following particular style guides</li>
+</ul>
+</li>
+<li><p>Getting Started</p>
+<ul>
+<li>Prerequisites &amp; Installation, including code samples for how to download all pre-requisites</li>
+<li>Local Development, including how to set up the local development environment and run the project locally</li>
+<li>Tests and how to run them</li>
+</ul>
+</li>
+<li><p>API Reference. If the API documentation is not very long, it can be included in the README</p>
+</li>
+<li><p>Deployment (if applicable)</p>
+</li>
+<li><p>Authors</p>
+</li>
+<li><p>Acknowledgements</p>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>Web Development</category>
+        <category>Full Stack Web Dev Program</category>
       </categories>
       <tags>
         <tag>web</tag>
@@ -2436,7 +2707,7 @@
   </entry>
   <entry>
     <title>Web Dev: A Primer</title>
-    <url>/2021/07/13/Web%20Development/Web-Dev-0-A-Primer/</url>
+    <url>/2021/07/13/Web%20Development/Full%20Stack%20Web%20Dev%20Program/Web-Dev-0-A-Primer/</url>
     <content><![CDATA[<p>This blog introduces everything about web development. You will have a better idea of what different technologies are out there and what you’ll want to learn if you want to get into web development.</p>
 <p>🌼 Reminder: <em>Keep learning if you don’t want to be weeded out.</em></p>
 <span id="more"></span>
@@ -2447,7 +2718,7 @@
 <hr>
 <p>The <strong>World Wide Web (WWW)</strong>, commonly known as the <strong>Web</strong>, is an information system where documents and other web resources are identified by <code>Uniform Resource Locators (URLs, such as https://example.com/)</code>, which may be interlinked by hyperlinks, and are accessible over the Internet. The resources of the Web are transferred via the <code>Hypertext Transfer Protocol (HTTP)</code>, may be accessed by users by a software application called a <code>web browser</code>, and are published by a software application called a <code>web server</code>. The World Wide Web is not synonymous with the Internet, Web can be seen as one of services provided by the Internet.</p>
 <hr>
-<h4 id="Network-layers"><a href="#Network-layers" class="headerlink" title="Network layers"></a>Network layers</h4><img src="/2021/07/13/Web%20Development/Web-Dev-0-A-Primer/Internet-layer.jpg" class="" title="Network Layers">
+<h4 id="Network-layers"><a href="#Network-layers" class="headerlink" title="Network layers"></a>Network layers</h4><img src="/2021/07/13/Web%20Development/Full%20Stack%20Web%20Dev%20Program/Web-Dev-0-A-Primer/Internet-layer.jpg" class="" title="Network Layers">
 
 
 <p>The network are typically divided into abstract layers, each of which performs a specific task that aids in the overall communication process:</p>
@@ -2467,7 +2738,7 @@
 <p>Each layer is built on top of the previous layer. And each layer has <code>protocols</code> that implement specific functionalities that are involved in the data exchange process.</p>
 <h3 id="How-does-Web-work"><a href="#How-does-Web-work" class="headerlink" title="How does Web work?"></a>How does Web work?</h3><p>We have already know that clients send messages to servers requesting data, and servers respond with the required data. but how is this data transferred?</p>
 <p>To answer this question, first, we will define the structure of the Internet. Then talk about how data is transported across the network.</p>
-<img src="/2021/07/13/Web%20Development/Web-Dev-0-A-Primer/internet-structure.png" class="">
+<img src="/2021/07/13/Web%20Development/Full%20Stack%20Web%20Dev%20Program/Web-Dev-0-A-Primer/internet-structure.png" class="">
 
 <h4 id="1-Switches"><a href="#1-Switches" class="headerlink" title="1. Switches"></a>1. Switches</h4><p>The Internet is comprised of devices known as <strong>switches(交换机)</strong> that facilitate the connection of each device to every other device on the network. The devices themselves are referred to as end-systems. End-systems are connected to switches through <strong>links</strong> and all of the switches are, in turn, connected to each other. Thus ensuring that every end-system on the Internet is implicitly connected to every other end-system.</p>
 <p>In addition to connecting end-systems to one another, switches facilitate the communication between any two end-systems by forwarding packets(转发数据包) along the path that they know exists between the packet source and destination. So basically, switches store pre-determined paths between end-systems and forwards packets among them.</p>
@@ -2477,7 +2748,7 @@
 <h4 id="4-TCP"><a href="#4-TCP" class="headerlink" title="4. TCP"></a>4. TCP</h4><p>The primarily used protocol for communication between a web application and a browser is referred to as the <code>Transmission Control Protocol (TCP)</code>. TCP is a transport layer protocol that takes the responsibility of transmitting data and ensures reliable data transfer between clients and servers across the web. </p>
 <p>The way TCP does is by adding additional information to data packets that allow for packet authentication(认证), and by allowing the exchange of acknowledgment messages between the client and server to confirm data transmissions.</p>
 <p>The TCP protocol starts with a <code>3-way handshake</code>. The handshake allows both ends (server and client) to initiate and maintain several TCP connections at once.</p>
-<img src="/2021/07/13/Web%20Development/Web-Dev-0-A-Primer/3-Way-TCP-Handshake.png" class="">
+<img src="/2021/07/13/Web%20Development/Full%20Stack%20Web%20Dev%20Program/Web-Dev-0-A-Primer/3-Way-TCP-Handshake.png" class="">
 
 
 <h4 id="5-HTTP-amp-HTTPS"><a href="#5-HTTP-amp-HTTPS" class="headerlink" title="5. HTTP &amp; HTTPS"></a>5. HTTP &amp; HTTPS</h4><p>After initiating TCP connections, clients and servers communicate with each other by sending messages to one another. Now, we will look into exactly how these messages are structured.</p>
@@ -2498,7 +2769,7 @@
 <p>$ Linux, macOS: ifconfig<br>$ Windows: ipconfig </p>
 </blockquote>
 <h4 id="DNS"><a href="#DNS" class="headerlink" title="DNS"></a>DNS</h4><p>You may be wondering now where the IP address comes in if you reach websites through URLs. Well, that’s where <code>DNS (Domain Name System)</code> comes in. Routers across the web do not store URLs for every single website hosted on the Internet, they only know IP addresses and forward packets towards their destinations based on them. Users, however, only know URLs, or domain names, for the websites they are visiting. To bridge this clear gap of information, the Internet makes use of <strong>DNS servers</strong>, which serve as translational intermediaries between end-systems and the routers that serve to forward data packets coming from them to their destinations. The process of making a lookup for a domain name on a DNS server and obtaining its corresponding IP address is referred to as a <strong>DNS resolution(解析)</strong>.</p>
-<img src="/2021/07/13/Web%20Development/Web-Dev-0-A-Primer/DNS-work.png" class="">
+<img src="/2021/07/13/Web%20Development/Full%20Stack%20Web%20Dev%20Program/Web-Dev-0-A-Primer/DNS-work.png" class="">
 
 
 <h3 id="Vedio-Life-of-a-Packet"><a href="#Vedio-Life-of-a-Packet" class="headerlink" title="Vedio: Life of a Packet"></a>Vedio: Life of a Packet</h3><p>You can watch <a href="https://www.youtube.com/watch?v=9BGWrLiT9qs">this vedio: Life of an IP Packet</a> to know exactly how data goes from a client to server. Although some terminology used in it might not exactly be up-to-date, but the underpinnings are essentially the same today. It is a nice overview for beginners.</p>
@@ -2512,7 +2783,7 @@
 <p><strong>Static websites</strong> are ones that only display information such as text or pictures on their web pages that users cannot interact with.</p>
 <p><strong>Dynamic websites</strong>, on the other hand, allow for user interaction such as login or click the button, and that is where Databases come into the picture. The information that web applications are able to display or allow you to access, needs to be stored in database associated with the web application.</p>
 <p>Think of any website you’ve visited today. How many of them required for you to sign in or allowed you to click on a button that retrieved some information, perhaps even a new web page, for you? This information that web applications are able to display to you or process to allow you to access other information needs to be stored somewhere. That somewhere is a database associated with the web application.</p>
-<img src="/2021/07/13/Web%20Development/Web-Dev-0-A-Primer/basic-struc-dynamic-website.JPG" class="">
+<img src="/2021/07/13/Web%20Development/Full%20Stack%20Web%20Dev%20Program/Web-Dev-0-A-Primer/basic-struc-dynamic-website.JPG" class="">
 
 
 <h4 id="DBMS"><a href="#DBMS" class="headerlink" title="DBMS"></a>DBMS</h4><p><strong>Database Management System(DBMS)</strong> allows data to be separated from the logic of the application and stored separately. When application needs data, it then makes calls to database for any required data without having to integrate large amounts of handling code within the application code itself.</p>
@@ -2531,7 +2802,7 @@
 <p>Consequently, with modern web applications increasingly requiring fast response times to achieve intended functionality, the shift towards using NoSQL databases has been apparent in recent times.</p>
 <h3 id="Web-Caching"><a href="#Web-Caching" class="headerlink" title="Web Caching"></a>Web Caching</h3><p><strong>Web caching</strong> is a design feature of the HTTP protocol that is meant to minimize the amount of traffic an application is handling at any given point in order to improve the responsiveness of the web application, as perceived by users, as a whole. In order to do this, caches are used at each level starting from the server itself all the way to users’ browsers, and each of them is meant to store data that users are very likely to request.</p>
 <p>Essentially, web caching works by caching HTTP responses for certain requests according to a probabilistic analysis of requests that are frequently observed on the server. Subsequent requests for cached content can then be fulfilled from a cache closer to the user instead of having to send the request all the way back to the web server, which then makes a call to the database for the required data.</p>
-<img src="/2021/07/13/Web%20Development/Web-Dev-0-A-Primer/web-cache.png" class="">
+<img src="/2021/07/13/Web%20Development/Full%20Stack%20Web%20Dev%20Program/Web-Dev-0-A-Primer/web-cache.png" class="">
 
 <p>There are multiple benefits of web caching, each of which has been enumerated below:</p>
 <ul>
@@ -2566,6 +2837,7 @@
 <h2 id="Web-Development-Frameworks"><a href="#Web-Development-Frameworks" class="headerlink" title="Web Development Frameworks"></a>Web Development Frameworks</h2><h2 id="Version-Control-with-Git"><a href="#Version-Control-with-Git" class="headerlink" title="Version Control with Git"></a>Version Control with Git</h2><h2 id="Principles-of-Software-Engineering"><a href="#Principles-of-Software-Engineering" class="headerlink" title="Principles of Software Engineering"></a>Principles of Software Engineering</h2><h2 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h2>]]></content>
       <categories>
         <category>Web Development</category>
+        <category>Full Stack Web Dev Program</category>
       </categories>
       <tags>
         <tag>web</tag>
@@ -2573,7 +2845,7 @@
   </entry>
   <entry>
     <title>Web Dev(1): SQL and Data Modelding(III)</title>
-    <url>/2021/07/13/Web%20Development/Web-Dev-1-SQL-and-Data-Modelding-III/</url>
+    <url>/2021/07/13/Web%20Development/Full%20Stack%20Web%20Dev%20Program/Web-Dev-1-SQL-and-Data-Modelding-III/</url>
     <content><![CDATA[<p>In this blog, I’ll show the process of building a web application capable of <strong>CRUD</strong> on a connected database by using everything we’ve talked so far.</p>
 <span id="more"></span>
 
@@ -2640,11 +2912,11 @@
 
 <figure class="highlight py"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Models</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Todo</span>(<span class="params">db.Model</span>):</span></span><br><span class="line">    __tablename__ = <span class="string">&#x27;todos&#x27;</span></span><br><span class="line">    <span class="built_in">id</span> = db.Column(db.Integer, primary_key=<span class="literal">True</span>)</span><br><span class="line">    description = db.Column(db.String(), nullable=<span class="literal">False</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/&#x27;</span></span>)  </span><span class="comment"># listen to the route</span></span><br><span class="line"><span class="comment"># index method is the controller</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">index</span>():</span></span><br><span class="line">    <span class="keyword">return</span> render_template(<span class="string">&#x27;hp.html&#x27;</span>, todos=Todos.query.<span class="built_in">all</span>())  <span class="comment"># Todos.query.all() is also Models</span></span><br></pre></td></tr></table></figure>
 
-<img src="/2021/07/13/Web%20Development/Web-Dev-1-SQL-and-Data-Modelding-III/MVC.JPG" class="">
+<img src="/2021/07/13/Web%20Development/Full%20Stack%20Web%20Dev%20Program/Web-Dev-1-SQL-and-Data-Modelding-III/MVC.JPG" class="">
 
 
 <h3 id="5-3-Handling-User-Input"><a href="#5-3-Handling-User-Input" class="headerlink" title="5.3 Handling User Input"></a>5.3 Handling User Input</h3><p>Creating, updating, and deleting information from a database requires handling user input on what is being created/updated/deleted.</p>
-<img src="/2021/07/13/Web%20Development/Web-Dev-1-SQL-and-Data-Modelding-III/MVC-with-user-input.JPG" class="">
+<img src="/2021/07/13/Web%20Development/Full%20Stack%20Web%20Dev%20Program/Web-Dev-1-SQL-and-Data-Modelding-III/MVC-with-user-input.JPG" class="">
 
 <p>🌼 🌼 🌼 </p>
 <p>Our todo app uses MVC pattern. Use “C” in CRUD as example, the process of adding “create todo item functionality” is as follows,</p>
@@ -2688,8 +2960,8 @@
 <li>The POST submission : On submit, we send off an <strong>HTTP POST request</strong> to the route “/create” with a request body. The request body stringifies(字符串化) the key-value pairs of fields from the form (as part of the name attribute) along with their values.</li>
 <li>The GET submission : Sends off a GET request with <strong>URL query parameters</strong> that appends the form data to the URL, which is ideal for smaller form submissions.</li>
 </ul>
-<img src="/2021/07/13/Web%20Development/Web-Dev-1-SQL-and-Data-Modelding-III/post-vs-get.JPG" class="">
-<img src="/2021/07/13/Web%20Development/Web-Dev-1-SQL-and-Data-Modelding-III/post-vs-get2.JPG" class="">
+<img src="/2021/07/13/Web%20Development/Full%20Stack%20Web%20Dev%20Program/Web-Dev-1-SQL-and-Data-Modelding-III/post-vs-get.JPG" class="">
+<img src="/2021/07/13/Web%20Development/Full%20Stack%20Web%20Dev%20Program/Web-Dev-1-SQL-and-Data-Modelding-III/post-vs-get2.JPG" class="">
 
 <p>POSTs are ideal for longer form submissions, since URL query parameters can only be so long compared to request bodies (max 64K, i.e. 2048 characters). Moreover, forms can only send POST and GET requests, and nothing else.</p>
 <p><em>Click <a href="https://www.oschina.net/news/77354/http-get-post-different">here</a> to see more details about POST and GET.</em></p>
@@ -2728,7 +3000,7 @@
 </ol>
 <p>同步请求的原理：当浏览器向服务器发送同步请求时，服务器处理同步请求的过程中，浏览器会处于等待的状态，服务器处理完请求把数据响应给浏览器并覆盖浏览器内存中原有的数据，浏览器重新加载页面并展示服务器响应的数据。</p>
 <p>异步请求的原理：浏览器把请求交给代理对象—&gt; XMLHttpRequest（绝大多数浏览器都内置了这个对象），由代理对象向服务器发起请求，接收、解析服务器响应的数据，并把数据更新到浏览器指定的控件上。从而实现了页面数据的局部刷新。</p>
-<img src="/2021/07/13/Web%20Development/Web-Dev-1-SQL-and-Data-Modelding-III/sync-async.jpg" class="">
+<img src="/2021/07/13/Web%20Development/Full%20Stack%20Web%20Dev%20Program/Web-Dev-1-SQL-and-Data-Modelding-III/sync-async.jpg" class="">
 
 <hr>
 <p>There are various libraries candidates (such as <code>axios</code> and<code> jQuery</code>) can be used to send AJAX requests from the client. But no matter what library you use, under the hood, you are using one of two methods to send AJAX request (Async requests) :</p>
@@ -2768,7 +3040,7 @@
 <p>Why this happened?</p>
 <p>See the above code. Actually, we close the session before returning json data to the client. It’s like our new_todo object was detached from our session.</p>
 <p>There is a default setting that is applied to every database session instance.</p>
-<img src="/2021/07/13/Web%20Development/Web-Dev-1-SQL-and-Data-Modelding-III/expire_on_commit.JPG" class="">
+<img src="/2021/07/13/Web%20Development/Full%20Stack%20Web%20Dev%20Program/Web-Dev-1-SQL-and-Data-Modelding-III/expire_on_commit.JPG" class="">
 
 <p>Additionally, the route handler should always return something or raise an intentional exception, in the case of an error. To fix this with a simple solution, we can simply import abort from Flask, and we can call <code>abort(&lt;status code&gt;)</code>, e.g. with status code 500 –&gt; <code>abort(500)</code> to rise an HTTPException for an Internal Server Error, in order to abort a request and prevent it from expecting a returned result.</p>
 <p>Finally, we can get the following code,</p>
@@ -2777,6 +3049,7 @@
 ]]></content>
       <categories>
         <category>Web Development</category>
+        <category>Full Stack Web Dev Program</category>
       </categories>
       <tags>
         <tag>web</tag>
@@ -2784,13 +3057,13 @@
   </entry>
   <entry>
     <title>Web Dev(1): SQL and Data Modeling(IIII)</title>
-    <url>/2021/07/14/Web%20Development/Web-Dev-1-SQL-and-Data-Modeling-IIII/</url>
+    <url>/2021/07/14/Web%20Development/Full%20Stack%20Web%20Dev%20Program/Web-Dev-1-SQL-and-Data-Modeling-IIII/</url>
     <content><![CDATA[<p>Until now, we have learned how to develop app on MVC pattern, and how to add READ and CREATE functionality. We have also learned how to send request asynchronously using AJAX.</p>
 <p>In this section, we will learn how to change our data models over time, and buil our todo app further.</p>
 <span id="more"></span>
 
 <h2 id="Migrations"><a href="#Migrations" class="headerlink" title="Migrations"></a>Migrations</h2><h3 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h3><p>Requirements can change, thus sometimes we need to modify our data schema over time. <strong>Migrations</strong> deal with how we manage modifications to our data schema.</p>
-<img src="/2021/07/14/Web%20Development/Web-Dev-1-SQL-and-Data-Modeling-IIII/migration-examplel.JPG" class="">
+<img src="/2021/07/14/Web%20Development/Full%20Stack%20Web%20Dev%20Program/Web-Dev-1-SQL-and-Data-Modeling-IIII/migration-examplel.JPG" class="">
 
 <p>So, migration is a file that keep track of changes to our database schema (structure of our database). You can think them as <code>git commits</code>, which offers version control on data schema.</p>
 <ul>
@@ -2810,10 +3083,10 @@
 <li><code>Flask-Script</code> lets us run migration scripts we defined, from the terminal</li>
 </ul>
 <p>Finally, let’s talk about why use migrations.</p>
-<img src="/2021/07/14/Web%20Development/Web-Dev-1-SQL-and-Data-Modeling-IIII/manage-changes-to-the-schema.JPG" class="">
+<img src="/2021/07/14/Web%20Development/Full%20Stack%20Web%20Dev%20Program/Web-Dev-1-SQL-and-Data-Modeling-IIII/manage-changes-to-the-schema.JPG" class="">
 
-<img src="/2021/07/14/Web%20Development/Web-Dev-1-SQL-and-Data-Modeling-IIII/without-migration.JPG" class="" title="Without Migrations">
-<img src="/2021/07/14/Web%20Development/Web-Dev-1-SQL-and-Data-Modeling-IIII/with-migration.JPG" class="" title="With Migrations">
+<img src="/2021/07/14/Web%20Development/Full%20Stack%20Web%20Dev%20Program/Web-Dev-1-SQL-and-Data-Modeling-IIII/without-migration.JPG" class="" title="Without Migrations">
+<img src="/2021/07/14/Web%20Development/Full%20Stack%20Web%20Dev%20Program/Web-Dev-1-SQL-and-Data-Modeling-IIII/with-migration.JPG" class="" title="With Migrations">
 
 <hr>
 <p>🦊 Self Opinion on Migration</p>
@@ -2863,7 +3136,7 @@
 <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">~$</span><span class="bash"> flask db migrate</span></span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">~$</span><span class="bash"> flask db upgrade</span></span><br></pre></td></tr></table></figure>
 
 <p>Now, the data schema has changed.</p>
-<img src="/2021/07/14/Web%20Development/Web-Dev-1-SQL-and-Data-Modeling-IIII/model-change.JPG" class="">
+<img src="/2021/07/14/Web%20Development/Full%20Stack%20Web%20Dev%20Program/Web-Dev-1-SQL-and-Data-Modeling-IIII/model-change.JPG" class="">
 
 
 <ol start="6">
@@ -2915,6 +3188,275 @@
 ]]></content>
       <categories>
         <category>Web Development</category>
+        <category>Full Stack Web Dev Program</category>
+      </categories>
+      <tags>
+        <tag>web</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Web Dev(2): API Dev and Doc(I)</title>
+    <url>/2021/07/17/Web%20Development/Full%20Stack%20Web%20Dev%20Program/Web-Dev-2-API-Dev-and-Doc-I/</url>
+    <content><![CDATA[<p>In this and next blog, I will talk about skills about API development including,</p>
+<ol>
+<li><strong>APIs</strong> : what APIs are and how do they work.</li>
+<li><strong>Handling HTTP Requests</strong> : HTTP, Flask, and writing and accessing endpoints.</li>
+<li><strong>Routing and API Endpoints</strong> : how to use endpoints and <code>payloads</code> (information passed along with the request) to extend the functionality of APIs, also learn to organize API endpoints, handling Cross-Origin Resource Sharing (CORS) requests, parsing different request types, and handling errors.</li>
+<li><strong>Documentation</strong> - learn to write documentation。</li>
+<li><strong>Testing</strong> - learn <code>unit testing</code> and <code>test-driven development (TDD)</code>.</li>
+</ol>
+<span id="more"></span>
+
+<h2 id="Introdcution-to-APIs"><a href="#Introdcution-to-APIs" class="headerlink" title="Introdcution to APIs"></a>Introdcution to APIs</h2><h3 id="What-are-APIs"><a href="#What-are-APIs" class="headerlink" title="What are APIs?"></a>What are APIs?</h3><p><strong>API (Application Programming Interface)</strong> is an interface which has been created to help two different systems interact with one another.</p>
+<p>The defined functionality of API is independent of the actual implementation. You don’t need to understand the entirety of the application implementation in order to interact with it through the API. This has multiple benefits:</p>
+<ul>
+<li>It doesn’t expose the implementation to those who shouldn’t have access to it.</li>
+<li>The API provides a standard way of accessing the application.</li>
+<li>It makes much easier to understand how to access the application’s data.</li>
+</ul>
+<p>🦁 Resources: Some frequently used APIs include:</p>
+<ul>
+<li><a href="https://developers.google.com/maps/documentation/">Google Maps API</a></li>
+<li><a href="https://stripe.com/docs/api?utm_source=zapier.com&utm_medium=referral&utm_campaign=zapier&utm_source=zapier.com&utm_medium=referral&utm_campaign=zapier">Stripe API</a></li>
+<li><a href="https://developers.facebook.com/docs">Facebook API</a></li>
+<li><a href="https://developers.facebook.com/docs">Instagram API</a></li>
+<li><a href="https://developer.spotify.com/documentation/web-api/">Spotify API</a></li>
+</ul>
+<p>External Resource: <a href="https://blog.postman.com/intro-to-apis-what-is-an-api/">Postman blog - What is an API?</a></p>
+<h3 id="How-APIs-work"><a href="#How-APIs-work" class="headerlink" title="How APIs work?"></a>How APIs work?</h3><img src="/2021/07/17/Web%20Development/Full%20Stack%20Web%20Dev%20Program/Web-Dev-2-API-Dev-and-Doc-I/api-workflow.JPG" class="">
+
+
+<h3 id="RESTful-APIs"><a href="#RESTful-APIs" class="headerlink" title="RESTful APIs"></a>RESTful APIs</h3><p><code>REST</code> stands for <strong>Representational State Transfer</strong>, which is an architectural style(架构风格) introduced by Roy Fielding in 2000.</p>
+<p>Here’s a short summary of the REST principles:</p>
+<ul>
+<li><strong>Uniform Interface :</strong> Every REST architecture must have a standardized way of accessing and processing data resources. This includes unique resource identifiers (i.e., unique URLs) and self-descriptive messages in the server response that describe how to process the representation (for instance JSON vs XML) of the data resource.</li>
+<li><strong>Stateless(无状态) :</strong> Every client request is self-contained in, that the server doesn’t need to store any application data in order to respond to subsequent requests.</li>
+<li><strong>Client-Server :</strong> There must be both a client and server in the architecture.</li>
+<li><strong>Cacheable &amp; Layered System :</strong> Caching and layering increases networking efficiency.</li>
+</ul>
+<img src="/2021/07/17/Web%20Development/Full%20Stack%20Web%20Dev%20Program/Web-Dev-2-API-Dev-and-Doc-I/client-proxy-api.png" class="" title="Using the RESTful APIs">
+
+<p><strong>Why RESTful are stateless?</strong></p>
+<p>It might appear easier to design a server that isn’t stateless. There is a reason why RESTful web servers are not allowed to remember anything about the previous requests that the user has sent. In short, <strong>stateless servers make your applications scalable</strong>.</p>
+<p>External Resource:</p>
+<ul>
+<li><a href="https://stackoverflow.com/questions/671118/what-exactly-is-restful-programming">What exactly is RESTful programming?</a></li>
+<li>An article from StackOverflow blogs- <a href="https://stackoverflow.blog/2020/03/02/best-practices-for-rest-api-design/">Best practices for REST API design</a></li>
+<li>blog: <a href="https://cloud.tencent.com/developer/article/1590279">什么是RESTful风格的API设计</a></li>
+</ul>
+<h2 id="HTTP-and-Flask-Basics"><a href="#HTTP-and-Flask-Basics" class="headerlink" title="HTTP and Flask Basics"></a>HTTP and Flask Basics</h2><h3 id="Introduction-to-HTTP"><a href="#Introduction-to-HTTP" class="headerlink" title="Introduction to HTTP"></a>Introduction to HTTP</h3><p>HTTP has been the foundation of Internet communication since 1990.</p>
+<p>HTTP Features:</p>
+<ul>
+<li><strong>Connectionless:</strong> When a request is sent, the client opens the connection; once a response is received, the client closes the connection. The client and server only maintain a connection during the response and request. Future responses are made on a new connection. (When a connection has been opened, it means that the port on the client/server is occupied)</li>
+<li><strong>Stateless :</strong> There is no dependency between successive requests.</li>
+<li><strong>Not Sessionless :</strong> Utilizing headers, cookies and caching, sessions can be created to allow each HTTP request to share the same context. (img you visit Facebook and send various request with the same account)</li>
+<li><strong>Media Independent :</strong> Any type of data can be sent over HTTP as long as both the client and server know how to handle the data format. In our case, we’ll use <code>JSON</code>.</li>
+</ul>
+<hr>
+<p>🦄 <strong>Notes on Cookie</strong></p>
+<ol>
+<li>用途：</li>
+</ol>
+<p>因为 HTTP 协议是无状态的，即服务器不知道用户上一次做了什么，这严重阻碍了交互式 Web 应用程序的实现。在典型的网上购物场景中，用户浏览了几个页面，买了一盒饼干和两瓶饮料。最后结帐时，由于 HTTP 的无状态性，不通过额外的手段，服务器并不知道用户到底买了什么，所以 Cookie 就是用来绕开 HTTP 的无状态性的“额外手段”之一。服务器可以设置或读取 Cookies 中包含的信息，借此维护用户跟服务器会话中的状态。</p>
+<p>在刚才的购物场景中，当用户选购了第一项商品，服务器在向用户发送网页的同时，还发送了一段 Cookie，记录着那项商品的信息。当用户访问另一个页面，浏览器会把 Cookie 发送给服务器，于是服务器知道他之前选购了什么。用户继续选购饮料，服务器就在原来那段 Cookie 裡追加新的商品信息。结帐时，服务器读取发送来的 Cookie 即可。</p>
+<p>Cookie 另一个典型的应用是当登录一个网站时，网站往往会请求用户输入用户名和密码，并且用户可以勾选“下次自动登录”。如果勾选了，那么下次访问同一网站时，用户会发现没输入用户名和密码就已经登录了。这正是因为前一次登录时，服务器发送了包含登录凭据（用户名加密码的某种加密形式）的 Cookie 到用户的硬盘上。第二次登录时，如果该 Cookie 尚未到期，浏览器会发送该 Cookie，服务器验证凭据，于是不必输入用户名和密码就让用户登录了。</p>
+<ol start="2">
+<li>分类</li>
+</ol>
+<p>Cookie 保存在客户端中，按在客户端中的存储位置，可分为内存 Cookie 和硬盘 Cookie。</p>
+<p>内存 Cookie 由浏览器维护，保存在内存中，浏览器关闭即消失，存在时间短暂。硬盘 Cookie 保存在硬盘裡，有过期时间，除非用户手动清理或到了过期时间，硬盘 Cookie 不会清除，存在时间较长。所以，按存在时间，可分为非持久 Cookie 和持久 Cookie。</p>
+<ol start="3">
+<li>缺陷</li>
+</ol>
+<ul>
+<li>Cookie 会被附加在每个 HTTP 请求中，所以无形中增加了流量。</li>
+<li>由于 HTTP 请求中的 Cookie 是明文传递的，所以安全性成问题，除非使用 <em>超文本传输安全协定(HTTPs)</em> 。</li>
+<li>Cookie 的大小限制在 4 KB 左右，对于复杂的存储需求来说是不够用的。</li>
+</ul>
+<hr>
+<p>HTTP Elements:</p>
+<ul>
+<li><p><strong>Universal Resource Identifiers (URIs, 统一资源标识符) :</strong> URIs are basically URLs or address which point to specific resources. An example URI is like: <code>http://www.example.com/tasks/term=homework</code> . It has certain components:</p>
+<ul>
+<li><strong>Scheme:</strong> specifies the protocol used to access the resource, HTTP or HTTPS. In our example <code>http</code> .</li>
+<li><strong>Host:</strong> specifies the host that holds the resources. In our example <code>www.example.com</code> .</li>
+<li><strong>Path:</strong> specifies the specific resource being requested. In our example, <code>/tasks</code> .</li>
+<li><strong>Query:</strong> an optional component, the query string provides information the resource can use for some purpose such as a search parameter. In our example it is <code>/term=homework</code> .</li>
+</ul>
+</li>
+<li><p><strong>Messages :</strong> Requests and Responses.</p>
+</li>
+<li><p><strong>Status Code :</strong> e.g. 404 NOT FOUND </p>
+</li>
+</ul>
+<hr>
+<p>🦓 Supplement: <code>URI</code> vs. <code>URL</code></p>
+<p>You may be unsure what the difference is between a <strong>URI (Universal Resource Identifier)</strong> and a <strong>URL (Universal Resource Locator)</strong> . These terms tend to get confused a lot, and are even frequently used interchangeably—but there is a distinction.</p>
+<p>The term URI can refer to any identifier for a resource—for example, it could be either the name of a resource or the address of a resource (since both the name and address are identifiers of that resource). In contrast, URL only refers to the location of a resource—in other words, it only ever refers to an address.</p>
+<p>So, “URI” could refer to a name or an address, while “URL” only refers to an address. Thus, URLs are a specific type of URI that is used to locate a resource on the internet when a client makes a request to a server.</p>
+<hr>
+<p>🐑 <strong>Resource</strong> : <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Overview">MDN Web Docs - An overview of HTTP</a></p>
+<h3 id="HTTP-Requests-and-Responses"><a href="#HTTP-Requests-and-Responses" class="headerlink" title="HTTP Requests and Responses"></a>HTTP Requests and Responses</h3><h4 id="Requests"><a href="#Requests" class="headerlink" title="Requests"></a>Requests</h4><p>HTTP requests are sent from the client to the server to initiate some operation. it has some elements to specify the requested resource.</p>
+<ul>
+<li>Method: Defines the operation to be performed.</li>
+<li>Path: The URL of the resource to be fetched, excluding the scheme and host.</li>
+<li>HTTP Version</li>
+<li>Headers: optional information, success as Accept-Language.</li>
+<li>Body: optional information, usually for methods such as <code>POST</code> and <code>PATCH</code>, which contain the resource being sent to the server</li>
+</ul>
+<img src="/2021/07/17/Web%20Development/Full%20Stack%20Web%20Dev%20Program/Web-Dev-2-API-Dev-and-Doc-I/http-request1.JPG" class="">
+<img src="/2021/07/17/Web%20Development/Full%20Stack%20Web%20Dev%20Program/Web-Dev-2-API-Dev-and-Doc-I/http-request2.JPG" class="">
+
+<p>Let’s take a look at some common used HTTP request methods.</p>
+<img src="/2021/07/17/Web%20Development/Full%20Stack%20Web%20Dev%20Program/Web-Dev-2-API-Dev-and-Doc-I/http-request-methods.JPG" class="">
+
+<h4 id="Responses"><a href="#Responses" class="headerlink" title="Responses"></a>Responses</h4><p>After the request has been received by the server and processed, the server returns an HTTP response message to the client.</p>
+<img src="/2021/07/17/Web%20Development/Full%20Stack%20Web%20Dev%20Program/Web-Dev-2-API-Dev-and-Doc-I/http-response.JPG" class="">
+
+<p>As an API developer, it’s important to send the correct status code. As a developer using an API, the status codes, particularly the error codes, are important for understanding what caused an error and how to proceed.</p>
+<img src="/2021/07/17/Web%20Development/Full%20Stack%20Web%20Dev%20Program/Web-Dev-2-API-Dev-and-Doc-I/http-status-code.JPG" class="">
+
+<hr>
+<p>🦔 Resource: </p>
+<p><a href="https://httpstatusdogs.com/">1. HTTP Dogs</a></p>
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Status">2. MDN Web Docs - HTTP response status codes</a></p>
+<h3 id="Flasks"><a href="#Flasks" class="headerlink" title="Flasks"></a>Flasks</h3><h4 id="Basic-Flask-App"><a href="#Basic-Flask-App" class="headerlink" title="Basic Flask App"></a>Basic Flask App</h4><p>Next, I will use Flask to create API server.</p>
+<p>Flask is a “micro” framework, which means that its core functionality is kept simple, but that there are numerous extensions to allow developers to add other functionality (such as authentication and database support).</p>
+<p>Let’s creat a basic Flask application,</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">~$ mkdir flask-example</span><br><span class="line">~$ <span class="built_in">cd</span> flask-example</span><br><span class="line">~$ mkdir flaskr</span><br><span class="line">~$ <span class="built_in">cd</span> flaskr</span><br><span class="line">~$ touch __init__.py</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line"><span class="comment"># __init__.py</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> Flask, jsonify</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">create_app</span>(<span class="params">test_config=<span class="literal">None</span></span>):</span></span><br><span class="line">    <span class="comment"># create and configure the app</span></span><br><span class="line">    app = Flask(__name__, instance_relative_config=<span class="literal">True</span>)</span><br><span class="line">    app.config.from_mapping(</span><br><span class="line">        SECRET_KEY=<span class="string">&#x27;dev&#x27;</span>,</span><br><span class="line">        DATABASE=os.path.join(app.instance_path, <span class="string">&#x27;flaskr.sqlite&#x27;</span>),</span><br><span class="line">    )</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> test_config <span class="keyword">is</span> <span class="literal">None</span>:</span><br><span class="line">        <span class="comment"># load the instance config, if it exists, when not testing</span></span><br><span class="line">        app.config.from_pyfile(<span class="string">&#x27;config.py&#x27;</span>, silent=<span class="literal">True</span>)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="comment"># load the test config if passed in</span></span><br><span class="line">        app.config.from_mapping(test_config)</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># endpoint: a simple page that says hello</span></span><br><span class="line">    <span class="comment"># By default, Flask `@app.route` decorators only respond to GET requests.</span></span><br><span class="line"><span class="meta">    @app.route(<span class="params"><span class="string">&#x27;/&#x27;</span></span>)</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">hello</span>():</span></span><br><span class="line">        <span class="comment"># jsonify:return json data to the client</span></span><br><span class="line">        <span class="keyword">return</span> jsonify(&#123;</span><br><span class="line">            <span class="string">&#x27;message&#x27;</span>: <span class="string">&#x27;Hello World&#x27;</span></span><br><span class="line">            &#125;)</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> app</span><br></pre></td></tr></table></figure>
+
+<p>And run the above Flask app using commands,</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">~$ <span class="built_in">cd</span> ..</span><br><span class="line">~$ <span class="built_in">pwd</span></span><br><span class="line">flask-example</span><br><span class="line">~$ <span class="built_in">cd</span> flask-example</span><br><span class="line">~$ <span class="built_in">export</span> FLASK_APP=flaskr</span><br><span class="line">~$ <span class="built_in">export</span> FLASK_ENV=development</span><br><span class="line">~$ flask run</span><br></pre></td></tr></table></figure>
+
+<img src="/2021/07/17/Web%20Development/Full%20Stack%20Web%20Dev%20Program/Web-Dev-2-API-Dev-and-Doc-I/project-structure.JPG" class="" title="Flask project structure">
+
+<hr>
+<p>🍄 <strong>应用工厂</strong></p>
+<p>一个Flask应用应该是一个 <code>Flask</code> 类的实例，应用的所有东西，如配置和URL，都会和这个实例一起注册。</p>
+<p>创建一个Flask应用最简单的方法就是在代码一开创建一个全局的Flask实例，就像我们之前讲的那样，</p>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line"><span class="comment"># flask_hello_app.py</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> Flask</span><br><span class="line"></span><br><span class="line">app = Flask(__name__)</span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/&#x27;</span></span>)</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">index</span>():</span></span><br><span class="line">    <span class="keyword">return</span> <span class="string">&#x27;Hello World!&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<p>当项目越来越大的时候，这种方法就不太好的。取而代之的是，我们可以在一个函数内部创建Flask实例来代替创建全局实例。这个函数被称为<strong>应用工厂</strong>，所有应用相关的配置、注册和其他设置都会在函数内部完成， 然后返回这个应用。</p>
+<p>上面的 “__init.py__” 文件有两个作用：1）包含应用工厂；2）告诉Python应当视“flaskr”文件夹为一个package。</p>
+<p>为了启动创建的Flask应用，我们在terminal使用下面三行命令，</p>
+<blockquote>
+<p>export FLASK_APP=flaskr  # tell the terminal where to find the app<br>export FLASK_ENV=development   # run the app in development mode<br>flask run   # actually start the app</p>
+</blockquote>
+<p>🍒 External Resource: </p>
+<ul>
+<li><a href="https://dormousehole.readthedocs.io/en/latest/tutorial/factory.html">应用设置</a></li>
+<li><a href="https://github.com/rileywang0819/demo-bookshelf-api/blob/master/Flask_Doc_v1.1.4.pdf">Flask Doc: 1.5 Tutorial</a></li>
+</ul>
+<hr>
+<h3 id="Curl"><a href="#Curl" class="headerlink" title="Curl"></a>Curl</h3><p><strong>Curl</strong> is a library and command-line tool that completes IP transfers of data using URLs.</p>
+<p>Curl syntax:</p>
+<blockquote>
+<p>curl -X POST URL<br>curl –help</p>
+</blockquote>
+<img src="/2021/07/17/Web%20Development/Full%20Stack%20Web%20Dev%20Program/Web-Dev-2-API-Dev-and-Doc-I/curl-command-ex.JPG" class="">
+
+<p>By default curl performs a <code>get</code> request, so you don’t need to use the options flag and specify GET.</p>
+<p>Typing the following command to check if you already have the curl locally,</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">~$ curl --version</span><br></pre></td></tr></table></figure>
+
+<p>And you can refer this <a href="https://everything.curl.dev/get">e-book</a> to install curl.</p>
+<p>Tip: you can also download a command-line JSON processor call <a href="https://stedolan.github.io/jq/">jp</a> to make the output more clearly.</p>
+<h2 id="Endpoints-and-Payloads"><a href="#Endpoints-and-Payloads" class="headerlink" title="Endpoints and Payloads"></a>Endpoints and Payloads</h2><p>In this section, we’ll learn how to use endpoints and payloads to extend the functionality of the API.</p>
+<h3 id="Organize-API-endpoints"><a href="#Organize-API-endpoints" class="headerlink" title="Organize API endpoints"></a>Organize API endpoints</h3><p>When organizing API endpoints, you should follow some principles,</p>
+<ul>
+<li>Should be intuitive</li>
+<li>Organize by resources instead of by actions<ul>
+<li>Use nouns in the path, not verbs</li>
+<li>The method used will determine the operation taken</li>
+<li>Example:<ul>
+<li>GOOD: <a href="https://example.com/posts">https://example.com/posts</a></li>
+<li>BAD: <a href="https://example.com/create-posts">https://example.com/create-posts</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Keep a consistent scheme<ul>
+<li>Plural nouns for collections</li>
+<li>Use parameters to specify a specific item</li>
+<li>Example:<ul>
+<li>GOOD: <a href="https://example.com/entrees/5">https://example.com/entrees/5</a></li>
+<li>BAD: <a href="https://example.com/entree_five">https://example.com/entree_five</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Don’t make them too complex or lengthy<ul>
+<li>No longer than <code>collection/item/collection</code></li>
+<li>Example:<ul>
+<li>GOOD: <a href="https://example.com/entrees/5/reviews">https://example.com/entrees/5/reviews</a></li>
+<li>BAD: <a href="https://example.com/entrees/5/customers/4/reviews">https://example.com/entrees/5/customers/4/reviews</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>The request mothod used will determine the operation performed for the given resource URI. Though your API documentation should explain exactly what operation is performed and data returned via the response, it should be intuitive for anyone using your API,</p>
+<img src="/2021/07/17/Web%20Development/Full%20Stack%20Web%20Dev%20Program/Web-Dev-2-API-Dev-and-Doc-I/method-reviews.JPG" class="">
+
+
+<h3 id="CORS"><a href="#CORS" class="headerlink" title="CORS"></a>CORS</h3><p>If you’ve had a little experience as a web developer, you may have seen an error in the browser:</p>
+<blockquote>
+<p>No ‘Access-Control-Allow-Origin’ header is present on the requested resource</p>
+</blockquote>
+<p>This error is all about <strong>Cross-Origin Resource Sharing(跨域资源共享)</strong> or <strong>CORS</strong>.</p>
+<h4 id="CORS-1"><a href="#CORS-1" class="headerlink" title="CORS"></a>CORS</h4><p>Before talking about <strong>Cross-Origin Resource Sharing</strong>, let’s look at <strong>the same-origin policy</strong> firstly.</p>
+<p>The same-origin policy is a concept of web security. It allows scripts in Webpage 1 to access data from Webpage 2 <em>only if</em> they share the same domain. This policy is very important because it protects you. Imagine you have 2 pages in your browser, one page contains an advertisement which is embedded with malicious script, and another page is your bank website. The same-origin policy can prevent those malicious scripts from successfully making requests to your bank’s website as you access the website hosting the advertisement.</p>
+<p>So, if we try to make requests from: </p>
+<ul>
+<li>Different domains</li>
+<li>Different subdomains (<code>example.com</code> and <code>api.example.com</code>)</li>
+<li>Different ports (<code>example.com</code> and <code>example.com:1234</code>)</li>
+<li>Different protocols (<code>http://example.com</code> and <code>https://example.com</code>)</li>
+</ul>
+<p>it will trigger CORS.</p>
+<p>As a developer, if you’re sending any requests beyond very simple <code>GET</code> or <code>POST</code> requests, then before your actual request is sent, the browser sends a <em>preflight OPTIONS request</em> to the server. If CORS is not enabled, then the browser will not respond properly and the actual request will not be sent, and the above error will be raised.</p>
+<p>In order for the requests to be processed properly, CORS utilizes HTTP response headers to specify what the server will allow:</p>
+<img src="/2021/07/17/Web%20Development/Full%20Stack%20Web%20Dev%20Program/Web-Dev-2-API-Dev-and-Doc-I/CORS.JPG" class="">
+
+<p>🍧 External Resource: <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS">MDN Web Docs - CORS</a></p>
+<h4 id="Flask-CORS"><a href="#Flask-CORS" class="headerlink" title="Flask-CORS"></a>Flask-CORS</h4><p><strong>Flask-CORS</strong> is an extension library of Flask for handling CORS.</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># install the flask_cors dependency</span></span><br><span class="line">~$ pip install -U flask-cors</span><br><span class="line"></span><br><span class="line"><span class="comment"># Check the specific version</span></span><br><span class="line">~$ pip show flask-cors</span><br></pre></td></tr></table></figure>
+
+<p>Now, let’s try to use Flask-CORS library to enable CORS on a simple application.</p>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> Flask, jsonify</span><br><span class="line"><span class="keyword">from</span> flask_cors <span class="keyword">import</span> CORS, cross_origin</span><br><span class="line"><span class="keyword">from</span> models <span class="keyword">import</span> setup_db, Bookshelf</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">create_app</span>(<span class="params">test_config=<span class="literal">None</span></span>):</span></span><br><span class="line">    <span class="comment"># create and configure the app</span></span><br><span class="line">    app = Flask(__name__, instance_relative_config=<span class="literal">True</span>)</span><br><span class="line">    <span class="comment"># resources=&#123;&#125;</span></span><br><span class="line">    <span class="comment"># 1st element: specify what resources we&#x27;re talking about</span></span><br><span class="line">    <span class="comment"># 2nd element: specify what origins from the client can access those resources</span></span><br><span class="line">    <span class="comment"># cors = CORS(app, resources=&#123;r&quot;*/api/*&quot;: &#123;&quot;origins&quot;: &quot;*&quot;&#125;&#125;)</span></span><br><span class="line">    cors = CORS(app)</span><br><span class="line"></span><br><span class="line"><span class="meta">    @app.after_request</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">after_request</span>(<span class="params">response</span>):</span></span><br><span class="line">        response.headers.add(</span><br><span class="line">            <span class="string">&#x27;Access-Control-Allow-Headers&#x27;</span>,</span><br><span class="line">            <span class="string">&#x27;Content-Type, Authorization&#x27;</span></span><br><span class="line">        )</span><br><span class="line">        response.headers.add(</span><br><span class="line">            <span class="string">&#x27;Access-Control-Allow-Headers&#x27;</span>,</span><br><span class="line">            <span class="string">&#x27;GET, POST, PATCH, DELETE, OPTION&#x27;</span></span><br><span class="line">        )</span><br><span class="line">        <span class="keyword">return</span> response</span><br><span class="line"></span><br><span class="line"><span class="meta">    @app.route(<span class="params"><span class="string">&#x27;/hello&#x27;</span></span>)</span></span><br><span class="line"><span class="meta">    @cross_origin()</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">hello</span>():</span></span><br><span class="line">        <span class="comment"># jsonify:return json data to the client</span></span><br><span class="line">        <span class="keyword">return</span> jsonify(&#123;</span><br><span class="line">            <span class="string">&#x27;message&#x27;</span>: <span class="string">&#x27;Hello World&#x27;</span></span><br><span class="line">        &#125;)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> app</span><br></pre></td></tr></table></figure>
+
+<p>🍧 External Resource: <a href="https://flask-cors.readthedocs.io/en/latest/#">Flask-CORS Doc</a></p>
+<h3 id="Flask-Pagination"><a href="#Flask-Pagination" class="headerlink" title="Flask Pagination"></a>Flask Pagination</h3><p>When using <code>GET</code> request, you can retrieve data of the the given URI. However, sending huge sets of data all to the frontend at once is bad for speed, and will reduce the quality of users’ experience. So when handling large collections of data, what we want to do is <strong>paginate</strong>(分页) the data using query parameters and request arguments, and send it in chunks.</p>
+<h5 id="Query-Parameters"><a href="#Query-Parameters" class="headerlink" title="Query Parameters"></a>Query Parameters</h5><p>Query parameters convention dictates that,</p>
+<ul>
+<li>A question mark precedes the query parameters.</li>
+<li>Parameters are in key=value pairs with an equal sign in between the key and value.</li>
+<li>Sets of parameters are separated by an ampersand.</li>
+</ul>
+<p>For example,</p>
+<blockquote>
+<p><a href="http://www.example.com/entrees?page=1">www.example.com/entrees?page=1</a><br><a href="http://www.example.com/entrees?page=1&amp;allergens=peanut">www.example.com/entrees?page=1&amp;allergens=peanut</a></p>
+</blockquote>
+<h5 id="Request-Arguments"><a href="#Request-Arguments" class="headerlink" title="Request Arguments"></a>Request Arguments</h5><p><code>request.args</code> is a Python dictionary.</p>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/entrees&#x27;</span>, methods=[<span class="string">&#x27;GET&#x27;</span>]</span>)</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_entrees</span>():</span></span><br><span class="line">    page = request.args.get(<span class="string">&#x27;page&#x27;</span>, <span class="number">1</span>, <span class="built_in">type</span>=<span class="built_in">int</span>)</span><br></pre></td></tr></table></figure>
+
+
+<img src="/2021/07/17/Web%20Development/Full%20Stack%20Web%20Dev%20Program/Web-Dev-2-API-Dev-and-Doc-I/request-properties.png" class="" title="Request Properties Examples">
+
+
+<h3 id="Flask-Error-Handling"><a href="#Flask-Error-Handling" class="headerlink" title="Flask Error Handling"></a>Flask Error Handling</h3><p>Until now, the only way that we know how to handle errors is by using <code>abort</code>, but those are not insufficient. </p>
+<p><code>abort()</code> will return an HTML which is hard to read. We should also send JSON back when request fails, since the cilent needs clearer information about the exact error. And that’s where something call <strong>@app.errorhandler decorator</strong> comes in.</p>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line"><span class="comment"># example</span></span><br><span class="line"></span><br><span class="line"><span class="meta">@app.errorhandler(<span class="params"><span class="number">404</span></span>)  </span><span class="comment"># pass the status code or Python error</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">not_found</span>(<span class="params">error</span>):</span></span><br><span class="line">    <span class="keyword">return</span> jsonify(&#123;</span><br><span class="line">        <span class="string">&quot;success&quot;</span>: <span class="literal">False</span>, </span><br><span class="line">        <span class="string">&quot;error&quot;</span>: <span class="number">404</span>,</span><br><span class="line">        <span class="string">&quot;message&quot;</span>: <span class="string">&quot;Not found&quot;</span></span><br><span class="line">        &#125;), <span class="number">404</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="Synthesis"><a href="#Synthesis" class="headerlink" title="Synthesis"></a>Synthesis</h3><p>Let’s synthesize the knowledge we’ve learnt so far, and make an implementation of bookshelf api.</p>
+<p>You can check the frontend code in <a href="https://github.com/rileywang0819/demo-bookshelf-api/tree/master/frontend">Github</a></p>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> Flask, request, abort, jsonify</span><br><span class="line"><span class="keyword">from</span> flask_sqlalchemy <span class="keyword">import</span> SQLAlchemy  <span class="comment"># , or_</span></span><br><span class="line"><span class="keyword">from</span> flask_cors <span class="keyword">import</span> CORS</span><br><span class="line"><span class="keyword">import</span> random</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> models <span class="keyword">import</span> setup_db, Book</span><br><span class="line"></span><br><span class="line">BOOKS_PER_SHELF = <span class="number">8</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">paginate_books</span>(<span class="params">request, books</span>):</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot; Paginate the books. &quot;&quot;&quot;</span></span><br><span class="line">    page = request.args.get(<span class="string">&#x27;page&#x27;</span>, <span class="number">1</span>, <span class="built_in">type</span>=<span class="built_in">int</span>)</span><br><span class="line">    start = (page - <span class="number">1</span>) * BOOKS_PER_SHELF</span><br><span class="line">    end = start + BOOKS_PER_SHELF</span><br><span class="line">    formatted_books = [book.<span class="built_in">format</span>() <span class="keyword">for</span> book <span class="keyword">in</span> books]</span><br><span class="line">    current_books = formatted_books[start: end]</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> current_books</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">create_app</span>(<span class="params">test_config=<span class="literal">None</span></span>):</span></span><br><span class="line">    <span class="comment"># create and configure the app</span></span><br><span class="line">    app = Flask(__name__, instance_relative_config=<span class="literal">True</span>)</span><br><span class="line">    setup_db(app)</span><br><span class="line">    <span class="comment"># resources=&#123;...&#125;</span></span><br><span class="line">    <span class="comment"># 1st element: specify what resources we&#x27;re talking about</span></span><br><span class="line">    <span class="comment"># 2nd element: specify what origins from the client can access those resources</span></span><br><span class="line">    <span class="comment"># cors = CORS(app, resources=&#123;r&quot;*/api/*&quot;: &#123;&quot;origins&quot;: &quot;*&quot;&#125;&#125;)</span></span><br><span class="line">    CORS(app)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># CORS Headers</span></span><br><span class="line"><span class="meta">    @app.after_request</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">after_request</span>(<span class="params">response</span>):</span></span><br><span class="line">        response.headers.add(</span><br><span class="line">            <span class="string">&#x27;Access-Control-Allow-Headers&#x27;</span>,</span><br><span class="line">            <span class="string">&#x27;Content-Type,Authorization,true&#x27;</span></span><br><span class="line">        )</span><br><span class="line">        response.headers.add(</span><br><span class="line">            <span class="string">&#x27;Access-Control-Allow-Methods&#x27;</span>,</span><br><span class="line">            <span class="string">&#x27;GET,PUT,POST,DELETE,OPTIONS&#x27;</span></span><br><span class="line">        )</span><br><span class="line">        <span class="keyword">return</span> response</span><br><span class="line"></span><br><span class="line"><span class="meta">    @app.route(<span class="params"><span class="string">&#x27;/books&#x27;</span>, methods=[<span class="string">&#x27;GET&#x27;</span>]</span>)</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get_books</span>():</span></span><br><span class="line">        <span class="string">&quot;&quot;&quot; Retrieves all books, paginated. &quot;&quot;&quot;</span></span><br><span class="line">        books = Book.query.order_by(Book.<span class="built_in">id</span>).<span class="built_in">all</span>()</span><br><span class="line">        current_books = paginate_books(request, books)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> <span class="built_in">len</span>(current_books) == <span class="number">0</span>:</span><br><span class="line">            abort(<span class="number">404</span>)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> jsonify(&#123;</span><br><span class="line">            <span class="string">&#x27;success&#x27;</span>: <span class="literal">True</span>,</span><br><span class="line">            <span class="string">&#x27;books&#x27;</span>: current_books,</span><br><span class="line">            <span class="string">&#x27;total_books&#x27;</span>: <span class="built_in">len</span>(books)</span><br><span class="line">        &#125;)</span><br><span class="line"></span><br><span class="line"><span class="meta">    @app.route(<span class="params"><span class="string">&#x27;/books/&lt;int:book_id&gt;&#x27;</span>, methods=[<span class="string">&#x27;PATCH&#x27;</span>]</span>)</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">update_rating</span>(<span class="params">book_id</span>):</span></span><br><span class="line">        <span class="string">&quot;&quot;&quot; Update a specific book&#x27;s rating. &quot;&quot;&quot;</span></span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            book = Book.query.filter_by(<span class="built_in">id</span>=book_id).one_or_none()</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> book <span class="keyword">is</span> <span class="literal">None</span>:</span><br><span class="line">                abort(<span class="number">404</span>)</span><br><span class="line">            new_rating = request.get_json().get(<span class="string">&#x27;rating&#x27;</span>)</span><br><span class="line">            book.rating = new_rating</span><br><span class="line">            book.update()</span><br><span class="line"></span><br><span class="line">            <span class="keyword">return</span> jsonify(&#123;</span><br><span class="line">                <span class="string">&#x27;success&#x27;</span>: <span class="literal">True</span>,</span><br><span class="line">                <span class="string">&#x27;id&#x27;</span>: book.<span class="built_in">id</span></span><br><span class="line">            &#125;)</span><br><span class="line">        <span class="keyword">except</span>:</span><br><span class="line">            abort(<span class="number">400</span>)  <span class="comment"># bad request</span></span><br><span class="line"></span><br><span class="line"><span class="meta">    @app.route(<span class="params"><span class="string">&#x27;/books/&lt;int:book_id&gt;&#x27;</span>, methods=[<span class="string">&#x27;DELETE&#x27;</span>]</span>)</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">delete_book</span>(<span class="params">book_id</span>):</span></span><br><span class="line">        <span class="string">&quot;&quot;&quot; Deletes a specific book. &quot;&quot;&quot;</span></span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            book = Book.query.filter_by(<span class="built_in">id</span>=book_id).one_or_none()</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> book <span class="keyword">is</span> <span class="literal">None</span>:</span><br><span class="line">                abort(<span class="number">404</span>)</span><br><span class="line"></span><br><span class="line">            book.delete()</span><br><span class="line">            books = Book.query.order_by(Book.<span class="built_in">id</span>).<span class="built_in">all</span>()</span><br><span class="line">            current_books = paginate_books(request, books)</span><br><span class="line"></span><br><span class="line">            <span class="keyword">return</span> jsonify(&#123;</span><br><span class="line">                <span class="string">&#x27;success&#x27;</span>: <span class="literal">True</span>,</span><br><span class="line">                <span class="string">&#x27;deleted&#x27;</span>: book_id,</span><br><span class="line">                <span class="string">&#x27;books&#x27;</span>: current_books,</span><br><span class="line">                <span class="string">&#x27;total_books&#x27;</span>: <span class="built_in">len</span>(books)</span><br><span class="line">            &#125;)</span><br><span class="line">        <span class="keyword">except</span>:</span><br><span class="line">            abort(<span class="number">422</span>)  <span class="comment"># unprocessable entity</span></span><br><span class="line"></span><br><span class="line"><span class="meta">    @app.route(<span class="params"><span class="string">&#x27;/books&#x27;</span>, methods=[<span class="string">&#x27;POST&#x27;</span>]</span>)</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">create_book</span>():</span></span><br><span class="line">        body = request.get_json()</span><br><span class="line">        new_title = body.get(<span class="string">&#x27;title&#x27;</span>, <span class="literal">None</span>)</span><br><span class="line">        new_author = body.get(<span class="string">&#x27;author&#x27;</span>, <span class="literal">None</span>)</span><br><span class="line">        new_rating = body.get(<span class="string">&#x27;rating&#x27;</span>, <span class="literal">None</span>)</span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            book = Book(title=new_title, author=new_author, rating=new_rating)</span><br><span class="line">            book.insert()</span><br><span class="line">            books = Book.query.order_by(Book.<span class="built_in">id</span>).<span class="built_in">all</span>()</span><br><span class="line">            current_books = paginate_books(request, books)</span><br><span class="line"></span><br><span class="line">            <span class="keyword">return</span> jsonify(&#123;</span><br><span class="line">                <span class="string">&#x27;success&#x27;</span>: <span class="literal">True</span>,</span><br><span class="line">                <span class="string">&#x27;created&#x27;</span>: book.<span class="built_in">id</span>,</span><br><span class="line">                <span class="string">&#x27;books&#x27;</span>: current_books,</span><br><span class="line">                <span class="string">&#x27;total_books&#x27;</span>: <span class="built_in">len</span>(books)</span><br><span class="line">            &#125;)</span><br><span class="line">        <span class="keyword">except</span>:</span><br><span class="line">            abort(<span class="number">422</span>)</span><br><span class="line"></span><br><span class="line"><span class="meta">    @app.errorhandler(<span class="params"><span class="number">404</span></span>)</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">not_found</span>(<span class="params">error</span>):</span></span><br><span class="line">        <span class="keyword">return</span> jsonify(&#123;</span><br><span class="line">            <span class="string">&quot;success&quot;</span>: <span class="literal">False</span>,</span><br><span class="line">            <span class="string">&quot;error&quot;</span>: <span class="number">404</span>,</span><br><span class="line">            <span class="string">&quot;message&quot;</span>: <span class="string">&quot;Not found&quot;</span></span><br><span class="line">        &#125;), <span class="number">404</span></span><br><span class="line">    </span><br><span class="line"><span class="meta">    @app.errorhandler(<span class="params"><span class="number">400</span></span>)</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">bad_request</span>(<span class="params">error</span>):</span></span><br><span class="line">        <span class="keyword">return</span> jsonify(&#123;</span><br><span class="line">            <span class="string">&quot;success&quot;</span>: <span class="literal">False</span>,</span><br><span class="line">            <span class="string">&quot;error&quot;</span>: <span class="number">400</span>,</span><br><span class="line">            <span class="string">&quot;message&quot;</span>: <span class="string">&quot;Bad Request&quot;</span></span><br><span class="line">        &#125;), <span class="number">400</span></span><br><span class="line">        </span><br><span class="line"><span class="meta">    @app.errorhandler(<span class="params"><span class="number">422</span></span>)</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">unprocessable</span>(<span class="params">error</span>):</span></span><br><span class="line">        <span class="keyword">return</span> jsonify(&#123;</span><br><span class="line">            <span class="string">&quot;success&quot;</span>: <span class="literal">False</span>,</span><br><span class="line">            <span class="string">&quot;error&quot;</span>: <span class="number">422</span>,</span><br><span class="line">            <span class="string">&quot;message&quot;</span>: <span class="string">&quot;Unprocessable&quot;</span></span><br><span class="line">        &#125;), <span class="number">422</span></span><br><span class="line">        </span><br><span class="line"><span class="meta">    @app.errorhandler(<span class="params"><span class="number">405</span></span>)</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">not_allowed</span>(<span class="params">error</span>):</span></span><br><span class="line">        <span class="keyword">return</span> jsonify(&#123;</span><br><span class="line">            <span class="string">&quot;success&quot;</span>: <span class="literal">False</span>,</span><br><span class="line">            <span class="string">&quot;error&quot;</span>: <span class="number">405</span>,</span><br><span class="line">            <span class="string">&quot;message&quot;</span>: <span class="string">&quot;Not Allowed Method&quot;</span></span><br><span class="line">        &#125;), <span class="number">405</span></span><br><span class="line">        </span><br><span class="line">    <span class="keyword">return</span> app</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>Web Development</category>
+        <category>Full Stack Web Dev Program</category>
       </categories>
       <tags>
         <tag>web</tag>

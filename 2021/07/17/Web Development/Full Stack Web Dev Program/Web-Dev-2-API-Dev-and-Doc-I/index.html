@@ -1,0 +1,1109 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="en,zh-Hans,default">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Roboto Slab:300,300italic,400,400italic,700,700italic|Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="web," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="In this and next blog, I will talk about skills about API development including,  APIs : what APIs are and how do they work. Handling HTTP Requests : HTTP, Flask, and writing and accessing endpoints.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Web Dev(2): API Dev and Doc(I)">
+<meta property="og:url" content="http://example.com/2021/07/17/Web%20Development/Full%20Stack%20Web%20Dev%20Program/Web-Dev-2-API-Dev-and-Doc-I/index.html">
+<meta property="og:site_name" content="GoGo-Wang&#39;s Blog">
+<meta property="og:description" content="In this and next blog, I will talk about skills about API development including,  APIs : what APIs are and how do they work. Handling HTTP Requests : HTTP, Flask, and writing and accessing endpoints.">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/2021/07/17/Web%20Development/Full%20Stack%20Web%20Dev%20Program/Web-Dev-2-API-Dev-and-Doc-I/api-workflow.JPG">
+<meta property="og:image" content="http://example.com/2021/07/17/Web%20Development/Full%20Stack%20Web%20Dev%20Program/Web-Dev-2-API-Dev-and-Doc-I/client-proxy-api.png">
+<meta property="og:image" content="http://example.com/2021/07/17/Web%20Development/Full%20Stack%20Web%20Dev%20Program/Web-Dev-2-API-Dev-and-Doc-I/http-request1.JPG">
+<meta property="og:image" content="http://example.com/2021/07/17/Web%20Development/Full%20Stack%20Web%20Dev%20Program/Web-Dev-2-API-Dev-and-Doc-I/http-request2.JPG">
+<meta property="og:image" content="http://example.com/2021/07/17/Web%20Development/Full%20Stack%20Web%20Dev%20Program/Web-Dev-2-API-Dev-and-Doc-I/http-request-methods.JPG">
+<meta property="og:image" content="http://example.com/2021/07/17/Web%20Development/Full%20Stack%20Web%20Dev%20Program/Web-Dev-2-API-Dev-and-Doc-I/http-response.JPG">
+<meta property="og:image" content="http://example.com/2021/07/17/Web%20Development/Full%20Stack%20Web%20Dev%20Program/Web-Dev-2-API-Dev-and-Doc-I/http-status-code.JPG">
+<meta property="og:image" content="http://example.com/2021/07/17/Web%20Development/Full%20Stack%20Web%20Dev%20Program/Web-Dev-2-API-Dev-and-Doc-I/project-structure.JPG">
+<meta property="og:image" content="http://example.com/2021/07/17/Web%20Development/Full%20Stack%20Web%20Dev%20Program/Web-Dev-2-API-Dev-and-Doc-I/curl-command-ex.JPG">
+<meta property="og:image" content="http://example.com/2021/07/17/Web%20Development/Full%20Stack%20Web%20Dev%20Program/Web-Dev-2-API-Dev-and-Doc-I/method-reviews.JPG">
+<meta property="og:image" content="http://example.com/2021/07/17/Web%20Development/Full%20Stack%20Web%20Dev%20Program/Web-Dev-2-API-Dev-and-Doc-I/CORS.JPG">
+<meta property="og:image" content="http://example.com/2021/07/17/Web%20Development/Full%20Stack%20Web%20Dev%20Program/Web-Dev-2-API-Dev-and-Doc-I/request-properties.png">
+<meta property="article:published_time" content="2021-07-17T08:04:51.000Z">
+<meta property="article:modified_time" content="2021-08-04T14:50:41.112Z">
+<meta property="article:author" content="gogo-wang">
+<meta property="article:tag" content="web">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2021/07/17/Web%20Development/Full%20Stack%20Web%20Dev%20Program/Web-Dev-2-API-Dev-and-Doc-I/api-workflow.JPG">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://example.com/2021/07/17/Web Development/Full Stack Web Dev Program/Web-Dev-2-API-Dev-and-Doc-I/"/>
+
+
+
+
+
+  <title>Web Dev(2): API Dev and Doc(I) | GoGo-Wang's Blog</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">GoGo-Wang's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">"Say something." <br> - "Something."</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/07/17/Web%20Development/Full%20Stack%20Web%20Dev%20Program/Web-Dev-2-API-Dev-and-Doc-I/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="GoGo-Wang's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Web Dev(2): API Dev and Doc(I)</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2021-07-17T17:04:51+09:00">
+                2021-07-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Web-Development/" itemprop="url" rel="index">
+                    <span itemprop="name">Web Development</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Web-Development/Full-Stack-Web-Dev-Program/" itemprop="url" rel="index">
+                    <span itemprop="name">Full Stack Web Dev Program</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2021/07/17/Web%20Development/Full%20Stack%20Web%20Dev%20Program/Web-Dev-2-API-Dev-and-Doc-I/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2021/07/17/Web Development/Full Stack Web Dev Program/Web-Dev-2-API-Dev-and-Doc-I/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>In this and next blog, I will talk about skills about API development including,</p>
+<ol>
+<li><strong>APIs</strong> : what APIs are and how do they work.</li>
+<li><strong>Handling HTTP Requests</strong> : HTTP, Flask, and writing and accessing endpoints.</li>
+<li><strong>Routing and API Endpoints</strong> : how to use endpoints and <code>payloads</code> (information passed along with the request) to extend the functionality of APIs, also learn to organize API endpoints, handling Cross-Origin Resource Sharing (CORS) requests, parsing different request types, and handling errors.</li>
+<li><strong>Documentation</strong> - learn to write documentation。</li>
+<li><strong>Testing</strong> - learn <code>unit testing</code> and <code>test-driven development (TDD)</code>.</li>
+</ol>
+<span id="more"></span>
+
+<h2 id="Introdcution-to-APIs"><a href="#Introdcution-to-APIs" class="headerlink" title="Introdcution to APIs"></a>Introdcution to APIs</h2><h3 id="What-are-APIs"><a href="#What-are-APIs" class="headerlink" title="What are APIs?"></a>What are APIs?</h3><p><strong>API (Application Programming Interface)</strong> is an interface which has been created to help two different systems interact with one another.</p>
+<p>The defined functionality of API is independent of the actual implementation. You don’t need to understand the entirety of the application implementation in order to interact with it through the API. This has multiple benefits:</p>
+<ul>
+<li>It doesn’t expose the implementation to those who shouldn’t have access to it.</li>
+<li>The API provides a standard way of accessing the application.</li>
+<li>It makes much easier to understand how to access the application’s data.</li>
+</ul>
+<p>🦁 Resources: Some frequently used APIs include:</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://developers.google.com/maps/documentation/">Google Maps API</a></li>
+<li><a target="_blank" rel="noopener" href="https://stripe.com/docs/api?utm_source=zapier.com&utm_medium=referral&utm_campaign=zapier&utm_source=zapier.com&utm_medium=referral&utm_campaign=zapier">Stripe API</a></li>
+<li><a target="_blank" rel="noopener" href="https://developers.facebook.com/docs">Facebook API</a></li>
+<li><a target="_blank" rel="noopener" href="https://developers.facebook.com/docs">Instagram API</a></li>
+<li><a target="_blank" rel="noopener" href="https://developer.spotify.com/documentation/web-api/">Spotify API</a></li>
+</ul>
+<p>External Resource: <a target="_blank" rel="noopener" href="https://blog.postman.com/intro-to-apis-what-is-an-api/">Postman blog - What is an API?</a></p>
+<h3 id="How-APIs-work"><a href="#How-APIs-work" class="headerlink" title="How APIs work?"></a>How APIs work?</h3><img src="/2021/07/17/Web%20Development/Full%20Stack%20Web%20Dev%20Program/Web-Dev-2-API-Dev-and-Doc-I/api-workflow.JPG" class="">
+
+
+<h3 id="RESTful-APIs"><a href="#RESTful-APIs" class="headerlink" title="RESTful APIs"></a>RESTful APIs</h3><p><code>REST</code> stands for <strong>Representational State Transfer</strong>, which is an architectural style(架构风格) introduced by Roy Fielding in 2000.</p>
+<p>Here’s a short summary of the REST principles:</p>
+<ul>
+<li><strong>Uniform Interface :</strong> Every REST architecture must have a standardized way of accessing and processing data resources. This includes unique resource identifiers (i.e., unique URLs) and self-descriptive messages in the server response that describe how to process the representation (for instance JSON vs XML) of the data resource.</li>
+<li><strong>Stateless(无状态) :</strong> Every client request is self-contained in, that the server doesn’t need to store any application data in order to respond to subsequent requests.</li>
+<li><strong>Client-Server :</strong> There must be both a client and server in the architecture.</li>
+<li><strong>Cacheable &amp; Layered System :</strong> Caching and layering increases networking efficiency.</li>
+</ul>
+<img src="/2021/07/17/Web%20Development/Full%20Stack%20Web%20Dev%20Program/Web-Dev-2-API-Dev-and-Doc-I/client-proxy-api.png" class="" title="Using the RESTful APIs">
+
+<p><strong>Why RESTful are stateless?</strong></p>
+<p>It might appear easier to design a server that isn’t stateless. There is a reason why RESTful web servers are not allowed to remember anything about the previous requests that the user has sent. In short, <strong>stateless servers make your applications scalable</strong>.</p>
+<p>External Resource:</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/671118/what-exactly-is-restful-programming">What exactly is RESTful programming?</a></li>
+<li>An article from StackOverflow blogs- <a target="_blank" rel="noopener" href="https://stackoverflow.blog/2020/03/02/best-practices-for-rest-api-design/">Best practices for REST API design</a></li>
+<li>blog: <a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/1590279">什么是RESTful风格的API设计</a></li>
+</ul>
+<h2 id="HTTP-and-Flask-Basics"><a href="#HTTP-and-Flask-Basics" class="headerlink" title="HTTP and Flask Basics"></a>HTTP and Flask Basics</h2><h3 id="Introduction-to-HTTP"><a href="#Introduction-to-HTTP" class="headerlink" title="Introduction to HTTP"></a>Introduction to HTTP</h3><p>HTTP has been the foundation of Internet communication since 1990.</p>
+<p>HTTP Features:</p>
+<ul>
+<li><strong>Connectionless:</strong> When a request is sent, the client opens the connection; once a response is received, the client closes the connection. The client and server only maintain a connection during the response and request. Future responses are made on a new connection. (When a connection has been opened, it means that the port on the client/server is occupied)</li>
+<li><strong>Stateless :</strong> There is no dependency between successive requests.</li>
+<li><strong>Not Sessionless :</strong> Utilizing headers, cookies and caching, sessions can be created to allow each HTTP request to share the same context. (img you visit Facebook and send various request with the same account)</li>
+<li><strong>Media Independent :</strong> Any type of data can be sent over HTTP as long as both the client and server know how to handle the data format. In our case, we’ll use <code>JSON</code>.</li>
+</ul>
+<hr>
+<p>🦄 <strong>Notes on Cookie</strong></p>
+<ol>
+<li>用途：</li>
+</ol>
+<p>因为 HTTP 协议是无状态的，即服务器不知道用户上一次做了什么，这严重阻碍了交互式 Web 应用程序的实现。在典型的网上购物场景中，用户浏览了几个页面，买了一盒饼干和两瓶饮料。最后结帐时，由于 HTTP 的无状态性，不通过额外的手段，服务器并不知道用户到底买了什么，所以 Cookie 就是用来绕开 HTTP 的无状态性的“额外手段”之一。服务器可以设置或读取 Cookies 中包含的信息，借此维护用户跟服务器会话中的状态。</p>
+<p>在刚才的购物场景中，当用户选购了第一项商品，服务器在向用户发送网页的同时，还发送了一段 Cookie，记录着那项商品的信息。当用户访问另一个页面，浏览器会把 Cookie 发送给服务器，于是服务器知道他之前选购了什么。用户继续选购饮料，服务器就在原来那段 Cookie 裡追加新的商品信息。结帐时，服务器读取发送来的 Cookie 即可。</p>
+<p>Cookie 另一个典型的应用是当登录一个网站时，网站往往会请求用户输入用户名和密码，并且用户可以勾选“下次自动登录”。如果勾选了，那么下次访问同一网站时，用户会发现没输入用户名和密码就已经登录了。这正是因为前一次登录时，服务器发送了包含登录凭据（用户名加密码的某种加密形式）的 Cookie 到用户的硬盘上。第二次登录时，如果该 Cookie 尚未到期，浏览器会发送该 Cookie，服务器验证凭据，于是不必输入用户名和密码就让用户登录了。</p>
+<ol start="2">
+<li>分类</li>
+</ol>
+<p>Cookie 保存在客户端中，按在客户端中的存储位置，可分为内存 Cookie 和硬盘 Cookie。</p>
+<p>内存 Cookie 由浏览器维护，保存在内存中，浏览器关闭即消失，存在时间短暂。硬盘 Cookie 保存在硬盘裡，有过期时间，除非用户手动清理或到了过期时间，硬盘 Cookie 不会清除，存在时间较长。所以，按存在时间，可分为非持久 Cookie 和持久 Cookie。</p>
+<ol start="3">
+<li>缺陷</li>
+</ol>
+<ul>
+<li>Cookie 会被附加在每个 HTTP 请求中，所以无形中增加了流量。</li>
+<li>由于 HTTP 请求中的 Cookie 是明文传递的，所以安全性成问题，除非使用 <em>超文本传输安全协定(HTTPs)</em> 。</li>
+<li>Cookie 的大小限制在 4 KB 左右，对于复杂的存储需求来说是不够用的。</li>
+</ul>
+<hr>
+<p>HTTP Elements:</p>
+<ul>
+<li><p><strong>Universal Resource Identifiers (URIs, 统一资源标识符) :</strong> URIs are basically URLs or address which point to specific resources. An example URI is like: <code>http://www.example.com/tasks/term=homework</code> . It has certain components:</p>
+<ul>
+<li><strong>Scheme:</strong> specifies the protocol used to access the resource, HTTP or HTTPS. In our example <code>http</code> .</li>
+<li><strong>Host:</strong> specifies the host that holds the resources. In our example <code>www.example.com</code> .</li>
+<li><strong>Path:</strong> specifies the specific resource being requested. In our example, <code>/tasks</code> .</li>
+<li><strong>Query:</strong> an optional component, the query string provides information the resource can use for some purpose such as a search parameter. In our example it is <code>/term=homework</code> .</li>
+</ul>
+</li>
+<li><p><strong>Messages :</strong> Requests and Responses.</p>
+</li>
+<li><p><strong>Status Code :</strong> e.g. 404 NOT FOUND </p>
+</li>
+</ul>
+<hr>
+<p>🦓 Supplement: <code>URI</code> vs. <code>URL</code></p>
+<p>You may be unsure what the difference is between a <strong>URI (Universal Resource Identifier)</strong> and a <strong>URL (Universal Resource Locator)</strong> . These terms tend to get confused a lot, and are even frequently used interchangeably—but there is a distinction.</p>
+<p>The term URI can refer to any identifier for a resource—for example, it could be either the name of a resource or the address of a resource (since both the name and address are identifiers of that resource). In contrast, URL only refers to the location of a resource—in other words, it only ever refers to an address.</p>
+<p>So, “URI” could refer to a name or an address, while “URL” only refers to an address. Thus, URLs are a specific type of URI that is used to locate a resource on the internet when a client makes a request to a server.</p>
+<hr>
+<p>🐑 <strong>Resource</strong> : <a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Overview">MDN Web Docs - An overview of HTTP</a></p>
+<h3 id="HTTP-Requests-and-Responses"><a href="#HTTP-Requests-and-Responses" class="headerlink" title="HTTP Requests and Responses"></a>HTTP Requests and Responses</h3><h4 id="Requests"><a href="#Requests" class="headerlink" title="Requests"></a>Requests</h4><p>HTTP requests are sent from the client to the server to initiate some operation. it has some elements to specify the requested resource.</p>
+<ul>
+<li>Method: Defines the operation to be performed.</li>
+<li>Path: The URL of the resource to be fetched, excluding the scheme and host.</li>
+<li>HTTP Version</li>
+<li>Headers: optional information, success as Accept-Language.</li>
+<li>Body: optional information, usually for methods such as <code>POST</code> and <code>PATCH</code>, which contain the resource being sent to the server</li>
+</ul>
+<img src="/2021/07/17/Web%20Development/Full%20Stack%20Web%20Dev%20Program/Web-Dev-2-API-Dev-and-Doc-I/http-request1.JPG" class="">
+<img src="/2021/07/17/Web%20Development/Full%20Stack%20Web%20Dev%20Program/Web-Dev-2-API-Dev-and-Doc-I/http-request2.JPG" class="">
+
+<p>Let’s take a look at some common used HTTP request methods.</p>
+<img src="/2021/07/17/Web%20Development/Full%20Stack%20Web%20Dev%20Program/Web-Dev-2-API-Dev-and-Doc-I/http-request-methods.JPG" class="">
+
+<h4 id="Responses"><a href="#Responses" class="headerlink" title="Responses"></a>Responses</h4><p>After the request has been received by the server and processed, the server returns an HTTP response message to the client.</p>
+<img src="/2021/07/17/Web%20Development/Full%20Stack%20Web%20Dev%20Program/Web-Dev-2-API-Dev-and-Doc-I/http-response.JPG" class="">
+
+<p>As an API developer, it’s important to send the correct status code. As a developer using an API, the status codes, particularly the error codes, are important for understanding what caused an error and how to proceed.</p>
+<img src="/2021/07/17/Web%20Development/Full%20Stack%20Web%20Dev%20Program/Web-Dev-2-API-Dev-and-Doc-I/http-status-code.JPG" class="">
+
+<hr>
+<p>🦔 Resource: </p>
+<p><a target="_blank" rel="noopener" href="https://httpstatusdogs.com/">1. HTTP Dogs</a></p>
+<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Status">2. MDN Web Docs - HTTP response status codes</a></p>
+<h3 id="Flasks"><a href="#Flasks" class="headerlink" title="Flasks"></a>Flasks</h3><h4 id="Basic-Flask-App"><a href="#Basic-Flask-App" class="headerlink" title="Basic Flask App"></a>Basic Flask App</h4><p>Next, I will use Flask to create API server.</p>
+<p>Flask is a “micro” framework, which means that its core functionality is kept simple, but that there are numerous extensions to allow developers to add other functionality (such as authentication and database support).</p>
+<p>Let’s creat a basic Flask application,</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">~$ mkdir flask-example</span><br><span class="line">~$ <span class="built_in">cd</span> flask-example</span><br><span class="line">~$ mkdir flaskr</span><br><span class="line">~$ <span class="built_in">cd</span> flaskr</span><br><span class="line">~$ touch __init__.py</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># __init__.py</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> Flask, jsonify</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">create_app</span>(<span class="params">test_config=<span class="literal">None</span></span>):</span></span><br><span class="line">    <span class="comment"># create and configure the app</span></span><br><span class="line">    app = Flask(__name__, instance_relative_config=<span class="literal">True</span>)</span><br><span class="line">    app.config.from_mapping(</span><br><span class="line">        SECRET_KEY=<span class="string">&#x27;dev&#x27;</span>,</span><br><span class="line">        DATABASE=os.path.join(app.instance_path, <span class="string">&#x27;flaskr.sqlite&#x27;</span>),</span><br><span class="line">    )</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> test_config <span class="keyword">is</span> <span class="literal">None</span>:</span><br><span class="line">        <span class="comment"># load the instance config, if it exists, when not testing</span></span><br><span class="line">        app.config.from_pyfile(<span class="string">&#x27;config.py&#x27;</span>, silent=<span class="literal">True</span>)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="comment"># load the test config if passed in</span></span><br><span class="line">        app.config.from_mapping(test_config)</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># endpoint: a simple page that says hello</span></span><br><span class="line">    <span class="comment"># By default, Flask `@app.route` decorators only respond to GET requests.</span></span><br><span class="line"><span class="meta">    @app.route(<span class="params"><span class="string">&#x27;/&#x27;</span></span>)</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">hello</span>():</span></span><br><span class="line">        <span class="comment"># jsonify:return json data to the client</span></span><br><span class="line">        <span class="keyword">return</span> jsonify(&#123;</span><br><span class="line">            <span class="string">&#x27;message&#x27;</span>: <span class="string">&#x27;Hello World&#x27;</span></span><br><span class="line">            &#125;)</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> app</span><br></pre></td></tr></table></figure>
+
+<p>And run the above Flask app using commands,</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">~$ <span class="built_in">cd</span> ..</span><br><span class="line">~$ <span class="built_in">pwd</span></span><br><span class="line">flask-example</span><br><span class="line">~$ <span class="built_in">cd</span> flask-example</span><br><span class="line">~$ <span class="built_in">export</span> FLASK_APP=flaskr</span><br><span class="line">~$ <span class="built_in">export</span> FLASK_ENV=development</span><br><span class="line">~$ flask run</span><br></pre></td></tr></table></figure>
+
+<img src="/2021/07/17/Web%20Development/Full%20Stack%20Web%20Dev%20Program/Web-Dev-2-API-Dev-and-Doc-I/project-structure.JPG" class="" title="Flask project structure">
+
+<hr>
+<p>🍄 <strong>应用工厂</strong></p>
+<p>一个Flask应用应该是一个 <code>Flask</code> 类的实例，应用的所有东西，如配置和URL，都会和这个实例一起注册。</p>
+<p>创建一个Flask应用最简单的方法就是在代码一开创建一个全局的Flask实例，就像我们之前讲的那样，</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># flask_hello_app.py</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> Flask</span><br><span class="line"></span><br><span class="line">app = Flask(__name__)</span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/&#x27;</span></span>)</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">index</span>():</span></span><br><span class="line">    <span class="keyword">return</span> <span class="string">&#x27;Hello World!&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<p>当项目越来越大的时候，这种方法就不太好的。取而代之的是，我们可以在一个函数内部创建Flask实例来代替创建全局实例。这个函数被称为<strong>应用工厂</strong>，所有应用相关的配置、注册和其他设置都会在函数内部完成， 然后返回这个应用。</p>
+<p>上面的 “__init.py__” 文件有两个作用：1）包含应用工厂；2）告诉Python应当视“flaskr”文件夹为一个package。</p>
+<p>为了启动创建的Flask应用，我们在terminal使用下面三行命令，</p>
+<blockquote>
+<p>export FLASK_APP=flaskr  # tell the terminal where to find the app<br>export FLASK_ENV=development   # run the app in development mode<br>flask run   # actually start the app</p>
+</blockquote>
+<p>🍒 External Resource: </p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://dormousehole.readthedocs.io/en/latest/tutorial/factory.html">应用设置</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/rileywang0819/demo-bookshelf-api/blob/master/Flask_Doc_v1.1.4.pdf">Flask Doc: 1.5 Tutorial</a></li>
+</ul>
+<hr>
+<h3 id="Curl"><a href="#Curl" class="headerlink" title="Curl"></a>Curl</h3><p><strong>Curl</strong> is a library and command-line tool that completes IP transfers of data using URLs.</p>
+<p>Curl syntax:</p>
+<blockquote>
+<p>curl -X POST URL<br>curl –help</p>
+</blockquote>
+<img src="/2021/07/17/Web%20Development/Full%20Stack%20Web%20Dev%20Program/Web-Dev-2-API-Dev-and-Doc-I/curl-command-ex.JPG" class="">
+
+<p>By default curl performs a <code>get</code> request, so you don’t need to use the options flag and specify GET.</p>
+<p>Typing the following command to check if you already have the curl locally,</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">~$ curl --version</span><br></pre></td></tr></table></figure>
+
+<p>And you can refer this <a target="_blank" rel="noopener" href="https://everything.curl.dev/get">e-book</a> to install curl.</p>
+<p>Tip: you can also download a command-line JSON processor call <a target="_blank" rel="noopener" href="https://stedolan.github.io/jq/">jp</a> to make the output more clearly.</p>
+<h2 id="Endpoints-and-Payloads"><a href="#Endpoints-and-Payloads" class="headerlink" title="Endpoints and Payloads"></a>Endpoints and Payloads</h2><p>In this section, we’ll learn how to use endpoints and payloads to extend the functionality of the API.</p>
+<h3 id="Organize-API-endpoints"><a href="#Organize-API-endpoints" class="headerlink" title="Organize API endpoints"></a>Organize API endpoints</h3><p>When organizing API endpoints, you should follow some principles,</p>
+<ul>
+<li>Should be intuitive</li>
+<li>Organize by resources instead of by actions<ul>
+<li>Use nouns in the path, not verbs</li>
+<li>The method used will determine the operation taken</li>
+<li>Example:<ul>
+<li>GOOD: <a href="https://example.com/posts">https://example.com/posts</a></li>
+<li>BAD: <a href="https://example.com/create-posts">https://example.com/create-posts</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Keep a consistent scheme<ul>
+<li>Plural nouns for collections</li>
+<li>Use parameters to specify a specific item</li>
+<li>Example:<ul>
+<li>GOOD: <a href="https://example.com/entrees/5">https://example.com/entrees/5</a></li>
+<li>BAD: <a href="https://example.com/entree_five">https://example.com/entree_five</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Don’t make them too complex or lengthy<ul>
+<li>No longer than <code>collection/item/collection</code></li>
+<li>Example:<ul>
+<li>GOOD: <a href="https://example.com/entrees/5/reviews">https://example.com/entrees/5/reviews</a></li>
+<li>BAD: <a href="https://example.com/entrees/5/customers/4/reviews">https://example.com/entrees/5/customers/4/reviews</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>The request mothod used will determine the operation performed for the given resource URI. Though your API documentation should explain exactly what operation is performed and data returned via the response, it should be intuitive for anyone using your API,</p>
+<img src="/2021/07/17/Web%20Development/Full%20Stack%20Web%20Dev%20Program/Web-Dev-2-API-Dev-and-Doc-I/method-reviews.JPG" class="">
+
+
+<h3 id="CORS"><a href="#CORS" class="headerlink" title="CORS"></a>CORS</h3><p>If you’ve had a little experience as a web developer, you may have seen an error in the browser:</p>
+<blockquote>
+<p>No ‘Access-Control-Allow-Origin’ header is present on the requested resource</p>
+</blockquote>
+<p>This error is all about <strong>Cross-Origin Resource Sharing(跨域资源共享)</strong> or <strong>CORS</strong>.</p>
+<h4 id="CORS-1"><a href="#CORS-1" class="headerlink" title="CORS"></a>CORS</h4><p>Before talking about <strong>Cross-Origin Resource Sharing</strong>, let’s look at <strong>the same-origin policy</strong> firstly.</p>
+<p>The same-origin policy is a concept of web security. It allows scripts in Webpage 1 to access data from Webpage 2 <em>only if</em> they share the same domain. This policy is very important because it protects you. Imagine you have 2 pages in your browser, one page contains an advertisement which is embedded with malicious script, and another page is your bank website. The same-origin policy can prevent those malicious scripts from successfully making requests to your bank’s website as you access the website hosting the advertisement.</p>
+<p>So, if we try to make requests from: </p>
+<ul>
+<li>Different domains</li>
+<li>Different subdomains (<code>example.com</code> and <code>api.example.com</code>)</li>
+<li>Different ports (<code>example.com</code> and <code>example.com:1234</code>)</li>
+<li>Different protocols (<code>http://example.com</code> and <code>https://example.com</code>)</li>
+</ul>
+<p>it will trigger CORS.</p>
+<p>As a developer, if you’re sending any requests beyond very simple <code>GET</code> or <code>POST</code> requests, then before your actual request is sent, the browser sends a <em>preflight OPTIONS request</em> to the server. If CORS is not enabled, then the browser will not respond properly and the actual request will not be sent, and the above error will be raised.</p>
+<p>In order for the requests to be processed properly, CORS utilizes HTTP response headers to specify what the server will allow:</p>
+<img src="/2021/07/17/Web%20Development/Full%20Stack%20Web%20Dev%20Program/Web-Dev-2-API-Dev-and-Doc-I/CORS.JPG" class="">
+
+<p>🍧 External Resource: <a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS">MDN Web Docs - CORS</a></p>
+<h4 id="Flask-CORS"><a href="#Flask-CORS" class="headerlink" title="Flask-CORS"></a>Flask-CORS</h4><p><strong>Flask-CORS</strong> is an extension library of Flask for handling CORS.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># install the flask_cors dependency</span></span><br><span class="line">~$ pip install -U flask-cors</span><br><span class="line"></span><br><span class="line"><span class="comment"># Check the specific version</span></span><br><span class="line">~$ pip show flask-cors</span><br></pre></td></tr></table></figure>
+
+<p>Now, let’s try to use Flask-CORS library to enable CORS on a simple application.</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> Flask, jsonify</span><br><span class="line"><span class="keyword">from</span> flask_cors <span class="keyword">import</span> CORS, cross_origin</span><br><span class="line"><span class="keyword">from</span> models <span class="keyword">import</span> setup_db, Bookshelf</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">create_app</span>(<span class="params">test_config=<span class="literal">None</span></span>):</span></span><br><span class="line">    <span class="comment"># create and configure the app</span></span><br><span class="line">    app = Flask(__name__, instance_relative_config=<span class="literal">True</span>)</span><br><span class="line">    <span class="comment"># resources=&#123;&#125;</span></span><br><span class="line">    <span class="comment"># 1st element: specify what resources we&#x27;re talking about</span></span><br><span class="line">    <span class="comment"># 2nd element: specify what origins from the client can access those resources</span></span><br><span class="line">    <span class="comment"># cors = CORS(app, resources=&#123;r&quot;*/api/*&quot;: &#123;&quot;origins&quot;: &quot;*&quot;&#125;&#125;)</span></span><br><span class="line">    cors = CORS(app)</span><br><span class="line"></span><br><span class="line"><span class="meta">    @app.after_request</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">after_request</span>(<span class="params">response</span>):</span></span><br><span class="line">        response.headers.add(</span><br><span class="line">            <span class="string">&#x27;Access-Control-Allow-Headers&#x27;</span>,</span><br><span class="line">            <span class="string">&#x27;Content-Type, Authorization&#x27;</span></span><br><span class="line">        )</span><br><span class="line">        response.headers.add(</span><br><span class="line">            <span class="string">&#x27;Access-Control-Allow-Headers&#x27;</span>,</span><br><span class="line">            <span class="string">&#x27;GET, POST, PATCH, DELETE, OPTION&#x27;</span></span><br><span class="line">        )</span><br><span class="line">        <span class="keyword">return</span> response</span><br><span class="line"></span><br><span class="line"><span class="meta">    @app.route(<span class="params"><span class="string">&#x27;/hello&#x27;</span></span>)</span></span><br><span class="line"><span class="meta">    @cross_origin()</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">hello</span>():</span></span><br><span class="line">        <span class="comment"># jsonify:return json data to the client</span></span><br><span class="line">        <span class="keyword">return</span> jsonify(&#123;</span><br><span class="line">            <span class="string">&#x27;message&#x27;</span>: <span class="string">&#x27;Hello World&#x27;</span></span><br><span class="line">        &#125;)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> app</span><br></pre></td></tr></table></figure>
+
+<p>🍧 External Resource: <a target="_blank" rel="noopener" href="https://flask-cors.readthedocs.io/en/latest/#">Flask-CORS Doc</a></p>
+<h3 id="Flask-Pagination"><a href="#Flask-Pagination" class="headerlink" title="Flask Pagination"></a>Flask Pagination</h3><p>When using <code>GET</code> request, you can retrieve data of the the given URI. However, sending huge sets of data all to the frontend at once is bad for speed, and will reduce the quality of users’ experience. So when handling large collections of data, what we want to do is <strong>paginate</strong>(分页) the data using query parameters and request arguments, and send it in chunks.</p>
+<h5 id="Query-Parameters"><a href="#Query-Parameters" class="headerlink" title="Query Parameters"></a>Query Parameters</h5><p>Query parameters convention dictates that,</p>
+<ul>
+<li>A question mark precedes the query parameters.</li>
+<li>Parameters are in key=value pairs with an equal sign in between the key and value.</li>
+<li>Sets of parameters are separated by an ampersand.</li>
+</ul>
+<p>For example,</p>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="http://www.example.com/entrees?page=1">www.example.com/entrees?page=1</a><br><a target="_blank" rel="noopener" href="http://www.example.com/entrees?page=1&amp;allergens=peanut">www.example.com/entrees?page=1&amp;allergens=peanut</a></p>
+</blockquote>
+<h5 id="Request-Arguments"><a href="#Request-Arguments" class="headerlink" title="Request Arguments"></a>Request Arguments</h5><p><code>request.args</code> is a Python dictionary.</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/entrees&#x27;</span>, methods=[<span class="string">&#x27;GET&#x27;</span>]</span>)</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_entrees</span>():</span></span><br><span class="line">    page = request.args.get(<span class="string">&#x27;page&#x27;</span>, <span class="number">1</span>, <span class="built_in">type</span>=<span class="built_in">int</span>)</span><br></pre></td></tr></table></figure>
+
+
+<img src="/2021/07/17/Web%20Development/Full%20Stack%20Web%20Dev%20Program/Web-Dev-2-API-Dev-and-Doc-I/request-properties.png" class="" title="Request Properties Examples">
+
+
+<h3 id="Flask-Error-Handling"><a href="#Flask-Error-Handling" class="headerlink" title="Flask Error Handling"></a>Flask Error Handling</h3><p>Until now, the only way that we know how to handle errors is by using <code>abort</code>, but those are not insufficient. </p>
+<p><code>abort()</code> will return an HTML which is hard to read. We should also send JSON back when request fails, since the cilent needs clearer information about the exact error. And that’s where something call <strong>@app.errorhandler decorator</strong> comes in.</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># example</span></span><br><span class="line"></span><br><span class="line"><span class="meta">@app.errorhandler(<span class="params"><span class="number">404</span></span>)  </span><span class="comment"># pass the status code or Python error</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">not_found</span>(<span class="params">error</span>):</span></span><br><span class="line">    <span class="keyword">return</span> jsonify(&#123;</span><br><span class="line">        <span class="string">&quot;success&quot;</span>: <span class="literal">False</span>, </span><br><span class="line">        <span class="string">&quot;error&quot;</span>: <span class="number">404</span>,</span><br><span class="line">        <span class="string">&quot;message&quot;</span>: <span class="string">&quot;Not found&quot;</span></span><br><span class="line">        &#125;), <span class="number">404</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="Synthesis"><a href="#Synthesis" class="headerlink" title="Synthesis"></a>Synthesis</h3><p>Let’s synthesize the knowledge we’ve learnt so far, and make an implementation of bookshelf api.</p>
+<p>You can check the frontend code in <a target="_blank" rel="noopener" href="https://github.com/rileywang0819/demo-bookshelf-api/tree/master/frontend">Github</a></p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> Flask, request, abort, jsonify</span><br><span class="line"><span class="keyword">from</span> flask_sqlalchemy <span class="keyword">import</span> SQLAlchemy  <span class="comment"># , or_</span></span><br><span class="line"><span class="keyword">from</span> flask_cors <span class="keyword">import</span> CORS</span><br><span class="line"><span class="keyword">import</span> random</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> models <span class="keyword">import</span> setup_db, Book</span><br><span class="line"></span><br><span class="line">BOOKS_PER_SHELF = <span class="number">8</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">paginate_books</span>(<span class="params">request, books</span>):</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot; Paginate the books. &quot;&quot;&quot;</span></span><br><span class="line">    page = request.args.get(<span class="string">&#x27;page&#x27;</span>, <span class="number">1</span>, <span class="built_in">type</span>=<span class="built_in">int</span>)</span><br><span class="line">    start = (page - <span class="number">1</span>) * BOOKS_PER_SHELF</span><br><span class="line">    end = start + BOOKS_PER_SHELF</span><br><span class="line">    formatted_books = [book.<span class="built_in">format</span>() <span class="keyword">for</span> book <span class="keyword">in</span> books]</span><br><span class="line">    current_books = formatted_books[start: end]</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> current_books</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">create_app</span>(<span class="params">test_config=<span class="literal">None</span></span>):</span></span><br><span class="line">    <span class="comment"># create and configure the app</span></span><br><span class="line">    app = Flask(__name__, instance_relative_config=<span class="literal">True</span>)</span><br><span class="line">    setup_db(app)</span><br><span class="line">    <span class="comment"># resources=&#123;...&#125;</span></span><br><span class="line">    <span class="comment"># 1st element: specify what resources we&#x27;re talking about</span></span><br><span class="line">    <span class="comment"># 2nd element: specify what origins from the client can access those resources</span></span><br><span class="line">    <span class="comment"># cors = CORS(app, resources=&#123;r&quot;*/api/*&quot;: &#123;&quot;origins&quot;: &quot;*&quot;&#125;&#125;)</span></span><br><span class="line">    CORS(app)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># CORS Headers</span></span><br><span class="line"><span class="meta">    @app.after_request</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">after_request</span>(<span class="params">response</span>):</span></span><br><span class="line">        response.headers.add(</span><br><span class="line">            <span class="string">&#x27;Access-Control-Allow-Headers&#x27;</span>,</span><br><span class="line">            <span class="string">&#x27;Content-Type,Authorization,true&#x27;</span></span><br><span class="line">        )</span><br><span class="line">        response.headers.add(</span><br><span class="line">            <span class="string">&#x27;Access-Control-Allow-Methods&#x27;</span>,</span><br><span class="line">            <span class="string">&#x27;GET,PUT,POST,DELETE,OPTIONS&#x27;</span></span><br><span class="line">        )</span><br><span class="line">        <span class="keyword">return</span> response</span><br><span class="line"></span><br><span class="line"><span class="meta">    @app.route(<span class="params"><span class="string">&#x27;/books&#x27;</span>, methods=[<span class="string">&#x27;GET&#x27;</span>]</span>)</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get_books</span>():</span></span><br><span class="line">        <span class="string">&quot;&quot;&quot; Retrieves all books, paginated. &quot;&quot;&quot;</span></span><br><span class="line">        books = Book.query.order_by(Book.<span class="built_in">id</span>).<span class="built_in">all</span>()</span><br><span class="line">        current_books = paginate_books(request, books)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> <span class="built_in">len</span>(current_books) == <span class="number">0</span>:</span><br><span class="line">            abort(<span class="number">404</span>)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> jsonify(&#123;</span><br><span class="line">            <span class="string">&#x27;success&#x27;</span>: <span class="literal">True</span>,</span><br><span class="line">            <span class="string">&#x27;books&#x27;</span>: current_books,</span><br><span class="line">            <span class="string">&#x27;total_books&#x27;</span>: <span class="built_in">len</span>(books)</span><br><span class="line">        &#125;)</span><br><span class="line"></span><br><span class="line"><span class="meta">    @app.route(<span class="params"><span class="string">&#x27;/books/&lt;int:book_id&gt;&#x27;</span>, methods=[<span class="string">&#x27;PATCH&#x27;</span>]</span>)</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">update_rating</span>(<span class="params">book_id</span>):</span></span><br><span class="line">        <span class="string">&quot;&quot;&quot; Update a specific book&#x27;s rating. &quot;&quot;&quot;</span></span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            book = Book.query.filter_by(<span class="built_in">id</span>=book_id).one_or_none()</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> book <span class="keyword">is</span> <span class="literal">None</span>:</span><br><span class="line">                abort(<span class="number">404</span>)</span><br><span class="line">            new_rating = request.get_json().get(<span class="string">&#x27;rating&#x27;</span>)</span><br><span class="line">            book.rating = new_rating</span><br><span class="line">            book.update()</span><br><span class="line"></span><br><span class="line">            <span class="keyword">return</span> jsonify(&#123;</span><br><span class="line">                <span class="string">&#x27;success&#x27;</span>: <span class="literal">True</span>,</span><br><span class="line">                <span class="string">&#x27;id&#x27;</span>: book.<span class="built_in">id</span></span><br><span class="line">            &#125;)</span><br><span class="line">        <span class="keyword">except</span>:</span><br><span class="line">            abort(<span class="number">400</span>)  <span class="comment"># bad request</span></span><br><span class="line"></span><br><span class="line"><span class="meta">    @app.route(<span class="params"><span class="string">&#x27;/books/&lt;int:book_id&gt;&#x27;</span>, methods=[<span class="string">&#x27;DELETE&#x27;</span>]</span>)</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">delete_book</span>(<span class="params">book_id</span>):</span></span><br><span class="line">        <span class="string">&quot;&quot;&quot; Deletes a specific book. &quot;&quot;&quot;</span></span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            book = Book.query.filter_by(<span class="built_in">id</span>=book_id).one_or_none()</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> book <span class="keyword">is</span> <span class="literal">None</span>:</span><br><span class="line">                abort(<span class="number">404</span>)</span><br><span class="line"></span><br><span class="line">            book.delete()</span><br><span class="line">            books = Book.query.order_by(Book.<span class="built_in">id</span>).<span class="built_in">all</span>()</span><br><span class="line">            current_books = paginate_books(request, books)</span><br><span class="line"></span><br><span class="line">            <span class="keyword">return</span> jsonify(&#123;</span><br><span class="line">                <span class="string">&#x27;success&#x27;</span>: <span class="literal">True</span>,</span><br><span class="line">                <span class="string">&#x27;deleted&#x27;</span>: book_id,</span><br><span class="line">                <span class="string">&#x27;books&#x27;</span>: current_books,</span><br><span class="line">                <span class="string">&#x27;total_books&#x27;</span>: <span class="built_in">len</span>(books)</span><br><span class="line">            &#125;)</span><br><span class="line">        <span class="keyword">except</span>:</span><br><span class="line">            abort(<span class="number">422</span>)  <span class="comment"># unprocessable entity</span></span><br><span class="line"></span><br><span class="line"><span class="meta">    @app.route(<span class="params"><span class="string">&#x27;/books&#x27;</span>, methods=[<span class="string">&#x27;POST&#x27;</span>]</span>)</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">create_book</span>():</span></span><br><span class="line">        body = request.get_json()</span><br><span class="line">        new_title = body.get(<span class="string">&#x27;title&#x27;</span>, <span class="literal">None</span>)</span><br><span class="line">        new_author = body.get(<span class="string">&#x27;author&#x27;</span>, <span class="literal">None</span>)</span><br><span class="line">        new_rating = body.get(<span class="string">&#x27;rating&#x27;</span>, <span class="literal">None</span>)</span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            book = Book(title=new_title, author=new_author, rating=new_rating)</span><br><span class="line">            book.insert()</span><br><span class="line">            books = Book.query.order_by(Book.<span class="built_in">id</span>).<span class="built_in">all</span>()</span><br><span class="line">            current_books = paginate_books(request, books)</span><br><span class="line"></span><br><span class="line">            <span class="keyword">return</span> jsonify(&#123;</span><br><span class="line">                <span class="string">&#x27;success&#x27;</span>: <span class="literal">True</span>,</span><br><span class="line">                <span class="string">&#x27;created&#x27;</span>: book.<span class="built_in">id</span>,</span><br><span class="line">                <span class="string">&#x27;books&#x27;</span>: current_books,</span><br><span class="line">                <span class="string">&#x27;total_books&#x27;</span>: <span class="built_in">len</span>(books)</span><br><span class="line">            &#125;)</span><br><span class="line">        <span class="keyword">except</span>:</span><br><span class="line">            abort(<span class="number">422</span>)</span><br><span class="line"></span><br><span class="line"><span class="meta">    @app.errorhandler(<span class="params"><span class="number">404</span></span>)</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">not_found</span>(<span class="params">error</span>):</span></span><br><span class="line">        <span class="keyword">return</span> jsonify(&#123;</span><br><span class="line">            <span class="string">&quot;success&quot;</span>: <span class="literal">False</span>,</span><br><span class="line">            <span class="string">&quot;error&quot;</span>: <span class="number">404</span>,</span><br><span class="line">            <span class="string">&quot;message&quot;</span>: <span class="string">&quot;Not found&quot;</span></span><br><span class="line">        &#125;), <span class="number">404</span></span><br><span class="line">    </span><br><span class="line"><span class="meta">    @app.errorhandler(<span class="params"><span class="number">400</span></span>)</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">bad_request</span>(<span class="params">error</span>):</span></span><br><span class="line">        <span class="keyword">return</span> jsonify(&#123;</span><br><span class="line">            <span class="string">&quot;success&quot;</span>: <span class="literal">False</span>,</span><br><span class="line">            <span class="string">&quot;error&quot;</span>: <span class="number">400</span>,</span><br><span class="line">            <span class="string">&quot;message&quot;</span>: <span class="string">&quot;Bad Request&quot;</span></span><br><span class="line">        &#125;), <span class="number">400</span></span><br><span class="line">        </span><br><span class="line"><span class="meta">    @app.errorhandler(<span class="params"><span class="number">422</span></span>)</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">unprocessable</span>(<span class="params">error</span>):</span></span><br><span class="line">        <span class="keyword">return</span> jsonify(&#123;</span><br><span class="line">            <span class="string">&quot;success&quot;</span>: <span class="literal">False</span>,</span><br><span class="line">            <span class="string">&quot;error&quot;</span>: <span class="number">422</span>,</span><br><span class="line">            <span class="string">&quot;message&quot;</span>: <span class="string">&quot;Unprocessable&quot;</span></span><br><span class="line">        &#125;), <span class="number">422</span></span><br><span class="line">        </span><br><span class="line"><span class="meta">    @app.errorhandler(<span class="params"><span class="number">405</span></span>)</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">not_allowed</span>(<span class="params">error</span>):</span></span><br><span class="line">        <span class="keyword">return</span> jsonify(&#123;</span><br><span class="line">            <span class="string">&quot;success&quot;</span>: <span class="literal">False</span>,</span><br><span class="line">            <span class="string">&quot;error&quot;</span>: <span class="number">405</span>,</span><br><span class="line">            <span class="string">&quot;message&quot;</span>: <span class="string">&quot;Not Allowed Method&quot;</span></span><br><span class="line">        &#125;), <span class="number">405</span></span><br><span class="line">        </span><br><span class="line">    <span class="keyword">return</span> app</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>Post author:</strong>
+    gogo-wang
+  </li>
+  <li class="post-copyright-link">
+    <strong>Post link:</strong>
+    <a href="http://example.com/2021/07/17/Web%20Development/Full%20Stack%20Web%20Dev%20Program/Web-Dev-2-API-Dev-and-Doc-I/" title="Web Dev(2): API Dev and Doc(I)">http://example.com/2021/07/17/Web%20Development/Full%20Stack%20Web%20Dev%20Program/Web-Dev-2-API-Dev-and-Doc-I/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice: </strong>
+    All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> unless stating additionally.
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/web/" rel="tag"># web</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2021/07/15/Web%20Development/Full%20Stack%20Web%20Dev%20Program/Web-Dev-1-SQL-and-Data-Modeling-V/" rel="next" title="Web Dev(1): SQL and Data Modeling(V)">
+                <i class="fa fa-chevron-left"></i> Web Dev(1): SQL and Data Modeling(V)
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2021/07/17/Web%20Development/Full%20Stack%20Web%20Dev%20Program/Web-Dev-2-API-Dev-and-Doc-II/" rel="prev" title="Web Dev(2): API Dev and Doc(II)">
+                Web Dev(2): API Dev and Doc(II) <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a target="_blank" rel="noopener" href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name"></p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/%7C%7Carchive">
+              
+                  <span class="site-state-item-count">42</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/rileywang0819" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Introdcution-to-APIs"><span class="nav-number">1.</span> <span class="nav-text">Introdcution to APIs</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#What-are-APIs"><span class="nav-number">1.1.</span> <span class="nav-text">What are APIs?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#How-APIs-work"><span class="nav-number">1.2.</span> <span class="nav-text">How APIs work?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#RESTful-APIs"><span class="nav-number">1.3.</span> <span class="nav-text">RESTful APIs</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HTTP-and-Flask-Basics"><span class="nav-number">2.</span> <span class="nav-text">HTTP and Flask Basics</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Introduction-to-HTTP"><span class="nav-number">2.1.</span> <span class="nav-text">Introduction to HTTP</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HTTP-Requests-and-Responses"><span class="nav-number">2.2.</span> <span class="nav-text">HTTP Requests and Responses</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Requests"><span class="nav-number">2.2.1.</span> <span class="nav-text">Requests</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Responses"><span class="nav-number">2.2.2.</span> <span class="nav-text">Responses</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Flasks"><span class="nav-number">2.3.</span> <span class="nav-text">Flasks</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Basic-Flask-App"><span class="nav-number">2.3.1.</span> <span class="nav-text">Basic Flask App</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Curl"><span class="nav-number">2.4.</span> <span class="nav-text">Curl</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Endpoints-and-Payloads"><span class="nav-number">3.</span> <span class="nav-text">Endpoints and Payloads</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Organize-API-endpoints"><span class="nav-number">3.1.</span> <span class="nav-text">Organize API endpoints</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CORS"><span class="nav-number">3.2.</span> <span class="nav-text">CORS</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#CORS-1"><span class="nav-number">3.2.1.</span> <span class="nav-text">CORS</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Flask-CORS"><span class="nav-number">3.2.2.</span> <span class="nav-text">Flask-CORS</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Flask-Pagination"><span class="nav-number">3.3.</span> <span class="nav-text">Flask Pagination</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Query-Parameters"><span class="nav-number">3.3.0.1.</span> <span class="nav-text">Query Parameters</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Request-Arguments"><span class="nav-number">3.3.0.2.</span> <span class="nav-text">Request Arguments</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Flask-Error-Handling"><span class="nav-number">3.4.</span> <span class="nav-text">Flask Error Handling</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Synthesis"><span class="nav-number">3.5.</span> <span class="nav-text">Synthesis</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">GoGo-Wang</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+    
+      <script id="dsq-count-scr" src="https://author.disqus.com/count.js" async></script>
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'http://example.com/2021/07/17/Web%20Development/Full%20Stack%20Web%20Dev%20Program/Web-Dev-2-API-Dev-and-Doc-I/';
+          this.page.identifier = '2021/07/17/Web Development/Full Stack Web Dev Program/Web-Dev-2-API-Dev-and-Doc-I/';
+          this.page.title = 'Web Dev(2): API Dev and Doc(I)';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://author.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

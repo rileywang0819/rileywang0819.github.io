@@ -124,8 +124,11 @@
 <meta property="og:image" content="http://example.com/2021/07/12/CS61B-DSA/CS61B-11-Libraries-Abstract-Classes-Packages/4.JPG">
 <meta property="og:image" content="http://example.com/2021/07/12/CS61B-DSA/CS61B-11-Libraries-Abstract-Classes-Packages/5.JPG">
 <meta property="og:image" content="http://example.com/2021/07/12/CS61B-DSA/CS61B-11-Libraries-Abstract-Classes-Packages/6.JPG">
+<meta property="og:image" content="http://example.com/2021/07/12/CS61B-DSA/CS61B-11-Libraries-Abstract-Classes-Packages/7.JPG">
+<meta property="og:image" content="http://example.com/2021/07/12/CS61B-DSA/CS61B-11-Libraries-Abstract-Classes-Packages/8.JPG">
+<meta property="og:image" content="http://example.com/2021/07/12/CS61B-DSA/CS61B-11-Libraries-Abstract-Classes-Packages/9.JPG">
 <meta property="article:published_time" content="2021-07-11T22:10:21.000Z">
-<meta property="article:modified_time" content="2021-07-19T05:44:59.008Z">
+<meta property="article:modified_time" content="2021-07-30T11:41:36.812Z">
 <meta property="article:author" content="gogo-wang">
 <meta property="article:tag" content="CS61B">
 <meta name="twitter:card" content="summary">
@@ -428,7 +431,36 @@
 <img src="/2021/07/12/CS61B-DSA/CS61B-11-Libraries-Abstract-Classes-Packages/6.JPG" class="">
 
 
-<h2 id="Interfaces-and-Abstract-Classes"><a href="#Interfaces-and-Abstract-Classes" class="headerlink" title="Interfaces and Abstract Classes"></a>Interfaces and Abstract Classes</h2><h2 id="Packages"><a href="#Packages" class="headerlink" title="Packages"></a>Packages</h2>
+<h2 id="Demos-of-Collection"><a href="#Demos-of-Collection" class="headerlink" title="Demos of Collection"></a>Demos of Collection</h2><p>Now, let’s look at examples of <strong>java.util.Colloction</strong> interface.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"><span class="keyword">import</span> java.util.ArrayList;</span><br><span class="line"><span class="keyword">import</span> java.util.Set;</span><br><span class="line"><span class="keyword">import</span> java.util.HashSet;</span><br><span class="line"><span class="keyword">import</span> java.util.Map;</span><br><span class="line"><span class="keyword">import</span> java.util.HashMap;</span><br><span class="line"></span><br><span class="line"><span class="comment">/** Given the text of a book. Try to complete 3 tasks using</span></span><br><span class="line"><span class="comment"> * List, Set and Map interface that extend the Collection interface.</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * Task 1: Create a list of all words in the book.</span></span><br><span class="line"><span class="comment"> * Task 2: Count the number of unique words.</span></span><br><span class="line"><span class="comment"> * Task 3: Keep track of the number of times that specific words are mentioned.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DemoCollection</span> </span>&#123;</span><br><span class="line">	<span class="comment">// task1</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> List&lt;String&gt; <span class="title">getWords</span><span class="params">(String inputFile)</span> </span>&#123;</span><br><span class="line">		List&lt;String&gt; words = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">		In in = <span class="keyword">new</span> In(inputFile);</span><br><span class="line">		<span class="keyword">while</span> (!in.empty()) &#123;</span><br><span class="line">			String nextWord = cleanString(in.readString());</span><br><span class="line">			words.add(nextWord);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> words;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// task2</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">countUniqueWord</span><span class="params">(List&lt;String&gt; words)</span> </span>&#123;</span><br><span class="line">		Set&lt;String&gt; wordSet = <span class="keyword">new</span> HashSet&lt;&gt;();</span><br><span class="line">		<span class="keyword">for</span> (String word: words) &#123;</span><br><span class="line">			wordSet.add(word);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">int</span> count = wordSet.size();</span><br><span class="line">		<span class="keyword">return</span> count;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// task3</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Map&lt;String, Integer&gt; <span class="title">collectWordCount</span><span class="params">(List&lt;String&gt; words, List&lt;String&gt; targets)</span> </span>&#123;</span><br><span class="line">		Map&lt;String, Integer&gt; counts = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">		<span class="keyword">for</span> (String t: targets) &#123;</span><br><span class="line">			counts.put(t, <span class="number">0</span>);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">for</span> (String s: words) &#123;</span><br><span class="line">			<span class="keyword">if</span> (counts.containsKey(s)) &#123;</span><br><span class="line">				<span class="keyword">int</span> oldCount = counts.get(s);</span><br><span class="line">				counts.put(s, oldCount + <span class="number">1</span>);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> counts;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="Interfaces-and-Abstract-Classes"><a href="#Interfaces-and-Abstract-Classes" class="headerlink" title="Interfaces and Abstract Classes"></a>Interfaces and Abstract Classes</h2><h3 id="Interfaces"><a href="#Interfaces" class="headerlink" title="Interfaces"></a>Interfaces</h3><img src="/2021/07/12/CS61B-DSA/CS61B-11-Libraries-Abstract-Classes-Packages/7.JPG" class="">
+<img src="/2021/07/12/CS61B-DSA/CS61B-11-Libraries-Abstract-Classes-Packages/8.JPG" class="">
+
+<p>So, in summary, interfaces:</p>
+<ul>
+<li>Cannot be instantiated.</li>
+<li>Can provide either <strong>abstract</strong> or <strong>concrete</strong> methods.<ul>
+<li>Use no keyword for abstract methods.</li>
+<li>Use default keyword for concrete methods.</li>
+</ul>
+</li>
+<li>Can provide only public static final variables.</li>
+<li>Can provide only public methods.<ul>
+<li>Java 9 added private methods to interfaces. *</li>
+</ul>
+</li>
+</ul>
+<h3 id="Abstract-Classes"><a href="#Abstract-Classes" class="headerlink" title="Abstract Classes"></a>Abstract Classes</h3><img src="/2021/07/12/CS61B-DSA/CS61B-11-Libraries-Abstract-Classes-Packages/9.JPG" class="">
+
+<p>Implementations must override ALL abstract methods.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Circle</span> <span class="keyword">extends</span> <span class="title">GraphicObject</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">draw</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">resize</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="Packages"><a href="#Packages" class="headerlink" title="Packages"></a>Packages</h2><p>A package is a namespace that organizes classes and interfaces. </p>
+<p>We can use <strong>import</strong> statement to provide shorthand notation for usage of a single class in a package.</p>
+
       
     </div>
     
@@ -486,7 +518,7 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2021/07/12/Web%20Development/Web-Dev-1-SQL-and-Data-Modeling-I/" rel="prev" title="Web Dev(1): SQL and Data Modeling(I)">
+              <a href="/2021/07/12/Web%20Development/Full%20Stack%20Web%20Dev%20Program/Web-Dev-1-SQL-and-Data-Modeling-I/" rel="prev" title="Web Dev(1): SQL and Data Modeling(I)">
                 Web Dev(1): SQL and Data Modeling(I) <i class="fa fa-chevron-right"></i>
               </a>
             
@@ -575,7 +607,7 @@
               
                 <a href="/archives/%7C%7Carchive">
               
-                  <span class="site-state-item-count">34</span>
+                  <span class="site-state-item-count">42</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -597,7 +629,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-count">7</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
@@ -640,7 +672,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Java-Libraries"><span class="nav-number">1.</span> <span class="nav-text">Java Libraries</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Interfaces-and-Abstract-Classes"><span class="nav-number">2.</span> <span class="nav-text">Interfaces and Abstract Classes</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Packages"><span class="nav-number">3.</span> <span class="nav-text">Packages</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Java-Libraries"><span class="nav-number">1.</span> <span class="nav-text">Java Libraries</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Demos-of-Collection"><span class="nav-number">2.</span> <span class="nav-text">Demos of Collection</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Interfaces-and-Abstract-Classes"><span class="nav-number">3.</span> <span class="nav-text">Interfaces and Abstract Classes</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Interfaces"><span class="nav-number">3.1.</span> <span class="nav-text">Interfaces</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Abstract-Classes"><span class="nav-number">3.2.</span> <span class="nav-text">Abstract Classes</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Packages"><span class="nav-number">4.</span> <span class="nav-text">Packages</span></a></li></ol></div>
             
 
           </div>
