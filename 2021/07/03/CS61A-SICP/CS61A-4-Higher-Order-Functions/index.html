@@ -120,7 +120,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://example.com/2021/07/03/CS61A-SICP/CS61A-4-Higher-Order-Functions/lec4-1.png">
 <meta property="article:published_time" content="2021-07-03T09:21:39.000Z">
-<meta property="article:modified_time" content="2021-07-15T07:32:16.393Z">
+<meta property="article:modified_time" content="2021-08-10T08:18:13.488Z">
 <meta property="article:author" content="gogo-wang">
 <meta property="article:tag" content="CS61A">
 <meta name="twitter:card" content="summary">
@@ -395,13 +395,13 @@
 
 
 <h2 id="Designing-Functions"><a href="#Designing-Functions" class="headerlink" title="Designing Functions"></a>Designing Functions</h2><p>There are lots of different functions that can do the same thing, but some are better than other. How to design better function?</p>
-<p><strong>A Guide to Designing Function:</strong></p>
+<p>🏜️ <strong>A Guide to Designing Function:</strong></p>
 <ul>
 <li>Give each function exactly one job.</li>
 <li>Don’t repeat yourself (DRY). Implement a process just once, but execute it many times.</li>
 <li>Define functions generally.</li>
 </ul>
-<p>The following is an example of generalizing patterns with arguments.</p>
+<h3 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h3><p>The following is an example of generalizing patterns with arguments.</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Repeating</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> math <span class="keyword">import</span> pi, sqrt</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">area_square</span>(<span class="params">r</span>):</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;Return the area of a square with side length R.&quot;&quot;&quot;</span></span><br><span class="line">    <span class="keyword">return</span> r * r</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">area_circle</span>(<span class="params">r</span>):</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;Return the area of a circle with radius R.&quot;&quot;&quot;</span></span><br><span class="line">    <span class="keyword">return</span> r * r * pi</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">area_hexagon</span>(<span class="params">r</span>):</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;Return the area of a regular hexagon with side length R.&quot;&quot;&quot;</span></span><br><span class="line">    <span class="keyword">return</span> r * r * <span class="number">3</span> * sqrt(<span class="number">3</span>) / <span class="number">2</span></span><br></pre></td></tr></table></figure>
 
 <p>There are lots of repeating things. Let’s try to do some generalization.</p>
@@ -416,7 +416,7 @@
 <p>We can notice the similar computational process above.</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Functions as arguments</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> operator <span class="keyword">import</span> mul</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">identity</span>(<span class="params">k</span>):</span></span><br><span class="line">    <span class="keyword">return</span> k</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">cube</span>(<span class="params">k</span>):</span></span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">pow</span>(k, <span class="number">3</span>)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">pi_term</span>(<span class="params">k</span>):</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">8</span> / mul(k * <span class="number">4</span> - <span class="number">3</span>, k * <span class="number">4</span> - <span class="number">1</span>)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">summation</span>(<span class="params">n, term</span>):</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;Sum the first N terms of a sequence.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    &gt;&gt;&gt; summation(5, cube)</span></span><br><span class="line"><span class="string">    225</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    total, k = <span class="number">0</span>, <span class="number">1</span></span><br><span class="line">    <span class="keyword">while</span> k &lt;= n:</span><br><span class="line">        total, k = total + term(k), k + <span class="number">1</span></span><br><span class="line">    <span class="keyword">return</span> total</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">sum_naturals</span>(<span class="params">n</span>):</span></span><br><span class="line">    <span class="keyword">return</span> summation(n, identity)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">sum_cubes</span>(<span class="params">n</span>):</span></span><br><span class="line">    <span class="keyword">return</span> summation(n, cube)</span><br></pre></td></tr></table></figure>
 
-<p>The function <code>summation(n, term)</code> above is called <code>higher-order function</code> - it takes another function as an argument.</p>
+<p>The function <code>summation(n, term)</code> above is called <strong>higher-order function</strong> - it takes another function as an argument.</p>
 <p>Higher-order functions can also treat functions as return values.</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">make_adder</span>(<span class="params">n</span>):</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;Return a function that takes one argument K and returns K + N.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    &gt;&gt;&gt; add_three = make_adder(3)</span></span><br><span class="line"><span class="string">    &gt;&gt;&gt; add_three(4)</span></span><br><span class="line"><span class="string">    7</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">adder</span>(<span class="params">k</span>):</span></span><br><span class="line">        <span class="keyword">return</span> k + n</span><br><span class="line">    <span class="keyword">return</span> adder</span><br><span class="line"></span><br><span class="line">make_adder(<span class="number">2000</span>)(<span class="number">20</span>)  <span class="comment"># currying</span></span><br></pre></td></tr></table></figure>
 
@@ -585,7 +585,7 @@
               
                 <a href="/archives/%7C%7Carchive">
               
-                  <span class="site-state-item-count">42</span>
+                  <span class="site-state-item-count">48</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -596,7 +596,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-count">11</span>
                   <span class="site-state-item-name">categories</span>
                 </a>
               </div>
@@ -607,7 +607,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">8</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
@@ -650,7 +650,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Iteration-Example"><span class="nav-number">1.</span> <span class="nav-text">Iteration Example</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Designing-Functions"><span class="nav-number">2.</span> <span class="nav-text">Designing Functions</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Higher-Order-Function"><span class="nav-number">3.</span> <span class="nav-text">Higher-Order Function</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Lambda-Expression"><span class="nav-number">4.</span> <span class="nav-text">Lambda Expression</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Function-Return"><span class="nav-number">5.</span> <span class="nav-text">Function Return</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Function-Decorators"><span class="nav-number">6.</span> <span class="nav-text">Function Decorators</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Iteration-Example"><span class="nav-number">1.</span> <span class="nav-text">Iteration Example</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Designing-Functions"><span class="nav-number">2.</span> <span class="nav-text">Designing Functions</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Example"><span class="nav-number">2.1.</span> <span class="nav-text">Example</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Higher-Order-Function"><span class="nav-number">3.</span> <span class="nav-text">Higher-Order Function</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Lambda-Expression"><span class="nav-number">4.</span> <span class="nav-text">Lambda Expression</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Function-Return"><span class="nav-number">5.</span> <span class="nav-text">Function Return</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Function-Decorators"><span class="nav-number">6.</span> <span class="nav-text">Function Decorators</span></a></li></ol></div>
             
 
           </div>

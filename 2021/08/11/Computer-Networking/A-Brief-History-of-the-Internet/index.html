@@ -1,0 +1,882 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="en,zh-Hans,default">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Roboto Slab:300,300italic,400,400italic,700,700italic|Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="computer networking," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="Much like the industrial revolution, the Internet revolution has changed the way people live, shop, socialize and work, and the way companies operate. In this blog, let’s review the history of the Int">
+<meta property="og:type" content="article">
+<meta property="og:title" content="A Brief History of the Internet">
+<meta property="og:url" content="http://example.com/2021/08/11/Computer-Networking/A-Brief-History-of-the-Internet/index.html">
+<meta property="og:site_name" content="GoGo-Wang&#39;s Blog">
+<meta property="og:description" content="Much like the industrial revolution, the Internet revolution has changed the way people live, shop, socialize and work, and the way companies operate. In this blog, let’s review the history of the Int">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/2021/08/11/Computer-Networking/A-Brief-History-of-the-Internet/arpanet-evolution.JPG">
+<meta property="article:published_time" content="2021-08-11T06:50:57.000Z">
+<meta property="article:modified_time" content="2021-08-11T07:19:28.866Z">
+<meta property="article:author" content="gogo-wang">
+<meta property="article:tag" content="computer networking">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2021/08/11/Computer-Networking/A-Brief-History-of-the-Internet/arpanet-evolution.JPG">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://example.com/2021/08/11/Computer-Networking/A-Brief-History-of-the-Internet/"/>
+
+
+
+
+
+  <title>A Brief History of the Internet | GoGo-Wang's Blog</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">GoGo-Wang's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">"Say something." <br> - "Something."</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/08/11/Computer-Networking/A-Brief-History-of-the-Internet/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="GoGo-Wang's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">A Brief History of the Internet</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2021-08-11T15:50:57+09:00">
+                2021-08-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Computer-Networking/" itemprop="url" rel="index">
+                    <span itemprop="name">Computer Networking</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Computer-Networking/notes/" itemprop="url" rel="index">
+                    <span itemprop="name">notes</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2021/08/11/Computer-Networking/A-Brief-History-of-the-Internet/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2021/08/11/Computer-Networking/A-Brief-History-of-the-Internet/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>Much like the industrial revolution, the Internet revolution has changed the way people live, shop, socialize and work, and the way companies operate.</p>
+<p>In this blog, let’s review the history of the Internet quickly.</p>
+<span id="more"></span>
+
+<h2 id="The-‘50s-The-Cold-War"><a href="#The-‘50s-The-Cold-War" class="headerlink" title="The ‘50s: The Cold War"></a>The ‘50s: The Cold War</h2><ul>
+<li>Back to the middle of the last century, the U.S. was in the midst of a cold war with The Soviet Union.</li>
+<li>In 1957, the Soviets launched Sputnik, the world’s first satellite, propelling us into the space age.</li>
+<li>This caught the US off-guard, and in response the U.S. government created ARPA (Advanced Research Projects Agency) which was mandated with the responsibility of the technological and scientific advancement of the country.</li>
+</ul>
+<blockquote>
+<p> The Advanced Research Projects Agency (ARPA) is now known as Defense Advanced Research Projects Agency (DARPA) to emphasize the its focus on defense.</p>
+</blockquote>
+<h2 id="The-‘60s-‘70s-ARPANET"><a href="#The-‘60s-‘70s-ARPANET" class="headerlink" title="The ‘60s-‘70s: ARPANET"></a>The ‘60s-‘70s: ARPANET</h2><ul>
+<li>ARPA was meant to facilitate research. But their computers <strong>could not talk to each other</strong>.</li>
+<li>ARPA sent out a request for the design of a network that would allow computers across the entire country to talk to each other.</li>
+<li>A network called the <strong>ARPANET</strong> was developed over the course of a year. In September 1969, the ARPANET was turned on. The first four nodes were at UCLA, Stanford, MIT, and the University of Utah. Over the ‘70s, other computer networks just like ARPANET sprang up.</li>
+<li>While the computers on one network could communicate via a default way to communicate set by the network administrator of each network, the computers on different networks could not communicate since every network had its own language or - more formally – <strong>protocol</strong>.</li>
+<li>Then, a standardized protocol called the <strong>Transmission Control Protocol</strong> was invented (RFC 675).</li>
+<li>It was also in RFC 675 that the term “Internet” was first used. Later RFCs continued the use.</li>
+</ul>
+<hr>
+<p><strong>Protocals</strong></p>
+<p>A protocol is a set of rules that computers use to communicate with each other.</p>
+<hr>
+<h2 id="The-‘80s-Protocols"><a href="#The-‘80s-Protocols" class="headerlink" title="The ‘80s: Protocols"></a>The ‘80s: Protocols</h2><ul>
+<li>ARPANET was fully migrated to TCP/IP.</li>
+<li>As we moved into the 1980s, computers were added to the Internet at an increasing rate. These computers were primarily from government, academic, and research organizations. Much to the surprise of the engineers, the early popularity of the Internet was driven by the use of electronic mail.</li>
+</ul>
+<img src="/2021/08/11/Computer-Networking/A-Brief-History-of-the-Internet/arpanet-evolution.JPG" class="">
+
+<h2 id="The-‘90s-The-World-Wide-Web"><a href="#The-‘90s-The-World-Wide-Web" class="headerlink" title="The ‘90s: The World Wide Web"></a>The ‘90s: The World Wide Web</h2><ul>
+<li>During the 90’s, the researchers at the European Council for Nuclear Research (CERN) felt the need for automated sharing of their findings between their computers. CERN had documents that cross-referenced other documents. So, there were these (hyper) links between documents.</li>
+<li>In 1990 Tim Berners-Lee introduced his World Wide Web project to store and retrieve these inter-connected documents.</li>
+<li>Later, educational, commercial and so many other applications were realized.</li>
+<li>The World Wide Web got even more popular with the advent of browsers such as Mosaic and Netscape which allowed combining graphics with web navigation!</li>
+</ul>
+<hr>
+<p><strong>Search Engines</strong></p>
+<p>A fun fact that initially, there were no search engines.</p>
+<p>So how would you find a website? Well, you couldn’t. Either you knew it or you didn’t. Of course, you could land on a website by accident or by following a link from another website that you knew.</p>
+<p>Then, people started creating static indices of the web - a categorized listing of websites. People would sit and randomly click on links to find web pages and add links to their index. But this couldn’t scale. So, eventually, search engines were “invented.”</p>
+<p>Altavista and Yahoo! were among the earlier search engines. According to this Wikipedia article, the first automated web index was World Wide Web Wanderer. Soon afterward, the first web search engine, the W3Catalog was invented.</p>
+<hr>
+<h2 id="The-21st-Century-The-Age-of-the-Internet"><a href="#The-21st-Century-The-Age-of-the-Internet" class="headerlink" title="The 21st Century: The Age of the Internet"></a>The 21st Century: The Age of the Internet</h2><p>Now, we are in an age in which all our devices run on the Internet, even toasters for some – the era of <strong>the Internet of Things</strong>.</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>Post author:</strong>
+    gogo-wang
+  </li>
+  <li class="post-copyright-link">
+    <strong>Post link:</strong>
+    <a href="http://example.com/2021/08/11/Computer-Networking/A-Brief-History-of-the-Internet/" title="A Brief History of the Internet">http://example.com/2021/08/11/Computer-Networking/A-Brief-History-of-the-Internet/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice: </strong>
+    All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> unless stating additionally.
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/computer-networking/" rel="tag"># computer networking</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2021/08/11/Computer-Networking/Computer-Networking-I/" rel="next" title="Computer Networking(I)">
+                <i class="fa fa-chevron-left"></i> Computer Networking(I)
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a target="_blank" rel="noopener" href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name"></p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/%7C%7Carchive">
+              
+                  <span class="site-state-item-count">48</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/rileywang0819" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#The-%E2%80%9850s-The-Cold-War"><span class="nav-number">1.</span> <span class="nav-text">The ‘50s: The Cold War</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#The-%E2%80%9860s-%E2%80%9870s-ARPANET"><span class="nav-number">2.</span> <span class="nav-text">The ‘60s-‘70s: ARPANET</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#The-%E2%80%9880s-Protocols"><span class="nav-number">3.</span> <span class="nav-text">The ‘80s: Protocols</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#The-%E2%80%9890s-The-World-Wide-Web"><span class="nav-number">4.</span> <span class="nav-text">The ‘90s: The World Wide Web</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#The-21st-Century-The-Age-of-the-Internet"><span class="nav-number">5.</span> <span class="nav-text">The 21st Century: The Age of the Internet</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">GoGo-Wang</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+    
+      <script id="dsq-count-scr" src="https://author.disqus.com/count.js" async></script>
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'http://example.com/2021/08/11/Computer-Networking/A-Brief-History-of-the-Internet/';
+          this.page.identifier = '2021/08/11/Computer-Networking/A-Brief-History-of-the-Internet/';
+          this.page.title = 'A Brief History of the Internet';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://author.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

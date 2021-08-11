@@ -1,11 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>CS61B(29): Shortest Paths</title>
-    <url>/2021/08/01/CS61B-29-Shortest-Paths/</url>
-    <content><![CDATA[]]></content>
-  </entry>
-  <entry>
     <title>15213(1): Overview</title>
     <url>/2021/07/07/15213-CSAPP/15213-1-Overview/</url>
     <content><![CDATA[<p>This is the lecture note of 15213 - Lecture 1.</p>
@@ -144,6 +139,32 @@
       </categories>
       <tags>
         <tag>15213</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Hello World</title>
+    <url>/2021/06/22/Blog/hello-world/</url>
+    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><span id="more"></span>
+
+<h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+]]></content>
+      <categories>
+        <category>Blog</category>
+      </categories>
+      <tags>
+        <tag>blog</tag>
       </tags>
   </entry>
   <entry>
@@ -387,32 +408,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Hello World</title>
-    <url>/2021/06/22/Blog/hello-world/</url>
-    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><span id="more"></span>
-
-<h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-]]></content>
-      <categories>
-        <category>Blog</category>
-      </categories>
-      <tags>
-        <tag>blog</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>CS61A(1): Introduction</title>
     <url>/2021/07/02/CS61A-SICP/CS61A-1-Introduction/</url>
     <content><![CDATA[<p>This is the lecture note of CS61A - Lecture 1.</p>
@@ -497,6 +492,16 @@
       </tags>
   </entry>
   <entry>
+    <title>CS61A(12): Complexity</title>
+    <url>/2021/07/15/CS61A-SICP/CS61A-12-Complexity/</url>
+    <content><![CDATA[]]></content>
+  </entry>
+  <entry>
+    <title>CS61A(13): Iterators and Generators</title>
+    <url>/2021/07/15/CS61A-SICP/CS61A-13-Iterators-and-Generators/</url>
+    <content><![CDATA[]]></content>
+  </entry>
+  <entry>
     <title>CS61A(2): Expressions and Functions</title>
     <url>/2021/07/02/CS61A-SICP/CS61A-2-Expressions-and-Functions/</url>
     <content><![CDATA[<p>This is the lecture note of CS61A - Lecture 2.</p>
@@ -512,7 +517,7 @@
 <ul>
 <li>Evaluate the operator</li>
 <li>Evaluate the operands from left to right</li>
-<li>Apply the operator (a function) to the<br>evaluated operands (arguments)</li>
+<li>Apply the operator (a function) to the evaluated operands (arguments)</li>
 </ul>
 <h2 id="Names-Assignment-and-User-defined-Functions"><a href="#Names-Assignment-and-User-defined-Functions" class="headerlink" title="Names, Assignment, and User-defined Functions"></a>Names, Assignment, and User-defined Functions</h2><p>Assignment is a simple means of abstraction: binds names to values.</p>
 <p>Function definition is a more powerful means of abstraction: binds names to expressions.</p>
@@ -527,8 +532,8 @@
 
 
 
-<h3 id="Modules"><a href="#Modules" class="headerlink" title="Modules"></a>Modules</h3><p>Functions are organized into <code>modules</code>, which together comprise the Python Library. However, we programmer can define our own functions.</p>
-<p><a href="https://docs.python.org/3/library/index.html">The Python Standard Library</a></p>
+<h3 id="Modules"><a href="#Modules" class="headerlink" title="Modules"></a>Modules</h3><p>Functions are organized into <strong>modules</strong>, which together comprise the Python <strong>library</strong>. We programmer can define our own functions modules or libraries.</p>
+<p>🦄 External Resource: <a href="https://docs.python.org/3/library/index.html">Python Standard Library Ref</a></p>
 ]]></content>
       <categories>
         <category>CS61A-SICP</category>
@@ -545,8 +550,9 @@
 
 
 <h2 id="Print-and-None"><a href="#Print-and-None" class="headerlink" title="Print and None"></a>Print and None</h2><p>A function that does not explicitly return a value will return <code>None</code>. None is not displayed by the interpreter as the value of an expression.</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; None</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; <span class="built_in">print</span>(None)</span></span><br><span class="line">None</span><br><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; <span class="built_in">print</span>(<span class="built_in">print</span>(1), <span class="built_in">print</span>(2))</span></span><br><span class="line">1</span><br><span class="line">2</span><br><span class="line">None None</span><br><span class="line"></span><br><span class="line">&quot;&quot;&quot;print is non-pure function, it can generate side effects. The value that print returns is always None&quot;&quot;&quot;</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; None</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; <span class="built_in">print</span>(None)</span></span><br><span class="line">None</span><br><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; <span class="built_in">print</span>(<span class="built_in">print</span>(1), <span class="built_in">print</span>(2))</span></span><br><span class="line">1</span><br><span class="line">2</span><br><span class="line">None None</span><br></pre></td></tr></table></figure>
 
+<p><code>print</code> is non-pure function, it can generate side effects. The value that print returns is always None.</p>
 <img src="/2021/07/02/CS61A-SICP/CS61A-3-Control/lec3-1.png" class="">
 
 
@@ -568,16 +574,16 @@
 <ul>
 <li>doctest &amp; default arguments</li>
 </ul>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Dostrings, doctests, &amp; default arguments</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">divide_exact</span>(<span class="params">n, d=<span class="number">10</span></span>):</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;Return the quotient and remainder of dividing N by D.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    &gt;&gt;&gt; quotient, remainder = divide_exact(618)</span></span><br><span class="line"><span class="string">    &gt;&gt;&gt; quotient</span></span><br><span class="line"><span class="string">    61</span></span><br><span class="line"><span class="string">    &gt;&gt;&gt; remainder</span></span><br><span class="line"><span class="string">    8</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    <span class="keyword">return</span> floordiv(n, d), mod(n, d)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Docstrings, doctests, and default arguments</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">divide_exact</span>(<span class="params">n, d=<span class="number">10</span></span>):</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;Return the quotient and remainder of dividing N by D.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    &gt;&gt;&gt; quotient, remainder = divide_exact(618)</span></span><br><span class="line"><span class="string">    &gt;&gt;&gt; quotient</span></span><br><span class="line"><span class="string">    61</span></span><br><span class="line"><span class="string">    &gt;&gt;&gt; remainder</span></span><br><span class="line"><span class="string">    8</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    <span class="keyword">return</span> floordiv(n, d), mod(n, d)</span><br></pre></td></tr></table></figure>
 
 <ul>
 <li>useful command line:</li>
 </ul>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;python3 -i&gt; : interactive with Python file</span><br><span class="line">&lt;python3 -m doctest&gt; : run doctest in the file</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># interactive with Python file</span></span><br><span class="line">~$ python3 -i filename.py :</span><br><span class="line"></span><br><span class="line"><span class="comment"># run doctest in the file</span></span><br><span class="line">~$ python3 -m doctest filename.py</span><br></pre></td></tr></table></figure>
 
 
 <h2 id="Conditional-Statements"><a href="#Conditional-Statements" class="headerlink" title="Conditional Statements"></a>Conditional Statements</h2><ul>
-<li>False values in Python: False, 0, ‘’, [], None</li>
+<li>False values in Python: False, 0, ‘ ‘, [ ], None</li>
 <li>True values in Python: anything else</li>
 </ul>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Conditional expressions</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">absolute_value</span>(<span class="params">x</span>):</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;Return the absolute value of X.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    &gt;&gt;&gt; absolute_value(-3)</span></span><br><span class="line"><span class="string">    3</span></span><br><span class="line"><span class="string">    &gt;&gt;&gt; absolute_value(0)</span></span><br><span class="line"><span class="string">    0</span></span><br><span class="line"><span class="string">    &gt;&gt;&gt; absolute_value(3)</span></span><br><span class="line"><span class="string">    3</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    <span class="keyword">if</span> x &lt; <span class="number">0</span>:</span><br><span class="line">        <span class="keyword">return</span> -x</span><br><span class="line">    <span class="keyword">elif</span> x == <span class="number">0</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">return</span> x</span><br></pre></td></tr></table></figure>
@@ -587,7 +593,7 @@
 
 
 <h2 id="Iteration"><a href="#Iteration" class="headerlink" title="Iteration"></a>Iteration</h2><p>Iteration means repeating things.</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Summation via while</span></span><br><span class="line">i, total = <span class="number">0</span>, <span class="number">0</span></span><br><span class="line"><span class="keyword">while</span> i &lt; <span class="number">3</span>:</span><br><span class="line">    i = i + <span class="number">1</span></span><br><span class="line">    total = total + i</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;i:&#x27;</span>, i, <span class="string">&#x27;total:&#x27;</span>, total)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Summation via while</span></span><br><span class="line">i, total = <span class="number">0</span>, <span class="number">0</span></span><br><span class="line"><span class="keyword">while</span> i &lt; <span class="number">3</span>:</span><br><span class="line">    i = i + <span class="number">1</span></span><br><span class="line">    total = total + i</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;i: &#123;&#125; total: &#123;&#125;&quot;</span>.<span class="built_in">format</span>(i, total))</span><br></pre></td></tr></table></figure>
 
 <h2 id="Control-Expressions"><a href="#Control-Expressions" class="headerlink" title="Control Expressions"></a>Control Expressions</h2><p>To evaluate the expression <code>&lt;left&gt; and &lt;right&gt;</code>:</p>
 <ul>
@@ -620,13 +626,13 @@
 
 
 <h2 id="Designing-Functions"><a href="#Designing-Functions" class="headerlink" title="Designing Functions"></a>Designing Functions</h2><p>There are lots of different functions that can do the same thing, but some are better than other. How to design better function?</p>
-<p><strong>A Guide to Designing Function:</strong></p>
+<p>🏜️ <strong>A Guide to Designing Function:</strong></p>
 <ul>
 <li>Give each function exactly one job.</li>
 <li>Don’t repeat yourself (DRY). Implement a process just once, but execute it many times.</li>
 <li>Define functions generally.</li>
 </ul>
-<p>The following is an example of generalizing patterns with arguments.</p>
+<h3 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h3><p>The following is an example of generalizing patterns with arguments.</p>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Repeating</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> math <span class="keyword">import</span> pi, sqrt</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">area_square</span>(<span class="params">r</span>):</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;Return the area of a square with side length R.&quot;&quot;&quot;</span></span><br><span class="line">    <span class="keyword">return</span> r * r</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">area_circle</span>(<span class="params">r</span>):</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;Return the area of a circle with radius R.&quot;&quot;&quot;</span></span><br><span class="line">    <span class="keyword">return</span> r * r * pi</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">area_hexagon</span>(<span class="params">r</span>):</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;Return the area of a regular hexagon with side length R.&quot;&quot;&quot;</span></span><br><span class="line">    <span class="keyword">return</span> r * r * <span class="number">3</span> * sqrt(<span class="number">3</span>) / <span class="number">2</span></span><br></pre></td></tr></table></figure>
 
 <p>There are lots of repeating things. Let’s try to do some generalization.</p>
@@ -641,7 +647,7 @@
 <p>We can notice the similar computational process above.</p>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Functions as arguments</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> operator <span class="keyword">import</span> mul</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">identity</span>(<span class="params">k</span>):</span></span><br><span class="line">    <span class="keyword">return</span> k</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">cube</span>(<span class="params">k</span>):</span></span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">pow</span>(k, <span class="number">3</span>)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">pi_term</span>(<span class="params">k</span>):</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">8</span> / mul(k * <span class="number">4</span> - <span class="number">3</span>, k * <span class="number">4</span> - <span class="number">1</span>)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">summation</span>(<span class="params">n, term</span>):</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;Sum the first N terms of a sequence.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    &gt;&gt;&gt; summation(5, cube)</span></span><br><span class="line"><span class="string">    225</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    total, k = <span class="number">0</span>, <span class="number">1</span></span><br><span class="line">    <span class="keyword">while</span> k &lt;= n:</span><br><span class="line">        total, k = total + term(k), k + <span class="number">1</span></span><br><span class="line">    <span class="keyword">return</span> total</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">sum_naturals</span>(<span class="params">n</span>):</span></span><br><span class="line">    <span class="keyword">return</span> summation(n, identity)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">sum_cubes</span>(<span class="params">n</span>):</span></span><br><span class="line">    <span class="keyword">return</span> summation(n, cube)</span><br></pre></td></tr></table></figure>
 
-<p>The function <code>summation(n, term)</code> above is called <code>higher-order function</code> - it takes another function as an argument.</p>
+<p>The function <code>summation(n, term)</code> above is called <strong>higher-order function</strong> - it takes another function as an argument.</p>
 <p>Higher-order functions can also treat functions as return values.</p>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">make_adder</span>(<span class="params">n</span>):</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;Return a function that takes one argument K and returns K + N.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    &gt;&gt;&gt; add_three = make_adder(3)</span></span><br><span class="line"><span class="string">    &gt;&gt;&gt; add_three(4)</span></span><br><span class="line"><span class="string">    7</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">adder</span>(<span class="params">k</span>):</span></span><br><span class="line">        <span class="keyword">return</span> k + n</span><br><span class="line">    <span class="keyword">return</span> adder</span><br><span class="line"></span><br><span class="line">make_adder(<span class="number">2000</span>)(<span class="number">20</span>)  <span class="comment"># currying</span></span><br></pre></td></tr></table></figure>
 
@@ -704,6 +710,38 @@
       </tags>
   </entry>
   <entry>
+    <title>CS61A(7): Tree Recursion</title>
+    <url>/2021/07/06/CS61A-SICP/CS61A-7-Tree-Recursion/</url>
+    <content><![CDATA[<p>This is the lecture note of CS61A - Lecture 7.</p>
+<span id="more"></span>
+
+
+<h2 id="Tree-Recursion"><a href="#Tree-Recursion" class="headerlink" title="Tree Recursion"></a>Tree Recursion</h2><p>Tree-shaped processes arise whenever executing the body of a recursive function makes more than one recursive call.</p>
+<ul>
+<li>Example :</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Tree recursion</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">fib</span>(<span class="params">n</span>):</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;Compute the nth Fibonacci number.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    &gt;&gt;&gt; fib(8)</span></span><br><span class="line"><span class="string">    21</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    <span class="keyword">if</span> n == <span class="number">0</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">    <span class="keyword">elif</span> n == <span class="number">1</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">return</span> fib(n-<span class="number">2</span>) + fib(n-<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
+
+<img src="/2021/07/06/CS61A-SICP/CS61A-7-Tree-Recursion/lec7-1.png" class="">
+
+
+<h2 id="Hanoi-Tower"><a href="#Hanoi-Tower" class="headerlink" title="Hanoi Tower"></a>Hanoi Tower</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Hanoi Tower</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">print_move</span>(<span class="params">origin, destination</span>):</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;Print instructions to move a disk.&quot;&quot;&quot;</span></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;Move the top disk from rod&quot;</span>, origin, <span class="string">&quot;to rod&quot;</span>, destination)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">move_stack</span>(<span class="params">n, start, end</span>):</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;Print the moves required to move n disks on the start pole to the end</span></span><br><span class="line"><span class="string">    pole without violating the rules of Towers of Hanoi.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    n -- number of disks</span></span><br><span class="line"><span class="string">    start -- a pole position, either 1, 2, or 3</span></span><br><span class="line"><span class="string">    end -- a pole position, either 1, 2, or 3</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    There are exactly three poles, and start and end must be different. Assume</span></span><br><span class="line"><span class="string">    that the start pole has at least n disks of increasing size, and the end</span></span><br><span class="line"><span class="string">    pole is either empty or has a top disk larger than the top n start disks.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    &gt;&gt;&gt; move_stack(1, 1, 3)</span></span><br><span class="line"><span class="string">    Move the top disk from rod 1 to rod 3</span></span><br><span class="line"><span class="string">    &gt;&gt;&gt; move_stack(2, 1, 3)</span></span><br><span class="line"><span class="string">    Move the top disk from rod 1 to rod 2</span></span><br><span class="line"><span class="string">    Move the top disk from rod 1 to rod 3</span></span><br><span class="line"><span class="string">    Move the top disk from rod 2 to rod 3</span></span><br><span class="line"><span class="string">    &gt;&gt;&gt; move_stack(3, 1, 3)</span></span><br><span class="line"><span class="string">    Move the top disk from rod 1 to rod 3</span></span><br><span class="line"><span class="string">    Move the top disk from rod 1 to rod 2</span></span><br><span class="line"><span class="string">    Move the top disk from rod 3 to rod 2</span></span><br><span class="line"><span class="string">    Move the top disk from rod 1 to rod 3</span></span><br><span class="line"><span class="string">    Move the top disk from rod 2 to rod 1</span></span><br><span class="line"><span class="string">    Move the top disk from rod 2 to rod 3</span></span><br><span class="line"><span class="string">    Move the top disk from rod 1 to rod 3</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    <span class="keyword">assert</span> <span class="number">1</span> &lt;= start &lt;= <span class="number">3</span> <span class="keyword">and</span> <span class="number">1</span> &lt;= end &lt;= <span class="number">3</span> <span class="keyword">and</span> start != end, <span class="string">&quot;Bad start/end&quot;</span></span><br><span class="line">    <span class="keyword">if</span> n == <span class="number">1</span>:</span><br><span class="line">        print_move(start, end)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        spare_peg = <span class="number">6</span> - start - end</span><br><span class="line">        move_stack(n-<span class="number">1</span>, start, spare_peg)</span><br><span class="line">        print_move(start, end)</span><br><span class="line">        move_stack(n-<span class="number">1</span>, spare_peg, end)</span><br><span class="line"></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">time complexity: O(2^n)</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="Demo-Counting-Partitions"><a href="#Demo-Counting-Partitions" class="headerlink" title="Demo: Counting Partitions"></a>Demo: Counting Partitions</h2><img src="/2021/07/06/CS61A-SICP/CS61A-7-Tree-Recursion/lec7-2.png" class="">
+
+<img src="/2021/07/06/CS61A-SICP/CS61A-7-Tree-Recursion/lec7-3.png" class="">
+
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">count_partitions</span>(<span class="params">n, m</span>):</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;Count the partitions of n using parts up to size m.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    &gt;&gt;&gt; count_partitions(6, 4)</span></span><br><span class="line"><span class="string">    9</span></span><br><span class="line"><span class="string">    &gt;&gt;&gt; count_partitions(10, 10)</span></span><br><span class="line"><span class="string">    42</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    <span class="comment"># base case</span></span><br><span class="line">    <span class="keyword">if</span> n == <span class="number">0</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span></span><br><span class="line">    <span class="keyword">elif</span> n &lt; <span class="number">0</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">    <span class="keyword">elif</span> m == <span class="number">0</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">#recursive case</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        with_m = count_partitions(n-m, m)</span><br><span class="line">        without_m = count_partitions(n, m-<span class="number">1</span>)</span><br><span class="line">        <span class="keyword">return</span> with_m + without_m</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>CS61A-SICP</category>
+      </categories>
+      <tags>
+        <tag>CS61A</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>CS61A(6): Recursion</title>
     <url>/2021/07/04/CS61A-SICP/CS61A-6-Recursion/</url>
     <content><![CDATA[<p>This is the lecture note of CS61A - Lecture 6.</p>
@@ -749,28 +787,36 @@
       </tags>
   </entry>
   <entry>
-    <title>CS61A(7): Tree Recursion</title>
-    <url>/2021/07/06/CS61A-SICP/CS61A-7-Tree-Recursion/</url>
-    <content><![CDATA[<p>This is the lecture note of CS61A - Lecture 7.</p>
+    <title>CS61A(8): Diagnostic Review &amp; Debugging</title>
+    <url>/2021/07/14/CS61A-SICP/CS61A-8-Diagnostic-Review-Debugging/</url>
+    <content><![CDATA[<p>This is the lecture note of CS61A - Lecture 8.</p>
+<p>🦩 Just two things in this lecture:</p>
+<ul>
+<li>Compare <strong>Iteration</strong> vs <strong>Recursion</strong> vs <strong>Higher Order Functions</strong></li>
+<li>Debugging</li>
+</ul>
 <span id="more"></span>
 
 
-<h2 id="Tree-Recursion"><a href="#Tree-Recursion" class="headerlink" title="Tree Recursion"></a>Tree Recursion</h2><p>Tree-shaped processes arise whenever executing the body of a recursive function makes more than one recursive call.</p>
+<h2 id="Iteration-vs-Recursion-vs-Higher-Order-Functions"><a href="#Iteration-vs-Recursion-vs-Higher-Order-Functions" class="headerlink" title="Iteration vs Recursion vs Higher Order Functions"></a>Iteration vs Recursion vs Higher Order Functions</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Write a function that adds all the digits</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Iterative</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">sum_digits_iterative</span>(<span class="params">n</span>):</span></span><br><span class="line">    result = <span class="number">0</span></span><br><span class="line">    <span class="keyword">while</span> n:</span><br><span class="line">        result += n % <span class="number">10</span></span><br><span class="line">        n //= <span class="number">10</span></span><br><span class="line">    <span class="keyword">return</span> result</span><br><span class="line"></span><br><span class="line">sum_digits_iterative(<span class="number">1234</span>) == <span class="number">10</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># Recursive</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">sum_digits_recursive</span>(<span class="params">n</span>):</span></span><br><span class="line">    <span class="keyword">if</span> n == <span class="number">0</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">    <span class="keyword">return</span> n % <span class="number">10</span> + sum_digits_recursive(n // <span class="number">10</span>)</span><br><span class="line"></span><br><span class="line">sum_digits_recursive(<span class="number">1234</span>) == <span class="number">10</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># HOF</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">sum_digits_hof</span>(<span class="params">n</span>):</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">inner</span>(<span class="params">total</span>):</span></span><br><span class="line">        <span class="keyword">if</span> total == -<span class="number">1</span>:</span><br><span class="line">            <span class="keyword">return</span> n</span><br><span class="line">        <span class="keyword">return</span> sum_digits_hof(n + total)</span><br><span class="line">    <span class="keyword">return</span> inner</span><br><span class="line"></span><br><span class="line">sum_digits_hof(<span class="number">1</span>)(<span class="number">2</span>)(<span class="number">3</span>)(<span class="number">4</span>)(-<span class="number">1</span>) == <span class="number">10</span></span><br></pre></td></tr></table></figure>
+
+
+<h2 id="Debugging"><a href="#Debugging" class="headerlink" title="Debugging"></a>Debugging</h2><p>To debugging successfully, you should distinguish different kinds of error and know its meanings:</p>
 <ul>
-<li>Example :</li>
+<li><strong>SyntaxError:</strong> invalid python syntax</li>
+<li><strong>IndentationError/TabError:</strong> indentation inconsistency<ul>
+<li><code>cat -A filename.py</code> will show tabs and spaces</li>
 </ul>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Tree recursion</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">fib</span>(<span class="params">n</span>):</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;Compute the nth Fibonacci number.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    &gt;&gt;&gt; fib(8)</span></span><br><span class="line"><span class="string">    21</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    <span class="keyword">if</span> n == <span class="number">0</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">    <span class="keyword">elif</span> n == <span class="number">1</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">return</span> fib(n-<span class="number">2</span>) + fib(n-<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
-
-<img src="/2021/07/06/CS61A-SICP/CS61A-7-Tree-Recursion/lec7-1.png" class="">
-
-
-<h2 id="Hanoi-Tower"><a href="#Hanoi-Tower" class="headerlink" title="Hanoi Tower"></a>Hanoi Tower</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Hanoi Tower</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">print_move</span>(<span class="params">origin, destination</span>):</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;Print instructions to move a disk.&quot;&quot;&quot;</span></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;Move the top disk from rod&quot;</span>, origin, <span class="string">&quot;to rod&quot;</span>, destination)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">move_stack</span>(<span class="params">n, start, end</span>):</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;Print the moves required to move n disks on the start pole to the end</span></span><br><span class="line"><span class="string">    pole without violating the rules of Towers of Hanoi.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    n -- number of disks</span></span><br><span class="line"><span class="string">    start -- a pole position, either 1, 2, or 3</span></span><br><span class="line"><span class="string">    end -- a pole position, either 1, 2, or 3</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    There are exactly three poles, and start and end must be different. Assume</span></span><br><span class="line"><span class="string">    that the start pole has at least n disks of increasing size, and the end</span></span><br><span class="line"><span class="string">    pole is either empty or has a top disk larger than the top n start disks.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    &gt;&gt;&gt; move_stack(1, 1, 3)</span></span><br><span class="line"><span class="string">    Move the top disk from rod 1 to rod 3</span></span><br><span class="line"><span class="string">    &gt;&gt;&gt; move_stack(2, 1, 3)</span></span><br><span class="line"><span class="string">    Move the top disk from rod 1 to rod 2</span></span><br><span class="line"><span class="string">    Move the top disk from rod 1 to rod 3</span></span><br><span class="line"><span class="string">    Move the top disk from rod 2 to rod 3</span></span><br><span class="line"><span class="string">    &gt;&gt;&gt; move_stack(3, 1, 3)</span></span><br><span class="line"><span class="string">    Move the top disk from rod 1 to rod 3</span></span><br><span class="line"><span class="string">    Move the top disk from rod 1 to rod 2</span></span><br><span class="line"><span class="string">    Move the top disk from rod 3 to rod 2</span></span><br><span class="line"><span class="string">    Move the top disk from rod 1 to rod 3</span></span><br><span class="line"><span class="string">    Move the top disk from rod 2 to rod 1</span></span><br><span class="line"><span class="string">    Move the top disk from rod 2 to rod 3</span></span><br><span class="line"><span class="string">    Move the top disk from rod 1 to rod 3</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    <span class="keyword">assert</span> <span class="number">1</span> &lt;= start &lt;= <span class="number">3</span> <span class="keyword">and</span> <span class="number">1</span> &lt;= end &lt;= <span class="number">3</span> <span class="keyword">and</span> start != end, <span class="string">&quot;Bad start/end&quot;</span></span><br><span class="line">    <span class="keyword">if</span> n == <span class="number">1</span>:</span><br><span class="line">        print_move(start, end)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        spare_peg = <span class="number">6</span> - start - end</span><br><span class="line">        move_stack(n-<span class="number">1</span>, start, spare_peg)</span><br><span class="line">        print_move(start, end)</span><br><span class="line">        move_stack(n-<span class="number">1</span>, spare_peg, end)</span><br><span class="line"></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">time complexity: O(2^n)</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="Demo-Counting-Partitions"><a href="#Demo-Counting-Partitions" class="headerlink" title="Demo: Counting Partitions"></a>Demo: Counting Partitions</h2><img src="/2021/07/06/CS61A-SICP/CS61A-7-Tree-Recursion/lec7-2.png" class="">
-
-<img src="/2021/07/06/CS61A-SICP/CS61A-7-Tree-Recursion/lec7-3.png" class="">
-
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">count_partitions</span>(<span class="params">n, m</span>):</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;Count the partitions of n using parts up to size m.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    &gt;&gt;&gt; count_partitions(6, 4)</span></span><br><span class="line"><span class="string">    9</span></span><br><span class="line"><span class="string">    &gt;&gt;&gt; count_partitions(10, 10)</span></span><br><span class="line"><span class="string">    42</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    <span class="comment"># base case</span></span><br><span class="line">    <span class="keyword">if</span> n == <span class="number">0</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span></span><br><span class="line">    <span class="keyword">elif</span> n &lt; <span class="number">0</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">    <span class="keyword">elif</span> m == <span class="number">0</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">#recursive case</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        with_m = count_partitions(n-m, m)</span><br><span class="line">        without_m = count_partitions(n, m-<span class="number">1</span>)</span><br><span class="line">        <span class="keyword">return</span> with_m + without_m</span><br></pre></td></tr></table></figure>
+</li>
+<li><strong>TypeError:</strong><ul>
+<li>X object is not callable … : type X cannot be treated as functions </li>
+<li>NoneType … : used None in some operation it wasn’t meant for</li>
+</ul>
+</li>
+<li><strong>NameError:</strong> cannot find the name</li>
+<li><strong>UnboundLocalError:</strong> a local to a frame variable is used before it is assigned</li>
+</ul>
+<img src="/2021/07/14/CS61A-SICP/CS61A-8-Diagnostic-Review-Debugging/1.JPG" class="">
 
 ]]></content>
       <categories>
@@ -864,6 +910,203 @@
       </categories>
       <tags>
         <tag>CS61A</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Java集合详解(Collection和Map接口)</title>
+    <url>/2021/07/19/Coding/Java-Collection-Interface/</url>
+    <content><![CDATA[<p>Java的 <code>util</code> 包中有两个重要的父接口：<code>Collection</code> 和 <code>Map</code> 。这两个接口提供了诸多数据结构的实现，使我们可以专注于程序的逻辑而不必关心底层细节。</p>
+<p>在这篇博文中，我们将讨论以下几种接口，以及它们分别的实现类。</p>
+<span id="more"></span>
+
+<ul>
+<li>java.util package<ul>
+<li>Collection interface<ul>
+<li>List interface<ul>
+<li>ArrayList class</li>
+<li>LinkedList class</li>
+<li>Vector class<ul>
+<li>Stack </li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Queue interface<ul>
+<li>PriorityQueue class</li>
+</ul>
+</li>
+<li>Set interface<ul>
+<li>HashSet class</li>
+<li>LinkedHashSet class</li>
+<li>SortedSet interface<ul>
+<li>TreeSet class</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Map interface<ul>
+<li>Hashtable class</li>
+<li>HashMap class</li>
+<li>LinkedHashMap class</li>
+<li>SortedMap interface<ul>
+<li>TreeMap class</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<img src="/2021/07/19/Coding/Java-Collection-Interface/Collection-Interface-in-Java.png" class="">
+
+
+<h2 id="List接口"><a href="#List接口" class="headerlink" title="List接口"></a>List接口</h2><p>List接口对应于 List 抽象数据类型。</p>
+<h3 id="1-Overview"><a href="#1-Overview" class="headerlink" title="1. Overview"></a>1. Overview</h3><p>List接口有3种具体的实现：</p>
+<ul>
+<li>ArrayList类：底层数据结构为 <code>动态数组(array)</code> ， 其中扩展因子为0.5。</li>
+<li>LinkedList类：底层数据结构为 <code>双向链表(doubly linked list)</code> 。</li>
+<li>Vector类：底层数据结构为 <code>动态数组(array)</code>， 其中扩展因子为1。</li>
+</ul>
+<p>根据数据结构的知识，如果你需要进行很多的 <code>insertion</code> 或 <code>deletion</code> 操作，那么选用 <code>LinkedList class</code> 会比较好；而如果大量的操作都是 <code>access</code> 操作，那么 <code>ArrayList class</code> 是更好的选择。</p>
+<hr>
+<p>⛱️ <strong>ArrayList</strong> vs. <strong>Vector</strong></p>
+<p>Vector  和 ArrayList 的底层数据结构都是数组。两者唯一的区别在于：ArrayList中的方法不是线程安全的，而Vector中的方法是同步的，意味着线程安全。所以，如果你需要线程安全，那么应该使用Vector。但对于单线程环境，使用使用Vector会花费更多的资源，所以用ArrayList更好。</p>
+<p>如果你查看底层代码，你会发现，Vecotr中的重要操作，如add, remove, get等，这些方法都被 <code>synchronized</code> 关键字所修饰，来保证线程的安全性。</p>
+<hr>
+<p>接下来，让我们来几个List的代码片段。</p>
+<h3 id="Demos"><a href="#Demos" class="headerlink" title="Demos"></a>Demos</h3><h4 id="两种实例化方法"><a href="#两种实例化方法" class="headerlink" title="两种实例化方法"></a>两种实例化方法</h4><p>首先需要说明的是，在实例化一个List的时候，除了我们很熟悉的 <code>List&lt;Integer&gt; L = new ArrayList&lt;&gt;();</code> 方法之外，Java9增加的静态工厂方法 <code>.of()</code> 也可以创建实例，代码如下：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Demo</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		List&lt;Integer&gt; L = List.of(<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>);</span><br><span class="line"><span class="comment">//		L.add(5);    // Exception, because L is immutable.</span></span><br><span class="line">		System.out.println(L);  <span class="comment">// [0, 1, 2, 3, 4]</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>不过需要注意的是，使用上述方法创建的List是**不可变的(immutable)**，也就是说一旦创建好一个List，那么它的值，它的大小都是不可变的。后面的 <code>Set/Map/Queue</code> 也是一样的，就不再赘述了。</p>
+<h4 id="List的基本用法"><a href="#List的基本用法" class="headerlink" title="List的基本用法"></a>List的基本用法</h4><p>让我们来看一个 <code>ArrayList</code> 的代码片段：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.ArrayList;</span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ArrayListDemo</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		List&lt;String&gt; words = List.of(<span class="string">&quot;Apple&quot;</span>, <span class="string">&quot;Peach&quot;</span>);</span><br><span class="line">		List&lt;String&gt; wordsArrayList = <span class="keyword">new</span> ArrayList&lt;&gt;(words);</span><br><span class="line">		System.out.println(<span class="string">&quot;Original list: &quot;</span> + wordsArrayList);</span><br><span class="line"></span><br><span class="line">		<span class="comment">/* Appends an item at the end of list. */</span></span><br><span class="line">		wordsArrayList.add(<span class="number">0</span>, <span class="string">&quot;Dog&quot;</span>);  <span class="comment">// position is optional</span></span><br><span class="line">		System.out.println(<span class="string">&quot;after adding Dog at index 0: &quot;</span> + wordsArrayList);</span><br><span class="line"></span><br><span class="line">		<span class="comment">/* Appends all items at the end of list. */</span></span><br><span class="line">		List&lt;String&gt; newList = List.of(<span class="string">&quot;Mouse&quot;</span>, <span class="string">&quot;Cat&quot;</span>, <span class="string">&quot;Zebra&quot;</span>);</span><br><span class="line">		wordsArrayList.addAll(<span class="number">0</span>, newList);  <span class="comment">// position is optional</span></span><br><span class="line">		System.out.println(<span class="string">&quot;after adding a list: &quot;</span> + wordsArrayList);</span><br><span class="line"></span><br><span class="line">		<span class="comment">/* Removes a specific item. */</span></span><br><span class="line">		wordsArrayList.remove(<span class="number">0</span>);   <span class="comment">//  == wordsArrayList.remove(&quot;Dog&quot;);</span></span><br><span class="line">		System.out.println(<span class="string">&quot;after removing item at index 0: &quot;</span> + wordsArrayList);</span><br><span class="line"></span><br><span class="line">		<span class="comment">/* Replaces the item at the specified position. */</span></span><br><span class="line">		wordsArrayList.set(<span class="number">3</span>, <span class="string">&quot;Fish&quot;</span>);</span><br><span class="line">		System.out.println(<span class="string">&quot;after changing element at index 3: &quot;</span> + wordsArrayList);</span><br><span class="line">		System.out.println();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>输出：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Original list: [Apple, Peach]</span><br><span class="line">after adding Dog at index 0: [Dog, Apple, Peach]</span><br><span class="line">after adding a list: [Mouse, Cat, Zebra, Dog, Apple, Peach]</span><br><span class="line">after removing item at index 0: [Cat, Zebra, Dog, Apple, Peach]</span><br><span class="line">after changing element at index 3: [Cat, Zebra, Dog, Fish, Peach]</span><br></pre></td></tr></table></figure>
+
+<p>无论是ArrayList，还是LinkedList，或是Vector都符合上述展示的List的使用方法，在此就不在写 <code>LinkedList</code> 和 <code>Vector</code> 的代码了。</p>
+<h4 id="遍历List"><a href="#遍历List" class="headerlink" title="遍历List"></a>遍历List</h4><p>接下来让我们来看一下如何遍历列表元素。这里我们展示3种不同遍历方法，注意它们的使用。</p>
+<ol>
+<li>第1种方法，也是最基本的方法：</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.ArrayList;</span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ArrayListDemo</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        List&lt;Integer&gt; L0 = List.of(<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>);</span><br><span class="line">        List&lt;Integer&gt; L = <span class="keyword">new</span> ArrayList&lt;&gt;(L0);</span><br><span class="line">        System.out.println(<span class="string">&quot;original list: &quot;</span> + L);</span><br><span class="line">        </span><br><span class="line">        <span class="comment">/* Removes the odd item */</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; L.size(); i++) &#123;</span><br><span class="line">            <span class="keyword">int</span> num = L.get(i);</span><br><span class="line">            <span class="keyword">if</span> (num % <span class="number">2</span> != <span class="number">0</span>) &#123;</span><br><span class="line">            	L.remove(i);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        System.out.println(<span class="string">&quot;even list: &quot;</span> + L);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>输出：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">original list: [0, 1, 2, 3, 4]</span><br><span class="line">even list: [0, 2, 4]</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>第2种方法，我们使用 <code>foreach</code> 循环：</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.ArrayList;</span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ArrayListDemo</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        List&lt;Integer&gt; L0 = List.of(<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>);</span><br><span class="line">        List&lt;Integer&gt; L = <span class="keyword">new</span> ArrayList&lt;&gt;(L0);</span><br><span class="line">        System.out.println(<span class="string">&quot;original list: &quot;</span> + L);</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">for</span> (Integer num: L) &#123;</span><br><span class="line">            <span class="keyword">if</span> (num % <span class="number">2</span> != <span class="number">0</span>) &#123;</span><br><span class="line">                L.remove(num);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        System.out.println(<span class="string">&quot;even list: &quot;</span> + L);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>输出：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">original list: [0, 1, 2, 3, 4]</span><br><span class="line">Exception <span class="keyword">in</span> thread <span class="string">&quot;main&quot;</span> java.util.ConcurrentModificationException</span><br><span class="line">    ...</span><br><span class="line">    ...</span><br></pre></td></tr></table></figure>
+
+<p>你可以看到，当使用foreach循环时，如果你在循环体内想要进行 <code>remove/add</code> 操作会报错。在这种情况下，你可以使用第1种方法，也可以使用下面讲的第3种方法。</p>
+<ol start="3">
+<li>第3种方法，使用 <code>.iterator()</code> 方法</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.ArrayList;</span><br><span class="line"><span class="keyword">import</span> java.util.Iterator;</span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ArrayListDemo</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		List&lt;Integer&gt; L0 = List.of(<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>);</span><br><span class="line">		List&lt;Integer&gt; L = <span class="keyword">new</span> ArrayList&lt;&gt;(L0);</span><br><span class="line">		System.out.println(<span class="string">&quot;original list: &quot;</span> + L);</span><br><span class="line"></span><br><span class="line">		<span class="comment">/** .iterator() method:  // in List interface</span></span><br><span class="line"><span class="comment">		 * Returns an iterator over the elements in this list in proper sequence.</span></span><br><span class="line"><span class="comment">		 *</span></span><br><span class="line"><span class="comment">		 * .hasNext() method:  // in Iterator interface</span></span><br><span class="line"><span class="comment">		 * Returns &#123;<span class="doctag">@code</span> true&#125; if the iteration has more elements.</span></span><br><span class="line"><span class="comment">		 */</span></span><br><span class="line">		Iterator&lt;Integer&gt; iterator = L.iterator();</span><br><span class="line">		<span class="keyword">while</span> (iterator.hasNext()) &#123;</span><br><span class="line">			<span class="keyword">int</span> num = iterator.next();</span><br><span class="line">			<span class="keyword">if</span> (num % <span class="number">2</span> != <span class="number">0</span>) &#123;</span><br><span class="line">				iterator.remove();</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		System.out.println(<span class="string">&quot;even list: &quot;</span> + L);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+
+
+
+
+<p>(区别：<code>java.util.Collection</code> 是一个集合接口; <code>java.util.Collections</code> 是一个包装类, 包含有各种有关集合操作的静态多态方法。)</p>
+<h2 id="Set-Interface"><a href="#Set-Interface" class="headerlink" title="Set Interface"></a>Set Interface</h2><h2 id="Queue-Interface"><a href="#Queue-Interface" class="headerlink" title="Queue Interface"></a>Queue Interface</h2><h2 id="Map-Interface"><a href="#Map-Interface" class="headerlink" title="Map Interface"></a>Map Interface</h2>]]></content>
+      <categories>
+        <category>Coding</category>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Python: 关键字global和nonlocal</title>
+    <url>/2021/07/10/Coding/Python-%E5%85%B3%E9%94%AE%E5%AD%97global%E5%92%8Cnonlocal/</url>
+    <content><![CDATA[<p>学习关键字 <code>global</code> 和 <code>nonlocal</code> 的用法。</p>
+<span id="more"></span>
+
+<h2 id="引例"><a href="#引例" class="headerlink" title="引例"></a>引例</h2><p>先来看一个代码片段：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">increment = <span class="keyword">lambda</span> x: x + <span class="number">1</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">make_repeater</span>(<span class="params">func, n</span>):</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;Return the function that computes the nth application of func.&quot;&quot;&quot;</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">repeater</span>(<span class="params">x</span>):</span></span><br><span class="line">        <span class="keyword">while</span> n &gt; <span class="number">0</span>:</span><br><span class="line">            x = func(x)</span><br><span class="line">            n = n - <span class="number">1</span></span><br><span class="line">        <span class="keyword">return</span> x</span><br><span class="line">    <span class="keyword">return</span> repeater</span><br><span class="line"></span><br><span class="line">add_three = make_repeater(increment, <span class="number">3</span>)</span><br><span class="line">add_three(<span class="number">5</span>)</span><br></pre></td></tr></table></figure>
+
+<p>当运行上述代码片段时，会产生如下的错误：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">UnboundLocalError: <span class="built_in">local</span> variable <span class="string">&#x27;n&#x27;</span> referenced before assignment</span><br></pre></td></tr></table></figure>
+
+<p>要理解这个错误的原因，需要知道全局变量和局部变量的概念。</p>
+<h2 id="局部变量和全局变量"><a href="#局部变量和全局变量" class="headerlink" title="局部变量和全局变量"></a>局部变量和全局变量</h2><h3 id="局部变量"><a href="#局部变量" class="headerlink" title="局部变量"></a>局部变量</h3><p>当我们在函数体内、或者在局部范围内定义一个变量时，该变量被称为 <code>局部变量</code> 。局部变量只能在局部范围内被访问，不能在局部范围外被访问。</p>
+<p><strong>例1：在范围外访问局部变量</strong></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">foo</span>():</span></span><br><span class="line">    y = <span class="string">&quot;local&quot;</span></span><br><span class="line">    <span class="built_in">print</span>(y)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">foo()</span><br><span class="line"><span class="built_in">print</span>(y)</span><br></pre></td></tr></table></figure>
+
+<p><strong>输出：</strong></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">local</span></span><br><span class="line">NameError: name <span class="string">&#x27;y&#x27;</span> is not defined</span><br></pre></td></tr></table></figure>
+
+<h3 id="全局变量"><a href="#全局变量" class="headerlink" title="全局变量"></a>全局变量</h3><p>当我们在函数外、或者在全局范围内定义一个变量时，该变量被称为 <code>全局变量</code> 。全局变量可以在函数内部被访问，也可以在函数外部被访问。</p>
+<p>让我们来看一个全局变量的例子：</p>
+<p><strong>例3：全局变量</strong></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">x = <span class="string">&quot;global&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">foo</span>():</span></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;x inside:&quot;</span>, x)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">foo()</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;x outside:&quot;</span>, x)</span><br></pre></td></tr></table></figure>
+
+<p><strong>输出：</strong></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">x inside: <span class="keyword">global</span></span><br><span class="line">x outside: <span class="keyword">global</span></span><br></pre></td></tr></table></figure>
+
+<p>在上述代码中，<code>x</code> 是一个全局变量，我们可以在函数 <code>foo</code> 内部访问 <code>x</code> ，也可以在函数外部访问 <code>x</code> 。</p>
+<p>值得注意的是，在上面的代码中，我们仅仅只是访问 <code>x</code> 。但如果我们想要做的是修改 <code>x</code> 的值呢？</p>
+<p><strong>例4: 在函数内部修改全局变量</strong></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">x = <span class="string">&quot;global&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">foo</span>():</span></span><br><span class="line">    x = x * <span class="number">2</span></span><br><span class="line">    <span class="built_in">print</span>(x)</span><br><span class="line"></span><br><span class="line">foo()</span><br></pre></td></tr></table></figure>
+
+<p><strong>Output</strong></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">UnboundLocalError: <span class="built_in">local</span> variable <span class="string">&#x27;x&#x27;</span> referenced before assignment</span><br></pre></td></tr></table></figure>
+
+<p>运行会出现错误。</p>
+<p>这是因为，当我们在函数内部对 <code>x</code> 修改重新赋值时，Python解释器会认为 <code>x</code> 是局部变量而不是全局变量，而这个局部变量也并没有在函数内部定义，所以就产生了这个错误。</p>
+<h2 id="关键字：global和nonlocal"><a href="#关键字：global和nonlocal" class="headerlink" title="关键字：global和nonlocal"></a>关键字：global和nonlocal</h2><h3 id="global关键字"><a href="#global关键字" class="headerlink" title="global关键字"></a>global关键字</h3><p>为了解决例4的问题，我们使用 <code>global</code> 关键字。现在函数内部声明变量 <code>x</code> 是全局变量，再对其进行修改。代码如下：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">x = <span class="string">&quot;global&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">foo</span>():</span></span><br><span class="line">    <span class="keyword">global</span> x</span><br><span class="line">    x = x * <span class="number">2</span></span><br><span class="line">    <span class="built_in">print</span>(x)</span><br><span class="line"></span><br><span class="line">foo()</span><br><span class="line"><span class="built_in">print</span>(x)</span><br></pre></td></tr></table></figure>
+
+<p><strong>输出：</strong></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">globalglobal</span><br><span class="line">globalglobal</span><br></pre></td></tr></table></figure>
+
+<h3 id="nonlocal关键字"><a href="#nonlocal关键字" class="headerlink" title="nonlocal关键字"></a>nonlocal关键字</h3><p>既然说到了local关键字，就顺便说一下 <code>nonlocal</code> 关键字。</p>
+<p>比较以下两个代码：</p>
+<p><strong>例5：不使用nonlocal关键字</strong></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">func1</span>():</span></span><br><span class="line">    name = <span class="string">&#x27;variable 1&#x27;</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">foo</span>():</span></span><br><span class="line">        name = <span class="string">&#x27;variable 2&#x27;</span></span><br><span class="line">        <span class="built_in">print</span>(name)</span><br><span class="line">    foo()</span><br><span class="line">    <span class="built_in">print</span>(name)</span><br><span class="line">    </span><br><span class="line">func1()</span><br></pre></td></tr></table></figure>
+
+<p><strong>输出：</strong></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">variable 2</span><br><span class="line">variable 1</span><br></pre></td></tr></table></figure>
+
+<p><strong>例6：使用nonlocal关键字</strong></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">func2</span>():</span></span><br><span class="line">    name = <span class="string">&#x27;variable 1&#x27;</span> </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">foo</span>():</span></span><br><span class="line">        <span class="keyword">nonlocal</span> name</span><br><span class="line">        name = <span class="string">&#x27;variable 2&#x27;</span></span><br><span class="line">        <span class="built_in">print</span>(name) </span><br><span class="line">    foo()</span><br><span class="line">    <span class="built_in">print</span>(name)</span><br><span class="line">    </span><br><span class="line">func2()</span><br></pre></td></tr></table></figure>
+
+<p><strong>输出：</strong></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">variable 2</span><br><span class="line">variable 2</span><br></pre></td></tr></table></figure>
+
+<p>注意到例6的第4行代码，嵌套函数 <code>foo</code> 中的变量 <code>name</code> 使用了关键字 <code>nonlocal</code> 。</p>
+<p>如果一个变量被 <code>nonlocal</code> 修饰，则标识了该变量是上一级函数中的局部变量，在这里，指的是函数 <code>func2</code> 中的同名的变量 <code>name</code> (line 2) 。因此在嵌套函数 <code>foo</code> 中修改变量 <code>name</code> 的值也就修改了 <code>func2</code> 中变量 <code>name</code> 的值。</p>
+<p>而在例5中，嵌套函数 <code>foo</code> 中的变量 <code>name</code> 并没有用 <code>nonlocal</code> 修饰，那么它仅仅是 <code>foo</code> 中的一个局部变量。在函数 <code>foo</code> 的范围外是不能访问这个变量的。所以第7行打印的是第2行定义的局部变量 <code>name</code>, 而不是第4行的局部变量。</p>
+<h2 id="尾声"><a href="#尾声" class="headerlink" title="尾声"></a>尾声</h2><p>最后让我们重新看一下引例中的代码：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">increment = <span class="keyword">lambda</span> x: x + <span class="number">1</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">make_repeater</span>(<span class="params">func, n</span>):</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;Return the function that computes the nth application of func.&quot;&quot;&quot;</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">repeater</span>(<span class="params">x</span>):</span></span><br><span class="line">        <span class="keyword">while</span> n &gt; <span class="number">0</span>:</span><br><span class="line">            x = func(x)</span><br><span class="line">            n = n - <span class="number">1</span></span><br><span class="line">        <span class="keyword">return</span> x</span><br><span class="line">    <span class="keyword">return</span> repeater</span><br><span class="line"></span><br><span class="line">add_three = make_repeater(increment, <span class="number">3</span>)</span><br><span class="line">add_three(<span class="number">5</span>)</span><br></pre></td></tr></table></figure>
+
+<p>要怎样修改才能使代码工作呢？</p>
+<p>答案不唯一，但一个可行的办法是使用 <code>nonlocal</code> 关键字来修饰变量 <code>n</code> ， 如下所示：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">make_repeater</span>(<span class="params">func, n</span>):</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">repeater</span>(<span class="params">x</span>):</span></span><br><span class="line">        <span class="keyword">nonlocal</span> n</span><br><span class="line">        <span class="keyword">while</span> n &gt; <span class="number">0</span>:</span><br><span class="line">            x = func(x)</span><br><span class="line">            n = n - <span class="number">1</span></span><br><span class="line">        <span class="keyword">return</span> x</span><br><span class="line">    <span class="keyword">return</span> repeater</span><br></pre></td></tr></table></figure>
+
+<p>🌼 完结，撒花 ✿✿ヽ(°▽°)ノ✿</p>
+]]></content>
+      <categories>
+        <category>Coding</category>
+        <category>Python</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
       </tags>
   </entry>
   <entry>
@@ -1056,46 +1299,6 @@
       </tags>
   </entry>
   <entry>
-    <title>CS61A(8): Diagnostic Review &amp; Debugging</title>
-    <url>/2021/07/14/CS61A-SICP/CS61A-8-Diagnostic-Review-Debugging/</url>
-    <content><![CDATA[<p>This is the lecture note of CS61A - Lecture 8.</p>
-<p>🦩 Just two things in this lecture:</p>
-<ul>
-<li>Compare <strong>Iteration</strong> vs <strong>Recursion</strong> vs <strong>Higher Order Functions</strong></li>
-<li>Debugging</li>
-</ul>
-<span id="more"></span>
-
-
-<h2 id="Iteration-vs-Recursion-vs-Higher-Order-Functions"><a href="#Iteration-vs-Recursion-vs-Higher-Order-Functions" class="headerlink" title="Iteration vs Recursion vs Higher Order Functions"></a>Iteration vs Recursion vs Higher Order Functions</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Write a function that adds all the digits</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Iterative</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">sum_digits_iterative</span>(<span class="params">n</span>):</span></span><br><span class="line">    result = <span class="number">0</span></span><br><span class="line">    <span class="keyword">while</span> n:</span><br><span class="line">        result += n % <span class="number">10</span></span><br><span class="line">        n //= <span class="number">10</span></span><br><span class="line">    <span class="keyword">return</span> result</span><br><span class="line"></span><br><span class="line">sum_digits_iterative(<span class="number">1234</span>) == <span class="number">10</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># Recursive</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">sum_digits_recursive</span>(<span class="params">n</span>):</span></span><br><span class="line">    <span class="keyword">if</span> n == <span class="number">0</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">    <span class="keyword">return</span> n % <span class="number">10</span> + sum_digits_recursive(n // <span class="number">10</span>)</span><br><span class="line"></span><br><span class="line">sum_digits_recursive(<span class="number">1234</span>) == <span class="number">10</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># HOF</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">sum_digits_hof</span>(<span class="params">n</span>):</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">inner</span>(<span class="params">total</span>):</span></span><br><span class="line">        <span class="keyword">if</span> total == -<span class="number">1</span>:</span><br><span class="line">            <span class="keyword">return</span> n</span><br><span class="line">        <span class="keyword">return</span> sum_digits_hof(n + total)</span><br><span class="line">    <span class="keyword">return</span> inner</span><br><span class="line"></span><br><span class="line">sum_digits_hof(<span class="number">1</span>)(<span class="number">2</span>)(<span class="number">3</span>)(<span class="number">4</span>)(-<span class="number">1</span>) == <span class="number">10</span></span><br></pre></td></tr></table></figure>
-
-
-<h2 id="Debugging"><a href="#Debugging" class="headerlink" title="Debugging"></a>Debugging</h2><p>To debugging successfully, you should distinguish different kinds of error and know its meanings:</p>
-<ul>
-<li><strong>SyntaxError:</strong> invalid python syntax</li>
-<li><strong>IndentationError/TabError:</strong> indentation inconsistency<ul>
-<li><code>cat -A filename.py</code> will show tabs and spaces</li>
-</ul>
-</li>
-<li><strong>TypeError:</strong><ul>
-<li>X object is not callable … : type X cannot be treated as functions </li>
-<li>NoneType … : used None in some operation it wasn’t meant for</li>
-</ul>
-</li>
-<li><strong>NameError:</strong> cannot find the name</li>
-<li><strong>UnboundLocalError:</strong> a local to a frame variable is used before it is assigned</li>
-</ul>
-<img src="/2021/07/14/CS61A-SICP/CS61A-8-Diagnostic-Review-Debugging/1.JPG" class="">
-
-]]></content>
-      <categories>
-        <category>CS61A-SICP</category>
-      </categories>
-      <tags>
-        <tag>CS61A</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>CS61B(12): Command Line, Git(2021sp)</title>
     <url>/2021/07/14/CS61B-DSA/CS61B-12-Command-Line-Git-2021sp/</url>
     <content><![CDATA[<p>This is the lecture note of CS61B - Lecture 12.</p>
@@ -1183,6 +1386,11 @@
       <tags>
         <tag>CS61B</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>CS61B(29): Shortest Paths</title>
+    <url>/2021/08/01/CS61B-DSA/CS61B-29-Shortest-Paths/</url>
+    <content><![CDATA[]]></content>
   </entry>
   <entry>
     <title>CS61B(3): References, Recursion and Lists</title>
@@ -1757,203 +1965,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Java集合详解(Collection和Map接口)</title>
-    <url>/2021/07/19/Coding/Java-Collection-Interface/</url>
-    <content><![CDATA[<p>Java的 <code>util</code> 包中有两个重要的父接口：<code>Collection</code> 和 <code>Map</code> 。这两个接口提供了诸多数据结构的实现，使我们可以专注于程序的逻辑而不必关心底层细节。</p>
-<p>在这篇博文中，我们将讨论以下几种接口，以及它们分别的实现类。</p>
-<span id="more"></span>
-
-<ul>
-<li>java.util package<ul>
-<li>Collection interface<ul>
-<li>List interface<ul>
-<li>ArrayList class</li>
-<li>LinkedList class</li>
-<li>Vector class<ul>
-<li>Stack </li>
-</ul>
-</li>
-</ul>
-</li>
-<li>Queue interface<ul>
-<li>PriorityQueue class</li>
-</ul>
-</li>
-<li>Set interface<ul>
-<li>HashSet class</li>
-<li>LinkedHashSet class</li>
-<li>SortedSet interface<ul>
-<li>TreeSet class</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>Map interface<ul>
-<li>Hashtable class</li>
-<li>HashMap class</li>
-<li>LinkedHashMap class</li>
-<li>SortedMap interface<ul>
-<li>TreeMap class</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<img src="/2021/07/19/Coding/Java-Collection-Interface/Collection-Interface-in-Java.png" class="">
-
-
-<h2 id="List接口"><a href="#List接口" class="headerlink" title="List接口"></a>List接口</h2><p>List接口对应于 List 抽象数据类型。</p>
-<h3 id="1-Overview"><a href="#1-Overview" class="headerlink" title="1. Overview"></a>1. Overview</h3><p>List接口有3种具体的实现：</p>
-<ul>
-<li>ArrayList类：底层数据结构为 <code>动态数组(array)</code> ， 其中扩展因子为0.5。</li>
-<li>LinkedList类：底层数据结构为 <code>双向链表(doubly linked list)</code> 。</li>
-<li>Vector类：底层数据结构为 <code>动态数组(array)</code>， 其中扩展因子为1。</li>
-</ul>
-<p>根据数据结构的知识，如果你需要进行很多的 <code>insertion</code> 或 <code>deletion</code> 操作，那么选用 <code>LinkedList class</code> 会比较好；而如果大量的操作都是 <code>access</code> 操作，那么 <code>ArrayList class</code> 是更好的选择。</p>
-<hr>
-<p>⛱️ <strong>ArrayList</strong> vs. <strong>Vector</strong></p>
-<p>Vector  和 ArrayList 的底层数据结构都是数组。两者唯一的区别在于：ArrayList中的方法不是线程安全的，而Vector中的方法是同步的，意味着线程安全。所以，如果你需要线程安全，那么应该使用Vector。但对于单线程环境，使用使用Vector会花费更多的资源，所以用ArrayList更好。</p>
-<p>如果你查看底层代码，你会发现，Vecotr中的重要操作，如add, remove, get等，这些方法都被 <code>synchronized</code> 关键字所修饰，来保证线程的安全性。</p>
-<hr>
-<p>接下来，让我们来几个List的代码片段。</p>
-<h3 id="Demos"><a href="#Demos" class="headerlink" title="Demos"></a>Demos</h3><h4 id="两种实例化方法"><a href="#两种实例化方法" class="headerlink" title="两种实例化方法"></a>两种实例化方法</h4><p>首先需要说明的是，在实例化一个List的时候，除了我们很熟悉的 <code>List&lt;Integer&gt; L = new ArrayList&lt;&gt;();</code> 方法之外，Java9增加的静态工厂方法 <code>.of()</code> 也可以创建实例，代码如下：</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Demo</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		List&lt;Integer&gt; L = List.of(<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>);</span><br><span class="line"><span class="comment">//		L.add(5);    // Exception, because L is immutable.</span></span><br><span class="line">		System.out.println(L);  <span class="comment">// [0, 1, 2, 3, 4]</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>不过需要注意的是，使用上述方法创建的List是**不可变的(immutable)**，也就是说一旦创建好一个List，那么它的值，它的大小都是不可变的。后面的 <code>Set/Map/Queue</code> 也是一样的，就不再赘述了。</p>
-<h4 id="List的基本用法"><a href="#List的基本用法" class="headerlink" title="List的基本用法"></a>List的基本用法</h4><p>让我们来看一个 <code>ArrayList</code> 的代码片段：</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.ArrayList;</span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ArrayListDemo</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		List&lt;String&gt; words = List.of(<span class="string">&quot;Apple&quot;</span>, <span class="string">&quot;Peach&quot;</span>);</span><br><span class="line">		List&lt;String&gt; wordsArrayList = <span class="keyword">new</span> ArrayList&lt;&gt;(words);</span><br><span class="line">		System.out.println(<span class="string">&quot;Original list: &quot;</span> + wordsArrayList);</span><br><span class="line"></span><br><span class="line">		<span class="comment">/* Appends an item at the end of list. */</span></span><br><span class="line">		wordsArrayList.add(<span class="number">0</span>, <span class="string">&quot;Dog&quot;</span>);  <span class="comment">// position is optional</span></span><br><span class="line">		System.out.println(<span class="string">&quot;after adding Dog at index 0: &quot;</span> + wordsArrayList);</span><br><span class="line"></span><br><span class="line">		<span class="comment">/* Appends all items at the end of list. */</span></span><br><span class="line">		List&lt;String&gt; newList = List.of(<span class="string">&quot;Mouse&quot;</span>, <span class="string">&quot;Cat&quot;</span>, <span class="string">&quot;Zebra&quot;</span>);</span><br><span class="line">		wordsArrayList.addAll(<span class="number">0</span>, newList);  <span class="comment">// position is optional</span></span><br><span class="line">		System.out.println(<span class="string">&quot;after adding a list: &quot;</span> + wordsArrayList);</span><br><span class="line"></span><br><span class="line">		<span class="comment">/* Removes a specific item. */</span></span><br><span class="line">		wordsArrayList.remove(<span class="number">0</span>);   <span class="comment">//  == wordsArrayList.remove(&quot;Dog&quot;);</span></span><br><span class="line">		System.out.println(<span class="string">&quot;after removing item at index 0: &quot;</span> + wordsArrayList);</span><br><span class="line"></span><br><span class="line">		<span class="comment">/* Replaces the item at the specified position. */</span></span><br><span class="line">		wordsArrayList.set(<span class="number">3</span>, <span class="string">&quot;Fish&quot;</span>);</span><br><span class="line">		System.out.println(<span class="string">&quot;after changing element at index 3: &quot;</span> + wordsArrayList);</span><br><span class="line">		System.out.println();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>输出：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Original list: [Apple, Peach]</span><br><span class="line">after adding Dog at index 0: [Dog, Apple, Peach]</span><br><span class="line">after adding a list: [Mouse, Cat, Zebra, Dog, Apple, Peach]</span><br><span class="line">after removing item at index 0: [Cat, Zebra, Dog, Apple, Peach]</span><br><span class="line">after changing element at index 3: [Cat, Zebra, Dog, Fish, Peach]</span><br></pre></td></tr></table></figure>
-
-<p>无论是ArrayList，还是LinkedList，或是Vector都符合上述展示的List的使用方法，在此就不在写 <code>LinkedList</code> 和 <code>Vector</code> 的代码了。</p>
-<h4 id="遍历List"><a href="#遍历List" class="headerlink" title="遍历List"></a>遍历List</h4><p>接下来让我们来看一下如何遍历列表元素。这里我们展示3种不同遍历方法，注意它们的使用。</p>
-<ol>
-<li>第1种方法，也是最基本的方法：</li>
-</ol>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.ArrayList;</span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ArrayListDemo</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        List&lt;Integer&gt; L0 = List.of(<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>);</span><br><span class="line">        List&lt;Integer&gt; L = <span class="keyword">new</span> ArrayList&lt;&gt;(L0);</span><br><span class="line">        System.out.println(<span class="string">&quot;original list: &quot;</span> + L);</span><br><span class="line">        </span><br><span class="line">        <span class="comment">/* Removes the odd item */</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; L.size(); i++) &#123;</span><br><span class="line">            <span class="keyword">int</span> num = L.get(i);</span><br><span class="line">            <span class="keyword">if</span> (num % <span class="number">2</span> != <span class="number">0</span>) &#123;</span><br><span class="line">            	L.remove(i);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        System.out.println(<span class="string">&quot;even list: &quot;</span> + L);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>输出：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">original list: [0, 1, 2, 3, 4]</span><br><span class="line">even list: [0, 2, 4]</span><br></pre></td></tr></table></figure>
-
-<ol start="2">
-<li>第2种方法，我们使用 <code>foreach</code> 循环：</li>
-</ol>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.ArrayList;</span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ArrayListDemo</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        List&lt;Integer&gt; L0 = List.of(<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>);</span><br><span class="line">        List&lt;Integer&gt; L = <span class="keyword">new</span> ArrayList&lt;&gt;(L0);</span><br><span class="line">        System.out.println(<span class="string">&quot;original list: &quot;</span> + L);</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">for</span> (Integer num: L) &#123;</span><br><span class="line">            <span class="keyword">if</span> (num % <span class="number">2</span> != <span class="number">0</span>) &#123;</span><br><span class="line">                L.remove(num);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        System.out.println(<span class="string">&quot;even list: &quot;</span> + L);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>输出：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">original list: [0, 1, 2, 3, 4]</span><br><span class="line">Exception <span class="keyword">in</span> thread <span class="string">&quot;main&quot;</span> java.util.ConcurrentModificationException</span><br><span class="line">    ...</span><br><span class="line">    ...</span><br></pre></td></tr></table></figure>
-
-<p>你可以看到，当使用foreach循环时，如果你在循环体内想要进行 <code>remove/add</code> 操作会报错。在这种情况下，你可以使用第1种方法，也可以使用下面讲的第3种方法。</p>
-<ol start="3">
-<li>第3种方法，使用 <code>.iterator()</code> 方法</li>
-</ol>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.ArrayList;</span><br><span class="line"><span class="keyword">import</span> java.util.Iterator;</span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ArrayListDemo</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		List&lt;Integer&gt; L0 = List.of(<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>);</span><br><span class="line">		List&lt;Integer&gt; L = <span class="keyword">new</span> ArrayList&lt;&gt;(L0);</span><br><span class="line">		System.out.println(<span class="string">&quot;original list: &quot;</span> + L);</span><br><span class="line"></span><br><span class="line">		<span class="comment">/** .iterator() method:  // in List interface</span></span><br><span class="line"><span class="comment">		 * Returns an iterator over the elements in this list in proper sequence.</span></span><br><span class="line"><span class="comment">		 *</span></span><br><span class="line"><span class="comment">		 * .hasNext() method:  // in Iterator interface</span></span><br><span class="line"><span class="comment">		 * Returns &#123;<span class="doctag">@code</span> true&#125; if the iteration has more elements.</span></span><br><span class="line"><span class="comment">		 */</span></span><br><span class="line">		Iterator&lt;Integer&gt; iterator = L.iterator();</span><br><span class="line">		<span class="keyword">while</span> (iterator.hasNext()) &#123;</span><br><span class="line">			<span class="keyword">int</span> num = iterator.next();</span><br><span class="line">			<span class="keyword">if</span> (num % <span class="number">2</span> != <span class="number">0</span>) &#123;</span><br><span class="line">				iterator.remove();</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		System.out.println(<span class="string">&quot;even list: &quot;</span> + L);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-
-
-
-
-
-
-
-
-
-<p>(区别：<code>java.util.Collection</code> 是一个集合接口; <code>java.util.Collections</code> 是一个包装类, 包含有各种有关集合操作的静态多态方法。)</p>
-<h2 id="Set-Interface"><a href="#Set-Interface" class="headerlink" title="Set Interface"></a>Set Interface</h2><h2 id="Queue-Interface"><a href="#Queue-Interface" class="headerlink" title="Queue Interface"></a>Queue Interface</h2><h2 id="Map-Interface"><a href="#Map-Interface" class="headerlink" title="Map Interface"></a>Map Interface</h2>]]></content>
-      <categories>
-        <category>Coding</category>
-        <category>Java</category>
-      </categories>
-      <tags>
-        <tag>Java</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Python: 关键字global和nonlocal</title>
-    <url>/2021/07/10/Coding/Python-%E5%85%B3%E9%94%AE%E5%AD%97global%E5%92%8Cnonlocal/</url>
-    <content><![CDATA[<p>学习关键字 <code>global</code> 和 <code>nonlocal</code> 的用法。</p>
-<span id="more"></span>
-
-<h2 id="引例"><a href="#引例" class="headerlink" title="引例"></a>引例</h2><p>先来看一个代码片段：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">increment = <span class="keyword">lambda</span> x: x + <span class="number">1</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">make_repeater</span>(<span class="params">func, n</span>):</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;Return the function that computes the nth application of func.&quot;&quot;&quot;</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">repeater</span>(<span class="params">x</span>):</span></span><br><span class="line">        <span class="keyword">while</span> n &gt; <span class="number">0</span>:</span><br><span class="line">            x = func(x)</span><br><span class="line">            n = n - <span class="number">1</span></span><br><span class="line">        <span class="keyword">return</span> x</span><br><span class="line">    <span class="keyword">return</span> repeater</span><br><span class="line"></span><br><span class="line">add_three = make_repeater(increment, <span class="number">3</span>)</span><br><span class="line">add_three(<span class="number">5</span>)</span><br></pre></td></tr></table></figure>
-
-<p>当运行上述代码片段时，会产生如下的错误：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">UnboundLocalError: <span class="built_in">local</span> variable <span class="string">&#x27;n&#x27;</span> referenced before assignment</span><br></pre></td></tr></table></figure>
-
-<p>要理解这个错误的原因，需要知道全局变量和局部变量的概念。</p>
-<h2 id="局部变量和全局变量"><a href="#局部变量和全局变量" class="headerlink" title="局部变量和全局变量"></a>局部变量和全局变量</h2><h3 id="局部变量"><a href="#局部变量" class="headerlink" title="局部变量"></a>局部变量</h3><p>当我们在函数体内、或者在局部范围内定义一个变量时，该变量被称为 <code>局部变量</code> 。局部变量只能在局部范围内被访问，不能在局部范围外被访问。</p>
-<p><strong>例1：在范围外访问局部变量</strong></p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">foo</span>():</span></span><br><span class="line">    y = <span class="string">&quot;local&quot;</span></span><br><span class="line">    <span class="built_in">print</span>(y)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">foo()</span><br><span class="line"><span class="built_in">print</span>(y)</span><br></pre></td></tr></table></figure>
-
-<p><strong>输出：</strong></p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">local</span></span><br><span class="line">NameError: name <span class="string">&#x27;y&#x27;</span> is not defined</span><br></pre></td></tr></table></figure>
-
-<h3 id="全局变量"><a href="#全局变量" class="headerlink" title="全局变量"></a>全局变量</h3><p>当我们在函数外、或者在全局范围内定义一个变量时，该变量被称为 <code>全局变量</code> 。全局变量可以在函数内部被访问，也可以在函数外部被访问。</p>
-<p>让我们来看一个全局变量的例子：</p>
-<p><strong>例3：全局变量</strong></p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">x = <span class="string">&quot;global&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">foo</span>():</span></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;x inside:&quot;</span>, x)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">foo()</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;x outside:&quot;</span>, x)</span><br></pre></td></tr></table></figure>
-
-<p><strong>输出：</strong></p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">x inside: <span class="keyword">global</span></span><br><span class="line">x outside: <span class="keyword">global</span></span><br></pre></td></tr></table></figure>
-
-<p>在上述代码中，<code>x</code> 是一个全局变量，我们可以在函数 <code>foo</code> 内部访问 <code>x</code> ，也可以在函数外部访问 <code>x</code> 。</p>
-<p>值得注意的是，在上面的代码中，我们仅仅只是访问 <code>x</code> 。但如果我们想要做的是修改 <code>x</code> 的值呢？</p>
-<p><strong>例4: 在函数内部修改全局变量</strong></p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">x = <span class="string">&quot;global&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">foo</span>():</span></span><br><span class="line">    x = x * <span class="number">2</span></span><br><span class="line">    <span class="built_in">print</span>(x)</span><br><span class="line"></span><br><span class="line">foo()</span><br></pre></td></tr></table></figure>
-
-<p><strong>Output</strong></p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">UnboundLocalError: <span class="built_in">local</span> variable <span class="string">&#x27;x&#x27;</span> referenced before assignment</span><br></pre></td></tr></table></figure>
-
-<p>运行会出现错误。</p>
-<p>这是因为，当我们在函数内部对 <code>x</code> 修改重新赋值时，Python解释器会认为 <code>x</code> 是局部变量而不是全局变量，而这个局部变量也并没有在函数内部定义，所以就产生了这个错误。</p>
-<h2 id="关键字：global和nonlocal"><a href="#关键字：global和nonlocal" class="headerlink" title="关键字：global和nonlocal"></a>关键字：global和nonlocal</h2><h3 id="global关键字"><a href="#global关键字" class="headerlink" title="global关键字"></a>global关键字</h3><p>为了解决例4的问题，我们使用 <code>global</code> 关键字。现在函数内部声明变量 <code>x</code> 是全局变量，再对其进行修改。代码如下：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">x = <span class="string">&quot;global&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">foo</span>():</span></span><br><span class="line">    <span class="keyword">global</span> x</span><br><span class="line">    x = x * <span class="number">2</span></span><br><span class="line">    <span class="built_in">print</span>(x)</span><br><span class="line"></span><br><span class="line">foo()</span><br><span class="line"><span class="built_in">print</span>(x)</span><br></pre></td></tr></table></figure>
-
-<p><strong>输出：</strong></p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">globalglobal</span><br><span class="line">globalglobal</span><br></pre></td></tr></table></figure>
-
-<h3 id="nonlocal关键字"><a href="#nonlocal关键字" class="headerlink" title="nonlocal关键字"></a>nonlocal关键字</h3><p>既然说到了local关键字，就顺便说一下 <code>nonlocal</code> 关键字。</p>
-<p>比较以下两个代码：</p>
-<p><strong>例5：不使用nonlocal关键字</strong></p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">func1</span>():</span></span><br><span class="line">    name = <span class="string">&#x27;variable 1&#x27;</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">foo</span>():</span></span><br><span class="line">        name = <span class="string">&#x27;variable 2&#x27;</span></span><br><span class="line">        <span class="built_in">print</span>(name)</span><br><span class="line">    foo()</span><br><span class="line">    <span class="built_in">print</span>(name)</span><br><span class="line">    </span><br><span class="line">func1()</span><br></pre></td></tr></table></figure>
-
-<p><strong>输出：</strong></p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">variable 2</span><br><span class="line">variable 1</span><br></pre></td></tr></table></figure>
-
-<p><strong>例6：使用nonlocal关键字</strong></p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">func2</span>():</span></span><br><span class="line">    name = <span class="string">&#x27;variable 1&#x27;</span> </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">foo</span>():</span></span><br><span class="line">        <span class="keyword">nonlocal</span> name</span><br><span class="line">        name = <span class="string">&#x27;variable 2&#x27;</span></span><br><span class="line">        <span class="built_in">print</span>(name) </span><br><span class="line">    foo()</span><br><span class="line">    <span class="built_in">print</span>(name)</span><br><span class="line">    </span><br><span class="line">func2()</span><br></pre></td></tr></table></figure>
-
-<p><strong>输出：</strong></p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">variable 2</span><br><span class="line">variable 2</span><br></pre></td></tr></table></figure>
-
-<p>注意到例6的第4行代码，嵌套函数 <code>foo</code> 中的变量 <code>name</code> 使用了关键字 <code>nonlocal</code> 。</p>
-<p>如果一个变量被 <code>nonlocal</code> 修饰，则标识了该变量是上一级函数中的局部变量，在这里，指的是函数 <code>func2</code> 中的同名的变量 <code>name</code> (line 2) 。因此在嵌套函数 <code>foo</code> 中修改变量 <code>name</code> 的值也就修改了 <code>func2</code> 中变量 <code>name</code> 的值。</p>
-<p>而在例5中，嵌套函数 <code>foo</code> 中的变量 <code>name</code> 并没有用 <code>nonlocal</code> 修饰，那么它仅仅是 <code>foo</code> 中的一个局部变量。在函数 <code>foo</code> 的范围外是不能访问这个变量的。所以第7行打印的是第2行定义的局部变量 <code>name</code>, 而不是第4行的局部变量。</p>
-<h2 id="尾声"><a href="#尾声" class="headerlink" title="尾声"></a>尾声</h2><p>最后让我们重新看一下引例中的代码：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">increment = <span class="keyword">lambda</span> x: x + <span class="number">1</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">make_repeater</span>(<span class="params">func, n</span>):</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;Return the function that computes the nth application of func.&quot;&quot;&quot;</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">repeater</span>(<span class="params">x</span>):</span></span><br><span class="line">        <span class="keyword">while</span> n &gt; <span class="number">0</span>:</span><br><span class="line">            x = func(x)</span><br><span class="line">            n = n - <span class="number">1</span></span><br><span class="line">        <span class="keyword">return</span> x</span><br><span class="line">    <span class="keyword">return</span> repeater</span><br><span class="line"></span><br><span class="line">add_three = make_repeater(increment, <span class="number">3</span>)</span><br><span class="line">add_three(<span class="number">5</span>)</span><br></pre></td></tr></table></figure>
-
-<p>要怎样修改才能使代码工作呢？</p>
-<p>答案不唯一，但一个可行的办法是使用 <code>nonlocal</code> 关键字来修饰变量 <code>n</code> ， 如下所示：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">make_repeater</span>(<span class="params">func, n</span>):</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">repeater</span>(<span class="params">x</span>):</span></span><br><span class="line">        <span class="keyword">nonlocal</span> n</span><br><span class="line">        <span class="keyword">while</span> n &gt; <span class="number">0</span>:</span><br><span class="line">            x = func(x)</span><br><span class="line">            n = n - <span class="number">1</span></span><br><span class="line">        <span class="keyword">return</span> x</span><br><span class="line">    <span class="keyword">return</span> repeater</span><br></pre></td></tr></table></figure>
-
-<p>🌼 完结，撒花 ✿✿ヽ(°▽°)ノ✿</p>
-]]></content>
-      <categories>
-        <category>Coding</category>
-        <category>Python</category>
-      </categories>
-      <tags>
-        <tag>Python</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Project1B: Applying and Testing Data Structures</title>
     <url>/2021/07/09/CS61B-DSA/Project1B-Applying-and-Testing-Data-Structures/</url>
     <content><![CDATA[<h2 id="Overview"><a href="#Overview" class="headerlink" title="Overview"></a>Overview</h2><p>This is the second part of the second project of CS61B (2018sp version). 🦄</p>
@@ -1994,6 +2005,88 @@
       </categories>
       <tags>
         <tag>CS61B</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>A Brief History of the Internet</title>
+    <url>/2021/08/11/Computer-Networking/A-Brief-History-of-the-Internet/</url>
+    <content><![CDATA[<p>Much like the industrial revolution, the Internet revolution has changed the way people live, shop, socialize and work, and the way companies operate.</p>
+<p>In this blog, let’s review the history of the Internet quickly.</p>
+<span id="more"></span>
+
+<h2 id="The-‘50s-The-Cold-War"><a href="#The-‘50s-The-Cold-War" class="headerlink" title="The ‘50s: The Cold War"></a>The ‘50s: The Cold War</h2><ul>
+<li>Back to the middle of the last century, the U.S. was in the midst of a cold war with The Soviet Union.</li>
+<li>In 1957, the Soviets launched Sputnik, the world’s first satellite, propelling us into the space age.</li>
+<li>This caught the US off-guard, and in response the U.S. government created ARPA (Advanced Research Projects Agency) which was mandated with the responsibility of the technological and scientific advancement of the country.</li>
+</ul>
+<blockquote>
+<p> The Advanced Research Projects Agency (ARPA) is now known as Defense Advanced Research Projects Agency (DARPA) to emphasize the its focus on defense.</p>
+</blockquote>
+<h2 id="The-‘60s-‘70s-ARPANET"><a href="#The-‘60s-‘70s-ARPANET" class="headerlink" title="The ‘60s-‘70s: ARPANET"></a>The ‘60s-‘70s: ARPANET</h2><ul>
+<li>ARPA was meant to facilitate research. But their computers <strong>could not talk to each other</strong>.</li>
+<li>ARPA sent out a request for the design of a network that would allow computers across the entire country to talk to each other.</li>
+<li>A network called the <strong>ARPANET</strong> was developed over the course of a year. In September 1969, the ARPANET was turned on. The first four nodes were at UCLA, Stanford, MIT, and the University of Utah. Over the ‘70s, other computer networks just like ARPANET sprang up.</li>
+<li>While the computers on one network could communicate via a default way to communicate set by the network administrator of each network, the computers on different networks could not communicate since every network had its own language or - more formally – <strong>protocol</strong>.</li>
+<li>Then, a standardized protocol called the <strong>Transmission Control Protocol</strong> was invented (RFC 675).</li>
+<li>It was also in RFC 675 that the term “Internet” was first used. Later RFCs continued the use.</li>
+</ul>
+<hr>
+<p><strong>Protocals</strong></p>
+<p>A protocol is a set of rules that computers use to communicate with each other.</p>
+<hr>
+<h2 id="The-‘80s-Protocols"><a href="#The-‘80s-Protocols" class="headerlink" title="The ‘80s: Protocols"></a>The ‘80s: Protocols</h2><ul>
+<li>ARPANET was fully migrated to TCP/IP.</li>
+<li>As we moved into the 1980s, computers were added to the Internet at an increasing rate. These computers were primarily from government, academic, and research organizations. Much to the surprise of the engineers, the early popularity of the Internet was driven by the use of electronic mail.</li>
+</ul>
+<img src="/2021/08/11/Computer-Networking/A-Brief-History-of-the-Internet/arpanet-evolution.JPG" class="">
+
+<h2 id="The-‘90s-The-World-Wide-Web"><a href="#The-‘90s-The-World-Wide-Web" class="headerlink" title="The ‘90s: The World Wide Web"></a>The ‘90s: The World Wide Web</h2><ul>
+<li>During the 90’s, the researchers at the European Council for Nuclear Research (CERN) felt the need for automated sharing of their findings between their computers. CERN had documents that cross-referenced other documents. So, there were these (hyper) links between documents.</li>
+<li>In 1990 Tim Berners-Lee introduced his World Wide Web project to store and retrieve these inter-connected documents.</li>
+<li>Later, educational, commercial and so many other applications were realized.</li>
+<li>The World Wide Web got even more popular with the advent of browsers such as Mosaic and Netscape which allowed combining graphics with web navigation!</li>
+</ul>
+<hr>
+<p><strong>Search Engines</strong></p>
+<p>A fun fact that initially, there were no search engines.</p>
+<p>So how would you find a website? Well, you couldn’t. Either you knew it or you didn’t. Of course, you could land on a website by accident or by following a link from another website that you knew.</p>
+<p>Then, people started creating static indices of the web - a categorized listing of websites. People would sit and randomly click on links to find web pages and add links to their index. But this couldn’t scale. So, eventually, search engines were “invented.”</p>
+<p>Altavista and Yahoo! were among the earlier search engines. According to this Wikipedia article, the first automated web index was World Wide Web Wanderer. Soon afterward, the first web search engine, the W3Catalog was invented.</p>
+<hr>
+<h2 id="The-21st-Century-The-Age-of-the-Internet"><a href="#The-21st-Century-The-Age-of-the-Internet" class="headerlink" title="The 21st Century: The Age of the Internet"></a>The 21st Century: The Age of the Internet</h2><p>Now, we are in an age in which all our devices run on the Internet, even toasters for some – the era of <strong>the Internet of Things</strong>.</p>
+]]></content>
+      <categories>
+        <category>Computer Networking</category>
+        <category>notes</category>
+      </categories>
+      <tags>
+        <tag>computer networking</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Computer Networking(I)</title>
+    <url>/2021/08/11/Computer-Networking/Computer-Networking-I/</url>
+    <content><![CDATA[<p>This is the notes of computer networking, just for self-study purpose.</p>
+<span id="more"></span>
+
+<h2 id="Getting-Started"><a href="#Getting-Started" class="headerlink" title="Getting Started"></a>Getting Started</h2><h3 id="What-is-the-Internet"><a href="#What-is-the-Internet" class="headerlink" title="What is the Internet"></a>What is the Internet</h3><p>The Internet permeates our very existence, and has become almost like a utility.</p>
+<p>The Internet is essentially a global network of computer networks. So your personal computer is connected to other computers at your house or workplace to create a small computer network, which is in turn connected to other computer networks. And so the global Internet encompasses a complex network of interconnected computer networks.</p>
+<hr>
+<p>Computer Network:</p>
+<p>A network is officially defined as a group or system of interconnected people or items. So computers connected to each other with cable or wireless radio make up a <strong>computer network</strong>.</p>
+<p>There are two main purposes of computer networks: <em>Communication using computers</em> and <em>sharing of resources</em>. An “internet” allows doing these two things across different computer networks.</p>
+<p>🍉 An internet with a lowercase “i” is any interconnection of computer networks. Whereas the global Internet is always spelled with a capital “I”.</p>
+<hr>
+<p>Internet vs. World Wide Web</p>
+<p>The world wide web is information based on HTTP protocals, which can be accessed via the Internet.</p>
+<h3 id="Quick-history-of-the-Internet"><a href="#Quick-history-of-the-Internet" class="headerlink" title="Quick history of the Internet"></a>Quick history of the Internet</h3><p>You can read <a href="">this article</a> to know it.</p>
+]]></content>
+      <categories>
+        <category>Computer Networking</category>
+        <category>notes</category>
+      </categories>
+      <tags>
+        <tag>computer networking</tag>
       </tags>
   </entry>
   <entry>
@@ -2670,6 +2763,7 @@
 <figure class="highlight md"><table><tr><td class="code"><pre><span class="line"><span class="section"># Getting started</span></span><br><span class="line"></span><br><span class="line">Now, add a Getting Started section to your documentation. </span><br><span class="line">Remember, this should include at least your base URL and an explanation of authentication.</span><br><span class="line">Feel free to provide other information that is relevant for your API.</span><br><span class="line"></span><br><span class="line"><span class="section"># Error Handling</span></span><br><span class="line">Now, add an Error Handling section to your documentation. </span><br><span class="line">It should include the format of the error responses the client can expect as well as which status codes you use.</span><br><span class="line"></span><br><span class="line"><span class="bullet">-</span> Response codes</span><br><span class="line"><span class="bullet">-</span> Messages</span><br><span class="line"><span class="bullet">-</span> Error types</span><br><span class="line"></span><br><span class="line"><span class="section"># Endpoint Library</span></span><br><span class="line"></span><br><span class="line">Now, add an Endpoint Library section to your documentation. </span><br><span class="line">Make sure that endpoints, methods and returned data are all clear. </span><br><span class="line">Consider including sample requests for clarity</span><br><span class="line"></span><br><span class="line"><span class="bullet">-</span> Organized by resource</span><br><span class="line"><span class="bullet">-</span> Include each endpoint</span><br><span class="line"><span class="bullet">-</span> Sample request</span><br><span class="line"><span class="bullet">-</span> Arguments including data types</span><br><span class="line"><span class="bullet">-</span> Response object including status codes and data types</span><br></pre></td></tr></table></figure>
 
 <hr>
+<p>🌌 External Resource: <a href="https://swagger.io/">Swagger</a></p>
 <h3 id="Project-Doc"><a href="#Project-Doc" class="headerlink" title="Project Doc"></a>Project Doc</h3><p>All good, well-documented projects have a README.md file that should clearly explain the project and how to get started with it to any developers who may want to use or contribute to the project.</p>
 <p>Here is an example of how to constrcut the project’s doc.</p>
 <ul>
@@ -2700,6 +2794,130 @@
       <categories>
         <category>Web Development</category>
         <category>Full Stack Web Dev Program</category>
+      </categories>
+      <tags>
+        <tag>web</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Web Dev(3): Identity and Access Management(I)</title>
+    <url>/2021/07/17/Web%20Development/Full%20Stack%20Web%20Dev%20Program/Web-Dev-3-Identity-and-Access-Management-I/</url>
+    <content><![CDATA[<p>Until now, we have learnt</p>
+<ul>
+<li>how to model data of a project</li>
+<li>how to connect to PostgreSQL database and do operations using Flask-SQLAlchemy</li>
+<li>how to design, implement and test api</li>
+<li>how to write api docs</li>
+</ul>
+<p>Too many things but one important thing left —— security!</p>
+<p>Next, I will try to secure API endpoints by talking about topics including,</p>
+<ul>
+<li>Authentication systems - design, implementation, and use of third party services.</li>
+<li>Common vulnerabilities while working with passwords and how to avoid these pitfalls.</li>
+<li>Authorization systems - design and implementation for backend and frontend.</li>
+<li>Basic security best practices and key principals to keep in mind.</li>
+</ul>
+<span id="more"></span>
+
+<img src="/2021/07/17/Web%20Development/Full%20Stack%20Web%20Dev%20Program/Web-Dev-3-Identity-and-Access-Management-I/overview.JPG" class="">
+
+<p>By the way, in this part, we don’t cover,</p>
+<ul>
+<li>Advanced security principals.</li>
+<li>Penetration testing, red teaming, vulnerability detection.</li>
+<li>“Hacking” and tools and systems to perform nefarious actions.</li>
+<li>DevOps, Deployments, Scaling or maintaining these systems in the cloud</li>
+</ul>
+<h2 id="Overview"><a href="#Overview" class="headerlink" title="Overview"></a>Overview</h2><h3 id="Recap-HTTP-status-code"><a href="#Recap-HTTP-status-code" class="headerlink" title="Recap: HTTP status code"></a>Recap: HTTP status code</h3><p>We have met several HTTP status codes, such as 200, 400, 404, 405, 422 etc. In this part, there are 2 important status codes,</p>
+<ul>
+<li><strong>401 Unauthorized</strong><ul>
+<li>The client has failed in authentication, or not yet provide it. The server cannot validate the identity of the requested party.</li>
+</ul>
+</li>
+<li><strong>403 Forbidden</strong><ul>
+<li>The client does not have permission to access the resource. Unlike 401, the server knows who is making the request, but that requesting party has no authorization to access the resource.</li>
+</ul>
+</li>
+</ul>
+<h3 id="Postman"><a href="#Postman" class="headerlink" title="Postman"></a>Postman</h3><p>Previously, we always use command line tool named <code>curl</code> to help us develop and test APIs, from here, we will use another GUI tool called <code>Poostman</code>.</p>
+<h3 id="Recap-SQLAlchemy"><a href="#Recap-SQLAlchemy" class="headerlink" title="Recap: SQLAlchemy"></a>Recap: SQLAlchemy</h3><p>Recap SQLAlchemy (not Flask-SQLAlchemy) with the following example,</p>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line"><span class="comment"># --------------------------</span></span><br><span class="line"><span class="comment"># Init the engine</span></span><br><span class="line"><span class="comment"># --------------------------</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">from</span> sqlalchemy <span class="keyword">import</span> create_engine, Column, String, Integer</span><br><span class="line"></span><br><span class="line">DB_NAME = <span class="string">&#x27;sqlalchemy_example&#x27;</span></span><br><span class="line">PROJECT_DIR = os.path.dirname(os.path.abspath(<span class="string">&#x27;&#x27;</span>))</span><br><span class="line">DB_HOST = os.getenv(<span class="string">&#x27;DB_HOST&#x27;</span>, <span class="string">&#x27;localhost:5432&#x27;</span>)</span><br><span class="line">DB_USER = os.getenv(<span class="string">&#x27;DB_USER&#x27;</span>, <span class="string">&#x27;postgres&#x27;</span>)</span><br><span class="line">DB_PASSWORD = os.getenv(<span class="string">&#x27;DB_PASSWORD&#x27;</span>, <span class="string">&#x27;password&#x27;</span>)</span><br><span class="line">DB_NAME = os.getenv(<span class="string">&#x27;DB_NAME&#x27;</span>, <span class="string">&#x27;sqlalchemy_example&#x27;</span>)</span><br><span class="line">DB_PATH = <span class="string">&quot;postgresql://&#123;&#125;:&#123;&#125;@&#123;&#125;/&#123;&#125;&quot;</span>.<span class="built_in">format</span>(</span><br><span class="line">    DB_USER, DB_PASSWORD, DB_HOST, DB_NAME</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">engine = create_engine(DB_PATH)</span><br><span class="line"></span><br><span class="line"><span class="comment"># --------------------------</span></span><br><span class="line"><span class="comment"># Define model</span></span><br><span class="line"><span class="comment"># --------------------------</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> sqlalchemy.ext.declarative <span class="keyword">import</span> declarative_base</span><br><span class="line"></span><br><span class="line">Base = declarative_base()</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">User</span>(<span class="params">Base</span>):</span></span><br><span class="line">    __tablename__ = <span class="string">&#x27;users&#x27;</span></span><br><span class="line">    <span class="comment"># Autoincrementing, unique primary key</span></span><br><span class="line">    <span class="built_in">id</span> = Column(Integer().with_variant(Integer, <span class="string">&quot;postgresql&quot;</span>), primary_key=<span class="literal">True</span>)</span><br><span class="line">    username = Column(String(<span class="number">80</span>), unique=<span class="literal">True</span>)</span><br><span class="line">    password =  Column(String(<span class="number">180</span>), nullable=<span class="literal">False</span>)</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__repr__</span>(<span class="params">self</span>):</span></span><br><span class="line">         <span class="keyword">return</span> <span class="string">f&#x27;&lt;User <span class="subst">&#123;self.<span class="built_in">id</span>&#125;</span> <span class="subst">&#123;self.username&#125;</span> <span class="subst">&#123;self.password&#125;</span>&gt;&#x27;</span></span><br><span class="line"></span><br><span class="line">already_exist = engine.dialect.has_table(engine.connect(), <span class="string">&#x27;users&#x27;</span>)</span><br><span class="line"><span class="keyword">if</span> <span class="keyword">not</span> already_exist:</span><br><span class="line">    User.metadata.create_all(engine)</span><br><span class="line"></span><br><span class="line">User.__table__</span><br><span class="line"></span><br><span class="line"><span class="comment"># --------------------------</span></span><br><span class="line"><span class="comment"># Init a session</span></span><br><span class="line"><span class="comment"># --------------------------</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> sqlalchemy.orm <span class="keyword">import</span> sessionmaker</span><br><span class="line"></span><br><span class="line">Session = sessionmaker(bind=engine)</span><br><span class="line">Session.configure(bind=engine)</span><br><span class="line">session = Session()</span><br><span class="line"></span><br><span class="line"><span class="comment"># --------------------------</span></span><br><span class="line"><span class="comment"># Add a new record</span></span><br><span class="line"><span class="comment"># --------------------------</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    new_user = User(username=<span class="string">&#x27;Abby&#x27;</span>, password=<span class="string">&#x27;password&#x27;</span>)</span><br><span class="line">    session.add(new_user)</span><br><span class="line">    session.commit()</span><br><span class="line"><span class="keyword">except</span>:</span><br><span class="line">    session.rollback()</span><br><span class="line">    <span class="keyword">raise</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># --------------------------</span></span><br><span class="line"><span class="comment"># Fetch</span></span><br><span class="line"><span class="comment"># --------------------------</span></span><br><span class="line"></span><br><span class="line">user = session.query(User).filter_by(username=<span class="string">&#x27;Abby&#x27;</span>).one_or_none()</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> user <span class="keyword">is</span> <span class="literal">None</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;No such user.&#x27;</span>)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    <span class="built_in">print</span>(user)</span><br><span class="line">    </span><br><span class="line"><span class="comment"># --------------------------</span></span><br><span class="line"><span class="comment"># Close session</span></span><br><span class="line"><span class="comment"># --------------------------</span></span><br><span class="line"></span><br><span class="line">session.close()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<h2 id="Identity-and-Authentication"><a href="#Identity-and-Authentication" class="headerlink" title="Identity and Authentication"></a>Identity and Authentication</h2><h3 id="Overview-1"><a href="#Overview-1" class="headerlink" title="Overview"></a>Overview</h3><p>Both identity and authentication are revolving around one question, “Who are you?”, or more specifically, “who is making request to system?”</p>
+<h3 id="Common-Authentication-Methods"><a href="#Common-Authentication-Methods" class="headerlink" title="Common Authentication Methods"></a>Common Authentication Methods</h3><p>In digital authentication, a commonly used method in the age of “Software as a Service (Saas)” is using <code>username</code> and <code>password</code> pair. We use database and other forms of storage so that we can store our ground truth of what our user credentials should look like. We also use a temporary credential called <code>token</code> which is stored in client, to avoid entering password on each individual request. </p>
+<img src="/2021/07/17/Web%20Development/Full%20Stack%20Web%20Dev%20Program/Web-Dev-3-Identity-and-Access-Management-I/digital_authentication1.JPG" class="">
+
+<p>Even though passwords are by far the most common way of authenticating, they come with a load of problems.</p>
+<ul>
+<li>Users maybe <ul>
+<li>forget their passwords</li>
+<li>use simple passwords</li>
+<li>use common passwords</li>
+<li>repeat passwords across different service</li>
+<li>share passwords</li>
+</ul>
+</li>
+<li>Passwords can be compromised(破解、泄露)</li>
+<li>Developers maybe incorrectly check, e.g. compare password strings</li>
+<li>Developers can cut corners</li>
+</ul>
+<p>An important thing is <strong>we should never store plain text password in database.</strong> TODO: why?</p>
+<h3 id="Alternative-Authentication-Methods"><a href="#Alternative-Authentication-Methods" class="headerlink" title="Alternative Authentication Methods"></a>Alternative Authentication Methods</h3><h4 id="Single-Sign-On-SSO"><a href="#Single-Sign-On-SSO" class="headerlink" title="Single Sign-On (SSO)"></a>Single Sign-On (SSO)</h4><p>Single Sign-On, essentially is trusting someone else can answer who you are.</p>
+<img src="/2021/07/17/Web%20Development/Full%20Stack%20Web%20Dev%20Program/Web-Dev-3-Identity-and-Access-Management-I/without-SSO.JPG" class="" title="World without SSO">
+<img src="/2021/07/17/Web%20Development/Full%20Stack%20Web%20Dev%20Program/Web-Dev-3-Identity-and-Access-Management-I/with-SSO.JPG" class="" title="World with SSO">
+
+<h4 id="Multi-Factor-Authentication"><a href="#Multi-Factor-Authentication" class="headerlink" title="Multi-Factor Authentication"></a>Multi-Factor Authentication</h4><p>Multi-factor authentication gives us one layer of trust on top of a password.</p>
+<img src="/2021/07/17/Web%20Development/Full%20Stack%20Web%20Dev%20Program/Web-Dev-3-Identity-and-Access-Management-I/multi-factor-auth.JPG" class="">
+<img src="/2021/07/17/Web%20Development/Full%20Stack%20Web%20Dev%20Program/Web-Dev-3-Identity-and-Access-Management-I/multi-factor-auth2.JPG" class="">
+
+<h4 id="Passwordless"><a href="#Passwordless" class="headerlink" title="Passwordless"></a>Passwordless</h4><img src="/2021/07/17/Web%20Development/Full%20Stack%20Web%20Dev%20Program/Web-Dev-3-Identity-and-Access-Management-I/passwordless.JPG" class="">
+
+<h4 id="Biometric-Authentication"><a href="#Biometric-Authentication" class="headerlink" title="Biometric Authentication"></a>Biometric Authentication</h4><img src="/2021/07/17/Web%20Development/Full%20Stack%20Web%20Dev%20Program/Web-Dev-3-Identity-and-Access-Management-I/bio-auth.JPG" class="">
+
+<h3 id="Third-Party-Auth-Systems"><a href="#Third-Party-Auth-Systems" class="headerlink" title="Third-Party Auth Systems"></a>Third-Party Auth Systems</h3><p>Monolithic architecture is great as you are starting off with small systems where you might have a few endpoints or few responsiblities. But as your system starts grow and becomes more complex, it might become overwhelming to maintain and manage. Often in a monolithic service with many  responsiblities, there might be interdependencies that make it difficult to make changes to your code. This is called <em>technical debt</em>.</p>
+<p>Modern architecture is ofter referred to as <strong>microservices</strong>, where we take those individual responsibilies and split them up into smaller servers or smaller pieces of architecture deployed across different areas of stack. One server might have a single responsiblity.</p>
+<img src="/2021/07/17/Web%20Development/Full%20Stack%20Web%20Dev%20Program/Web-Dev-3-Identity-and-Access-Management-I/monolithic-vs-microservices.JPG" class="" title="Monolithic vs. Microservice">
+
+<p>In the above microservice architecture, our authentication service is now embedded within each system. If we change one of these systems or fix one vulnerablity in a system, we might have to change across all different services or fix across entire stack.</p>
+<p>In this case, maybe it will be better to treat out authentication service as a microservice of its own.</p>
+<img src="/2021/07/17/Web%20Development/Full%20Stack%20Web%20Dev%20Program/Web-Dev-3-Identity-and-Access-Management-I/micro-auth.JPG" class="">
+
+<img src="/2021/07/17/Web%20Development/Full%20Stack%20Web%20Dev%20Program/Web-Dev-3-Identity-and-Access-Management-I/3rd-pary-authen.JPG" class="" title="Third-Party Extra Authentication Service">
+
+<p>Now, you can either implement your own authentication microservices, or optionally use third-party authentication systems. In this blog, I will talk about how to use a third-party system called <code>Auth0</code> to perform authentication.</p>
+<hr>
+<p>🐶</p>
+<p>在分布式系统中，由于业务逻辑封装在各个微服务中，每个微服务都需要对用户的行为进行认证和许可，于是就产生了两种可能的方式：第一种是通过一个中心化的权限管理系统，对用户的身份和权限进行统一的管理，可以做到一次授权，多次多点使用，但是这个独立的安全微服务需要聚合各个微服务中的权限控制逻辑，多一个基于不同业务逻辑实现的微服务可能需要在安全微服务中添加新的实现；第二种是将安全部分分散到各个微服务中，由各个微服务根据自身的业务对用户的访问进行管理和控制，这会导致安全管理过于分散，甚至每个微服务都有自己的一套实现方式，不利于统一管理。这两种方式都有利有弊，如何选择需要根据项目的具体需求进行宏观判断，甚至在一定情况下可以结合使用。</p>
+<hr>
+<p>External Resources: commonly used third-party authentication systems</p>
+<ul>
+<li><a href="https://auth0.com/">Auth0</a></li>
+<li><a href="https://aws.amazon.com/cn/cognito/">AWS Cognito</a></li>
+<li><a href="https://firebase.google.com/docs/auth">Firebase Auth</a></li>
+<li><a href="https://www.okta.com/">Okta</a></li>
+</ul>
+<h3 id="Implement-Auth0"><a href="#Implement-Auth0" class="headerlink" title="Implement Auth0"></a>Implement Auth0</h3><p><code>Auth0</code> works a little bit differently from a normal login flow.  Instead of rendering the login screen on our client directly, we will direct our clients to a hosted page provided by Auth0.  On this page, the user can perform one of many types of authentication including a username and password, SSO and etc. </p>
+<p>Auth0 is entirely responsible for the login action within their service. Once the login is complete, Auth0 will redirect our user back to our main frontend, complete with the <code>JWT</code> of that authenticated request. That JWT can be passed along to our various services which need to authenticate our user. Those servers will interact with our Auth0 account to validate that those JWTs are authentic and have not been tampered with.</p>
+<p>You can setup Auth0 by visiting <a href="https://auth0.com/">Auth0 website</a> and signing up for a new account.</p>
+<hr>
+<p>Note: Auth0 will prompt us to request a <strong>tenant domain name</strong>. This the domain name that you will be interacting with both for API calls to validate JWTs, but also for our client to redirect to, for that hosted login screen. So it should be something that is branded or sounds nice for your end users.</p>
+<hr>
+]]></content>
+      <categories>
+        <category>Web Development</category>
+        <category>Full Stack Web Dev Program</category>
+      </categories>
+      <tags>
+        <tag>web</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Web Dev(3): Identity and Access Management(II)</title>
+    <url>/2021/07/17/Web%20Development/Full%20Stack%20Web%20Dev%20Program/Web-Dev-3-Identity-and-Access-Management-II/</url>
+    <content><![CDATA[]]></content>
+      <categories>
+        <category>Web Development</category>
       </categories>
       <tags>
         <tag>web</tag>
@@ -3357,6 +3575,9 @@
 </blockquote>
 <img src="/2021/07/17/Web%20Development/Full%20Stack%20Web%20Dev%20Program/Web-Dev-2-API-Dev-and-Doc-I/curl-command-ex.JPG" class="">
 
+<p>Some Examples:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># get books</span></span><br><span class="line">~$ curl http://127.0.0.1:5000/books</span><br><span class="line"></span><br><span class="line"><span class="comment"># update a single book&#x27;s rating</span></span><br><span class="line">~$ curl http://127.0.0.1:5000/books/8 -X PATCH -H <span class="string">&quot;Content-Type: application/json&quot;</span> -d <span class="string">&#x27;&#123;&quot;rating&quot;:&quot;1&quot;&#125;&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># delete a single book</span></span><br><span class="line">~$ curl -X DELETE http://127.0.0.1:5000/books/8 </span><br><span class="line"></span><br><span class="line"><span class="comment"># create a new book</span></span><br><span class="line">~$ curl -X POST -H <span class="string">&quot;Content-Type: application/json&quot;</span> -d <span class="string">&#x27;&#123;&quot;title&quot;:&quot;Neverwhere&quot;, &quot;author&quot;:&quot;Neil Gaiman&quot;, &quot;rating&quot;:&quot;5&quot;&#125;&#x27;</span> http://127.0.0.1:5000/books   </span><br></pre></td></tr></table></figure>
+
 <p>By default curl performs a <code>get</code> request, so you don’t need to use the options flag and specify GET.</p>
 <p>Typing the following command to check if you already have the curl locally,</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">~$ curl --version</span><br></pre></td></tr></table></figure>
@@ -3420,6 +3641,7 @@
 <p>In order for the requests to be processed properly, CORS utilizes HTTP response headers to specify what the server will allow:</p>
 <img src="/2021/07/17/Web%20Development/Full%20Stack%20Web%20Dev%20Program/Web-Dev-2-API-Dev-and-Doc-I/CORS.JPG" class="">
 
+<p>CORS strategy is needed to make the frontend communicate properly since a different host serves it than your Python’s backend. However, you should be careful while working with it since it can expose risk for your application if not handled safely.</p>
 <p>🍧 External Resource: <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS">MDN Web Docs - CORS</a></p>
 <h4 id="Flask-CORS"><a href="#Flask-CORS" class="headerlink" title="Flask-CORS"></a>Flask-CORS</h4><p><strong>Flask-CORS</strong> is an extension library of Flask for handling CORS.</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># install the flask_cors dependency</span></span><br><span class="line">~$ pip install -U flask-cors</span><br><span class="line"></span><br><span class="line"><span class="comment"># Check the specific version</span></span><br><span class="line">~$ pip show flask-cors</span><br></pre></td></tr></table></figure>
@@ -3428,7 +3650,7 @@
 <figure class="highlight py"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> Flask, jsonify</span><br><span class="line"><span class="keyword">from</span> flask_cors <span class="keyword">import</span> CORS, cross_origin</span><br><span class="line"><span class="keyword">from</span> models <span class="keyword">import</span> setup_db, Bookshelf</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">create_app</span>(<span class="params">test_config=<span class="literal">None</span></span>):</span></span><br><span class="line">    <span class="comment"># create and configure the app</span></span><br><span class="line">    app = Flask(__name__, instance_relative_config=<span class="literal">True</span>)</span><br><span class="line">    <span class="comment"># resources=&#123;&#125;</span></span><br><span class="line">    <span class="comment"># 1st element: specify what resources we&#x27;re talking about</span></span><br><span class="line">    <span class="comment"># 2nd element: specify what origins from the client can access those resources</span></span><br><span class="line">    <span class="comment"># cors = CORS(app, resources=&#123;r&quot;*/api/*&quot;: &#123;&quot;origins&quot;: &quot;*&quot;&#125;&#125;)</span></span><br><span class="line">    cors = CORS(app)</span><br><span class="line"></span><br><span class="line"><span class="meta">    @app.after_request</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">after_request</span>(<span class="params">response</span>):</span></span><br><span class="line">        response.headers.add(</span><br><span class="line">            <span class="string">&#x27;Access-Control-Allow-Headers&#x27;</span>,</span><br><span class="line">            <span class="string">&#x27;Content-Type, Authorization&#x27;</span></span><br><span class="line">        )</span><br><span class="line">        response.headers.add(</span><br><span class="line">            <span class="string">&#x27;Access-Control-Allow-Headers&#x27;</span>,</span><br><span class="line">            <span class="string">&#x27;GET, POST, PATCH, DELETE, OPTION&#x27;</span></span><br><span class="line">        )</span><br><span class="line">        <span class="keyword">return</span> response</span><br><span class="line"></span><br><span class="line"><span class="meta">    @app.route(<span class="params"><span class="string">&#x27;/hello&#x27;</span></span>)</span></span><br><span class="line"><span class="meta">    @cross_origin()</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">hello</span>():</span></span><br><span class="line">        <span class="comment"># jsonify:return json data to the client</span></span><br><span class="line">        <span class="keyword">return</span> jsonify(&#123;</span><br><span class="line">            <span class="string">&#x27;message&#x27;</span>: <span class="string">&#x27;Hello World&#x27;</span></span><br><span class="line">        &#125;)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> app</span><br></pre></td></tr></table></figure>
 
 <p>🍧 External Resource: <a href="https://flask-cors.readthedocs.io/en/latest/#">Flask-CORS Doc</a></p>
-<h3 id="Flask-Pagination"><a href="#Flask-Pagination" class="headerlink" title="Flask Pagination"></a>Flask Pagination</h3><p>When using <code>GET</code> request, you can retrieve data of the the given URI. However, sending huge sets of data all to the frontend at once is bad for speed, and will reduce the quality of users’ experience. So when handling large collections of data, what we want to do is <strong>paginate</strong>(分页) the data using query parameters and request arguments, and send it in chunks.</p>
+<h3 id="Flask-Pagination"><a href="#Flask-Pagination" class="headerlink" title="Flask Pagination"></a>Flask Pagination</h3><p>When using <code>GET</code> request, you can retrieve data of the the given URI. However, sending huge sets of data all to the frontend at once is bad for speed, and will reduce the quality of users’ experience. So when handling large collections of data, what we want to do is <strong>paginate</strong> the data using query parameters and request arguments, and send it in chunks.</p>
 <h5 id="Query-Parameters"><a href="#Query-Parameters" class="headerlink" title="Query Parameters"></a>Query Parameters</h5><p>Query parameters convention dictates that,</p>
 <ul>
 <li>A question mark precedes the query parameters.</li>
@@ -3444,6 +3666,16 @@
 
 
 <img src="/2021/07/17/Web%20Development/Full%20Stack%20Web%20Dev%20Program/Web-Dev-2-API-Dev-and-Doc-I/request-properties.png" class="" title="Request Properties Examples">
+
+<h4 id="Pagination-Example"><a href="#Pagination-Example" class="headerlink" title="Pagination Example"></a>Pagination Example</h4><figure class="highlight py"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">paginate_books</span>(<span class="params">request, books</span>):</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot; Paginate the books. &quot;&quot;&quot;</span></span><br><span class="line">    page = request.args.get(<span class="string">&#x27;page&#x27;</span>, <span class="number">1</span>, <span class="built_in">type</span>=<span class="built_in">int</span>)</span><br><span class="line">    start = (page - <span class="number">1</span>) * BOOKS_PER_SHELF</span><br><span class="line">    end = start + BOOKS_PER_SHELF</span><br><span class="line">    formatted_books = [book.<span class="built_in">format</span>() <span class="keyword">for</span> book <span class="keyword">in</span> books]</span><br><span class="line">    current_books = formatted_books[start: end]</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> current_books</span><br></pre></td></tr></table></figure>
+
+<p>This implementation is straightforward, but can cause problems in the long run: If the dataset becomes too large, it can introduce a lack of memory and application unresponsiveness which is terrible for the end-users.</p>
+<p>So, it is recommended that we should implement pagination by leveraging controls to the database operations rather than manipulating the output to shape pagination.</p>
+<p>Let’s look at an example.</p>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line">books_limit = request.args.get(<span class="string">&#x27;limit&#x27;</span>, <span class="number">10</span>, <span class="built_in">type</span>=<span class="built_in">int</span>)</span><br><span class="line">selected_page = request.args.get(<span class="string">&#x27;page&#x27;</span>, <span class="number">1</span>, <span class="built_in">type</span>=<span class="built_in">int</span>)</span><br><span class="line">start_index = (selected_page - <span class="number">1</span>) * books_limit</span><br><span class="line"></span><br><span class="line">books = Book.query.order_by(Book.<span class="built_in">id</span>).limit(</span><br><span class="line">    books_limit</span><br><span class="line">    ).offset(start_index).<span class="built_in">all</span>()</span><br></pre></td></tr></table></figure>
+
+
+
 
 
 <h3 id="Flask-Error-Handling"><a href="#Flask-Error-Handling" class="headerlink" title="Flask Error Handling"></a>Flask Error Handling</h3><p>Until now, the only way that we know how to handle errors is by using <code>abort</code>, but those are not insufficient. </p>
