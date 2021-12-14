@@ -1,0 +1,924 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="en,zh-Hans,default">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Roboto Slab:300,300italic,400,400italic,700,700italic|Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="CS61B," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="This is the lecture note of CS61B - Lecture 14. In this lecture, we are going to focus on a data structure called Disjoint Sets or Union Find(并查集). We will see how to design it by solving the &quot;D">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CS61B(14): Disjoint Sets">
+<meta property="og:url" content="http://example.com/2021/02/22/CS61B-DSA/CS61B-14-Disjoint-Sets/index.html">
+<meta property="og:site_name" content="GoGo-Wang&#39;s Blog">
+<meta property="og:description" content="This is the lecture note of CS61B - Lecture 14. In this lecture, we are going to focus on a data structure called Disjoint Sets or Union Find(并查集). We will see how to design it by solving the &quot;D">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/2021/02/22/CS61B-DSA/CS61B-14-Disjoint-Sets/14-1.JPG">
+<meta property="og:image" content="http://example.com/2021/02/22/CS61B-DSA/CS61B-14-Disjoint-Sets/14-2.JPG">
+<meta property="og:image" content="http://example.com/2021/02/22/CS61B-DSA/CS61B-14-Disjoint-Sets/14-3.JPG">
+<meta property="og:image" content="http://example.com/2021/02/22/CS61B-DSA/CS61B-14-Disjoint-Sets/14-4.JPG">
+<meta property="og:image" content="http://example.com/2021/02/22/CS61B-DSA/CS61B-14-Disjoint-Sets/14-5.JPG">
+<meta property="og:image" content="http://example.com/2021/02/22/CS61B-DSA/CS61B-14-Disjoint-Sets/14-6.JPG">
+<meta property="og:image" content="http://example.com/2021/02/22/CS61B-DSA/CS61B-14-Disjoint-Sets/14-7.JPG">
+<meta property="og:image" content="http://example.com/2021/02/22/CS61B-DSA/CS61B-14-Disjoint-Sets/14-8.JPG">
+<meta property="og:image" content="http://example.com/2021/02/22/CS61B-DSA/CS61B-14-Disjoint-Sets/14-9.JPG">
+<meta property="og:image" content="http://example.com/2021/02/22/CS61B-DSA/CS61B-14-Disjoint-Sets/14-10.JPG">
+<meta property="og:image" content="http://example.com/2021/02/22/CS61B-DSA/CS61B-14-Disjoint-Sets/14-11.JPG">
+<meta property="og:image" content="http://example.com/2021/02/22/CS61B-DSA/CS61B-14-Disjoint-Sets/14-12.JPG">
+<meta property="og:image" content="http://example.com/2021/02/22/CS61B-DSA/CS61B-14-Disjoint-Sets/14-13.JPG">
+<meta property="og:image" content="http://example.com/2021/02/22/CS61B-DSA/CS61B-14-Disjoint-Sets/14-14.JPG">
+<meta property="og:image" content="http://example.com/2021/02/22/CS61B-DSA/CS61B-14-Disjoint-Sets/14-15.JPG">
+<meta property="og:image" content="http://example.com/2021/02/22/CS61B-DSA/CS61B-14-Disjoint-Sets/14-16.JPG">
+<meta property="og:image" content="http://example.com/2021/02/22/CS61B-DSA/CS61B-14-Disjoint-Sets/14-17.JPG">
+<meta property="og:image" content="http://example.com/2021/02/22/CS61B-DSA/CS61B-14-Disjoint-Sets/14-18.JPG">
+<meta property="og:image" content="http://example.com/2021/02/22/CS61B-DSA/CS61B-14-Disjoint-Sets/14-19.JPG">
+<meta property="og:image" content="http://example.com/2021/02/22/CS61B-DSA/CS61B-14-Disjoint-Sets/14-20.JPG">
+<meta property="article:published_time" content="2021-02-22T06:56:31.000Z">
+<meta property="article:modified_time" content="2021-10-11T01:39:11.646Z">
+<meta property="article:author" content="gogo-wang">
+<meta property="article:tag" content="CS61B">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2021/02/22/CS61B-DSA/CS61B-14-Disjoint-Sets/14-1.JPG">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://example.com/2021/02/22/CS61B-DSA/CS61B-14-Disjoint-Sets/"/>
+
+
+
+
+
+  <title>CS61B(14): Disjoint Sets | GoGo-Wang's Blog</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">GoGo-Wang's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">"Say something." <br> - "Something."</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/02/22/CS61B-DSA/CS61B-14-Disjoint-Sets/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="GoGo-Wang's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">CS61B(14): Disjoint Sets</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2021-02-22T15:56:31+09:00">
+                2021-02-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/CS61B-Data-Strucutes/" itemprop="url" rel="index">
+                    <span itemprop="name">CS61B-Data Strucutes</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2021/02/22/CS61B-DSA/CS61B-14-Disjoint-Sets/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2021/02/22/CS61B-DSA/CS61B-14-Disjoint-Sets/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>This is the lecture note of CS61B - Lecture 14.</p>
+<p>In this lecture, we are going to focus on a data structure called <strong>Disjoint Sets</strong> or <strong>Union Find(并查集)</strong>. We will see how to design it by solving the <strong>&quot;Dynamic Connectivity&quot;</strong> problem, and see how our underlying data structures can affect asymptotic runtime (using our formal Big-Theta notation) and code complexity.</p>
+<span id="more"></span>
+<p>The Disjoint Sets data structure has two operations:</p>
+<ul>
+<li>connect(x, y): Connects x and y.</li>
+<li>isConnected(x, y): Returns true if x and y are connected. Connections can be transitive, i.e. they don’t need to be direct.</li>
+</ul>
+<img src="/2021/02/22/CS61B-DSA/CS61B-14-Disjoint-Sets/14-1.JPG" class="">
+<p>Our goal is to implement the above specific interface.</p>
+<h2 id="naive-approach">Naive Approach</h2>
+<img src="/2021/02/22/CS61B-DSA/CS61B-14-Disjoint-Sets/14-2.JPG" class="">
+<h2 id="better-approach">Better Approach</h2>
+<img src="/2021/02/22/CS61B-DSA/CS61B-14-Disjoint-Sets/14-3.JPG" class="">
+<img src="/2021/02/22/CS61B-DSA/CS61B-14-Disjoint-Sets/14-4.JPG" class="">
+<h2 id="quick-find">Quick Find</h2>
+<p>Our next step is <strong>how to do track set membership</strong> in Java, like:</p>
+<figure class="highlight md"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123; 0, 1, 2, 4 &#125;, &#123;3, 5&#125;, &#123;6&#125;</span><br><span class="line"></span><br><span class="line">==&gt; connect(2, 3)</span><br><span class="line"></span><br><span class="line">&#123; 0, 1, 2, 4, 3, 5&#125;, &#123;6&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="approach-1">Approach 1</h3>
+<img src="/2021/02/22/CS61B-DSA/CS61B-14-Disjoint-Sets/14-5.JPG" class="">
+<h3 id="approach-2">Approach 2</h3>
+<p>A better approach is using array of the underlying data structures.</p>
+<img src="/2021/02/22/CS61B-DSA/CS61B-14-Disjoint-Sets/14-6.JPG" class="">
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">QuickFindDS</span> <span class="keyword">implements</span> <span class="title">DisjointSets</span> </span>&#123;</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">int</span>[] id;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">QuickFindDS</span><span class="params">(<span class="keyword">int</span> N)</span> </span>&#123;</span><br><span class="line">        id = <span class="keyword">new</span> <span class="keyword">int</span>[N];</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; N; i++) &#123;</span><br><span class="line">            id[i] = i;</span><br><span class="line">	    &#125;</span><br><span class="line">    &#125; </span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isConnected</span><span class="params">(<span class="keyword">int</span> p, <span class="keyword">int</span> q)</span> </span>&#123;</span><br><span class="line">    	<span class="keyword">return</span> id[p] == id[q];</span><br><span class="line">	&#125;</span><br><span class="line"> </span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">connect</span><span class="params">(<span class="keyword">int</span> p, <span class="keyword">int</span> q)</span> </span>&#123;</span><br><span class="line">    	<span class="keyword">int</span> pid = id[p];</span><br><span class="line">        <span class="keyword">int</span> qid = id[q];</span><br><span class="line">       	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; id.length; i++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (id[i] == pid) &#123;</span><br><span class="line">              	id[i] = qid;</span><br><span class="line">            &#125;</span><br><span class="line">    	&#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Though <code>connect</code> method will still be costly, this approach has good performance on <code>isConnected</code> method.</p>
+<img src="/2021/02/22/CS61B-DSA/CS61B-14-Disjoint-Sets/14-7.JPG" class="">
+<h2 id="quick-union">Quick Union</h2>
+<p>In Quick Union, we will still represent everything as connected components, and we will still represent connected components as a list of integers. However, values will be chosen so that connect is fast.</p>
+<img src="/2021/02/22/CS61B-DSA/CS61B-14-Disjoint-Sets/14-8.JPG" class="">
+<img src="/2021/02/22/CS61B-DSA/CS61B-14-Disjoint-Sets/14-9.JPG" class="">
+<p>See the following example to know why this approach is good at <code>connect</code>.</p>
+<img src="/2021/02/22/CS61B-DSA/CS61B-14-Disjoint-Sets/14-10.JPG" class="">
+<p>By the way, we set root(5)'s value equal to root(2) instead of setting root(5)'s value equal to 2 is because, the latter one will cause a taller tree.</p>
+<p>However, this approach still has performance issues, that is compared to QuickFind, we have to climb up a tree. If the tree is too tall, finding root(x) will be expensive.</p>
+<img src="/2021/02/22/CS61B-DSA/CS61B-14-Disjoint-Sets/14-11.JPG" class="">
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">QuickUnionDS</span> <span class="keyword">implements</span> <span class="title">DisjointSets</span> </span>&#123;</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">int</span>[] parent;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">QuickUnionDS</span><span class="params">(<span class="keyword">int</span> N)</span> </span>&#123;</span><br><span class="line">    	parent = <span class="keyword">new</span> <span class="keyword">int</span>[N];</span><br><span class="line">    	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; N; i++) &#123;  </span><br><span class="line">            parent[i] = -<span class="number">1</span>; </span><br><span class="line">        &#125;</span><br><span class="line">   	&#125;</span><br><span class="line"> </span><br><span class="line">  	<span class="function"><span class="keyword">private</span> <span class="keyword">int</span> <span class="title">find</span><span class="params">(<span class="keyword">int</span> p)</span> </span>&#123;</span><br><span class="line">    	<span class="keyword">int</span> r = p;</span><br><span class="line">        <span class="keyword">while</span> (parent[r] &gt;= <span class="number">0</span>) &#123;</span><br><span class="line">            r = parent[r]; </span><br><span class="line">        &#125;</span><br><span class="line">       	<span class="keyword">return</span> r;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isConnected</span><span class="params">(<span class="keyword">int</span> p, <span class="keyword">int</span> q)</span> </span>&#123;</span><br><span class="line">	    <span class="keyword">return</span> find(p) == find(q);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> boid <span class="title">connect</span><span class="params">(<span class="keyword">int</span> p, <span class="keyword">int</span> q)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> i = find(p);</span><br><span class="line">        <span class="keyword">int</span> j = find(q);</span><br><span class="line">        parent[i] = j;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<img src="/2021/02/22/CS61B-DSA/CS61B-14-Disjoint-Sets/14-12.JPG" class="">
+<h2 id="weighted-quick-union">Weighted Quick Union</h2>
+<img src="/2021/02/22/CS61B-DSA/CS61B-14-Disjoint-Sets/14-13.JPG" class="">
+<img src="/2021/02/22/CS61B-DSA/CS61B-14-Disjoint-Sets/14-14.JPG" class="">
+<img src="/2021/02/22/CS61B-DSA/CS61B-14-Disjoint-Sets/14-15.JPG" class="">
+<p>Let's see its performance.</p>
+<img src="/2021/02/22/CS61B-DSA/CS61B-14-Disjoint-Sets/14-16.JPG" class="">
+<img src="/2021/02/22/CS61B-DSA/CS61B-14-Disjoint-Sets/14-17.JPG" class="">
+<p>We used the number of items in a tree to decide upon the root.</p>
+<p>You might wondering why not use the height of the tree? The reason is worst case performance for <strong>HeightedQuickUnionDS</strong> is asymptotically the same! Both are Θ(log(N)). And resulting code is more complicated with no performance gain.</p>
+<h2 id="last-improvement-path-compression">Last Improvement: Path Compression</h2>
+<img src="/2021/02/22/CS61B-DSA/CS61B-14-Disjoint-Sets/14-18.JPG" class="">
+<p>See an example,</p>
+<img src="/2021/02/22/CS61B-DSA/CS61B-14-Disjoint-Sets/14-19.JPG" class="">
+<p>We could set that items like 15, 11, 5, and 1 etc., their parents are 0. This change won't influent the truth which set each item belongs to.</p>
+<img src="/2021/02/22/CS61B-DSA/CS61B-14-Disjoint-Sets/14-20.JPG" class="">
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>Post author:</strong>
+    gogo-wang
+  </li>
+  <li class="post-copyright-link">
+    <strong>Post link:</strong>
+    <a href="http://example.com/2021/02/22/CS61B-DSA/CS61B-14-Disjoint-Sets/" title="CS61B(14): Disjoint Sets">http://example.com/2021/02/22/CS61B-DSA/CS61B-14-Disjoint-Sets/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice: </strong>
+    All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> unless stating additionally.
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/CS61B/" rel="tag"># CS61B</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2021/02/19/CS61B-DSA/CS61B-13-Asymptotics-I/" rel="next" title="CS61B(13): Asymptotics I">
+                <i class="fa fa-chevron-left"></i> CS61B(13): Asymptotics I
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2021/02/24/CS61B-DSA/CS61B-15-Asymptotics-II/" rel="prev" title="CS61B(15): Asymptotics II">
+                CS61B(15): Asymptotics II <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a target="_blank" rel="noopener" href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name"></p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/%7C%7Carchive">
+              
+                  <span class="site-state-item-count">62</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/rileywang0819" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#naive-approach"><span class="nav-number">1.</span> <span class="nav-text">Naive Approach</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#better-approach"><span class="nav-number">2.</span> <span class="nav-text">Better Approach</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#quick-find"><span class="nav-number">3.</span> <span class="nav-text">Quick Find</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#approach-1"><span class="nav-number">3.1.</span> <span class="nav-text">Approach 1</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#approach-2"><span class="nav-number">3.2.</span> <span class="nav-text">Approach 2</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#quick-union"><span class="nav-number">4.</span> <span class="nav-text">Quick Union</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#weighted-quick-union"><span class="nav-number">5.</span> <span class="nav-text">Weighted Quick Union</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#last-improvement-path-compression"><span class="nav-number">6.</span> <span class="nav-text">Last Improvement: Path Compression</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">GoGo-Wang</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+    
+      <script id="dsq-count-scr" src="https://author.disqus.com/count.js" async></script>
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'http://example.com/2021/02/22/CS61B-DSA/CS61B-14-Disjoint-Sets/';
+          this.page.identifier = '2021/02/22/CS61B-DSA/CS61B-14-Disjoint-Sets/';
+          this.page.title = 'CS61B(14): Disjoint Sets';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://author.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>

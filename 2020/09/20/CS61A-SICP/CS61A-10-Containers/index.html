@@ -1,0 +1,881 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="en,zh-Hans,default">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Roboto Slab:300,300italic,400,400italic,700,700italic|Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="CS61A," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="This is the lecture note of CS61A - Lecture 10.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CS61A(10): Containers">
+<meta property="og:url" content="http://example.com/2020/09/20/CS61A-SICP/CS61A-10-Containers/index.html">
+<meta property="og:site_name" content="GoGo-Wang&#39;s Blog">
+<meta property="og:description" content="This is the lecture note of CS61A - Lecture 10.">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/2020/09/20/CS61A-SICP/CS61A-10-Containers/10-1.JPG">
+<meta property="og:image" content="http://example.com/2020/09/20/CS61A-SICP/CS61A-10-Containers/10-2.JPG">
+<meta property="article:published_time" content="2020-09-19T15:48:46.000Z">
+<meta property="article:modified_time" content="2021-09-22T01:58:34.725Z">
+<meta property="article:author" content="gogo-wang">
+<meta property="article:tag" content="CS61A">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2020/09/20/CS61A-SICP/CS61A-10-Containers/10-1.JPG">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://example.com/2020/09/20/CS61A-SICP/CS61A-10-Containers/"/>
+
+
+
+
+
+  <title>CS61A(10): Containers | GoGo-Wang's Blog</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">GoGo-Wang's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">"Say something." <br> - "Something."</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2020/09/20/CS61A-SICP/CS61A-10-Containers/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="GoGo-Wang's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">CS61A(10): Containers</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-09-20T00:48:46+09:00">
+                2020-09-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/CS61A-SICP/" itemprop="url" rel="index">
+                    <span itemprop="name">CS61A-SICP</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2020/09/20/CS61A-SICP/CS61A-10-Containers/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2020/09/20/CS61A-SICP/CS61A-10-Containers/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>This is the lecture note of CS61A - Lecture 10.</p>
+<span id="more"></span>
+<h2 id="lists">Lists</h2>
+<p>List is a built-in data type in Python.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Lists</span></span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt; odds = [41, 43, 47, 49]</span><br><span class="line">[41, 43, 47, 49]</span><br><span class="line">&gt;&gt;&gt; len(odds)</span><br><span class="line">4</span><br><span class="line">&gt;&gt;&gt; odds[1]</span><br><span class="line">43</span><br><span class="line">&gt;&gt;&gt; odds[0] - odds[3] + len(odds)</span><br><span class="line">-4</span><br><span class="line">&gt;&gt;&gt; odds[odds[3]-odds[2]]</span><br><span class="line">47</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt; from operator import getitem</span><br><span class="line">&gt;&gt;&gt; getitem(odds, 2)</span><br><span class="line">47</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt; [2, 7] + odds * 2</span><br><span class="line">[2, 7, 41, 43, 47, 49, 41, 43, 47, 49]</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt; pairs = [[10, 20], 30]</span><br><span class="line">&gt;&gt;&gt; pairs[0]</span><br><span class="line">[10, 20]</span><br><span class="line">&gt;&gt;&gt; pairs[0][0]</span><br><span class="line">10</span><br></pre></td></tr></table></figure>
+<h2 id="containers">Containers</h2>
+<p>Lists can contain other values, and their values can represent collections of other values.</p>
+<p>You can use built-in operators <code>in</code> to test whether an element appears in a compound value.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Containers</span></span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt; digits = [1, 8, 2, 8]</span><br><span class="line">&gt;&gt;&gt; 1 <span class="keyword">in</span> digits</span><br><span class="line">True</span><br><span class="line">&gt;&gt;&gt; 5 <span class="keyword">in</span> digits</span><br><span class="line">False</span><br><span class="line">&gt;&gt;&gt; <span class="string">&#x27;1&#x27;</span> not <span class="keyword">in</span> digits</span><br><span class="line">True</span><br><span class="line">&gt;&gt;&gt; [1, 8] <span class="keyword">in</span> digits</span><br><span class="line">False</span><br><span class="line">&gt;&gt;&gt; [1, 2] <span class="keyword">in</span> [[1, 2], 3]</span><br><span class="line">True</span><br><span class="line">&gt;&gt;&gt; [1, 2] <span class="keyword">in</span> [[[1, 2]], 3, 4]</span><br><span class="line">False</span><br></pre></td></tr></table></figure>
+<h2 id="for-statements">For Statements</h2>
+<p>We've written lots of code using <strong>while loops</strong>. Now, it's time to turn to learn an alternative way of iteration structure - <strong>for loops</strong>. The for statement is a way of iterating over sequences.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># while statement</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">count_while</span>(<span class="params">s, value</span>):</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;Count the number of occurrences of value in sequence s.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    &gt;&gt;&gt; count_while(digits, 8)</span></span><br><span class="line"><span class="string">    2</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    total, index = <span class="number">0</span>, <span class="number">0</span></span><br><span class="line">    <span class="keyword">while</span> index &lt; <span class="built_in">len</span>(s):</span><br><span class="line">        element = s[index]</span><br><span class="line">        <span class="keyword">if</span> element == value:</span><br><span class="line">            total = total + <span class="number">1</span></span><br><span class="line">        index = index + <span class="number">1</span></span><br><span class="line">    <span class="keyword">return</span> total</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># for statement</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">count_for</span>(<span class="params">s, value</span>):</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;Count the number of occurrences of value in sequence s.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    &gt;&gt;&gt; count_for(digits, 8)</span></span><br><span class="line"><span class="string">    2</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    total = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> element <span class="keyword">in</span> s:</span><br><span class="line">        <span class="keyword">if</span> element == value:</span><br><span class="line">            total = total + <span class="number">1</span></span><br><span class="line">    <span class="keyword">return</span> total</span><br></pre></td></tr></table></figure>
+<p>There is a cool feature in Python's for statement: <strong>sequence unpacking</strong>. Here is an example:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">count_same</span>(<span class="params">pairs</span>):</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;Return how many pairs have the same element repeated.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    &gt;&gt;&gt; pairs = [[1, 2], [2, 2], [2, 3], [4, 4]]</span></span><br><span class="line"><span class="string">    &gt;&gt;&gt; count_same(pairs)</span></span><br><span class="line"><span class="string">    2</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    same_count = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> x, y <span class="keyword">in</span> pairs:</span><br><span class="line">        <span class="keyword">if</span> x == y:</span><br><span class="line">            same_count = same_count + <span class="number">1</span></span><br><span class="line">    <span class="keyword">return</span> same_count</span><br></pre></td></tr></table></figure>
+<p>❗ Attention: This feature only works for a sequence of fixed length sequences, such as sequence pairs.</p>
+<h2 id="ranges">Ranges</h2>
+<p><strong>Range</strong> is another sequence type.</p>
+<img src="/2020/09/20/CS61A-SICP/CS61A-10-Containers/10-1.JPG" class="">
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">cheer</span>():</span></span><br><span class="line">    <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">3</span>):</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;Go Bears!&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># here, we use _ instead of x/i to hightlight the fact that we don&#x27;t care what is it.</span></span><br></pre></td></tr></table></figure>
+<h2 id="list-comprehensions">List Comprehensions</h2>
+<p>List comprehensions are a powerful form of combination in the Python language.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># List comprehensions</span></span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>odds = [<span class="number">1</span>, <span class="number">3</span>, <span class="number">5</span>, <span class="number">7</span>, <span class="number">9</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>[x+<span class="number">1</span> <span class="keyword">for</span> x <span class="keyword">in</span> odds]</span><br><span class="line">[<span class="number">2</span>, <span class="number">4</span>, <span class="number">6</span>, <span class="number">8</span>, <span class="number">10</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>[x <span class="keyword">for</span> x <span class="keyword">in</span> odds <span class="keyword">if</span> <span class="number">25</span> % x == <span class="number">0</span>]</span><br><span class="line">[<span class="number">1</span>, <span class="number">5</span>]</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">divisors</span>(<span class="params">n</span>):</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;Return the integers that evenly divide n.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    &gt;&gt;&gt; divisors(1)</span></span><br><span class="line"><span class="string">    [1]</span></span><br><span class="line"><span class="string">    &gt;&gt;&gt; divisors(4)</span></span><br><span class="line"><span class="string">    [1, 2]</span></span><br><span class="line"><span class="string">    &gt;&gt;&gt; divisors(12)</span></span><br><span class="line"><span class="string">    [1, 2, 3, 4, 6]</span></span><br><span class="line"><span class="string">    &gt;&gt;&gt; [n for n in range(1, 1000) if sum(divisors(n)) == n]</span></span><br><span class="line"><span class="string">    [1, 6, 28, 496]</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    <span class="keyword">return</span> [<span class="number">1</span>] + [x <span class="keyword">for</span> x <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">2</span>, n) <span class="keyword">if</span> n % x == <span class="number">0</span>]</span><br></pre></td></tr></table></figure>
+<h2 id="strings">Strings</h2>
+<img src="/2020/09/20/CS61A-SICP/CS61A-10-Containers/10-2.JPG" class="">
+<p>For String, you can use either single quotation mark or double quotation mark. The only difference is that double quoted String can have multiple lines, while single quoted String can only have one line.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; <span class="string">&#x27;curry = lambda f: lambda x: lambda y: f(x, y)&#x27;</span></span><br><span class="line"><span class="string">&#x27;curry = lambda f: lambda x: lambda y: f(x, y)&#x27;</span></span><br><span class="line">&gt;&gt;&gt; <span class="built_in">exec</span>(<span class="string">&#x27;curry = lambda f: lambda x: lambda y: f(x, y)&#x27;</span>)</span><br><span class="line">&gt;&gt;&gt; curry</span><br><span class="line">&lt;<span class="keyword">function</span> &lt;lambda&gt; at 0x000001FF95D32EA0&gt;</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt; city = <span class="string">&#x27;Beijing&#x27;</span></span><br><span class="line">&gt;&gt;&gt; len(city)</span><br><span class="line">7</span><br><span class="line">&gt;&gt;&gt; city[2]</span><br><span class="line"><span class="string">&#x27;i&#x27;</span></span><br><span class="line">&gt;&gt;&gt; <span class="string">&#x27;iji&#x27;</span> <span class="keyword">in</span> city</span><br><span class="line">True</span><br><span class="line">&gt;&gt;&gt; <span class="string">&#x27;B &#x27;</span> not <span class="keyword">in</span> city</span><br><span class="line">True</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>Post author:</strong>
+    gogo-wang
+  </li>
+  <li class="post-copyright-link">
+    <strong>Post link:</strong>
+    <a href="http://example.com/2020/09/20/CS61A-SICP/CS61A-10-Containers/" title="CS61A(10): Containers">http://example.com/2020/09/20/CS61A-SICP/CS61A-10-Containers/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice: </strong>
+    All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> unless stating additionally.
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/CS61A/" rel="tag"># CS61A</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/09/17/CS61A-SICP/CS61A-9-Tree-Recursion/" rel="next" title="CS61A(9): Tree Recursion">
+                <i class="fa fa-chevron-left"></i> CS61A(9): Tree Recursion
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/09/22/CS61A-SICP/CS61A-11-Sequences/" rel="prev" title="CS61A(11): Sequences">
+                CS61A(11): Sequences <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a target="_blank" rel="noopener" href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name"></p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/%7C%7Carchive">
+              
+                  <span class="site-state-item-count">62</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/rileywang0819" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#lists"><span class="nav-number">1.</span> <span class="nav-text">Lists</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#containers"><span class="nav-number">2.</span> <span class="nav-text">Containers</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#for-statements"><span class="nav-number">3.</span> <span class="nav-text">For Statements</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ranges"><span class="nav-number">4.</span> <span class="nav-text">Ranges</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#list-comprehensions"><span class="nav-number">5.</span> <span class="nav-text">List Comprehensions</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#strings"><span class="nav-number">6.</span> <span class="nav-text">Strings</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">GoGo-Wang</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+    
+      <script id="dsq-count-scr" src="https://author.disqus.com/count.js" async></script>
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'http://example.com/2020/09/20/CS61A-SICP/CS61A-10-Containers/';
+          this.page.identifier = '2020/09/20/CS61A-SICP/CS61A-10-Containers/';
+          this.page.title = 'CS61A(10): Containers';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://author.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>

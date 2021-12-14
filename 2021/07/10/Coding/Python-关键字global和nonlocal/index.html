@@ -119,7 +119,7 @@
 <meta property="og:description" content="学习关键字 global 和 nonlocal 的用法。">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2021-07-10T04:48:37.000Z">
-<meta property="article:modified_time" content="2021-07-25T13:27:49.935Z">
+<meta property="article:modified_time" content="2021-09-06T04:30:48.479Z">
 <meta property="article:author" content="gogo-wang">
 <meta property="article:tag" content="Python">
 <meta name="twitter:card" content="summary">
@@ -398,69 +398,59 @@
       
         <p>学习关键字 <code>global</code> 和 <code>nonlocal</code> 的用法。</p>
 <span id="more"></span>
-
-<h2 id="引例"><a href="#引例" class="headerlink" title="引例"></a>引例</h2><p>先来看一个代码片段：</p>
+<h2 id="引例">引例</h2>
+<p>先来看一个代码片段：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">increment = <span class="keyword">lambda</span> x: x + <span class="number">1</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">make_repeater</span>(<span class="params">func, n</span>):</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;Return the function that computes the nth application of func.&quot;&quot;&quot;</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">repeater</span>(<span class="params">x</span>):</span></span><br><span class="line">        <span class="keyword">while</span> n &gt; <span class="number">0</span>:</span><br><span class="line">            x = func(x)</span><br><span class="line">            n = n - <span class="number">1</span></span><br><span class="line">        <span class="keyword">return</span> x</span><br><span class="line">    <span class="keyword">return</span> repeater</span><br><span class="line"></span><br><span class="line">add_three = make_repeater(increment, <span class="number">3</span>)</span><br><span class="line">add_three(<span class="number">5</span>)</span><br></pre></td></tr></table></figure>
-
 <p>当运行上述代码片段时，会产生如下的错误：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">UnboundLocalError: <span class="built_in">local</span> variable <span class="string">&#x27;n&#x27;</span> referenced before assignment</span><br></pre></td></tr></table></figure>
-
 <p>要理解这个错误的原因，需要知道全局变量和局部变量的概念。</p>
-<h2 id="局部变量和全局变量"><a href="#局部变量和全局变量" class="headerlink" title="局部变量和全局变量"></a>局部变量和全局变量</h2><h3 id="局部变量"><a href="#局部变量" class="headerlink" title="局部变量"></a>局部变量</h3><p>当我们在函数体内、或者在局部范围内定义一个变量时，该变量被称为 <code>局部变量</code> 。局部变量只能在局部范围内被访问，不能在局部范围外被访问。</p>
+<h2 id="局部变量和全局变量">局部变量和全局变量</h2>
+<h3 id="局部变量">局部变量</h3>
+<p>当我们在函数体内、或者在局部范围内定义一个变量时，该变量被称为 <code>局部变量</code> 。局部变量只能在局部范围内被访问，不能在局部范围外被访问。</p>
 <p><strong>例1：在范围外访问局部变量</strong></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">foo</span>():</span></span><br><span class="line">    y = <span class="string">&quot;local&quot;</span></span><br><span class="line">    <span class="built_in">print</span>(y)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">foo()</span><br><span class="line"><span class="built_in">print</span>(y)</span><br></pre></td></tr></table></figure>
-
 <p><strong>输出：</strong></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">local</span></span><br><span class="line">NameError: name <span class="string">&#x27;y&#x27;</span> is not defined</span><br></pre></td></tr></table></figure>
-
-<h3 id="全局变量"><a href="#全局变量" class="headerlink" title="全局变量"></a>全局变量</h3><p>当我们在函数外、或者在全局范围内定义一个变量时，该变量被称为 <code>全局变量</code> 。全局变量可以在函数内部被访问，也可以在函数外部被访问。</p>
+<h3 id="全局变量">全局变量</h3>
+<p>当我们在函数外、或者在全局范围内定义一个变量时，该变量被称为 <code>全局变量</code> 。全局变量可以在函数内部被访问，也可以在函数外部被访问。</p>
 <p>让我们来看一个全局变量的例子：</p>
 <p><strong>例3：全局变量</strong></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">x = <span class="string">&quot;global&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">foo</span>():</span></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;x inside:&quot;</span>, x)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">foo()</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;x outside:&quot;</span>, x)</span><br></pre></td></tr></table></figure>
-
 <p><strong>输出：</strong></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">x inside: <span class="keyword">global</span></span><br><span class="line">x outside: <span class="keyword">global</span></span><br></pre></td></tr></table></figure>
-
 <p>在上述代码中，<code>x</code> 是一个全局变量，我们可以在函数 <code>foo</code> 内部访问 <code>x</code> ，也可以在函数外部访问 <code>x</code> 。</p>
 <p>值得注意的是，在上面的代码中，我们仅仅只是访问 <code>x</code> 。但如果我们想要做的是修改 <code>x</code> 的值呢？</p>
 <p><strong>例4: 在函数内部修改全局变量</strong></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">x = <span class="string">&quot;global&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">foo</span>():</span></span><br><span class="line">    x = x * <span class="number">2</span></span><br><span class="line">    <span class="built_in">print</span>(x)</span><br><span class="line"></span><br><span class="line">foo()</span><br></pre></td></tr></table></figure>
-
 <p><strong>Output</strong></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">UnboundLocalError: <span class="built_in">local</span> variable <span class="string">&#x27;x&#x27;</span> referenced before assignment</span><br></pre></td></tr></table></figure>
-
 <p>运行会出现错误。</p>
 <p>这是因为，当我们在函数内部对 <code>x</code> 修改重新赋值时，Python解释器会认为 <code>x</code> 是局部变量而不是全局变量，而这个局部变量也并没有在函数内部定义，所以就产生了这个错误。</p>
-<h2 id="关键字：global和nonlocal"><a href="#关键字：global和nonlocal" class="headerlink" title="关键字：global和nonlocal"></a>关键字：global和nonlocal</h2><h3 id="global关键字"><a href="#global关键字" class="headerlink" title="global关键字"></a>global关键字</h3><p>为了解决例4的问题，我们使用 <code>global</code> 关键字。现在函数内部声明变量 <code>x</code> 是全局变量，再对其进行修改。代码如下：</p>
+<h2 id="关键字global和nonlocal">关键字：global和nonlocal</h2>
+<h3 id="global关键字">global关键字</h3>
+<p>为了解决例4的问题，我们使用 <strong>global</strong> 关键字。现在函数内部声明变量 <code>x</code> 是全局变量，再对其进行修改。代码如下：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">x = <span class="string">&quot;global&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">foo</span>():</span></span><br><span class="line">    <span class="keyword">global</span> x</span><br><span class="line">    x = x * <span class="number">2</span></span><br><span class="line">    <span class="built_in">print</span>(x)</span><br><span class="line"></span><br><span class="line">foo()</span><br><span class="line"><span class="built_in">print</span>(x)</span><br></pre></td></tr></table></figure>
-
 <p><strong>输出：</strong></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">globalglobal</span><br><span class="line">globalglobal</span><br></pre></td></tr></table></figure>
-
-<h3 id="nonlocal关键字"><a href="#nonlocal关键字" class="headerlink" title="nonlocal关键字"></a>nonlocal关键字</h3><p>既然说到了local关键字，就顺便说一下 <code>nonlocal</code> 关键字。</p>
+<h3 id="nonlocal关键字">nonlocal关键字</h3>
 <p>比较以下两个代码：</p>
 <p><strong>例5：不使用nonlocal关键字</strong></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">func1</span>():</span></span><br><span class="line">    name = <span class="string">&#x27;variable 1&#x27;</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">foo</span>():</span></span><br><span class="line">        name = <span class="string">&#x27;variable 2&#x27;</span></span><br><span class="line">        <span class="built_in">print</span>(name)</span><br><span class="line">    foo()</span><br><span class="line">    <span class="built_in">print</span>(name)</span><br><span class="line">    </span><br><span class="line">func1()</span><br></pre></td></tr></table></figure>
-
 <p><strong>输出：</strong></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">variable 2</span><br><span class="line">variable 1</span><br></pre></td></tr></table></figure>
-
 <p><strong>例6：使用nonlocal关键字</strong></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">func2</span>():</span></span><br><span class="line">    name = <span class="string">&#x27;variable 1&#x27;</span> </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">foo</span>():</span></span><br><span class="line">        <span class="keyword">nonlocal</span> name</span><br><span class="line">        name = <span class="string">&#x27;variable 2&#x27;</span></span><br><span class="line">        <span class="built_in">print</span>(name) </span><br><span class="line">    foo()</span><br><span class="line">    <span class="built_in">print</span>(name)</span><br><span class="line">    </span><br><span class="line">func2()</span><br></pre></td></tr></table></figure>
-
 <p><strong>输出：</strong></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">variable 2</span><br><span class="line">variable 2</span><br></pre></td></tr></table></figure>
-
-<p>注意到例6的第4行代码，嵌套函数 <code>foo</code> 中的变量 <code>name</code> 使用了关键字 <code>nonlocal</code> 。</p>
-<p>如果一个变量被 <code>nonlocal</code> 修饰，则标识了该变量是上一级函数中的局部变量，在这里，指的是函数 <code>func2</code> 中的同名的变量 <code>name</code> (line 2) 。因此在嵌套函数 <code>foo</code> 中修改变量 <code>name</code> 的值也就修改了 <code>func2</code> 中变量 <code>name</code> 的值。</p>
-<p>而在例5中，嵌套函数 <code>foo</code> 中的变量 <code>name</code> 并没有用 <code>nonlocal</code> 修饰，那么它仅仅是 <code>foo</code> 中的一个局部变量。在函数 <code>foo</code> 的范围外是不能访问这个变量的。所以第7行打印的是第2行定义的局部变量 <code>name</code>, 而不是第4行的局部变量。</p>
-<h2 id="尾声"><a href="#尾声" class="headerlink" title="尾声"></a>尾声</h2><p>最后让我们重新看一下引例中的代码：</p>
+<p>注意到例6的第4行代码，嵌套函数 <code>foo</code> 中的变量 <code>name</code> 使用了关键字 <strong>nonlocal</strong> 。</p>
+<p>如果一个变量被 nonlocal 修饰，则标识了该变量是上一级函数中的局部变量，在这里，指的是函数 <code>func2</code> 中的同名的变量 <code>name</code> (line 2) 。因此在嵌套函数 <code>foo</code> 中修改变量 <code>name</code> 的值也就修改了 <code>func2</code> 中变量 <code>name</code> 的值。</p>
+<p>而在例5中，嵌套函数 <code>foo</code> 中的变量 <code>name</code> 并没有用 nonlocal 修饰，那么它仅仅是 <code>foo</code> 中的一个局部变量。在函数 <code>foo</code> 的范围外是不能访问这个变量的。所以第7行打印的是第2行定义的局部变量 <code>name</code>, 而不是第4行的局部变量。</p>
+<h2 id="尾声">尾声</h2>
+<p>最后让我们重新看一下引例中的代码：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">increment = <span class="keyword">lambda</span> x: x + <span class="number">1</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">make_repeater</span>(<span class="params">func, n</span>):</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;Return the function that computes the nth application of func.&quot;&quot;&quot;</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">repeater</span>(<span class="params">x</span>):</span></span><br><span class="line">        <span class="keyword">while</span> n &gt; <span class="number">0</span>:</span><br><span class="line">            x = func(x)</span><br><span class="line">            n = n - <span class="number">1</span></span><br><span class="line">        <span class="keyword">return</span> x</span><br><span class="line">    <span class="keyword">return</span> repeater</span><br><span class="line"></span><br><span class="line">add_three = make_repeater(increment, <span class="number">3</span>)</span><br><span class="line">add_three(<span class="number">5</span>)</span><br></pre></td></tr></table></figure>
-
 <p>要怎样修改才能使代码工作呢？</p>
 <p>答案不唯一，但一个可行的办法是使用 <code>nonlocal</code> 关键字来修饰变量 <code>n</code> ， 如下所示：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">make_repeater</span>(<span class="params">func, n</span>):</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">repeater</span>(<span class="params">x</span>):</span></span><br><span class="line">        <span class="keyword">nonlocal</span> n</span><br><span class="line">        <span class="keyword">while</span> n &gt; <span class="number">0</span>:</span><br><span class="line">            x = func(x)</span><br><span class="line">            n = n - <span class="number">1</span></span><br><span class="line">        <span class="keyword">return</span> x</span><br><span class="line">    <span class="keyword">return</span> repeater</span><br></pre></td></tr></table></figure>
-
 <p>🌼 完结，撒花 ✿✿ヽ(°▽°)ノ✿</p>
 
       
@@ -510,8 +500,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2021/07/09/CS61B-DSA/Project1B-Applying-and-Testing-Data-Structures/" rel="next" title="Project1B: Applying and Testing Data Structures">
-                <i class="fa fa-chevron-left"></i> Project1B: Applying and Testing Data Structures
+              <a href="/2021/07/07/15213-CSAPP/15213-1-Overview/" rel="next" title="15213(1): Overview">
+                <i class="fa fa-chevron-left"></i> 15213(1): Overview
               </a>
             
           </div>
@@ -520,8 +510,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2021/07/11/CS61B-DSA/Project1-Gold-Autograding/" rel="prev" title="Project1Gold: Autograding">
-                Project1Gold: Autograding <i class="fa fa-chevron-right"></i>
+              <a href="/2021/07/11/Full-Stack-Web-Development/Web-Dev-0-A-Primer/" rel="prev" title="Web Dev(0): A Primer">
+                Web Dev(0): A Primer <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -609,7 +599,7 @@
               
                 <a href="/archives/%7C%7Carchive">
               
-                  <span class="site-state-item-count">48</span>
+                  <span class="site-state-item-count">62</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -620,7 +610,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-count">8</span>
                   <span class="site-state-item-name">categories</span>
                 </a>
               </div>
@@ -631,7 +621,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-count">7</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
@@ -674,7 +664,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BC%95%E4%BE%8B"><span class="nav-number">1.</span> <span class="nav-text">引例</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B1%80%E9%83%A8%E5%8F%98%E9%87%8F%E5%92%8C%E5%85%A8%E5%B1%80%E5%8F%98%E9%87%8F"><span class="nav-number">2.</span> <span class="nav-text">局部变量和全局变量</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B1%80%E9%83%A8%E5%8F%98%E9%87%8F"><span class="nav-number">2.1.</span> <span class="nav-text">局部变量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%A8%E5%B1%80%E5%8F%98%E9%87%8F"><span class="nav-number">2.2.</span> <span class="nav-text">全局变量</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B3%E9%94%AE%E5%AD%97%EF%BC%9Aglobal%E5%92%8Cnonlocal"><span class="nav-number">3.</span> <span class="nav-text">关键字：global和nonlocal</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#global%E5%85%B3%E9%94%AE%E5%AD%97"><span class="nav-number">3.1.</span> <span class="nav-text">global关键字</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#nonlocal%E5%85%B3%E9%94%AE%E5%AD%97"><span class="nav-number">3.2.</span> <span class="nav-text">nonlocal关键字</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B0%BE%E5%A3%B0"><span class="nav-number">4.</span> <span class="nav-text">尾声</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BC%95%E4%BE%8B"><span class="nav-number">1.</span> <span class="nav-text">引例</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B1%80%E9%83%A8%E5%8F%98%E9%87%8F%E5%92%8C%E5%85%A8%E5%B1%80%E5%8F%98%E9%87%8F"><span class="nav-number">2.</span> <span class="nav-text">局部变量和全局变量</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B1%80%E9%83%A8%E5%8F%98%E9%87%8F"><span class="nav-number">2.1.</span> <span class="nav-text">局部变量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%A8%E5%B1%80%E5%8F%98%E9%87%8F"><span class="nav-number">2.2.</span> <span class="nav-text">全局变量</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B3%E9%94%AE%E5%AD%97global%E5%92%8Cnonlocal"><span class="nav-number">3.</span> <span class="nav-text">关键字：global和nonlocal</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#global%E5%85%B3%E9%94%AE%E5%AD%97"><span class="nav-number">3.1.</span> <span class="nav-text">global关键字</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#nonlocal%E5%85%B3%E9%94%AE%E5%AD%97"><span class="nav-number">3.2.</span> <span class="nav-text">nonlocal关键字</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B0%BE%E5%A3%B0"><span class="nav-number">4.</span> <span class="nav-text">尾声</span></a></li></ol></div>
             
 
           </div>
@@ -897,6 +887,28 @@
   
 
   
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
 
   
 

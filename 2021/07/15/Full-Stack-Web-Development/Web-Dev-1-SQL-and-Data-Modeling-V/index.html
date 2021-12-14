@@ -1,0 +1,994 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="en,zh-Hans,default">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Roboto Slab:300,300italic,400,400italic,700,700italic|Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="web," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="We&#39;ve completed built CRUD for a single model (todo item). However, in the real world, we often implement web apps with multiple models that have relationships with one another. The relationships bet">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Web Dev(1): SQL and Data Modeling(V)">
+<meta property="og:url" content="http://example.com/2021/07/15/Full-Stack-Web-Development/Web-Dev-1-SQL-and-Data-Modeling-V/index.html">
+<meta property="og:site_name" content="GoGo-Wang&#39;s Blog">
+<meta property="og:description" content="We&#39;ve completed built CRUD for a single model (todo item). However, in the real world, we often implement web apps with multiple models that have relationships with one another. The relationships bet">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/2021/07/15/Full-Stack-Web-Development/Web-Dev-1-SQL-and-Data-Modeling-V/todo-app.png">
+<meta property="og:image" content="http://example.com/2021/07/15/Full-Stack-Web-Development/Web-Dev-1-SQL-and-Data-Modeling-V/relational-mapping.JPG">
+<meta property="og:image" content="http://example.com/2021/07/15/Full-Stack-Web-Development/Web-Dev-1-SQL-and-Data-Modeling-V/db-relationship.JPG">
+<meta property="og:image" content="http://example.com/2021/07/15/Full-Stack-Web-Development/Web-Dev-1-SQL-and-Data-Modeling-V/foreign-key-constraint.JPG">
+<meta property="og:image" content="http://example.com/2021/07/15/Full-Stack-Web-Development/Web-Dev-1-SQL-and-Data-Modeling-V/setup-foreign-key-constraint.JPG">
+<meta property="og:image" content="http://example.com/2021/07/15/Full-Stack-Web-Development/Web-Dev-1-SQL-and-Data-Modeling-V/after-upgrade.JPG">
+<meta property="og:image" content="http://example.com/2021/07/15/Full-Stack-Web-Development/Web-Dev-1-SQL-and-Data-Modeling-V/final-schema.JPG">
+<meta property="og:image" content="http://example.com/2021/07/15/Full-Stack-Web-Development/Web-Dev-1-SQL-and-Data-Modeling-V/relationship-type.JPG">
+<meta property="og:image" content="http://example.com/2021/07/15/Full-Stack-Web-Development/Web-Dev-1-SQL-and-Data-Modeling-V/relationship-type2.JPG">
+<meta property="og:image" content="http://example.com/2021/07/15/Full-Stack-Web-Development/Web-Dev-1-SQL-and-Data-Modeling-V/relationship-type3.JPG">
+<meta property="og:image" content="http://example.com/2021/07/15/Full-Stack-Web-Development/Web-Dev-1-SQL-and-Data-Modeling-V/congs.gif">
+<meta property="article:published_time" content="2021-07-15T08:39:00.000Z">
+<meta property="article:modified_time" content="2021-12-06T08:18:34.129Z">
+<meta property="article:author" content="gogo-wang">
+<meta property="article:tag" content="web">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2021/07/15/Full-Stack-Web-Development/Web-Dev-1-SQL-and-Data-Modeling-V/todo-app.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://example.com/2021/07/15/Full-Stack-Web-Development/Web-Dev-1-SQL-and-Data-Modeling-V/"/>
+
+
+
+
+
+  <title>Web Dev(1): SQL and Data Modeling(V) | GoGo-Wang's Blog</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">GoGo-Wang's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">"Say something." <br> - "Something."</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/07/15/Full-Stack-Web-Development/Web-Dev-1-SQL-and-Data-Modeling-V/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="GoGo-Wang's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Web Dev(1): SQL and Data Modeling(V)</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2021-07-15T17:39:00+09:00">
+                2021-07-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Web-Development/" itemprop="url" rel="index">
+                    <span itemprop="name">Web Development</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2021/07/15/Full-Stack-Web-Development/Web-Dev-1-SQL-and-Data-Modeling-V/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2021/07/15/Full-Stack-Web-Development/Web-Dev-1-SQL-and-Data-Modeling-V/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>We've completed built CRUD for a single model (todo item). However, in the real world, we often implement web apps with multiple models that have relationships with one another.</p>
+<p>The relationships between models can determine if certain actions on one model should happen on other models, so that when something happens to one model, related model objects should also be affected (by being CRUD).</p>
+<p>Examples are:</p>
+<ul>
+<li>Removing a User's account should remove all of that user's photos, documents, etc.</li>
+<li>Deleting a Discussion Thread should delete all of its comments.</li>
+<li>Accessing a Blog Post should also access all of its comments.</li>
+<li>Accessing an Airbnb host's profile should also access all of their listings.</li>
+</ul>
+<p>So, in the rest of this blog, I'll talk about how to build our todo app further to make it more pratical.</p>
+<span id="more"></span>
+<img src="/2021/07/15/Full-Stack-Web-Development/Web-Dev-1-SQL-and-Data-Modeling-V/todo-app.png" class="">
+<h2 id="model-relationships">Model Relationships</h2>
+<p>In order to handle CRUD across related models which have relationships with one another, we'll need to learn about how to map relationships between models.</p>
+<h3 id="relationship-join">Relationship &amp; Join</h3>
+<p>Relational databases can map relationships that occur between tables and bwetween rows across tables.</p>
+<img src="/2021/07/15/Full-Stack-Web-Development/Web-Dev-1-SQL-and-Data-Modeling-V/relational-mapping.JPG" class="" title="Figure 1.">
+<p>Query: What's the make, model and year of vehicles that driver Sarah have?</p>
+<p>You can use the following SQL command to query,</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> make, model, <span class="keyword">year</span> <span class="keyword">FROM</span> vehicles</span><br><span class="line"><span class="keyword">JOIN</span> drivers</span><br><span class="line"><span class="keyword">ON</span> vehicles.driver_id <span class="operator">=</span> drivers.id</span><br><span class="line"><span class="keyword">WHERE</span> drivers.name <span class="operator">=</span> <span class="string">&#x27;Sarah&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- default JOIN is INNER JOIN</span></span><br></pre></td></tr></table></figure>
+<h3 id="db.relationship">db.relationship</h3>
+<p>SQLAlchemy configures the settings between model relationships once, and generates <code>JOIN</code> statements for us whenever we need them.</p>
+<p>We use an interface named <code>db.relationship</code>, which is provided by SQLAlchemy, to configure a mapped relationship between two models.</p>
+<p><code>db.relationship</code> is defined on the <strong>parent</strong> model.</p>
+<img src="/2021/07/15/Full-Stack-Web-Development/Web-Dev-1-SQL-and-Data-Modeling-V/db-relationship.JPG" class="">
+<h3 id="configure-relationships">Configure Relationships</h3>
+<p>So when do we load <code>child1.some_parent</code> from the database?</p>
+
+<p>There are two different ways that we can optimize the loading of joined data: <strong>Lazy loading</strong> &amp; <strong>Eager loading</strong>.</p>
+<h4 id="lazy-loading">Lazy loading</h4>
+<p>With Lazy loading, we only load these joined data only when needed. It is the default load way in SQLAlchemy.</p>
+<ul>
+<li>Pro: no initial wait time. Load only what you need.</li>
+<li>Con: produces a join SQL call every time there is a request for a joined asset. Bad if you do this a lot.</li>
+</ul>
+<p><code>lazy=True</code> (lazy loading) is the default option in <code>db.relationship</code>:</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">children = db.relationship(<span class="string">&#x27;ChildModel&#x27;</span>, backref=<span class="string">&#x27;some_parent&#x27;</span>, lazy=<span class="literal">True</span>)</span><br></pre></td></tr></table></figure>
+<h4 id="eager-loading">Eager loading</h4>
+<p>In eager loading, we will load all needed joined data objects, all at once.</p>
+<ul>
+<li>Pro: reduces further queries to the database. Subsequent SQL calls read existing data</li>
+<li>Con: loading the joined table has a long upfront initial load time.</li>
+</ul>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">children = db.relationship(<span class="string">&#x27;ChildModel&#x27;</span>, backref=<span class="string">&#x27;some_parent&#x27;</span>, lazy=<span class="string">&#x27;joined&#x27;</span>)</span><br></pre></td></tr></table></figure>
+<p>You can see the <a target="_blank" rel="noopener" href="https://docs.sqlalchemy.org/en/14/orm/loading_relationships.html">SQLAlchemy Docs on Relationship Loading Techniques</a> for more loading options.</p>
+<h4 id="other-relationship-options">Other Relationship Options</h4>
+<p>Besides lazy loading and eager loading, there are also a couple of other options that you can set on relationships. The two very handy options are:</p>
+<ul>
+<li>collection_class</li>
+<li>cascade</li>
+</ul>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Example</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Parent</span>(<span class="params">db.Model</span>):</span></span><br><span class="line">  __tablename__ = <span class="string">&#x27;parents&#x27;</span></span><br><span class="line">  <span class="built_in">id</span> = db.Column(db.Integer, primary_key=<span class="literal">True</span>)</span><br><span class="line">  name = db.Column(sb.String(), nullable=<span class="literal">False</span>)</span><br><span class="line">  children = db.relationship(</span><br><span class="line">    <span class="string">&#x27;Chile&#x27;</span>,</span><br><span class="line">    backref=<span class="string">&#x27;parent&#x27;</span>,</span><br><span class="line">    lazy=<span class="literal">True</span>,</span><br><span class="line">    collection_class = <span class="built_in">list</span>,</span><br><span class="line">    cascade = <span class="string">&#x27;save-update&#x27;</span>  <span class="comment"># OR: all, delete-orphan</span></span><br><span class="line">  )</span><br><span class="line"></span><br><span class="line"><span class="string">&quot;&quot;&quot; collection_class = list: whether or not we want the collection of children to be set equal to the data type list, or we want to set it to a dictionary or set in Python instead. &quot;&quot;&quot;</span></span><br></pre></td></tr></table></figure>
+<p>Check <a target="_blank" rel="noopener" href="https://docs.sqlalchemy.org/en/13/orm/relationship_api.html#sqlalchemy.orm.relationship">SQLALchemy ORM Relationship Docs</a> for more possible ways.</p>
+<p><a target="_blank" rel="noopener" href="https://www.osgeo.cn/sqlalchemy/orm/cascades.html#cascade-save-update">SQLAlchemy 1.4 Doc (zh version)</a></p>
+<h3 id="foreign-key-constraint-setup">Foreign Key Constraint Setup</h3>
+<p>SQLAlchemy can configure relationship between parents and children, using <code>backref</code> to link relationships between models. However,</p>
+<ul>
+<li><code>db.relationship</code> does not set up foreign key constraints for us. We need to add a column, <code>some_parent_id</code>, on the child model that has a foreign key constraint.</li>
+<li>Whereas we set <code>db.relationship</code> on the <strong>parent</strong> model, we set the foreign key constraint on the <strong>child</strong> model.</li>
+<li>A foreign key constraint prefers <strong>referential integrity</strong> from one table to another, by ensuring that the foreign key column always maps a primary key in the foreign table.</li>
+</ul>
+<img src="/2021/07/15/Full-Stack-Web-Development/Web-Dev-1-SQL-and-Data-Modeling-V/foreign-key-constraint.JPG" class="" title="Refrence Foreign Key with Primary Key">
+<p>So how this is done using SQLAlchemy?</p>
+<p>In SQLAlchemy, there is an option in <code>db.Column</code> called <code>db.ForeignKey</code> that you can use to specify a foreign key constraint, referring to the primary key of the other table / model.</p>
+<img src="/2021/07/15/Full-Stack-Web-Development/Web-Dev-1-SQL-and-Data-Modeling-V/setup-foreign-key-constraint.JPG" class="">
+<hr />
+<p>🐿️ Exercise: Try to map relationships between models shown in Figure 1.(driver table &amp; vehicles table)</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Solution</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> flask_sqlalchemy <span class="keyword">import</span> SQLAlchemy</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Driver</span>(<span class="params">db.Model</span>):</span></span><br><span class="line">    __tablename__ = <span class="string">&#x27;drivers&#x27;</span></span><br><span class="line">    <span class="built_in">id</span> = db.Column(db.Integer, primary_key=<span class="literal">True</span>)</span><br><span class="line">    name = db.Column(db.String(), nullable=<span class="literal">False</span>)</span><br><span class="line">    state = db.Column(db.String())</span><br><span class="line">    issued = db.Column(db.Datetime)</span><br><span class="line">    vehicles = db.relationship(<span class="string">&#x27;Vehicle&#x27;</span>, backref=<span class="string">&#x27;driver&#x27;</span>, lazy=<span class="literal">True</span>)</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Vehicle</span>(<span class="params">db.Model</span>):</span></span><br><span class="line">    __tablename__ = <span class="string">&#x27;vehicles&#x27;</span></span><br><span class="line">    <span class="built_in">id</span> = db.Column(db.Integer, primary_key=<span class="literal">True</span>)</span><br><span class="line">    make = db.Column(db.String(), nullable=<span class="literal">False</span>)</span><br><span class="line">    model = db.Column(db.String(), nullable=<span class="literal">False</span>)</span><br><span class="line">    year = db.Column(db.Integer)</span><br><span class="line">    driver_id = db.Column(db.Integer, db.ForeignKey(<span class="string">&#x27;drivers.id&#x27;</span>), nullable=<span class="literal">False</span>)</span><br></pre></td></tr></table></figure>
+<p>Resources : <a target="_blank" rel="noopener" href="https://docs.sqlalchemy.org/en/14/core/constraints.html">SQLAlchemy Docs on Defining Constraints</a></p>
+<h2 id="build-todo-app-further">Build Todo App Further</h2>
+<h3 id="one-to-many-relationship-setup">One-to-Many Relationship Setup</h3>
+<p>Now that we've learnt how to use <code>db.relationship</code> and <code>db.ForeignKey</code> to set up relationships between models. Let's focus back on our todo app and use these concepts to model &quot;todo lists&quot; in our app, and set up the relationship between our <strong>todo model</strong> and our new <strong>todo list model</strong>.</p>
+<hr />
+<p>Todo lists have many todos, and every todo item belongs to exactly one todo list, which indicates the existence of a &quot;one to many relationship&quot; between todos and todo lists.</p>
+<p>Reading: <a target="_blank" rel="noopener" href="https://database.guide/the-3-types-of-relationships-in-database-design/">3 Types of Relationships in Database Design</a></p>
+<hr />
+<h4 id="create-todo-list-model">Create Todo-List Model</h4>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Todo</span>(<span class="params">db.Model</span>):</span></span><br><span class="line">    __tablename__ = <span class="string">&#x27;todos&#x27;</span></span><br><span class="line">    <span class="built_in">id</span> = db.Column(db.Integer, primary_key=<span class="literal">True</span>)</span><br><span class="line">    description = db.Column(db.String(), nullable=<span class="literal">False</span>)</span><br><span class="line">    completed = db.Column(db.Boolean, nullable=<span class="literal">False</span>, default=<span class="literal">False</span>)</span><br><span class="line">    list_id = db.Column(db.Integer, db.ForeignKey(<span class="string">&#x27;todolists.id&#x27;</span>), nullable=<span class="literal">False</span>)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__repr__</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="keyword">return</span> <span class="string">f&#x27;&lt;Todo <span class="subst">&#123;self.<span class="built_in">id</span>&#125;</span> <span class="subst">&#123;self.description&#125;</span> <span class="subst">&#123;self.completed&#125;</span>&gt;&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">TodoList</span>(<span class="params">db.Model</span>):</span></span><br><span class="line">    __tablename__ = <span class="string">&#x27;todolists&#x27;</span></span><br><span class="line">    <span class="built_in">id</span> = db.Column(db.Integer, primary_key=<span class="literal">True</span>)</span><br><span class="line">    name = db.Column(db.String(), nullable=<span class="literal">False</span>)</span><br><span class="line">    todos = db.relationship(<span class="string">&#x27;Todo&#x27;</span>, backref=<span class="string">&#x27;list&#x27;</span>, lazy=<span class="literal">True</span>)</span><br></pre></td></tr></table></figure>
+<h4 id="migration-upgrade-the-schema">Migration: Upgrade the Schema</h4>
+<p>Create and run a migration,</p>
+<blockquote>
+<p>~$ flask db migrate -m &quot;create todolist model&quot;</p>
+</blockquote>
+<p>If we run <code>flask db upgrade</code> now, it will cause error since <code>list_id</code> cannot be nullable. Like before, revise .py files,</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;&quot;&quot; aaa2f3a607b6_create_todolist_model.py &quot;&quot;&quot;</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">upgrade</span>():</span></span><br><span class="line">    <span class="comment"># ### commands auto generated by Alembic - please adjust! ###</span></span><br><span class="line">    op.create_table(<span class="string">&#x27;todolists&#x27;</span>,</span><br><span class="line">    sa.Column(<span class="string">&#x27;id&#x27;</span>, sa.Integer(), nullable=<span class="literal">False</span>),</span><br><span class="line">    sa.Column(<span class="string">&#x27;name&#x27;</span>, sa.String(), nullable=<span class="literal">False</span>),</span><br><span class="line">    sa.PrimaryKeyConstraint(<span class="string">&#x27;id&#x27;</span>)</span><br><span class="line">    )</span><br><span class="line"></span><br><span class="line">    <span class="string">&#x27;&#x27;&#x27;change here&#x27;&#x27;&#x27;</span></span><br><span class="line">    <span class="comment"># op.add_column(&#x27;todos&#x27;, sa.Column(&#x27;list_id&#x27;, sa.Integer(), nullable=False))</span></span><br><span class="line">    op.add_column(<span class="string">&#x27;todos&#x27;</span>, sa.Column(<span class="string">&#x27;list_id&#x27;</span>, sa.Integer(), nullable=<span class="literal">True</span>))</span><br><span class="line">    </span><br><span class="line">    op.create_foreign_key(<span class="literal">None</span>, <span class="string">&#x27;todos&#x27;</span>, <span class="string">&#x27;todolists&#x27;</span>, [<span class="string">&#x27;list_id&#x27;</span>], [<span class="string">&#x27;id&#x27;</span>])</span><br><span class="line">    <span class="comment"># ### end Alembic commands ###</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="string">&quot;&quot;&quot; app.py &quot;&quot;&quot;</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Todo</span>(<span class="params">db.Model</span>):</span></span><br><span class="line">    __tablename__ = <span class="string">&#x27;todos&#x27;</span></span><br><span class="line">    <span class="built_in">id</span> = db.Column(db.Integer, primary_key=<span class="literal">True</span>)</span><br><span class="line">    <span class="comment"># ......</span></span><br><span class="line">    list_id = db.Column(db.Integer, db.ForeignKey(<span class="string">&#x27;todolists.id&#x27;</span>), nullable=<span class="literal">True</span>)</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>~$ flask db upgrade</p>
+</blockquote>
+<img src="/2021/07/15/Full-Stack-Web-Development/Web-Dev-1-SQL-and-Data-Modeling-V/after-upgrade.JPG" class="">
+<blockquote>
+<p>todoapp=# INSERT INTO todolists(name) VALUES('Default'); todoapp=# UPDATE todos SET list_id = 1 WHERE list_id IS NULL;</p>
+</blockquote>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;&quot;&quot; app.py &quot;&quot;&quot;</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Todo</span>(<span class="params">db.Model</span>):</span></span><br><span class="line">    __tablename__ = <span class="string">&#x27;todos&#x27;</span></span><br><span class="line">    <span class="built_in">id</span> = db.Column(db.Integer, primary_key=<span class="literal">True</span>)</span><br><span class="line">    <span class="comment"># ......</span></span><br><span class="line">    list_id = db.Column(db.Integer, db.ForeignKey(<span class="string">&#x27;todolists.id&#x27;</span>), nullable=<span class="literal">False</span>) <span class="comment"># set to back False</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>~$ flask db migrate ~$ flask db upgrade</p>
+</blockquote>
+<p>You've done!</p>
+<img src="/2021/07/15/Full-Stack-Web-Development/Web-Dev-1-SQL-and-Data-Modeling-V/final-schema.JPG" class="">
+<p>By the way, you can also do the above things using migration files.</p>
+<hr />
+<p>🐷 Final Check:</p>
+<p>Add items with a list &quot;Urgent&quot; with ID of 2 and check if we get the expected results.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; from app import db, TodoList, Todo</span><br><span class="line">&gt;&gt;&gt; list = TodoList(name=<span class="string">&#x27;urgent&#x27;</span>)</span><br><span class="line">&gt;&gt;&gt; todo = Todo(description=<span class="string">&#x27;This is a really important thing.&#x27;</span>)</span><br><span class="line">&gt;&gt;&gt; todo2 = Todo(description=<span class="string">&#x27;Urgent todo 2&#x27;</span>)</span><br><span class="line">&gt;&gt;&gt; todo3 = Todo(description=<span class="string">&#x27;Urgent todo 3&#x27;</span>)</span><br><span class="line">&gt;&gt;&gt; todo.list = list</span><br><span class="line">&gt;&gt;&gt; todo2.list = list</span><br><span class="line">&gt;&gt;&gt; todo3.list = list</span><br><span class="line">&gt;&gt;&gt; todo.completed = False</span><br><span class="line">&gt;&gt;&gt; todo2.completed = False</span><br><span class="line">&gt;&gt;&gt; todo3.completed = False</span><br><span class="line">&gt;&gt;&gt; db.session.add(list)</span><br><span class="line">&gt;&gt;&gt; db.session.commit()</span><br></pre></td></tr></table></figure>
+<hr />
+<h3 id="crud-on-list-of-todos">CRUD on List of Todos</h3>
+<p>Try yourself to complete the todo lists app,</p>
+<ul>
+<li>Read a List: When clicking the specific todo list, display all todos belonging to the list.</li>
+<li>Create a List: Implement a &quot;Create List form&quot; above the list of To-Do Lists to enable the user to create Lists.</li>
+<li>Update a List (and all of its children items): Implement a Checkbox next to a To-Do List, and allow the user to mark an entire list as completed. When the list is marked completed, implement the controller so that all of its child items are also marked as completed.</li>
+<li>Delete a List (and all of its children items): Implement an &quot;x&quot; remove button next to each List, and allow a user to click it in order to remove a List. When a list is removed, all of its child items should also be removed.</li>
+</ul>
+<p>🐣 <strong>Solution</strong>: You can visit my <a target="_blank" rel="noopener" href="https://github.com/rileywang0819/demo-todoapp/tree/master/todo-app">Github repository</a> to see the source code.</p>
+<h3 id="many-to-many-relationship">Many-to-Many Relationship</h3>
+<p>Finally, let's talk about the 3rd type of relationship --&gt; many-to-many relationship.</p>
+<h4 id="what-is-many-to-many-relationship">What is many-to-many relationship</h4>
+<img src="/2021/07/15/Full-Stack-Web-Development/Web-Dev-1-SQL-and-Data-Modeling-V/relationship-type.JPG" class="">
+<img src="/2021/07/15/Full-Stack-Web-Development/Web-Dev-1-SQL-and-Data-Modeling-V/relationship-type2.JPG" class="">
+<img src="/2021/07/15/Full-Stack-Web-Development/Web-Dev-1-SQL-and-Data-Modeling-V/relationship-type3.JPG" class="">
+<p>Takeaways - In one-to-many and one-to-one, the foreign key is established on the child model. - In many-to-many, a special <strong>association table</strong> exists to join the two tables together, storing two foreign keys that link to the two foreign tables that have a relationship with each other.</p>
+<h4 id="setup-many-to-many-relationships">Setup many-to-many relationships</h4>
+<p>To set up a many-to-many in SQLALchemy, we:</p>
+<ul>
+<li>Define an association table using Table from SQLAlchemy.</li>
+<li>Set the multiple foreign keys in the association table.</li>
+<li>Map the association table to a parent model using the option <code>secondary</code> in <code>db.relationship</code>.</li>
+</ul>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Setting up the many-to-many relationship</span></span><br><span class="line"></span><br><span class="line">association_table = Table(<span class="string">&#x27;association&#x27;</span>, Base.metadata, </span><br><span class="line">    Column(<span class="string">&#x27;left_id&#x27;</span>, Integer, ForeignKey(<span class="string">&#x27;left.id&#x27;</span>)),</span><br><span class="line">    Column(<span class="string">&#x27;right_id&#x27;</span>, Integer, ForeignKey(<span class="string">&#x27;right.id&#x27;</span>))</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Parent</span>(<span class="params">Base</span>):</span></span><br><span class="line">    __tablename__ = <span class="string">&#x27;left&#x27;</span></span><br><span class="line">    <span class="built_in">id</span> = Column(Integer, primary_key=<span class="literal">True</span>)</span><br><span class="line">    children = relationship(<span class="string">&#x27;Child&#x27;</span>, secondary=association_table)</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Child</span>(<span class="params">Base</span>):</span></span><br><span class="line">    __tablename__ = <span class="string">&#x27;right&#x27;</span></span><br><span class="line">    children = Column(Integer, primary_key=<span class="literal">True</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Example</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> Flask</span><br><span class="line"><span class="keyword">from</span> flask_sqlalchemy <span class="keyword">import</span> SQLAlchemy</span><br><span class="line"></span><br><span class="line">app = Flask(__name__)</span><br><span class="line">app.config[<span class="string">&#x27;SQLALCHEMY_DATABASE_URI&#x27;</span>] = <span class="string">&#x27;postgres://password@localhost:5432/example&#x27;</span></span><br><span class="line">db = SQLAlchemy(app)</span><br><span class="line"></span><br><span class="line">order_items = db.Table(<span class="string">&#x27;order_items&#x27;</span>,</span><br><span class="line">    db.Column(<span class="string">&#x27;order_id&#x27;</span>, db.Integer, db.ForeignKey(<span class="string">&#x27;order.id&#x27;</span>), primary_key=<span class="literal">True</span>),</span><br><span class="line">    db.Column(<span class="string">&#x27;product_id&#x27;</span>, db.Integer, db.ForeignKey(<span class="string">&#x27;product.id&#x27;</span>), primary_key=<span class="literal">True</span>)</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Order</span>(<span class="params">db.Model</span>):</span></span><br><span class="line">  <span class="built_in">id</span> = db.Column(db.Integer, primary_key=<span class="literal">True</span>)</span><br><span class="line">  status = db.Column(db.String(), nullable=<span class="literal">False</span>)</span><br><span class="line">  products = db.relationship(<span class="string">&#x27;Product&#x27;</span>, secondary=order_items,</span><br><span class="line">      backref=db.backref(<span class="string">&#x27;orders&#x27;</span>, lazy=<span class="literal">True</span>))</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Product</span>(<span class="params">db.Model</span>):</span></span><br><span class="line">  <span class="built_in">id</span> = db.Column(db.Integer, primary_key=<span class="literal">True</span>)</span><br><span class="line">  name = db.Column(db.String(), nullable=<span class="literal">False</span>)</span><br></pre></td></tr></table></figure>
+<p>Until now, we've learnt how to model relationship in a relational database (PostgreSQL). We also have learnt how to build a web app connected to database using a Python library, i.e. SQLAlchemy. It supports CRUD operations.</p>
+<img src="/2021/07/15/Full-Stack-Web-Development/Web-Dev-1-SQL-and-Data-Modeling-V/congs.gif" class="">
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>Post author:</strong>
+    gogo-wang
+  </li>
+  <li class="post-copyright-link">
+    <strong>Post link:</strong>
+    <a href="http://example.com/2021/07/15/Full-Stack-Web-Development/Web-Dev-1-SQL-and-Data-Modeling-V/" title="Web Dev(1): SQL and Data Modeling(V)">http://example.com/2021/07/15/Full-Stack-Web-Development/Web-Dev-1-SQL-and-Data-Modeling-V/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice: </strong>
+    All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> unless stating additionally.
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/web/" rel="tag"># web</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2021/07/14/Full-Stack-Web-Development/Web-Dev-1-SQL-and-Data-Modeling-IIII/" rel="next" title="Web Dev(1): SQL and Data Modeling(IIII)">
+                <i class="fa fa-chevron-left"></i> Web Dev(1): SQL and Data Modeling(IIII)
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2021/07/17/Full-Stack-Web-Development/Web-Dev-2-API-Dev-and-Doc-I/" rel="prev" title="Web Dev(2): API Dev and Doc(I)">
+                Web Dev(2): API Dev and Doc(I) <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a target="_blank" rel="noopener" href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name"></p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/%7C%7Carchive">
+              
+                  <span class="site-state-item-count">62</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/rileywang0819" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#model-relationships"><span class="nav-number">1.</span> <span class="nav-text">Model Relationships</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#relationship-join"><span class="nav-number">1.1.</span> <span class="nav-text">Relationship &amp; Join</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#db.relationship"><span class="nav-number">1.2.</span> <span class="nav-text">db.relationship</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#configure-relationships"><span class="nav-number">1.3.</span> <span class="nav-text">Configure Relationships</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#lazy-loading"><span class="nav-number">1.3.1.</span> <span class="nav-text">Lazy loading</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#eager-loading"><span class="nav-number">1.3.2.</span> <span class="nav-text">Eager loading</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#other-relationship-options"><span class="nav-number">1.3.3.</span> <span class="nav-text">Other Relationship Options</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#foreign-key-constraint-setup"><span class="nav-number">1.4.</span> <span class="nav-text">Foreign Key Constraint Setup</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#build-todo-app-further"><span class="nav-number">2.</span> <span class="nav-text">Build Todo App Further</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#one-to-many-relationship-setup"><span class="nav-number">2.1.</span> <span class="nav-text">One-to-Many Relationship Setup</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#create-todo-list-model"><span class="nav-number">2.1.1.</span> <span class="nav-text">Create Todo-List Model</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#migration-upgrade-the-schema"><span class="nav-number">2.1.2.</span> <span class="nav-text">Migration: Upgrade the Schema</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#crud-on-list-of-todos"><span class="nav-number">2.2.</span> <span class="nav-text">CRUD on List of Todos</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#many-to-many-relationship"><span class="nav-number">2.3.</span> <span class="nav-text">Many-to-Many Relationship</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#what-is-many-to-many-relationship"><span class="nav-number">2.3.1.</span> <span class="nav-text">What is many-to-many relationship</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#setup-many-to-many-relationships"><span class="nav-number">2.3.2.</span> <span class="nav-text">Setup many-to-many relationships</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">GoGo-Wang</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+    
+      <script id="dsq-count-scr" src="https://author.disqus.com/count.js" async></script>
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'http://example.com/2021/07/15/Full-Stack-Web-Development/Web-Dev-1-SQL-and-Data-Modeling-V/';
+          this.page.identifier = '2021/07/15/Full-Stack-Web-Development/Web-Dev-1-SQL-and-Data-Modeling-V/';
+          this.page.title = 'Web Dev(1): SQL and Data Modeling(V)';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://author.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>

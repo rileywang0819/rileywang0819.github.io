@@ -111,16 +111,16 @@
 
 
 
-<meta name="description" content="Java的 util 包中有两个重要的父接口：Collection 和 Map 。这两个接口提供了诸多数据结构的实现，使我们可以专注于程序的逻辑而不必关心底层细节。 在这篇博文中，我们将讨论以下几种接口，以及它们分别的实现类。">
+<meta name="description" content="Java的 util 包中有两个重要的父接口：Collection 和 Map 。这两个接口提供了诸多数据结构的实现，使我们可以专注于程序的逻辑而不必关心底层细节。 在这篇博文中，我们将讨论以下几种接口，以及它们分别的实现类。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Java集合详解(Collection和Map接口)">
+<meta property="og:title" content="Java集合详解(Collection接口和Map接口)">
 <meta property="og:url" content="http://example.com/2021/07/19/Coding/Java-Collection-Interface/index.html">
 <meta property="og:site_name" content="GoGo-Wang&#39;s Blog">
-<meta property="og:description" content="Java的 util 包中有两个重要的父接口：Collection 和 Map 。这两个接口提供了诸多数据结构的实现，使我们可以专注于程序的逻辑而不必关心底层细节。 在这篇博文中，我们将讨论以下几种接口，以及它们分别的实现类。">
+<meta property="og:description" content="Java的 util 包中有两个重要的父接口：Collection 和 Map 。这两个接口提供了诸多数据结构的实现，使我们可以专注于程序的逻辑而不必关心底层细节。 在这篇博文中，我们将讨论以下几种接口，以及它们分别的实现类。">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://example.com/2021/07/19/Coding/Java-Collection-Interface/Collection-Interface-in-Java.png">
 <meta property="article:published_time" content="2021-07-19T05:43:55.000Z">
-<meta property="article:modified_time" content="2021-07-25T13:28:53.792Z">
+<meta property="article:modified_time" content="2021-09-12T06:09:48.428Z">
 <meta property="article:author" content="gogo-wang">
 <meta property="article:tag" content="Java">
 <meta name="twitter:card" content="summary">
@@ -160,7 +160,7 @@
 
 
 
-  <title>Java集合详解(Collection和Map接口) | GoGo-Wang's Blog</title>
+  <title>Java集合详解(Collection接口和Map接口) | GoGo-Wang's Blog</title>
   
 
 
@@ -304,7 +304,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Java集合详解(Collection和Map接口)</h1>
+          <h1 class="post-title" itemprop="name headline">Java集合详解(Collection接口和Map接口)</h1>
         
 
         <div class="post-meta">
@@ -401,111 +401,94 @@
         <p>Java的 <code>util</code> 包中有两个重要的父接口：<code>Collection</code> 和 <code>Map</code> 。这两个接口提供了诸多数据结构的实现，使我们可以专注于程序的逻辑而不必关心底层细节。</p>
 <p>在这篇博文中，我们将讨论以下几种接口，以及它们分别的实现类。</p>
 <span id="more"></span>
-
 <ul>
-<li>java.util package<ul>
-<li>Collection interface<ul>
-<li>List interface<ul>
+<li>java.util package
+<ul>
+<li>Collection interface
+<ul>
+<li>List interface
+<ul>
 <li>ArrayList class</li>
 <li>LinkedList class</li>
-<li>Vector class<ul>
-<li>Stack </li>
-</ul>
-</li>
-</ul>
-</li>
-<li>Queue interface<ul>
+<li>Vector class
+<ul>
+<li>Stack</li>
+</ul></li>
+</ul></li>
+<li>Queue interface
+<ul>
 <li>PriorityQueue class</li>
-</ul>
-</li>
-<li>Set interface<ul>
+</ul></li>
+<li>Set interface
+<ul>
 <li>HashSet class</li>
 <li>LinkedHashSet class</li>
-<li>SortedSet interface<ul>
+<li>SortedSet interface
+<ul>
 <li>TreeSet class</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>Map interface<ul>
+</ul></li>
+</ul></li>
+</ul></li>
+<li>Map interface
+<ul>
 <li>Hashtable class</li>
 <li>HashMap class</li>
 <li>LinkedHashMap class</li>
-<li>SortedMap interface<ul>
+<li>SortedMap interface
+<ul>
 <li>TreeMap class</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
+</ul></li>
+</ul></li>
+</ul></li>
 </ul>
 <img src="/2021/07/19/Coding/Java-Collection-Interface/Collection-Interface-in-Java.png" class="">
-
-
-<h2 id="List接口"><a href="#List接口" class="headerlink" title="List接口"></a>List接口</h2><p>List接口对应于 List 抽象数据类型。</p>
-<h3 id="1-Overview"><a href="#1-Overview" class="headerlink" title="1. Overview"></a>1. Overview</h3><p>List接口有3种具体的实现：</p>
-<ul>
-<li>ArrayList类：底层数据结构为 <code>动态数组(array)</code> ， 其中扩展因子为0.5。</li>
-<li>LinkedList类：底层数据结构为 <code>双向链表(doubly linked list)</code> 。</li>
-<li>Vector类：底层数据结构为 <code>动态数组(array)</code>， 其中扩展因子为1。</li>
-</ul>
+<h2 id="list接口">List接口</h2>
+<p>List接口对应于 List 抽象数据类型。</p>
+<h3 id="overview">1. Overview</h3>
+<p>List接口有3种具体的实现： - ArrayList类：底层数据结构为 <code>动态数组(array)</code> ， 其中扩展因子为0.5。 - LinkedList类：底层数据结构为 <code>双向链表(doubly linked list)</code> 。 - Vector类：底层数据结构为 <code>动态数组(array)</code>， 其中扩展因子为1。</p>
 <p>根据数据结构的知识，如果你需要进行很多的 <code>insertion</code> 或 <code>deletion</code> 操作，那么选用 <code>LinkedList class</code> 会比较好；而如果大量的操作都是 <code>access</code> 操作，那么 <code>ArrayList class</code> 是更好的选择。</p>
-<hr>
+<hr />
 <p>⛱️ <strong>ArrayList</strong> vs. <strong>Vector</strong></p>
-<p>Vector  和 ArrayList 的底层数据结构都是数组。两者唯一的区别在于：ArrayList中的方法不是线程安全的，而Vector中的方法是同步的，意味着线程安全。所以，如果你需要线程安全，那么应该使用Vector。但对于单线程环境，使用使用Vector会花费更多的资源，所以用ArrayList更好。</p>
+<p>Vector 和 ArrayList 的底层数据结构都是数组。两者唯一的区别在于：ArrayList中的方法不是线程安全的，而Vector中的方法是同步的，意味着线程安全。所以，如果你需要线程安全，那么应该使用Vector。但对于单线程环境，使用使用Vector会花费更多的资源，所以用ArrayList更好。</p>
 <p>如果你查看底层代码，你会发现，Vecotr中的重要操作，如add, remove, get等，这些方法都被 <code>synchronized</code> 关键字所修饰，来保证线程的安全性。</p>
-<hr>
+<hr />
 <p>接下来，让我们来几个List的代码片段。</p>
-<h3 id="Demos"><a href="#Demos" class="headerlink" title="Demos"></a>Demos</h3><h4 id="两种实例化方法"><a href="#两种实例化方法" class="headerlink" title="两种实例化方法"></a>两种实例化方法</h4><p>首先需要说明的是，在实例化一个List的时候，除了我们很熟悉的 <code>List&lt;Integer&gt; L = new ArrayList&lt;&gt;();</code> 方法之外，Java9增加的静态工厂方法 <code>.of()</code> 也可以创建实例，代码如下：</p>
+<h3 id="demos">Demos</h3>
+<h4 id="两种实例化方法">两种实例化方法</h4>
+<p>首先需要说明的是，在实例化一个List的时候，除了我们很熟悉的 <code>List&lt;Integer&gt; L = new ArrayList&lt;&gt;();</code> 方法之外，Java9增加的静态工厂方法 <code>.of()</code> 也可以创建实例，代码如下：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Demo</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		List&lt;Integer&gt; L = List.of(<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>);</span><br><span class="line"><span class="comment">//		L.add(5);    // Exception, because L is immutable.</span></span><br><span class="line">		System.out.println(L);  <span class="comment">// [0, 1, 2, 3, 4]</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>不过需要注意的是，使用上述方法创建的List是**不可变的(immutable)**，也就是说一旦创建好一个List，那么它的值，它的大小都是不可变的。后面的 <code>Set/Map/Queue</code> 也是一样的，就不再赘述了。</p>
-<h4 id="List的基本用法"><a href="#List的基本用法" class="headerlink" title="List的基本用法"></a>List的基本用法</h4><p>让我们来看一个 <code>ArrayList</code> 的代码片段：</p>
+<p>不过需要注意的是，使用上述方法创建的List是<strong>不可变的(immutable)</strong>，也就是说一旦创建好一个List，那么它的值，它的大小都是不可变的。后面的 <code>Set/Map/Queue</code> 也是一样的，就不再赘述了。</p>
+<h4 id="list的基本用法">List的基本用法</h4>
+<p>让我们来看一个 <code>ArrayList</code> 的代码片段：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.ArrayList;</span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ArrayListDemo</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		List&lt;String&gt; words = List.of(<span class="string">&quot;Apple&quot;</span>, <span class="string">&quot;Peach&quot;</span>);</span><br><span class="line">		List&lt;String&gt; wordsArrayList = <span class="keyword">new</span> ArrayList&lt;&gt;(words);</span><br><span class="line">		System.out.println(<span class="string">&quot;Original list: &quot;</span> + wordsArrayList);</span><br><span class="line"></span><br><span class="line">		<span class="comment">/* Appends an item at the end of list. */</span></span><br><span class="line">		wordsArrayList.add(<span class="number">0</span>, <span class="string">&quot;Dog&quot;</span>);  <span class="comment">// position is optional</span></span><br><span class="line">		System.out.println(<span class="string">&quot;after adding Dog at index 0: &quot;</span> + wordsArrayList);</span><br><span class="line"></span><br><span class="line">		<span class="comment">/* Appends all items at the end of list. */</span></span><br><span class="line">		List&lt;String&gt; newList = List.of(<span class="string">&quot;Mouse&quot;</span>, <span class="string">&quot;Cat&quot;</span>, <span class="string">&quot;Zebra&quot;</span>);</span><br><span class="line">		wordsArrayList.addAll(<span class="number">0</span>, newList);  <span class="comment">// position is optional</span></span><br><span class="line">		System.out.println(<span class="string">&quot;after adding a list: &quot;</span> + wordsArrayList);</span><br><span class="line"></span><br><span class="line">		<span class="comment">/* Removes a specific item. */</span></span><br><span class="line">		wordsArrayList.remove(<span class="number">0</span>);   <span class="comment">//  == wordsArrayList.remove(&quot;Dog&quot;);</span></span><br><span class="line">		System.out.println(<span class="string">&quot;after removing item at index 0: &quot;</span> + wordsArrayList);</span><br><span class="line"></span><br><span class="line">		<span class="comment">/* Replaces the item at the specified position. */</span></span><br><span class="line">		wordsArrayList.set(<span class="number">3</span>, <span class="string">&quot;Fish&quot;</span>);</span><br><span class="line">		System.out.println(<span class="string">&quot;after changing element at index 3: &quot;</span> + wordsArrayList);</span><br><span class="line">		System.out.println();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <p>输出：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Original list: [Apple, Peach]</span><br><span class="line">after adding Dog at index 0: [Dog, Apple, Peach]</span><br><span class="line">after adding a list: [Mouse, Cat, Zebra, Dog, Apple, Peach]</span><br><span class="line">after removing item at index 0: [Cat, Zebra, Dog, Apple, Peach]</span><br><span class="line">after changing element at index 3: [Cat, Zebra, Dog, Fish, Peach]</span><br></pre></td></tr></table></figure>
-
 <p>无论是ArrayList，还是LinkedList，或是Vector都符合上述展示的List的使用方法，在此就不在写 <code>LinkedList</code> 和 <code>Vector</code> 的代码了。</p>
-<h4 id="遍历List"><a href="#遍历List" class="headerlink" title="遍历List"></a>遍历List</h4><p>接下来让我们来看一下如何遍历列表元素。这里我们展示3种不同遍历方法，注意它们的使用。</p>
-<ol>
+<h4 id="遍历list">遍历List</h4>
+<p>接下来让我们来看一下如何遍历列表元素。这里我们展示3种不同遍历方法，注意它们的使用。</p>
+<ol type="1">
 <li>第1种方法，也是最基本的方法：</li>
 </ol>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.ArrayList;</span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ArrayListDemo</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        List&lt;Integer&gt; L0 = List.of(<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>);</span><br><span class="line">        List&lt;Integer&gt; L = <span class="keyword">new</span> ArrayList&lt;&gt;(L0);</span><br><span class="line">        System.out.println(<span class="string">&quot;original list: &quot;</span> + L);</span><br><span class="line">        </span><br><span class="line">        <span class="comment">/* Removes the odd item */</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; L.size(); i++) &#123;</span><br><span class="line">            <span class="keyword">int</span> num = L.get(i);</span><br><span class="line">            <span class="keyword">if</span> (num % <span class="number">2</span> != <span class="number">0</span>) &#123;</span><br><span class="line">            	L.remove(i);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        System.out.println(<span class="string">&quot;even list: &quot;</span> + L);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <p>输出：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">original list: [0, 1, 2, 3, 4]</span><br><span class="line">even list: [0, 2, 4]</span><br></pre></td></tr></table></figure>
-
-<ol start="2">
+<ol start="2" type="1">
 <li>第2种方法，我们使用 <code>foreach</code> 循环：</li>
 </ol>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.ArrayList;</span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ArrayListDemo</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        List&lt;Integer&gt; L0 = List.of(<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>);</span><br><span class="line">        List&lt;Integer&gt; L = <span class="keyword">new</span> ArrayList&lt;&gt;(L0);</span><br><span class="line">        System.out.println(<span class="string">&quot;original list: &quot;</span> + L);</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">for</span> (Integer num: L) &#123;</span><br><span class="line">            <span class="keyword">if</span> (num % <span class="number">2</span> != <span class="number">0</span>) &#123;</span><br><span class="line">                L.remove(num);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        System.out.println(<span class="string">&quot;even list: &quot;</span> + L);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <p>输出：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">original list: [0, 1, 2, 3, 4]</span><br><span class="line">Exception <span class="keyword">in</span> thread <span class="string">&quot;main&quot;</span> java.util.ConcurrentModificationException</span><br><span class="line">    ...</span><br><span class="line">    ...</span><br></pre></td></tr></table></figure>
-
 <p>你可以看到，当使用foreach循环时，如果你在循环体内想要进行 <code>remove/add</code> 操作会报错。在这种情况下，你可以使用第1种方法，也可以使用下面讲的第3种方法。</p>
-<ol start="3">
+<ol start="3" type="1">
 <li>第3种方法，使用 <code>.iterator()</code> 方法</li>
 </ol>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.ArrayList;</span><br><span class="line"><span class="keyword">import</span> java.util.Iterator;</span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ArrayListDemo</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		List&lt;Integer&gt; L0 = List.of(<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>);</span><br><span class="line">		List&lt;Integer&gt; L = <span class="keyword">new</span> ArrayList&lt;&gt;(L0);</span><br><span class="line">		System.out.println(<span class="string">&quot;original list: &quot;</span> + L);</span><br><span class="line"></span><br><span class="line">		<span class="comment">/** .iterator() method:  // in List interface</span></span><br><span class="line"><span class="comment">		 * Returns an iterator over the elements in this list in proper sequence.</span></span><br><span class="line"><span class="comment">		 *</span></span><br><span class="line"><span class="comment">		 * .hasNext() method:  // in Iterator interface</span></span><br><span class="line"><span class="comment">		 * Returns &#123;<span class="doctag">@code</span> true&#125; if the iteration has more elements.</span></span><br><span class="line"><span class="comment">		 */</span></span><br><span class="line">		Iterator&lt;Integer&gt; iterator = L.iterator();</span><br><span class="line">		<span class="keyword">while</span> (iterator.hasNext()) &#123;</span><br><span class="line">			<span class="keyword">int</span> num = iterator.next();</span><br><span class="line">			<span class="keyword">if</span> (num % <span class="number">2</span> != <span class="number">0</span>) &#123;</span><br><span class="line">				iterator.remove();</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		System.out.println(<span class="string">&quot;even list: &quot;</span> + L);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-
-
-
-
-
-
-
-
-
+<p>// 未完待续</p>
 <p>(区别：<code>java.util.Collection</code> 是一个集合接口; <code>java.util.Collections</code> 是一个包装类, 包含有各种有关集合操作的静态多态方法。)</p>
-<h2 id="Set-Interface"><a href="#Set-Interface" class="headerlink" title="Set Interface"></a>Set Interface</h2><h2 id="Queue-Interface"><a href="#Queue-Interface" class="headerlink" title="Queue Interface"></a>Queue Interface</h2><h2 id="Map-Interface"><a href="#Map-Interface" class="headerlink" title="Map Interface"></a>Map Interface</h2>
+<h2 id="set-interface">Set Interface</h2>
+<h2 id="queue-interface">Queue Interface</h2>
+<h2 id="map-interface">Map Interface</h2>
+
       
     </div>
     
@@ -525,7 +508,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>Post link:</strong>
-    <a href="http://example.com/2021/07/19/Coding/Java-Collection-Interface/" title="Java集合详解(Collection和Map接口)">http://example.com/2021/07/19/Coding/Java-Collection-Interface/</a>
+    <a href="http://example.com/2021/07/19/Coding/Java-Collection-Interface/" title="Java集合详解(Collection接口和Map接口)">http://example.com/2021/07/19/Coding/Java-Collection-Interface/</a>
   </li>
   <li class="post-copyright-license">
     <strong>Copyright Notice: </strong>
@@ -553,8 +536,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2021/07/17/Web%20Development/Full%20Stack%20Web%20Dev%20Program/Web-Dev-3-Identity-and-Access-Management-II/" rel="next" title="Web Dev(3): Identity and Access Management(II)">
-                <i class="fa fa-chevron-left"></i> Web Dev(3): Identity and Access Management(II)
+              <a href="/2021/07/18/CS61B-DSA/Project2-Gitlet/" rel="next" title="Project2: Gitlet">
+                <i class="fa fa-chevron-left"></i> Project2: Gitlet
               </a>
             
           </div>
@@ -563,8 +546,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2021/08/01/CS61B-DSA/CS61B-29-Shortest-Paths/" rel="prev" title="CS61B(29): Shortest Paths">
-                CS61B(29): Shortest Paths <i class="fa fa-chevron-right"></i>
+              <a href="/2021/09/11/Coding/Java-%E6%9B%B4%E4%BC%98%E9%9B%85%E5%9C%B0%E5%85%B3%E9%97%AD%E8%B5%84%E6%BA%90-try-with-resource%E5%8F%8A%E5%85%B6%E5%BC%82%E5%B8%B8%E6%8A%91%E5%88%B6/" rel="prev" title="Java: 更优雅地关闭资源 - try-with-resource及其异常抑制">
+                Java: 更优雅地关闭资源 - try-with-resource及其异常抑制 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -652,7 +635,7 @@
               
                 <a href="/archives/%7C%7Carchive">
               
-                  <span class="site-state-item-count">48</span>
+                  <span class="site-state-item-count">62</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -663,7 +646,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-count">8</span>
                   <span class="site-state-item-name">categories</span>
                 </a>
               </div>
@@ -674,7 +657,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-count">7</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
@@ -717,7 +700,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#List%E6%8E%A5%E5%8F%A3"><span class="nav-number">1.</span> <span class="nav-text">List接口</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-Overview"><span class="nav-number">1.1.</span> <span class="nav-text">1. Overview</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Demos"><span class="nav-number">1.2.</span> <span class="nav-text">Demos</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%A4%E7%A7%8D%E5%AE%9E%E4%BE%8B%E5%8C%96%E6%96%B9%E6%B3%95"><span class="nav-number">1.2.1.</span> <span class="nav-text">两种实例化方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#List%E7%9A%84%E5%9F%BA%E6%9C%AC%E7%94%A8%E6%B3%95"><span class="nav-number">1.2.2.</span> <span class="nav-text">List的基本用法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%81%8D%E5%8E%86List"><span class="nav-number">1.2.3.</span> <span class="nav-text">遍历List</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Set-Interface"><span class="nav-number">2.</span> <span class="nav-text">Set Interface</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Queue-Interface"><span class="nav-number">3.</span> <span class="nav-text">Queue Interface</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Map-Interface"><span class="nav-number">4.</span> <span class="nav-text">Map Interface</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#list%E6%8E%A5%E5%8F%A3"><span class="nav-number">1.</span> <span class="nav-text">List接口</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#overview"><span class="nav-number">1.1.</span> <span class="nav-text">1. Overview</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#demos"><span class="nav-number">1.2.</span> <span class="nav-text">Demos</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%A4%E7%A7%8D%E5%AE%9E%E4%BE%8B%E5%8C%96%E6%96%B9%E6%B3%95"><span class="nav-number">1.2.1.</span> <span class="nav-text">两种实例化方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#list%E7%9A%84%E5%9F%BA%E6%9C%AC%E7%94%A8%E6%B3%95"><span class="nav-number">1.2.2.</span> <span class="nav-text">List的基本用法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%81%8D%E5%8E%86list"><span class="nav-number">1.2.3.</span> <span class="nav-text">遍历List</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#set-interface"><span class="nav-number">2.</span> <span class="nav-text">Set Interface</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#queue-interface"><span class="nav-number">3.</span> <span class="nav-text">Queue Interface</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#map-interface"><span class="nav-number">4.</span> <span class="nav-text">Map Interface</span></a></li></ol></div>
             
 
           </div>
@@ -889,7 +872,7 @@
         var disqus_config = function () {
           this.page.url = 'http://example.com/2021/07/19/Coding/Java-Collection-Interface/';
           this.page.identifier = '2021/07/19/Coding/Java-Collection-Interface/';
-          this.page.title = 'Java集合详解(Collection和Map接口)';
+          this.page.title = 'Java集合详解(Collection接口和Map接口)';
         };
         var d = document, s = d.createElement('script');
         s.src = 'https://author.disqus.com/embed.js';
@@ -940,6 +923,28 @@
   
 
   
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
 
   
 

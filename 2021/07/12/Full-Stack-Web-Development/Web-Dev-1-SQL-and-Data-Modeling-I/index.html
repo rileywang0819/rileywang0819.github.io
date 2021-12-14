@@ -1,0 +1,1051 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="en,zh-Hans,default">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Roboto Slab:300,300italic,400,400italic,700,700italic|Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="web," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="Overview In this serials, I will talk about skills needed to develop an entire database-backed web application. You will learn:  How to do CRUD operations? How to apply these operations across bo">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Web Dev(1): SQL and Data Modeling(I)">
+<meta property="og:url" content="http://example.com/2021/07/12/Full-Stack-Web-Development/Web-Dev-1-SQL-and-Data-Modeling-I/index.html">
+<meta property="og:site_name" content="GoGo-Wang&#39;s Blog">
+<meta property="og:description" content="Overview In this serials, I will talk about skills needed to develop an entire database-backed web application. You will learn:  How to do CRUD operations? How to apply these operations across bo">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/2021/07/12/Full-Stack-Web-Development/Web-Dev-1-SQL-and-Data-Modeling-I/key-characteristic-of-database.JPG">
+<meta property="og:image" content="http://example.com/2021/07/12/Full-Stack-Web-Development/Web-Dev-1-SQL-and-Data-Modeling-I/qualities-of-relational-dbms.JPG">
+<meta property="og:image" content="http://example.com/2021/07/12/Full-Stack-Web-Development/Web-Dev-1-SQL-and-Data-Modeling-I/primary-key.JPG">
+<meta property="og:image" content="http://example.com/2021/07/12/Full-Stack-Web-Development/Web-Dev-1-SQL-and-Data-Modeling-I/foreign-key.JPG">
+<meta property="og:image" content="http://example.com/2021/07/12/Full-Stack-Web-Development/Web-Dev-1-SQL-and-Data-Modeling-I/SQL.JPG">
+<meta property="og:image" content="http://example.com/2021/07/12/Full-Stack-Web-Development/Web-Dev-1-SQL-and-Data-Modeling-I/execution-plan.JPG">
+<meta property="og:image" content="http://example.com/2021/07/12/Full-Stack-Web-Development/Web-Dev-1-SQL-and-Data-Modeling-I/basic-idea-of-client-server-model.JPG">
+<meta property="og:image" content="http://example.com/2021/07/12/Full-Stack-Web-Development/Web-Dev-1-SQL-and-Data-Modeling-I/db-web-server-with-client.JPG">
+<meta property="og:image" content="http://example.com/2021/07/12/Full-Stack-Web-Development/Web-Dev-1-SQL-and-Data-Modeling-I/ex-jane-online-store.JPG">
+<meta property="og:image" content="http://example.com/2021/07/12/Full-Stack-Web-Development/Web-Dev-1-SQL-and-Data-Modeling-I/ex-jane-online-store2.JPG">
+<meta property="og:image" content="http://example.com/2021/07/12/Full-Stack-Web-Development/Web-Dev-1-SQL-and-Data-Modeling-I/session1.JPG">
+<meta property="og:image" content="http://example.com/2021/07/12/Full-Stack-Web-Development/Web-Dev-1-SQL-and-Data-Modeling-I/session2.JPG">
+<meta property="og:image" content="http://example.com/2021/07/12/Full-Stack-Web-Development/Web-Dev-1-SQL-and-Data-Modeling-I/transaction.JPG">
+<meta property="og:image" content="http://example.com/2021/07/12/Full-Stack-Web-Development/Web-Dev-1-SQL-and-Data-Modeling-I/transaction2.JPG">
+<meta property="og:image" content="http://example.com/2021/07/12/Full-Stack-Web-Development/Web-Dev-1-SQL-and-Data-Modeling-I/transaction3.JPG">
+<meta property="og:image" content="http://example.com/2021/07/12/Full-Stack-Web-Development/Web-Dev-1-SQL-and-Data-Modeling-I/bundle-work.JPG">
+<meta property="og:image" content="http://example.com/2021/07/12/Full-Stack-Web-Development/Web-Dev-1-SQL-and-Data-Modeling-I/psql.JPG">
+<meta property="og:image" content="http://example.com/2021/07/12/Full-Stack-Web-Development/Web-Dev-1-SQL-and-Data-Modeling-I/dbapis.jpg">
+<meta property="article:published_time" content="2021-07-12T02:25:19.000Z">
+<meta property="article:modified_time" content="2021-12-06T08:18:41.281Z">
+<meta property="article:author" content="gogo-wang">
+<meta property="article:tag" content="web">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2021/07/12/Full-Stack-Web-Development/Web-Dev-1-SQL-and-Data-Modeling-I/key-characteristic-of-database.JPG">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://example.com/2021/07/12/Full-Stack-Web-Development/Web-Dev-1-SQL-and-Data-Modeling-I/"/>
+
+
+
+
+
+  <title>Web Dev(1): SQL and Data Modeling(I) | GoGo-Wang's Blog</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">GoGo-Wang's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">"Say something." <br> - "Something."</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/07/12/Full-Stack-Web-Development/Web-Dev-1-SQL-and-Data-Modeling-I/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="GoGo-Wang's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Web Dev(1): SQL and Data Modeling(I)</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2021-07-12T11:25:19+09:00">
+                2021-07-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Web-Development/" itemprop="url" rel="index">
+                    <span itemprop="name">Web Development</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2021/07/12/Full-Stack-Web-Development/Web-Dev-1-SQL-and-Data-Modeling-I/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2021/07/12/Full-Stack-Web-Development/Web-Dev-1-SQL-and-Data-Modeling-I/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="overview">Overview</h2>
+<p>In this serials, I will talk about skills needed to develop an entire database-backed web application.</p>
+<p>You will learn:</p>
+<ul>
+<li>How to do <code>CRUD</code> operations?</li>
+<li>How to apply these operations across both databases and web applications?</li>
+<li>How to set up relationships between elements of an application?</li>
+<li>How to think about important principles and patterns in building data models for a web application?</li>
+</ul>
+<p>We take &quot;Learn by doing&quot; strategy to acquire these skills. The tech stack is:</p>
+<ul>
+<li>programming language: Python 3
+<ul>
+<li>use <code>pip</code> to install specific Python packages from <code>Python Package Index (PyPI)</code></li>
+</ul></li>
+<li>web server framework: <code>Flask</code></li>
+<li>database: <code>PostgresSQL</code></li>
+<li>Python libraries:
+<ul>
+<li><code>psycopg2</code></li>
+<li><code>SQLAlchemy</code></li>
+<li><code>Flask-SQLAlchemy</code></li>
+</ul></li>
+</ul>
+<span id="more"></span>
+<h2 id="interacting-with-databases">Interacting with Databases</h2>
+<p>In this blog, we focus on 3 core topics.</p>
+<p><strong>1. Interacting with a (remote) database</strong></p>
+<p>Backend developers need to interact with databases regularly in order to manipulate and maintain the models behind their web applications. In working with a database, we'll need to use a <code>Database Management System (DBMS)</code>.</p>
+<p>A <code>Database Management System (DBMS)</code> is simply software that allows you to interact with a database (e.g.to access or modify the data in that database).</p>
+<hr />
+<p><strong>2. Database Application Programming Interfaces (DBAPIs)</strong></p>
+<p>We need to interact with database from a sepicific language or web server framework (such as Python, NodeJS, Ruby on Rails, etc.). This is where <code>DBAPIs</code> come in.</p>
+<hr />
+<p><strong>3. psycopg2</strong></p>
+<p>We use <code>psycopg2 library</code> to interact with a database from Python.</p>
+<p><strong>psycopg2</strong> is the most popular PostgreSQL database adapter(适配器), which allows us to interact with database from Python.</p>
+<p><em>Anything that implements the DB-API to connect to an external database can be reasonably called a database driver or database adapter.</em></p>
+<hr />
+<h3 id="relational-databases">Relational Databases</h3>
+<ul>
+<li>key characteristics of database:</li>
+</ul>
+<img src="/2021/07/12/Full-Stack-Web-Development/Web-Dev-1-SQL-and-Data-Modeling-I/key-characteristic-of-database.JPG" class="">
+<ul>
+<li>qualities of relational DBMS:</li>
+</ul>
+<img src="/2021/07/12/Full-Stack-Web-Development/Web-Dev-1-SQL-and-Data-Modeling-I/qualities-of-relational-dbms.JPG" class="">
+<p>Next, let us review concepts of <code>primary key</code> and <code>foreign key</code> .</p>
+<img src="/2021/07/12/Full-Stack-Web-Development/Web-Dev-1-SQL-and-Data-Modeling-I/primary-key.JPG" class="">
+<img src="/2021/07/12/Full-Stack-Web-Development/Web-Dev-1-SQL-and-Data-Modeling-I/foreign-key.JPG" class="">
+<h3 id="sql">SQL</h3>
+<img src="/2021/07/12/Full-Stack-Web-Development/Web-Dev-1-SQL-and-Data-Modeling-I/SQL.JPG" class="">
+<p>✨ Read <a target="_blank" rel="noopener" href="https://www.postgresqltutorial.com/">PostgreSQL Tutorial</a> to learn more about PostgreSQL.</p>
+<img src="/2021/07/12/Full-Stack-Web-Development/Web-Dev-1-SQL-and-Data-Modeling-I/execution-plan.JPG" class="">
+<p>The <code>execution plan</code> gives important insight into the performance of the query. Since there can multiple ways of performing queries against a database with various performance tradeoffs, it's important to choose the one with the best execution plan for quickly and efficiently returning the results that you need.</p>
+<p>🤠 You can also register this <a target="_blank" rel="noopener" href="https://www.udemy.com/course/complete-sql-databases-bootcamp-zero-to-mastery/">database bootcamp course</a> to learn more SQL.</p>
+<p>🔥 Supplyment: - <a target="_blank" rel="noopener" href="https://www.winwire.com/25-tips-to-improve-sql-query-performance/">techniques for improving the performance of SQL queries</a> - <a target="_blank" rel="noopener" href="https://www.postgresqltutorial.com/postgresql-indexes/postgresql-create-index/">use critical indexes to speed up information lookups</a> - <a target="_blank" rel="noopener" href="https://db.grussell.org/sql3.html#_myauto10">SQL views</a> - <a target="_blank" rel="noopener" href="https://use-the-index-luke.com/">optimize SQL queries: Use the Index, Luke!</a></p>
+<h3 id="client-server-model">Client-Server Model</h3>
+<p>In order to build database-backed web applications, we first need to understand how servers, clients, and databases interact. A major part of this is the <code>client-server model</code>, and the basic idea is very simple:</p>
+<img src="/2021/07/12/Full-Stack-Web-Development/Web-Dev-1-SQL-and-Data-Modeling-I/basic-idea-of-client-server-model.JPG" class="">
+<ul>
+<li>Servers and clients are programs that run on a <strong>host</strong>.
+<ul>
+<li>A <strong>host</strong> is a computer connected over the network.</li>
+<li>A <strong>client</strong> is a program (like the web browser on your computer) that sends a <code>request</code> to the server.</li>
+<li>A <strong>server</strong> is a centralized program that communicates over a network (such as the Internet) to serve many clients. It sends back a <code>response</code> to the client.</li>
+<li>The client and server use a common language (a <strong>communication protocol</strong>, such as <strong>TCP/IP</strong>) for communicating with each other.</li>
+</ul></li>
+</ul>
+<p>Now, adding a relational databases to this basic client-server model. This modern-day database systems also follow the client-server model.</p>
+<img src="/2021/07/12/Full-Stack-Web-Development/Web-Dev-1-SQL-and-Data-Modeling-I/db-web-server-with-client.JPG" class="">
+<p><em>Basically, we call things clients when they are making a request and servers when they are fulfilling a request with a repsonse. Since a web server can do both, it sometimes acts as a server and sometimes acts as a client.</em></p>
+<h4 id="client-server-model-example-onlinr-store">Client-Server Model Example: Onlinr Store</h4>
+<hr />
+<p><strong>Background</strong></p>
+<img src="/2021/07/12/Full-Stack-Web-Development/Web-Dev-1-SQL-and-Data-Modeling-I/ex-jane-online-store.JPG" class="">
+<p>Click the Polo product and show a product detail page as follows :</p>
+<img src="/2021/07/12/Full-Stack-Web-Development/Web-Dev-1-SQL-and-Data-Modeling-I/ex-jane-online-store2.JPG" class="">
+<hr />
+<p>Let's look the steps under the hood :</p>
+<ul>
+<li>Clicking on the Polo product leads to a <strong>click event</strong> being registered by the browser, on the client computer.</li>
+<li>A <strong>click handler(事件处理器)</strong> in the <code>view</code> would send a request, including information about the request type and any user input data, to the server (in Javascript) from the client browser.</li>
+<li>A client could request more data and a different view to be rendered (with that data).</li>
+<li>A server process listens to the request sent from the view, and uses the user input data to determine how to shape its request to the database, and sends a request to the database.</li>
+<li>The database processes this request, and sends a response back to the web server.</li>
+<li>The web server receives the response from the database, and uses it to determine the view + powers the view template with the fetched data, sending it back to the client's browser.</li>
+<li>The client is responsible for rendering something to the user, that represents both the data and its representation.</li>
+</ul>
+<p><code>MVC: model-view-controller</code></p>
+<p>Let's use some pseudocode to illustrate this process.</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// frontend</span></span><br><span class="line"></span><br><span class="line">&lt;!-- view.html --&gt;</span><br><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;polo&quot;</span> <span class="attr">data-id</span>=<span class="string">&quot;1&quot;</span>&gt;</span> Polo <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="built_in">document</span>.getElementById(<span class="string">&quot;polo&quot;</span>).onclick = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> request = <span class="keyword">new</span> Request();</span><br><span class="line">  request.send(<span class="string">&#x27;GET product detail on product with id &#x27;</span>, <span class="number">1</span>);  <span class="comment">// send request</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">request 2 things:</span></span><br><span class="line"><span class="comment">1. request more data;</span></span><br><span class="line"><span class="comment">2. reder a different page to the client web app</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># backend (web server)</span></span><br><span class="line"></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27; server.py &#x27;&#x27;&#x27;</span></span><br><span class="line"></span><br><span class="line">result = application.listen_on(request)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(result.<span class="built_in">id</span>)  <span class="comment"># --&gt; 1</span></span><br><span class="line"></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">server does:</span></span><br><span class="line"><span class="string">1. send request to the database, about info about object with result.id;</span></span><br><span class="line"><span class="string">2. receives the response and sends back info about the view and the data;</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"></span><br><span class="line">application.render_view(<span class="string">&#x27;product_details.html&#x27;</span>, data)</span><br></pre></td></tr></table></figure>
+<h3 id="tcpip">TCP/IP</h3>
+<ul>
+<li>Transmission Control Protocol (TCP)</li>
+<li>Internet Protocol (IP)</li>
+</ul>
+<p><code>TCP/IP</code> is a suite of communication protocols that is used to connect devices and transfer data over the Internet.</p>
+<p>TCP/IP uses:</p>
+<ul>
+<li><strong>IP addresses</strong>: An IP address identifies the location of a computer on a network.</li>
+<li><strong>Ports</strong>: A port is a location on the recipient computer, where data is received.
+<ul>
+<li><code>Port 80</code>: The port number most commonly used for HTTP requests. For example, when a client makes a request to a web server, this request is usually sent through port 80.</li>
+<li><code>Port 5432</code>: The port number used by most database systems; also the default port for PostgreSQL.</li>
+</ul></li>
+</ul>
+<hr />
+<p>Q: Why are ports used?</p>
+<p>While an IP address tells you where to find a particular computer, it doesn't tell you specifically where on that computer a particular connection should be made—that's what port numbers are for.</p>
+<p>Ports allow multiple types of traffic being received at the same time on a given device, to be tracked and routed to where they need to go.</p>
+<p>Ports are much like the different terminals(航站楼) of an airport, tracking and receiving different airplanes at the same time, allowing for the effective receipt of multiple types of traffic at the same IP address.</p>
+<p>🌿 Additional Resource: <a target="_blank" rel="noopener" href="https://opensource.com/article/18/10/common-network-ports">14 of the most common ports</a></p>
+<hr />
+<p><strong>TCP/IP is connection-based.</strong> Over TCP/IP, we'll always need to establish a <code>connection</code> between clients and servers in order to enable communications.</p>
+<ul>
+<li>Establish a connection enables communications.</li>
+<li>Close a connection to end communications.</li>
+<li>Deliveries over the connection are <code>error-checked</code>: if packets arrive damaged or lost, then they are resent (known as retransmission).</li>
+</ul>
+<img src="/2021/07/12/Full-Stack-Web-Development/Web-Dev-1-SQL-and-Data-Modeling-I/session1.JPG" class="">
+<img src="/2021/07/12/Full-Stack-Web-Development/Web-Dev-1-SQL-and-Data-Modeling-I/session2.JPG" class="">
+<hr />
+<p><em>Supplement: TCP vs UDP</em></p>
+<p>The internet also offers the UDP protocol.</p>
+<p>UDP is much simpler than TCP: hosts on the network send data (in units called datagrams) without any connections needing to be established.</p>
+<p>If TCP is like building highways between houses before sending packages between them, then UDP is much like sending over a carrier pigeon from one house to another in order to deliver packages: you don't know whether the pigeon will head in the right way, drop your package along the way, or encounter an issue mid-travel. On the other hand, there is less overhead to use UDP than managing a connection over TCP / building a highway.</p>
+<p>When speed is more important than reliability, especially when applications need to stream very small amounts of information quickly (smaller packages of information means less issues with reliability), then UDP is preferred. A lot of real time streaming applications, (e.g. live TV streaming, Voice over IP (VoIP)) prefer UDP over TCP. Since UDP does not need to retransmit lost datagrams, nor does it do any connection setup, there are fewer delays over UDP than TCP. TCP's continuous connection is more reliable but has more latency(时延).</p>
+<hr />
+<h3 id="transactions">Transactions</h3>
+<p><code>Transactions(事务)</code> are atomic units of work for the database to perform as a whole.</p>
+<img src="/2021/07/12/Full-Stack-Web-Development/Web-Dev-1-SQL-and-Data-Modeling-I/transaction.JPG" class="">
+<img src="/2021/07/12/Full-Stack-Web-Development/Web-Dev-1-SQL-and-Data-Modeling-I/transaction2.JPG" class="">
+<img src="/2021/07/12/Full-Stack-Web-Development/Web-Dev-1-SQL-and-Data-Modeling-I/transaction3.JPG" class="">
+<p><strong>Transactions capture logical bundles of work.</strong> Work is bundled into transactions, so that in case of system failures, data in your database is still kept in a valid state (by rolling back the entire transaction if any part of it fails). To ensure a database is consistent before and after work is done to it, databases uses atomic transactions, and actions like <code>commits</code> and <code>rollbacks</code> to handle failures appropriately. Transactions are, in other words, <a target="_blank" rel="noopener" href="https://www.geeksforgeeks.org/acid-properties-in-dbms/">ACID</a> .</p>
+<img src="/2021/07/12/Full-Stack-Web-Development/Web-Dev-1-SQL-and-Data-Modeling-I/bundle-work.JPG" class="">
+<h3 id="dbapis-and-psycopg2">DBAPIs and psycopg2</h3>
+<h4 id="psql">psql</h4>
+<p><code>psql</code> is an interactive terminal application for connecting and interacting with your local postgres server on your machine. It lets you type and execute SQL commands to your database directly.</p>
+<p>🐹 If you don't like psql, you can use GUI cilent to inspect and interact with your PostgreSQL server.</p>
+<hr />
+<p>🍁 <strong>Useful basic psql commands</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># connect</span></span><br><span class="line">$ psql -U postgres</span><br><span class="line"></span><br><span class="line">$ psql &lt;dbname&gt; [&lt;username&gt;]</span><br><span class="line"></span><br><span class="line"><span class="comment"># connection information</span></span><br><span class="line">$ postgres=<span class="comment"># \c </span></span><br><span class="line"></span><br><span class="line"><span class="comment"># connect to a specific db</span></span><br><span class="line">$ postgres=<span class="comment"># \c &lt;dbname&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># list all db on the server</span></span><br><span class="line">$ postgres=<span class="comment"># \l</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># show db tables</span></span><br><span class="line">$ postgres=<span class="comment"># \dt</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># describe table schema</span></span><br><span class="line">$ postgres=<span class="comment"># \d &lt;tablename&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># quit psql</span></span><br><span class="line">$ postgres=<span class="comment"># \q</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># helper</span></span><br><span class="line">$ postgres=<span class="comment"># \?</span></span><br></pre></td></tr></table></figure>
+<img src="/2021/07/12/Full-Stack-Web-Development/Web-Dev-1-SQL-and-Data-Modeling-I/psql.JPG" class="">
+<hr />
+<h4 id="dbapis">DBAPIs</h4>
+<p>We will sometimes want to interact with our database and use its results in a specific programming language. E.g. to build web applications or data pipelines in a specific language (Ruby, Python, Javascript, etc.). That's where <code>DBAPIs</code> come in.</p>
+<p><code>DBAPI:</code></p>
+<ul>
+<li>provides a standard interface for one programming language (like Python) to talk to a relational database server;</li>
+<li>is a low level library for writing SQL statements that connect to a database;</li>
+</ul>
+<p>Different DBAPIs exist for different server framework or language + database system. Database adapters define a standard for using a database (with SQL) and using the results of database queries as input data in the given language.</p>
+<p>Example: <code>SELCET * FROM &lt;table&gt;</code> will</p>
+<ul>
+<li>list of rows into an array of objects in Javascript for a NodeJS adapter;</li>
+<li>or a list of tuples in Python for a Python adapter</li>
+</ul>
+<img src="/2021/07/12/Full-Stack-Web-Development/Web-Dev-1-SQL-and-Data-Modeling-I/dbapis.jpg" class="">
+<p>In this blog, I will use <code>psycopg2</code> to establish a connection to PostgreSQL server, and interact with it in python.</p>
+<h4 id="psycopg2">psycopg2</h4>
+<p>Intall psycopg2: <a target="_blank" rel="noopener" href="https://pypi.org/project/psycopg2/">ref</a></p>
+<p>🌈 🌈 🌈 <strong>Demos:</strong> 🌈 🌈 🌈</p>
+<ol type="1">
+<li>psycopg2:</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> psycopg2</span><br><span class="line"></span><br><span class="line">conn = psycopg2.connect(<span class="string">&#x27;dbname=example user=postgres password=xxxxxxxx&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Open a cursor to perform database operations</span></span><br><span class="line">cur = conn.cursor()</span><br><span class="line"></span><br><span class="line"><span class="comment"># create table</span></span><br><span class="line"><span class="comment"># (note: triple quotes allow multiline text in python)</span></span><br><span class="line">cur.execute(<span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">  CREATE TABLE table1 (</span></span><br><span class="line"><span class="string">    id INTEGER PRIMARY KEY,</span></span><br><span class="line"><span class="string">    completed BOOLEAN NOT NULL DEFAULT False</span></span><br><span class="line"><span class="string">  );</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span>)</span><br><span class="line"></span><br><span class="line">cur.execute(<span class="string">&#x27;INSERT INTO table1 (id, completed) VALUES (1, true);&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># commit, so it does the executions on the db and persists in the db</span></span><br><span class="line">conn.commit()</span><br><span class="line"></span><br><span class="line">cur.close()</span><br><span class="line">conn.close()</span><br></pre></td></tr></table></figure>
+<ol start="2" type="1">
+<li>psycopg2: string composition</li>
+</ol>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> psycopg2</span><br><span class="line"></span><br><span class="line">conn = psycopg2.connect(<span class="string">&#x27;dbname=example user=postgres password=xxxxxxxx&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Open a cursor to perform database operations</span></span><br><span class="line">cur = conn.cursor()</span><br><span class="line"></span><br><span class="line"><span class="comment"># Drop table if it already exited</span></span><br><span class="line">cur.execute(<span class="string">&#x27;DROP TABLE IF EXISTS table2;&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># (re)create table</span></span><br><span class="line"><span class="comment"># (note: triple quotes allow multiline text in python)</span></span><br><span class="line">cur.execute(<span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">  CREATE TABLE table2 (</span></span><br><span class="line"><span class="string">    id INTEGER PRIMARY KEY,</span></span><br><span class="line"><span class="string">    completed BOOLEAN NOT NULL DEFAULT False</span></span><br><span class="line"><span class="string">  );</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 2 ways to compose SQL query using strings:</span></span><br><span class="line"><span class="comment"># 1. use tuple</span></span><br><span class="line">cur.execute(<span class="string">&#x27;INSERT INTO table2 (id, completed) VALUES (%s, %s);&#x27;</span>, (<span class="number">1</span>, <span class="literal">True</span>))</span><br><span class="line"></span><br><span class="line"><span class="comment"># 2. use dictionary</span></span><br><span class="line">SQL = <span class="string">&#x27;INSERT INTO table2 (id, completed) VALUES (%(id)s, %(completed)s);&#x27;</span></span><br><span class="line">data = &#123;</span><br><span class="line">    <span class="string">&#x27;id&#x27;</span>: <span class="number">2</span>, </span><br><span class="line">    <span class="string">&#x27;completed&#x27;</span>: <span class="literal">False</span></span><br><span class="line">&#125;</span><br><span class="line">cur.execute(SQL, data)</span><br><span class="line"></span><br><span class="line"><span class="comment"># commit, so it does the executions on the db and persists in the db</span></span><br><span class="line">conn.commit()</span><br><span class="line"></span><br><span class="line">cur.close()</span><br><span class="line">conn.close()</span><br></pre></td></tr></table></figure>
+<ol start="3" type="1">
+<li>psycopg2: fetching results</li>
+</ol>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> psycopg2</span><br><span class="line"></span><br><span class="line"><span class="comment"># Establish a connection, starting a session, begins a transaction</span></span><br><span class="line">conn = psycopg2.connect(<span class="string">&#x27;dbname=example user=postgres password=xxxxxxxx&#x27;</span>)</span><br><span class="line"><span class="comment"># Set a cursor to begin executing commands</span></span><br><span class="line">cursor = conn.cursor()</span><br><span class="line"></span><br><span class="line"><span class="comment"># Open a cursor to perform database operations</span></span><br><span class="line">cur = conn.cursor()</span><br><span class="line"></span><br><span class="line"><span class="comment"># Drop to table if it already exited</span></span><br><span class="line">cur.execute(<span class="string">&#x27;DROP TABLE IF EXISTS table2;&#x27;</span>)</span><br><span class="line"><span class="comment"># cur.rollback()</span></span><br><span class="line"></span><br><span class="line">cur.execute(<span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">  CREATE TABLE table2 (</span></span><br><span class="line"><span class="string">    id INTEGER PRIMARY KEY,</span></span><br><span class="line"><span class="string">    completed BOOLEAN NOT NULL DEFAULT False</span></span><br><span class="line"><span class="string">  );</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 2 ways to compose SQL query using strings:</span></span><br><span class="line"><span class="comment"># 1. use tuple</span></span><br><span class="line">cur.execute(<span class="string">&#x27;INSERT INTO table2 (id, completed) VALUES (%s, %s);&#x27;</span>, (<span class="number">1</span>, <span class="literal">True</span>))</span><br><span class="line"><span class="comment"># 2. use dictionary</span></span><br><span class="line">SQL = <span class="string">&#x27;INSERT INTO table2 (id, completed) VALUES (%(id)s, %(completed)s);&#x27;</span></span><br><span class="line">data = &#123;</span><br><span class="line">    <span class="string">&#x27;id&#x27;</span>: <span class="number">2</span>, </span><br><span class="line">    <span class="string">&#x27;completed&#x27;</span>: <span class="literal">False</span></span><br><span class="line">&#125;</span><br><span class="line">cur.execute(SQL, data)</span><br><span class="line"></span><br><span class="line">cursor.execute(<span class="string">&#x27;SELECT * FROM table2;&#x27;</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">##############################</span></span><br><span class="line"><span class="comment">## How to fetch the result? ##</span></span><br><span class="line"><span class="comment">##############################</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 1</span></span><br><span class="line">result = cursor.fetchall()</span><br><span class="line"><span class="built_in">print</span>(result)  <span class="comment"># --&gt; [(1, True), (2, False)]</span></span><br><span class="line"><span class="comment"># 2</span></span><br><span class="line"><span class="built_in">print</span>(cursor.fetchmany(<span class="number">3</span>))</span><br><span class="line"><span class="comment"># 3</span></span><br><span class="line"><span class="built_in">print</span>(cursor.fetchone())  <span class="comment"># fetches the first result in the result sets</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># commit, so it does the executions on the db and persists in the db</span></span><br><span class="line">conn.commit()</span><br><span class="line"></span><br><span class="line">cur.close()</span><br><span class="line">conn.close()</span><br></pre></td></tr></table></figure>
+<h2 id="summary">Summary</h2>
+<p>Until now, we have learnt how to use <code>psycopg2 library</code> to interact with a database from Python.</p>
+<p>However, writing SQL directly is a fairly clunky way of doing web development. It's useful to learn some higher level libraries that let us interact with a database, using Python classes and expressions.</p>
+<p>In the next blog, I will talk about one of the most powerful Python libraries for interacting with databases: SQLAlchemy.</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>Post author:</strong>
+    gogo-wang
+  </li>
+  <li class="post-copyright-link">
+    <strong>Post link:</strong>
+    <a href="http://example.com/2021/07/12/Full-Stack-Web-Development/Web-Dev-1-SQL-and-Data-Modeling-I/" title="Web Dev(1): SQL and Data Modeling(I)">http://example.com/2021/07/12/Full-Stack-Web-Development/Web-Dev-1-SQL-and-Data-Modeling-I/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice: </strong>
+    All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> unless stating additionally.
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/web/" rel="tag"># web</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2021/07/11/Full-Stack-Web-Development/Web-Dev-0-A-Primer/" rel="next" title="Web Dev(0): A Primer">
+                <i class="fa fa-chevron-left"></i> Web Dev(0): A Primer
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2021/07/13/Full-Stack-Web-Development/Web-Dev-1-SQL-and-Data-Modelding-II/" rel="prev" title="Web Dev(1): SQL and Data Modelding(II)">
+                Web Dev(1): SQL and Data Modelding(II) <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a target="_blank" rel="noopener" href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name"></p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/%7C%7Carchive">
+              
+                  <span class="site-state-item-count">62</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/rileywang0819" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#overview"><span class="nav-number">1.</span> <span class="nav-text">Overview</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#interacting-with-databases"><span class="nav-number">2.</span> <span class="nav-text">Interacting with Databases</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#relational-databases"><span class="nav-number">2.1.</span> <span class="nav-text">Relational Databases</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#sql"><span class="nav-number">2.2.</span> <span class="nav-text">SQL</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#client-server-model"><span class="nav-number">2.3.</span> <span class="nav-text">Client-Server Model</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#client-server-model-example-onlinr-store"><span class="nav-number">2.3.1.</span> <span class="nav-text">Client-Server Model Example: Onlinr Store</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#tcpip"><span class="nav-number">2.4.</span> <span class="nav-text">TCP&#x2F;IP</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#transactions"><span class="nav-number">2.5.</span> <span class="nav-text">Transactions</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#dbapis-and-psycopg2"><span class="nav-number">2.6.</span> <span class="nav-text">DBAPIs and psycopg2</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#psql"><span class="nav-number">2.6.1.</span> <span class="nav-text">psql</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#dbapis"><span class="nav-number">2.6.2.</span> <span class="nav-text">DBAPIs</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#psycopg2"><span class="nav-number">2.6.3.</span> <span class="nav-text">psycopg2</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#summary"><span class="nav-number">3.</span> <span class="nav-text">Summary</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">GoGo-Wang</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+    
+      <script id="dsq-count-scr" src="https://author.disqus.com/count.js" async></script>
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'http://example.com/2021/07/12/Full-Stack-Web-Development/Web-Dev-1-SQL-and-Data-Modeling-I/';
+          this.page.identifier = '2021/07/12/Full-Stack-Web-Development/Web-Dev-1-SQL-and-Data-Modeling-I/';
+          this.page.title = 'Web Dev(1): SQL and Data Modeling(I)';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://author.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>
