@@ -111,15 +111,15 @@
 
 
 
-<meta name="description" content="As said previously, using psycopg2 still requires us to write SQL, and writing SQL directly is a fairly clunky way. In this blog, I will introduce a powerful Python libraries called SQLAlchemy which">
+<meta name="description" content="As said previously, using psycopg2 still requires us to write SQL, and writing SQL directly is a fairly clunky way. In this blog post, I will introduce a powerful Python library called SQLAlchemy whi">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Web Dev(1): SQL and Data Modelding(II)">
 <meta property="og:url" content="http://example.com/2021/07/13/Full-Stack-Web-Development/Web-Dev-1-SQL-and-Data-Modelding-II/index.html">
 <meta property="og:site_name" content="GoGo-Wang&#39;s Blog">
-<meta property="og:description" content="As said previously, using psycopg2 still requires us to write SQL, and writing SQL directly is a fairly clunky way. In this blog, I will introduce a powerful Python libraries called SQLAlchemy which">
+<meta property="og:description" content="As said previously, using psycopg2 still requires us to write SQL, and writing SQL directly is a fairly clunky way. In this blog post, I will introduce a powerful Python library called SQLAlchemy whi">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://example.com/2021/07/13/Full-Stack-Web-Development/Web-Dev-1-SQL-and-Data-Modelding-II/sqlalchemy-abstract.JPG">
-<meta property="og:image" content="http://example.com/2021/07/13/Full-Stack-Web-Development/Web-Dev-1-SQL-and-Data-Modelding-II/sqlalchemy-abstract.JPG">
+<meta property="og:image" content="http://example.com/2021/07/13/Full-Stack-Web-Development/Web-Dev-1-SQL-and-Data-Modelding-II/sqlalchemy-abstract2.JPG">
 <meta property="og:image" content="http://example.com/2021/07/13/Full-Stack-Web-Development/Web-Dev-1-SQL-and-Data-Modelding-II/connecting-pool.JPG">
 <meta property="og:image" content="http://example.com/2021/07/13/Full-Stack-Web-Development/Web-Dev-1-SQL-and-Data-Modelding-II/sqlalchemy-engine1.JPG">
 <meta property="og:image" content="http://example.com/2021/07/13/Full-Stack-Web-Development/Web-Dev-1-SQL-and-Data-Modelding-II/sqlalchemy-sql-expression.JPG">
@@ -141,7 +141,7 @@
 <meta property="og:image" content="http://example.com/2021/07/13/Full-Stack-Web-Development/Web-Dev-1-SQL-and-Data-Modelding-II/flushed3.JPG">
 <meta property="og:image" content="http://example.com/2021/07/13/Full-Stack-Web-Development/Web-Dev-1-SQL-and-Data-Modelding-II/flushed5.JPG">
 <meta property="article:published_time" content="2021-07-13T11:34:48.000Z">
-<meta property="article:modified_time" content="2021-12-06T08:18:17.457Z">
+<meta property="article:modified_time" content="2021-12-20T12:10:02.395Z">
 <meta property="article:author" content="gogo-wang">
 <meta property="article:tag" content="web">
 <meta name="twitter:card" content="summary">
@@ -408,34 +408,34 @@
       
 
       
-        <p>As said previously, using <code>psycopg2</code> still requires us to write SQL, and writing SQL directly is a fairly clunky way.</p>
-<p>In this blog, I will introduce a powerful Python libraries called <code>SQLAlchemy</code> which is for interacting with databases.</p>
+        <p>As said previously, using <strong>psycopg2</strong> still requires us to write SQL, and writing SQL directly is a fairly clunky way.</p>
+<p>In this blog post, I will introduce a powerful Python library called <strong>SQLAlchemy</strong> which is used to interact with databases.</p>
 <span id="more"></span>
 <h2 id="sqlalchemy-basics">SQLAlchemy Basics</h2>
 <h3 id="introduction">Introduction</h3>
-<p><code>SQLAlchemy</code> is the most popular open-source library for working with relational databases from Python.</p>
+<p><strong>SQLAlchemy</strong> is the most popular open-source library for working with relational databases from Python.</p>
 <ul>
 <li>It is an end-to-end tool for working with relational databases without writing raw SQL (avoid SQL's dialect).</li>
 <li>It allows SQL clauses to be built via Python functions and expressions.</li>
 <li>It avoids sending SQL to the database on every call. The SQLAlchemy ORM library features <strong>automatic caching</strong>, caching collections and references between objects once initially loaded..</li>
 <li>It allows us be able to switch database systems without rewriting code.</li>
 </ul>
-<p>It is one type of <strong>ORM</strong> library, a.k.a an <strong>Object-Relational Mapping</strong> library, which provides an interface for using object oriented programming to interact with a database.</p>
+<p>It is one type of <strong>ORM</strong> library, a.k.a an <strong>Object-Relational Mapping</strong> library, which provides an interface for using object-oriented programming to interact with a database.</p>
 <ul>
-<li>ORM library will map tables and columnsto class objects and attributes.</li>
+<li>ORM library will map tables and columns to class objects and attributes.</li>
 </ul>
 <hr />
 <p>Notes on ORMs</p>
 <p>Using an ORM to interact with your database is simply one of many valid approaches for how you can add additional layers of abstraction to your web application to interact with a database more easily.</p>
 <p>There are other kinds of <strong>query builder libraries</strong> you can use that are between talking to a database directly (with a database driver library like pyscopg2), and using an ORM.</p>
 <p>An ORM is considered to be the highest level of abstraction you can add to a web application for database management. Query Builder libraries are somewhere in the middle. There are many mixed opinions about whether ORMs are a best practice approach in all cases, such as this opinion on <a target="_blank" rel="noopener" href="https://blog.logrocket.com/why-you-should-avoid-orms-with-examples-in-node-js-e0baab73fa5/">&quot;Why you should avoid ORMs&quot;</a>.</p>
-<p>Thankfully, <code>SQLAlchemy</code> happens to offer multiple levels of abstraction you can prefer, between the database driver(驱动) and the ORM, so you can customize the development of your web application to your own liking. The many granular levels of abstraction that SQLAlchemy offers is one of the reasons that has led to its widespread popularity and diverse ways of using the library and approaching your database programming.</p>
+<p>Thankfully, SQLAlchemy happens to offer multiple levels of abstraction you can prefer, between the database driver and the ORM, so you can customize the development of your web application to your own like. The many granular levels of abstraction that SQLAlchemy offers is one of the reasons that has led to its widespread popularity and diverse ways of using the library and approaching your database programming.</p>
 <hr />
 <h3 id="sqlalchemys-layers-of-abstraction">SQLAlchemy's Layers of Abstraction</h3>
 <h4 id="overview">Overview</h4>
 <img src="/2021/07/13/Full-Stack-Web-Development/Web-Dev-1-SQL-and-Data-Modelding-II/sqlalchemy-abstract.JPG" class="">
-<img src="/2021/07/13/Full-Stack-Web-Development/Web-Dev-1-SQL-and-Data-Modelding-II/sqlalchemy-abstract.JPG" class="">
-<p>SQLAlchemy vs psycopg2 :</p>
+<img src="/2021/07/13/Full-Stack-Web-Development/Web-Dev-1-SQL-and-Data-Modelding-II/sqlalchemy-abstract2.JPG" class="">
+<p><strong>SQLAlchemy vs psycopg2</strong> :</p>
 <ul>
 <li>SQLAlchemy <strong>generates</strong> SQL statements.</li>
 <li>psycopg2 directly <strong>sends</strong> SQL statements to the database.</li>
@@ -452,7 +452,7 @@
 </ul>
 <p>Next, let's go over every layer of abstraction in SQLAlchemy and see what they offer.</p>
 <h4 id="the-dialect">1) The Dialect</h4>
-<p>SQLAlchemy uses the <strong>dialect</strong> to communicate with various types of DBAPI implementations and databases. The dialect layer allows us to forget about the database system we're using</p>
+<p>SQLAlchemy uses the <strong>dialect</strong> to communicate with various types of DBAPIs implementations and databases. The dialect layer allows us to forget about the database system we're using.</p>
 <p>🌞 Resources: <a target="_blank" rel="noopener" href="https://docs.sqlalchemy.org/en/14/dialects/">SQLAlchemy Docs on the Dialect</a></p>
 <h4 id="the-connection-pool">2) The Connection Pool</h4>
 <p>A connection pool is a standard technique used to maintain long running connections in memory for efficient re-use. It lets us avoid open and close connection manually using DBAPI alone.</p>
@@ -473,14 +473,14 @@
 <img src="/2021/07/13/Full-Stack-Web-Development/Web-Dev-1-SQL-and-Data-Modelding-II/sqlalchemy-sql-expression.JPG" class="">
 <p>You still need to know how to use SQL to interact with databse.</p>
 <h4 id="sqlalchemy-orm">5) SQLAlchemy ORM</h4>
-<p>SQLAlchemy ORM is the highest layer of abstraction in SQLALchemy. With it, you can compose SQL expressions by mapping python classes of objects to tables in the database --&gt; <strong>Maps classes to tables</strong>. It wraps the SQL Expressions and Engine to work together to interact with the database.</p>
+<p>SQLAlchemy ORM is the highest layer of abstraction in SQLALchemy. With it, you can compose SQL expressions by mapping Python classes of objects to tables in the database --&gt; <strong>Maps classes to tables</strong>. It wraps the SQL Expressions and Engine to work together to interact with the database.</p>
 <p>In fact, SQLAlchemy is split into two libraries:</p>
 <ul>
-<li>SQLAlchemy Core: Expressions &amp; Engine</li>
-<li>SQLAlchemy ORM: SQLALchemy ORM is offered as an optional library, so you don't have to use the ORM in order to use the rest of SQLAlchemy.
+<li><strong>SQLAlchemy Core</strong>: Expressions &amp; Engine</li>
+<li><strong>SQLAlchemy ORM</strong>: SQLALchemy ORM is offered as an optional library, so you don't have to use the ORM in order to use the rest of SQLAlchemy.
 <ul>
-<li>The ORM uses the Core library</li>
-<li>The ORM lets you map from the database schema to the application's Python objects</li>
+<li>The ORM uses the Core library;</li>
+<li>The ORM lets you <strong>map data from the database to the application's Python objects</strong>;</li>
 <li>The ORM persists objects into corresponding database tables.</li>
 </ul></li>
 </ul>
@@ -489,17 +489,28 @@
 <h3 id="mapping-between-tables-and-classes">Mapping Between Tables and Classes</h3>
 <img src="/2021/07/13/Full-Stack-Web-Development/Web-Dev-1-SQL-and-Data-Modelding-II/map-class-table.JPG" class="">
 <h3 id="demo-hello-app-with-flask-sqlalchemy">Demo: Hello APP with Flask-SQLAlchemy</h3>
-<p>🌞 Resources: 1. <a target="_blank" rel="noopener" href="https://flask.palletsprojects.com/en/2.0.x/">Flask Docs</a> 2. <a target="_blank" rel="noopener" href="https://flask-sqlalchemy.palletsprojects.com/en/2.x/">Flask-SQLAlchemy Docs</a></p>
-<p><strong>Flask</strong> is a very simple web framework for serving web pages with data</p>
-<p><strong>Flask-SQLAlchemy</strong> is a Flask extension that supports the usage of SQLAlchemy underneath.</p>
+<p>🌞 Resources:</p>
+<ol type="1">
+<li><a target="_blank" rel="noopener" href="https://flask.palletsprojects.com/en/2.0.x/">Flask Docs</a></li>
+<li><a target="_blank" rel="noopener" href="https://flask-sqlalchemy.palletsprojects.com/en/2.x/">Flask-SQLAlchemy Docs</a></li>
+</ol>
+<p><strong>Flask</strong> is a very simple web framework for serving web pages with data. <strong>Flask-SQLAlchemy</strong> is a Flask extension that supports the usage of SQLAlchemy underneath.</p>
 <h4 id="initialize-run-the-flask-app">Initialize &amp; Run the Flask app</h4>
-<p>Initialize app:</p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># flask_hello_app.py</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> Flask</span><br><span class="line"></span><br><span class="line">app = Flask(__name__)</span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/&#x27;</span></span>)</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">index</span>():</span></span><br><span class="line">    <span class="keyword">return</span> <span class="string">&#x27;Hello World!&#x27;</span></span><br></pre></td></tr></table></figure>
-<p>Run app:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># start the server</span></span><br><span class="line"><span class="comment"># specify the location of the flask app</span></span><br><span class="line">$ FLASK_APP=flask-hello-app.py flask run</span><br><span class="line"></span><br><span class="line"><span class="comment"># enable live reload</span></span><br><span class="line">$ FLASK_APP=flask-hello-app.py FLASK_DEBUG=<span class="literal">true</span> flask run</span><br></pre></td></tr></table></figure>
+<p>🍄 <strong>Note:</strong> <em>Before going further, make sure you've got both Flask and Flask-SQLAlchemy installed.</em></p>
+<ul>
+<li>To install Flask, go to the terminal and run <code>pip3 install flask</code></li>
+<li>To install Flask-SQLAlchemy, go to the terminal and run <code>pip3 install flask-sqlalchemy</code></li>
+<li><p>If <code>pip3</code>does not work, try <code>pip</code></p></li>
+<li><p>Initialize app:</p></li>
+</ul>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># flask_hello_app.py</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> Flask</span><br><span class="line"></span><br><span class="line">app = Flask(__name__)</span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/&#x27;</span></span>)</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">index</span>():</span></span><br><span class="line">    <span class="keyword">return</span> <span class="string">&#x27;Hello World&#x27;</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>Run app:</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># start the server</span></span><br><span class="line"><span class="comment"># specify the location of the flask app</span></span><br><span class="line">$ FLASK_APP=flask_hello_app.py flask run</span><br><span class="line"></span><br><span class="line"><span class="comment"># enable live reload</span></span><br><span class="line">$ FLASK_APP=flask_hello_app.py FLASK_DEBUG=<span class="literal">true</span> flask run</span><br></pre></td></tr></table></figure>
 <p>There is an alternative approach to run app:</p>
 <figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># flask-hello-app.py</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> Flask</span><br><span class="line"></span><br><span class="line">app = Flask(__name__)</span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/&#x27;</span></span>)</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">index</span>():</span></span><br><span class="line">    <span class="keyword">return</span> <span class="string">&#x27;Hello World!&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># add these two lines</span></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    app.run(debug=<span class="literal">True</span>)</span><br></pre></td></tr></table></figure>
-<p>Run with the following command:</p>
+<p>And run with the following command:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># alternative way:</span></span><br><span class="line">$ python flask_hello_app.py</span><br></pre></td></tr></table></figure>
 <h4 id="connect-app-to-db">Connect App to DB</h4>
 <p>Database Connection URI Parts:</p>
@@ -511,7 +522,7 @@
 <figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> Flask</span><br><span class="line"><span class="keyword">from</span> flask_sqlalchemy <span class="keyword">import</span> SQLAlchemy</span><br><span class="line"></span><br><span class="line"><span class="comment"># standard way for creating a flask application</span></span><br><span class="line">app = Flask(__name__)</span><br><span class="line"></span><br><span class="line"><span class="comment"># connect to database from the Flask application by setting configuration</span></span><br><span class="line">app.config[<span class="string">&#x27;SQLALCHEMY_DATABASE_URI&#x27;</span>] = <span class="string">&#x27;postgresql://postgres:password@localhost:5432/example&#x27;</span></span><br><span class="line">db = SQLAlchemy(app)  <span class="comment"># db: instance of database</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/&#x27;</span></span>)</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">index</span>():</span></span><br><span class="line">    <span class="keyword">return</span> <span class="string">&#x27;Hello World!&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    app.run(debug=<span class="literal">True</span>)</span><br></pre></td></tr></table></figure>
 <h4 id="map-classes-to-tables">Map classes to tables</h4>
 <ul>
-<li><code>db.Model</code> lets us create and manipulate data <code>models</code>
+<li><code>db.Model</code> lets us create and manipulate data models
 <ul>
 <li>Map classes to tables via SQLAlchemy ORM.</li>
 <li>By default, SQLAlchemy will pick the name of the table for you, setting it equal to the lower-case version of your class's name. You can also set the name of the table by yourself.</li>
@@ -525,38 +536,41 @@
 <hr />
 <figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> Flask</span><br><span class="line"><span class="keyword">from</span> flask_sqlalchemy <span class="keyword">import</span> SQLAlchemy</span><br><span class="line"></span><br><span class="line"><span class="comment"># standard way for creating a flask application</span></span><br><span class="line">app = Flask(__name__)</span><br><span class="line"></span><br><span class="line"><span class="comment"># connect to database from the Flask application by setting configuration</span></span><br><span class="line">app.config[<span class="string">&#x27;SQLALCHEMY_DATABASE_URI&#x27;</span>] = <span class="string">&#x27;postgresql://postgres:password@localhost:5432/example&#x27;</span></span><br><span class="line">app.config[<span class="string">&#x27;SQLALCHEMY_TRACK_MODIFICATIONS&#x27;</span>] = <span class="literal">False</span></span><br><span class="line">db = SQLAlchemy(app)  <span class="comment"># db: instance of database</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span>(<span class="params">db.Model</span>):</span></span><br><span class="line">    __tablename__ = <span class="string">&#x27;persons&#x27;</span></span><br><span class="line">    <span class="built_in">id</span> = db.Column(db.Integer, primary_key=<span class="literal">True</span>)</span><br><span class="line">    name = db.Column(db.String(), nullable=<span class="literal">False</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># create table</span></span><br><span class="line">db.create_all()</span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/&#x27;</span></span>)</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">index</span>():</span></span><br><span class="line">    <span class="keyword">return</span> <span class="string">&#x27;Hello World!&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    app.run(debug=<span class="literal">True</span>)</span><br></pre></td></tr></table></figure>
 <h4 id="interact-with-db">Interact with DB</h4>
-<ol type="1">
-<li>Create records with psql</li>
-</ol>
+<ul>
+<li>You can create records with psql</li>
+</ul>
 <blockquote>
 <p>(in psql) INSERT INTO persons(name) VALUES ('Amy');</p>
 </blockquote>
 <figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> Flask</span><br><span class="line"><span class="keyword">from</span> flask_sqlalchemy <span class="keyword">import</span> SQLAlchemy</span><br><span class="line"></span><br><span class="line"><span class="comment"># standard way for creating a flask application</span></span><br><span class="line">app = Flask(__name__)</span><br><span class="line"></span><br><span class="line"><span class="comment"># connect to database from the Flask application by setting configuration</span></span><br><span class="line">app.config[<span class="string">&#x27;SQLALCHEMY_DATABASE_URI&#x27;</span>] = <span class="string">&#x27;postgresql://postgres:password@localhost:5432/example&#x27;</span></span><br><span class="line">db = SQLAlchemy(app)  <span class="comment"># db: instance of database</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span>(<span class="params">db.Model</span>):</span></span><br><span class="line">    __tablename__ = <span class="string">&#x27;persons&#x27;</span></span><br><span class="line">    <span class="built_in">id</span> = db.Column(db.Integer, primary_key=<span class="literal">True</span>)</span><br><span class="line">    name = db.Column(db.String(), nullable=<span class="literal">False</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># create table</span></span><br><span class="line">db.create_all()</span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/&#x27;</span></span>)</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">index</span>():</span></span><br><span class="line">    person = Person.query.first()</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&#x27;Hello &#x27;</span> + person.name + <span class="string">&#x27;!&#x27;</span>  <span class="comment"># Hello Amy!</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    app.run(debug=<span class="literal">True</span>)</span><br></pre></td></tr></table></figure>
-<ol start="2" type="1">
-<li>Create records with Python interpreter</li>
-</ol>
-<p>You can also experiment the app using interactive mode of the Python interpreter.</p>
+<ul>
+<li>You can also create records with Python interpreter</li>
+</ul>
 <p>First, create records in Python's interactive mode using <code>db.session.add()</code> :</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ python</span><br><span class="line">&gt;&gt;&gt;</span><br><span class="line">&gt;&gt;&gt; from flask_hello_app import db, Person</span><br><span class="line">&gt;&gt;&gt; person = Person(name=<span class="string">&#x27;Emma&#x27;</span>)</span><br><span class="line">&gt;&gt;&gt; db.session.add(person)</span><br><span class="line">&gt;&gt;&gt; db.session.commit()</span><br></pre></td></tr></table></figure>
-<p>Then, revise the <code>flask_hello_app.py</code>,</p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> Flask</span><br><span class="line"><span class="keyword">from</span> flask_sqlalchemy <span class="keyword">import</span> SQLAlchemy</span><br><span class="line"></span><br><span class="line"><span class="comment"># standard way for creating a flask application</span></span><br><span class="line">app = Flask(__name__)</span><br><span class="line"></span><br><span class="line"><span class="comment"># connect to database from the Flask application by setting configuration</span></span><br><span class="line">app.config[<span class="string">&#x27;SQLALCHEMY_DATABASE_URI&#x27;</span>] = <span class="string">&#x27;postgresql://postgres:password@localhost:5432/example&#x27;</span></span><br><span class="line">app.config[<span class="string">&#x27;SQLALCHEMY_TRACK_MODIFICATIONS&#x27;</span>] = <span class="literal">False</span></span><br><span class="line">db = SQLAlchemy(app)  <span class="comment"># db: instance of database</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span>(<span class="params">db.Model</span>):</span></span><br><span class="line">    __tablename__ = <span class="string">&#x27;persons&#x27;</span></span><br><span class="line">    <span class="built_in">id</span> = db.Column(db.Integer, primary_key=<span class="literal">True</span>)</span><br><span class="line">    name = db.Column(db.String(), nullable=<span class="literal">False</span>)</span><br><span class="line">    <span class="comment"># useful for debugging: customized show</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__repr__</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="keyword">return</span> <span class="string">f&#x27;&lt;Person ID: <span class="subst">&#123;self.<span class="built_in">id</span>&#125;</span>, name: <span class="subst">&#123;self.name&#125;</span>&gt;&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># create table</span></span><br><span class="line">db.create_all()</span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/&#x27;</span></span>)</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">index</span>():</span></span><br><span class="line">    person = Person.query.first()</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&#x27;Hello &#x27;</span> + person.name + <span class="string">&#x27;!&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    app.run(debug=<span class="literal">True</span>)</span><br></pre></td></tr></table></figure>
+<p>Then, revise the <code>flask_hello_app.py</code>. See code in line 17~19:</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> Flask</span><br><span class="line"><span class="keyword">from</span> flask_sqlalchemy <span class="keyword">import</span> SQLAlchemy</span><br><span class="line"></span><br><span class="line"><span class="comment"># standard way for creating a flask application</span></span><br><span class="line">app = Flask(__name__)</span><br><span class="line"></span><br><span class="line"><span class="comment"># connect to database from the Flask application by setting configuration</span></span><br><span class="line">app.config[<span class="string">&#x27;SQLALCHEMY_DATABASE_URI&#x27;</span>] = <span class="string">&#x27;postgresql://postgres:password@localhost:5432/example&#x27;</span></span><br><span class="line">app.config[<span class="string">&#x27;SQLALCHEMY_TRACK_MODIFICATIONS&#x27;</span>] = <span class="literal">False</span></span><br><span class="line">db = SQLAlchemy(app)  <span class="comment"># db: instance of database</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span>(<span class="params">db.Model</span>):</span></span><br><span class="line">    __tablename__ = <span class="string">&#x27;persons&#x27;</span></span><br><span class="line">    <span class="built_in">id</span> = db.Column(db.Integer, primary_key=<span class="literal">True</span>)</span><br><span class="line">    name = db.Column(db.String(), nullable=<span class="literal">False</span>)</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># useful for debugging: customized show</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__repr__</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="keyword">return</span> <span class="string">f&#x27;&lt;Person ID: <span class="subst">&#123;self.<span class="built_in">id</span>&#125;</span>, name: <span class="subst">&#123;self.name&#125;</span>&gt;&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># create table</span></span><br><span class="line">db.create_all()</span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/&#x27;</span></span>)</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">index</span>():</span></span><br><span class="line">    person = Person.query.first()</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&#x27;Hello &#x27;</span> + person.name + <span class="string">&#x27;!&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    app.run(debug=<span class="literal">True</span>)</span><br></pre></td></tr></table></figure>
 <p>Finally run as the following in Python's interpreter,</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$ python</span><br><span class="line">&gt;&gt;&gt;</span><br><span class="line">&gt;&gt;&gt; import flask_hello_app</span><br><span class="line">&gt;&gt;&gt; from flask_hello_app import Person</span><br><span class="line">&gt;&gt;&gt; Person.query.first()</span><br><span class="line">&lt;Person ID: 1, name: Amy&gt;</span><br><span class="line">&gt;&gt;&gt; Person.query.all()</span><br><span class="line">[&lt;Person ID: 1, name: Amy&gt;, &lt;Person ID: 2, name: Emma&gt;]</span><br></pre></td></tr></table></figure>
 <h4 id="sqlalchemy-data-type">SQLALchemy Data Type</h4>
 <img src="/2021/07/13/Full-Stack-Web-Development/Web-Dev-1-SQL-and-Data-Modelding-II/screen-shot-2019-08-18-at-11.36.57-pm.JPG" class="">
-<p>🌞 Resources: 1. <a target="_blank" rel="noopener" href="https://flask-sqlalchemy.palletsprojects.com/en/2.x/models/">Flask-SQLAlchemy: Declaring Models</a> 2. <a target="_blank" rel="noopener" href="https://docs.sqlalchemy.org/en/14/core/types.html">Column and Data Types</a></p>
+<p>🌞 Resources:</p>
+<ol type="1">
+<li><a target="_blank" rel="noopener" href="https://flask-sqlalchemy.palletsprojects.com/en/2.x/models/">Flask-SQLAlchemy: Declaring Models</a></li>
+<li><a target="_blank" rel="noopener" href="https://docs.sqlalchemy.org/en/14/core/types.html">Column and Data Types</a></li>
+</ol>
 <h4 id="sqlalchemy-constraints">SQLAlchemy Constraints</h4>
 <ul>
 <li>Column constraints ensure data integrity across our database, allowing for database accuracy and consistency.</li>
 <li>Constraints are conditions on your column, that provide checks on the data's validity. It does not allow data that violates constraints to be inserted into the database (it will raise an error if you attempt to).</li>
-<li>In SQLAlchemy, constraints are set in db.Column() after setting the data type.</li>
+<li>In SQLAlchemy, constraints are set in db.Column( ) after setting the data type.</li>
 </ul>
 <figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># column contraint demo</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">User</span>(<span class="params">db.Model</span>):</span></span><br><span class="line">  name = db.Column(db.String(), nullable=<span class="literal">False</span>, unique=<span class="literal">True</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># check constraint</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Product</span>(<span class="params">db.Model</span>):</span></span><br><span class="line">  <span class="string">&quot;&quot;&quot;ensures that no product goes into the table with a nonpositive price value&quot;&quot;&quot;</span></span><br><span class="line">  price = db.Column(db.Float, db.CheckConstraint(<span class="string">&#x27;price&gt;0&#x27;</span>))</span><br></pre></td></tr></table></figure>
-<p>🐵🐵🐵 <strong>Resource:</strong> <a target="_blank" rel="noopener" href="https://github.com/crazyguitar/pysheeet/blob/master/docs/notes/python-sqlalchemy.rst#set-a-database-url">SQLAlchemy Cheat Sheet</a></p>
+<p>🐵 <strong>Resource:</strong> <a target="_blank" rel="noopener" href="https://github.com/crazyguitar/pysheeet/blob/master/docs/notes/python-sqlalchemy.rst#set-a-database-url">SQLAlchemy Cheat Sheet</a></p>
 <h2 id="sqlalchemy-orm-in-depth">SQLAlchemy ORM in Depth</h2>
 <h3 id="model.query">Model.query</h3>
 <ul>
-<li><code>db.Model.query</code> offers us the <strong>Query</strong> object. This object lets us generate SELECT statements that let us query and return slices of data from our database.</li>
+<li><code>db.Model.query</code> offers us the <strong>Query</strong> object. This object lets us generate <code>SELECT</code> statements that let us query and return slices of data from our database.</li>
 <li>The Query object can be accessed on a model using either:
 <ul>
 <li><strong>MyModel.query</strong></li>
@@ -568,9 +582,9 @@
 <h3 id="sqlalchemy-object-lifecycle">SQLAlchemy Object Lifecycle</h3>
 <p>We can insert new records into the database by writing the raw SQL. We can also use SQLAlchemy by running the following code, which will build a <em>transaction</em> for inserting in a person instance in our model/table, and persist it to the database upon calling <code>commit()</code>.</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">person = Person(name=<span class="string">&#x27;Amy&#x27;</span>)</span><br><span class="line">db.session.add(person)</span><br><span class="line">db.session.commit()</span><br></pre></td></tr></table></figure>
-<p>Let's dive into the process, learn how an object goes from pending tp persistent, i.e. <strong>the SQLAlchemy object life cycle</strong>.</p>
+<p>Let's dive into the process, and learn how an object goes from pending to persistent, i.e. <strong>the SQLAlchemy object life cycle</strong>.</p>
 <img src="/2021/07/13/Full-Stack-Web-Development/Web-Dev-1-SQL-and-Data-Modelding-II/session2.JPG" class="">
-<p>It isn't until we execute <code>db.session.commit()</code> that we commit anything to the database.</p>
+<p>We don't commit anything to the database until we execute <code>db.session.commit()</code>.</p>
 <ul>
 <li>Within a session, we create transactions every time we want to commit work to the database.</li>
 <li>Proposed changes are not immediately committed to the database and instead go through stages to allow for &quot;undos&quot;.</li>
@@ -580,16 +594,16 @@
 <img src="/2021/07/13/Full-Stack-Web-Development/Web-Dev-1-SQL-and-Data-Modelding-II/life-cycle.JPG" class="">
 <img src="/2021/07/13/Full-Stack-Web-Development/Web-Dev-1-SQL-and-Data-Modelding-II/life-cycle2.JPG" class="">
 <img src="/2021/07/13/Full-Stack-Web-Development/Web-Dev-1-SQL-and-Data-Modelding-II/life-cycle3.JPG" class="">
-<p>Let's dive into <code>Flush</code> stage.</p>
+<p>Let's dive into <strong>Flush</strong> stage.</p>
 <img src="/2021/07/13/Full-Stack-Web-Development/Web-Dev-1-SQL-and-Data-Modelding-II/flush.JPG" class="">
 <img src="/2021/07/13/Full-Stack-Web-Development/Web-Dev-1-SQL-and-Data-Modelding-II/life-cycle4.JPG" class="">
-<p>Especially, when a statement has been flushed already, SQLAlchemy knows not to do the work again of translating actions to SQL statements (caching).</p>
+<p>Especially, <strong>when a statement has been flushed already, SQLAlchemy knows not to do the work again of translating actions to SQL statements (caching).</strong></p>
 <p>Look at the original table, there are 8 records,</p>
 <img src="/2021/07/13/Full-Stack-Web-Development/Web-Dev-1-SQL-and-Data-Modelding-II/flushed1.JPG" class="" title="original table">
-<p>Then we use SQLAlchemy to add a new record, and look at the table once again. Since we still don;t do commit operation, so the database has no changes.</p>
+<p>Then we use SQLAlchemy to add a new record, and look at the table once again. Since we still don't do commit operation, so the database has no changes.</p>
 <img src="/2021/07/13/Full-Stack-Web-Development/Web-Dev-1-SQL-and-Data-Modelding-II/flushed2.JPG" class="" title="terminal">
 <img src="/2021/07/13/Full-Stack-Web-Development/Web-Dev-1-SQL-and-Data-Modelding-II/flushed3.JPG" class="">
-<p>However, if we do some queries, meaning the statements have been flushed, we can that the action has already been translated into SQL commands though database is not persisted.</p>
+<p>However, if we do some queries, meaning the statements have been flushed, we can see that the action has already been translated into SQL commands though database is not persisted.</p>
 <img src="/2021/07/13/Full-Stack-Web-Development/Web-Dev-1-SQL-and-Data-Modelding-II/flushed4.JPG" class="">
 <img src="/2021/07/13/Full-Stack-Web-Development/Web-Dev-1-SQL-and-Data-Modelding-II/flushed3.JPG" class="">
 <p>Finally, make commit to change the database permanetly.</p>
@@ -744,7 +758,7 @@
               
                 <a href="/archives/%7C%7Carchive">
               
-                  <span class="site-state-item-count">62</span>
+                  <span class="site-state-item-count">68</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -755,7 +769,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">categories</span>
                 </a>
               </div>
@@ -766,7 +780,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">10</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
@@ -829,7 +843,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
+        <div class="copyright">&copy; 2021 &mdash; <span itemprop="copyrightYear">2022</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>

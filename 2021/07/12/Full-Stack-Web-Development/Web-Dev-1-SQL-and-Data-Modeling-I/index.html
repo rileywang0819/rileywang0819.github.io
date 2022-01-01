@@ -137,7 +137,7 @@
 <meta property="og:image" content="http://example.com/2021/07/12/Full-Stack-Web-Development/Web-Dev-1-SQL-and-Data-Modeling-I/psql.JPG">
 <meta property="og:image" content="http://example.com/2021/07/12/Full-Stack-Web-Development/Web-Dev-1-SQL-and-Data-Modeling-I/dbapis.jpg">
 <meta property="article:published_time" content="2021-07-12T02:25:19.000Z">
-<meta property="article:modified_time" content="2021-12-06T08:18:41.281Z">
+<meta property="article:modified_time" content="2021-12-20T07:53:39.466Z">
 <meta property="article:author" content="gogo-wang">
 <meta property="article:tag" content="web">
 <meta name="twitter:card" content="summary">
@@ -408,7 +408,7 @@
 <p>In this serials, I will talk about skills needed to develop an entire database-backed web application.</p>
 <p>You will learn:</p>
 <ul>
-<li>How to do <code>CRUD</code> operations?</li>
+<li>How to do <strong>CRUD</strong> operations?</li>
 <li>How to apply these operations across both databases and web applications?</li>
 <li>How to set up relationships between elements of an application?</li>
 <li>How to think about important principles and patterns in building data models for a web application?</li>
@@ -417,7 +417,7 @@
 <ul>
 <li>programming language: Python 3
 <ul>
-<li>use <code>pip</code> to install specific Python packages from <code>Python Package Index (PyPI)</code></li>
+<li>use <code>pip</code> to install specific Python packages from <strong>Python Package Index (PyPI)</strong></li>
 </ul></li>
 <li>web server framework: <code>Flask</code></li>
 <li>database: <code>PostgresSQL</code></li>
@@ -432,16 +432,16 @@
 <h2 id="interacting-with-databases">Interacting with Databases</h2>
 <p>In this blog, we focus on 3 core topics.</p>
 <p><strong>1. Interacting with a (remote) database</strong></p>
-<p>Backend developers need to interact with databases regularly in order to manipulate and maintain the models behind their web applications. In working with a database, we'll need to use a <code>Database Management System (DBMS)</code>.</p>
-<p>A <code>Database Management System (DBMS)</code> is simply software that allows you to interact with a database (e.g.to access or modify the data in that database).</p>
+<p>Backend developers need to interact with databases regularly in order to manipulate and maintain the models behind their web applications. In working with a database, we'll need to use a <strong>Database Management System (DBMS)</strong>.</p>
+<p>Database Management System (DBMS) is simply a software that allows you to interact with a database.</p>
 <hr />
 <p><strong>2. Database Application Programming Interfaces (DBAPIs)</strong></p>
-<p>We need to interact with database from a sepicific language or web server framework (such as Python, NodeJS, Ruby on Rails, etc.). This is where <code>DBAPIs</code> come in.</p>
+<p>We need to interact with database from a sepicific language or web server framework (such as Python, NodeJS, Ruby on Rails, etc.). This is where <strong>DBAPIs</strong> come in.</p>
 <hr />
 <p><strong>3. psycopg2</strong></p>
-<p>We use <code>psycopg2 library</code> to interact with a database from Python.</p>
-<p><strong>psycopg2</strong> is the most popular PostgreSQL database adapter(适配器), which allows us to interact with database from Python.</p>
-<p><em>Anything that implements the DB-API to connect to an external database can be reasonably called a database driver or database adapter.</em></p>
+<p>We use <code>psycopg2</code> library to interact with a database from Python.</p>
+<p><strong>psycopg2</strong> is the most popular PostgreSQL database adapter, which allows us to interact with database from Python.</p>
+<p>🍓 <em>Anything that implements the DBAPI to connect to an external database can be reasonably called a database driver or database adapter.</em></p>
 <hr />
 <h3 id="relational-databases">Relational Databases</h3>
 <ul>
@@ -452,31 +452,37 @@
 <li>qualities of relational DBMS:</li>
 </ul>
 <img src="/2021/07/12/Full-Stack-Web-Development/Web-Dev-1-SQL-and-Data-Modeling-I/qualities-of-relational-dbms.JPG" class="">
-<p>Next, let us review concepts of <code>primary key</code> and <code>foreign key</code> .</p>
+<p>Next, let us review concepts of <strong>primary key</strong> and <strong>foreign key</strong> .</p>
 <img src="/2021/07/12/Full-Stack-Web-Development/Web-Dev-1-SQL-and-Data-Modeling-I/primary-key.JPG" class="">
 <img src="/2021/07/12/Full-Stack-Web-Development/Web-Dev-1-SQL-and-Data-Modeling-I/foreign-key.JPG" class="">
 <h3 id="sql">SQL</h3>
 <img src="/2021/07/12/Full-Stack-Web-Development/Web-Dev-1-SQL-and-Data-Modeling-I/SQL.JPG" class="">
 <p>✨ Read <a target="_blank" rel="noopener" href="https://www.postgresqltutorial.com/">PostgreSQL Tutorial</a> to learn more about PostgreSQL.</p>
 <img src="/2021/07/12/Full-Stack-Web-Development/Web-Dev-1-SQL-and-Data-Modeling-I/execution-plan.JPG" class="">
-<p>The <code>execution plan</code> gives important insight into the performance of the query. Since there can multiple ways of performing queries against a database with various performance tradeoffs, it's important to choose the one with the best execution plan for quickly and efficiently returning the results that you need.</p>
-<p>🤠 You can also register this <a target="_blank" rel="noopener" href="https://www.udemy.com/course/complete-sql-databases-bootcamp-zero-to-mastery/">database bootcamp course</a> to learn more SQL.</p>
-<p>🔥 Supplyment: - <a target="_blank" rel="noopener" href="https://www.winwire.com/25-tips-to-improve-sql-query-performance/">techniques for improving the performance of SQL queries</a> - <a target="_blank" rel="noopener" href="https://www.postgresqltutorial.com/postgresql-indexes/postgresql-create-index/">use critical indexes to speed up information lookups</a> - <a target="_blank" rel="noopener" href="https://db.grussell.org/sql3.html#_myauto10">SQL views</a> - <a target="_blank" rel="noopener" href="https://use-the-index-luke.com/">optimize SQL queries: Use the Index, Luke!</a></p>
+<p>The <strong>execution plan</strong> gives important insight into the performance of the query. Since there can multiple ways of performing queries against a database with various performance tradeoffs, it's important to choose the one with the best execution plan for quickly and efficiently returning the results that you need.</p>
+<p>🤠 You can also register a database bootcamp course to learn more SQL.</p>
+<p>🔥 Supplyment:</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://www.winwire.com/25-tips-to-improve-sql-query-performance/">techniques for improving the performance of SQL queries</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.postgresqltutorial.com/postgresql-indexes/postgresql-create-index/">use critical indexes to speed up information lookups</a></li>
+<li><a target="_blank" rel="noopener" href="https://db.grussell.org/sql3.html#_myauto10">SQL views</a></li>
+<li><a target="_blank" rel="noopener" href="https://use-the-index-luke.com/">optimize SQL queries: Use the Index, Luke!</a></li>
+</ul>
 <h3 id="client-server-model">Client-Server Model</h3>
-<p>In order to build database-backed web applications, we first need to understand how servers, clients, and databases interact. A major part of this is the <code>client-server model</code>, and the basic idea is very simple:</p>
+<p>In order to build database-backed web applications, we first need to understand how servers, clients, and databases interact. A major part of this is the <strong>client-server model</strong>, and the basic idea is very simple:</p>
 <img src="/2021/07/12/Full-Stack-Web-Development/Web-Dev-1-SQL-and-Data-Modeling-I/basic-idea-of-client-server-model.JPG" class="">
 <ul>
 <li>Servers and clients are programs that run on a <strong>host</strong>.
 <ul>
 <li>A <strong>host</strong> is a computer connected over the network.</li>
-<li>A <strong>client</strong> is a program (like the web browser on your computer) that sends a <code>request</code> to the server.</li>
-<li>A <strong>server</strong> is a centralized program that communicates over a network (such as the Internet) to serve many clients. It sends back a <code>response</code> to the client.</li>
+<li>A <strong>client</strong> is a program (like the web browser on your computer) that <strong>sends a request</strong> to the server.</li>
+<li>A <strong>server</strong> is a centralized program that communicates over a network (such as the Internet) to serve many clients. It <strong>sends back a response</strong> to the client.</li>
 <li>The client and server use a common language (a <strong>communication protocol</strong>, such as <strong>TCP/IP</strong>) for communicating with each other.</li>
 </ul></li>
 </ul>
 <p>Now, adding a relational databases to this basic client-server model. This modern-day database systems also follow the client-server model.</p>
 <img src="/2021/07/12/Full-Stack-Web-Development/Web-Dev-1-SQL-and-Data-Modeling-I/db-web-server-with-client.JPG" class="">
-<p><em>Basically, we call things clients when they are making a request and servers when they are fulfilling a request with a repsonse. Since a web server can do both, it sometimes acts as a server and sometimes acts as a client.</em></p>
+<p>✨ <em>Basically, we call things clients when they are making a request and servers when they are fulfilling a request with a repsonse. Since a web server can do both, it sometimes acts as a server and sometimes acts as a client.</em></p>
 <h4 id="client-server-model-example-onlinr-store">Client-Server Model Example: Onlinr Store</h4>
 <hr />
 <p><strong>Background</strong></p>
@@ -491,13 +497,13 @@
 <li>A client could request more data and a different view to be rendered (with that data).</li>
 <li>A server process listens to the request sent from the view, and uses the user input data to determine how to shape its request to the database, and sends a request to the database.</li>
 <li>The database processes this request, and sends a response back to the web server.</li>
-<li>The web server receives the response from the database, and uses it to determine the view + powers the view template with the fetched data, sending it back to the client's browser.</li>
+<li>The web server receives the response from the database, and uses it to determine the view and power the view template with the fetched data, sending it back to the client's browser.</li>
 <li>The client is responsible for rendering something to the user, that represents both the data and its representation.</li>
 </ul>
-<p><code>MVC: model-view-controller</code></p>
+<p><strong>MVC: model-view-controller</strong></p>
 <p>Let's use some pseudocode to illustrate this process.</p>
 <figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// frontend</span></span><br><span class="line"></span><br><span class="line">&lt;!-- view.html --&gt;</span><br><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;polo&quot;</span> <span class="attr">data-id</span>=<span class="string">&quot;1&quot;</span>&gt;</span> Polo <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="built_in">document</span>.getElementById(<span class="string">&quot;polo&quot;</span>).onclick = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> request = <span class="keyword">new</span> Request();</span><br><span class="line">  request.send(<span class="string">&#x27;GET product detail on product with id &#x27;</span>, <span class="number">1</span>);  <span class="comment">// send request</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">request 2 things:</span></span><br><span class="line"><span class="comment">1. request more data;</span></span><br><span class="line"><span class="comment">2. reder a different page to the client web app</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># backend (web server)</span></span><br><span class="line"></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27; server.py &#x27;&#x27;&#x27;</span></span><br><span class="line"></span><br><span class="line">result = application.listen_on(request)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(result.<span class="built_in">id</span>)  <span class="comment"># --&gt; 1</span></span><br><span class="line"></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">server does:</span></span><br><span class="line"><span class="string">1. send request to the database, about info about object with result.id;</span></span><br><span class="line"><span class="string">2. receives the response and sends back info about the view and the data;</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"></span><br><span class="line">application.render_view(<span class="string">&#x27;product_details.html&#x27;</span>, data)</span><br></pre></td></tr></table></figure>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># backend (web server)</span></span><br><span class="line"></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27; server.py &#x27;&#x27;&#x27;</span></span><br><span class="line"></span><br><span class="line">result = application.listen_on(request)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(result.<span class="built_in">id</span>)    <span class="comment"># 1</span></span><br><span class="line"></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">server does:</span></span><br><span class="line"><span class="string">1. send request to the database, about info about object with result.id;</span></span><br><span class="line"><span class="string">2. receives the response and sends back info about the view and the data;</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"></span><br><span class="line">application.render_view(<span class="string">&#x27;product_details.html&#x27;</span>, data)</span><br></pre></td></tr></table></figure>
 <h3 id="tcpip">TCP/IP</h3>
 <ul>
 <li>Transmission Control Protocol (TCP)</li>
@@ -509,8 +515,8 @@
 <li><strong>IP addresses</strong>: An IP address identifies the location of a computer on a network.</li>
 <li><strong>Ports</strong>: A port is a location on the recipient computer, where data is received.
 <ul>
-<li><code>Port 80</code>: The port number most commonly used for HTTP requests. For example, when a client makes a request to a web server, this request is usually sent through port 80.</li>
-<li><code>Port 5432</code>: The port number used by most database systems; also the default port for PostgreSQL.</li>
+<li><strong>Port 80</strong>: The port number most commonly used for HTTP requests. For example, when a client makes a request to a web server, this request is usually sent through port 80.</li>
+<li><strong>Port 5432</strong>: The port number used by most database systems; also the default port for PostgreSQL.</li>
 </ul></li>
 </ul>
 <hr />
@@ -520,11 +526,11 @@
 <p>Ports are much like the different terminals(航站楼) of an airport, tracking and receiving different airplanes at the same time, allowing for the effective receipt of multiple types of traffic at the same IP address.</p>
 <p>🌿 Additional Resource: <a target="_blank" rel="noopener" href="https://opensource.com/article/18/10/common-network-ports">14 of the most common ports</a></p>
 <hr />
-<p><strong>TCP/IP is connection-based.</strong> Over TCP/IP, we'll always need to establish a <code>connection</code> between clients and servers in order to enable communications.</p>
+<p><strong>TCP/IP is connection-based.</strong> Over TCP/IP, we'll always need to establish a connection between clients and servers in order to enable communications.</p>
 <ul>
 <li>Establish a connection enables communications.</li>
 <li>Close a connection to end communications.</li>
-<li>Deliveries over the connection are <code>error-checked</code>: if packets arrive damaged or lost, then they are resent (known as retransmission).</li>
+<li>Deliveries over the connection are <strong>error-checked</strong>: if packets arrive damaged or lost, then they are resent (known as retransmission).</li>
 </ul>
 <img src="/2021/07/12/Full-Stack-Web-Development/Web-Dev-1-SQL-and-Data-Modeling-I/session1.JPG" class="">
 <img src="/2021/07/12/Full-Stack-Web-Development/Web-Dev-1-SQL-and-Data-Modeling-I/session2.JPG" class="">
@@ -536,11 +542,11 @@
 <p>When speed is more important than reliability, especially when applications need to stream very small amounts of information quickly (smaller packages of information means less issues with reliability), then UDP is preferred. A lot of real time streaming applications, (e.g. live TV streaming, Voice over IP (VoIP)) prefer UDP over TCP. Since UDP does not need to retransmit lost datagrams, nor does it do any connection setup, there are fewer delays over UDP than TCP. TCP's continuous connection is more reliable but has more latency(时延).</p>
 <hr />
 <h3 id="transactions">Transactions</h3>
-<p><code>Transactions(事务)</code> are atomic units of work for the database to perform as a whole.</p>
+<p><strong>Transactions(事务)</strong> are atomic units of work for the database to perform as a whole.</p>
 <img src="/2021/07/12/Full-Stack-Web-Development/Web-Dev-1-SQL-and-Data-Modeling-I/transaction.JPG" class="">
 <img src="/2021/07/12/Full-Stack-Web-Development/Web-Dev-1-SQL-and-Data-Modeling-I/transaction2.JPG" class="">
 <img src="/2021/07/12/Full-Stack-Web-Development/Web-Dev-1-SQL-and-Data-Modeling-I/transaction3.JPG" class="">
-<p><strong>Transactions capture logical bundles of work.</strong> Work is bundled into transactions, so that in case of system failures, data in your database is still kept in a valid state (by rolling back the entire transaction if any part of it fails). To ensure a database is consistent before and after work is done to it, databases uses atomic transactions, and actions like <code>commits</code> and <code>rollbacks</code> to handle failures appropriately. Transactions are, in other words, <a target="_blank" rel="noopener" href="https://www.geeksforgeeks.org/acid-properties-in-dbms/">ACID</a> .</p>
+<p><strong>Transactions capture logical bundles of work.</strong> Work is bundled into transactions, so that in case of system failures, data in your database is still kept in a valid state (by rolling back the entire transaction if any part of it fails). To ensure a database is consistent before and after work done to it, databases uses <strong>atomic transactions</strong>, and actions like <code>commits</code> and <code>rollbacks</code> to handle failures appropriately. Transactions are, in other words, <a target="_blank" rel="noopener" href="https://www.geeksforgeeks.org/acid-properties-in-dbms/">ACID</a> .</p>
 <img src="/2021/07/12/Full-Stack-Web-Development/Web-Dev-1-SQL-and-Data-Modeling-I/bundle-work.JPG" class="">
 <h3 id="dbapis-and-psycopg2">DBAPIs and psycopg2</h3>
 <h4 id="psql">psql</h4>
@@ -552,23 +558,23 @@
 <img src="/2021/07/12/Full-Stack-Web-Development/Web-Dev-1-SQL-and-Data-Modeling-I/psql.JPG" class="">
 <hr />
 <h4 id="dbapis">DBAPIs</h4>
-<p>We will sometimes want to interact with our database and use its results in a specific programming language. E.g. to build web applications or data pipelines in a specific language (Ruby, Python, Javascript, etc.). That's where <code>DBAPIs</code> come in.</p>
-<p><code>DBAPI:</code></p>
+<p>We will sometimes want to interact with our database and use its results in a specific programming language. E.g. to build web applications or data pipelines in a specific language (Ruby, Python, Javascript, etc.). That's where <strong>DBAPIs</strong> come in.</p>
+<p>DBAPI:</p>
 <ul>
 <li>provides a standard interface for one programming language (like Python) to talk to a relational database server;</li>
 <li>is a low level library for writing SQL statements that connect to a database;</li>
 </ul>
 <p>Different DBAPIs exist for different server framework or language + database system. Database adapters define a standard for using a database (with SQL) and using the results of database queries as input data in the given language.</p>
-<p>Example: <code>SELCET * FROM &lt;table&gt;</code> will</p>
+<p>For example, the SQL statement <code>SELCET * FROM &lt;table&gt;</code> will</p>
 <ul>
 <li>list of rows into an array of objects in Javascript for a NodeJS adapter;</li>
 <li>or a list of tuples in Python for a Python adapter</li>
 </ul>
 <img src="/2021/07/12/Full-Stack-Web-Development/Web-Dev-1-SQL-and-Data-Modeling-I/dbapis.jpg" class="">
-<p>In this blog, I will use <code>psycopg2</code> to establish a connection to PostgreSQL server, and interact with it in python.</p>
+<p>In this blog, I will use <strong>psycopg2</strong> to establish a connection to PostgreSQL server, and interact with it in Python.</p>
 <h4 id="psycopg2">psycopg2</h4>
 <p>Intall psycopg2: <a target="_blank" rel="noopener" href="https://pypi.org/project/psycopg2/">ref</a></p>
-<p>🌈 🌈 🌈 <strong>Demos:</strong> 🌈 🌈 🌈</p>
+<p>🌈 <strong>Demos:</strong></p>
 <ol type="1">
 <li>psycopg2:</li>
 </ol>
@@ -580,11 +586,11 @@
 <ol start="3" type="1">
 <li>psycopg2: fetching results</li>
 </ol>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> psycopg2</span><br><span class="line"></span><br><span class="line"><span class="comment"># Establish a connection, starting a session, begins a transaction</span></span><br><span class="line">conn = psycopg2.connect(<span class="string">&#x27;dbname=example user=postgres password=xxxxxxxx&#x27;</span>)</span><br><span class="line"><span class="comment"># Set a cursor to begin executing commands</span></span><br><span class="line">cursor = conn.cursor()</span><br><span class="line"></span><br><span class="line"><span class="comment"># Open a cursor to perform database operations</span></span><br><span class="line">cur = conn.cursor()</span><br><span class="line"></span><br><span class="line"><span class="comment"># Drop to table if it already exited</span></span><br><span class="line">cur.execute(<span class="string">&#x27;DROP TABLE IF EXISTS table2;&#x27;</span>)</span><br><span class="line"><span class="comment"># cur.rollback()</span></span><br><span class="line"></span><br><span class="line">cur.execute(<span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">  CREATE TABLE table2 (</span></span><br><span class="line"><span class="string">    id INTEGER PRIMARY KEY,</span></span><br><span class="line"><span class="string">    completed BOOLEAN NOT NULL DEFAULT False</span></span><br><span class="line"><span class="string">  );</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 2 ways to compose SQL query using strings:</span></span><br><span class="line"><span class="comment"># 1. use tuple</span></span><br><span class="line">cur.execute(<span class="string">&#x27;INSERT INTO table2 (id, completed) VALUES (%s, %s);&#x27;</span>, (<span class="number">1</span>, <span class="literal">True</span>))</span><br><span class="line"><span class="comment"># 2. use dictionary</span></span><br><span class="line">SQL = <span class="string">&#x27;INSERT INTO table2 (id, completed) VALUES (%(id)s, %(completed)s);&#x27;</span></span><br><span class="line">data = &#123;</span><br><span class="line">    <span class="string">&#x27;id&#x27;</span>: <span class="number">2</span>, </span><br><span class="line">    <span class="string">&#x27;completed&#x27;</span>: <span class="literal">False</span></span><br><span class="line">&#125;</span><br><span class="line">cur.execute(SQL, data)</span><br><span class="line"></span><br><span class="line">cursor.execute(<span class="string">&#x27;SELECT * FROM table2;&#x27;</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">##############################</span></span><br><span class="line"><span class="comment">## How to fetch the result? ##</span></span><br><span class="line"><span class="comment">##############################</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 1</span></span><br><span class="line">result = cursor.fetchall()</span><br><span class="line"><span class="built_in">print</span>(result)  <span class="comment"># --&gt; [(1, True), (2, False)]</span></span><br><span class="line"><span class="comment"># 2</span></span><br><span class="line"><span class="built_in">print</span>(cursor.fetchmany(<span class="number">3</span>))</span><br><span class="line"><span class="comment"># 3</span></span><br><span class="line"><span class="built_in">print</span>(cursor.fetchone())  <span class="comment"># fetches the first result in the result sets</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># commit, so it does the executions on the db and persists in the db</span></span><br><span class="line">conn.commit()</span><br><span class="line"></span><br><span class="line">cur.close()</span><br><span class="line">conn.close()</span><br></pre></td></tr></table></figure>
-<h2 id="summary">Summary</h2>
-<p>Until now, we have learnt how to use <code>psycopg2 library</code> to interact with a database from Python.</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> psycopg2</span><br><span class="line"></span><br><span class="line"><span class="comment"># Establish a connection, starting a session, begins a transaction</span></span><br><span class="line">conn = psycopg2.connect(<span class="string">&#x27;dbname=example user=postgres password=xxxxxxxx&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Open a cursor to perform database operations</span></span><br><span class="line">cur = conn.cursor()</span><br><span class="line"></span><br><span class="line"><span class="comment"># Drop table if it already exited</span></span><br><span class="line">cur.execute(<span class="string">&#x27;DROP TABLE IF EXISTS table2;&#x27;</span>)</span><br><span class="line"><span class="comment"># cur.rollback()</span></span><br><span class="line"></span><br><span class="line">cur.execute(<span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">  CREATE TABLE table2 (</span></span><br><span class="line"><span class="string">    id INTEGER PRIMARY KEY,</span></span><br><span class="line"><span class="string">    completed BOOLEAN NOT NULL DEFAULT False</span></span><br><span class="line"><span class="string">  );</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 2 ways to compose SQL query using strings:</span></span><br><span class="line"><span class="comment"># 1. use tuple</span></span><br><span class="line">cur.execute(<span class="string">&#x27;INSERT INTO table2 (id, completed) VALUES (%s, %s);&#x27;</span>, (<span class="number">1</span>, <span class="literal">True</span>))</span><br><span class="line"><span class="comment"># 2. use dictionary</span></span><br><span class="line">SQL = <span class="string">&#x27;INSERT INTO table2 (id, completed) VALUES (%(id)s, %(completed)s);&#x27;</span></span><br><span class="line">data = &#123;</span><br><span class="line">    <span class="string">&#x27;id&#x27;</span>: <span class="number">2</span>, </span><br><span class="line">    <span class="string">&#x27;completed&#x27;</span>: <span class="literal">False</span></span><br><span class="line">&#125;</span><br><span class="line">cur.execute(SQL, data)</span><br><span class="line"></span><br><span class="line">cursor.execute(<span class="string">&#x27;SELECT * FROM table2;&#x27;</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">##############################</span></span><br><span class="line"><span class="comment">## How to fetch the result? ##</span></span><br><span class="line"><span class="comment">##############################</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># way 1</span></span><br><span class="line">result = cursor.fetchall()</span><br><span class="line"><span class="built_in">print</span>(result)  <span class="comment"># [(1, True), (2, False)]</span></span><br><span class="line"><span class="comment"># way 2</span></span><br><span class="line"><span class="built_in">print</span>(cursor.fetchmany(<span class="number">3</span>))</span><br><span class="line"><span class="comment"># way 3</span></span><br><span class="line"><span class="built_in">print</span>(cursor.fetchone())  <span class="comment"># fetches the first result in the result sets</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># commit, so it does the executions on the db and persists in the db</span></span><br><span class="line">conn.commit()</span><br><span class="line"></span><br><span class="line">cur.close()</span><br><span class="line">conn.close()</span><br></pre></td></tr></table></figure>
+<h2 id="forecast">Forecast</h2>
+<p>Until now, we have learnt how to use <strong>psycopg2</strong> library to interact with PostgreSQL database from Python.</p>
 <p>However, writing SQL directly is a fairly clunky way of doing web development. It's useful to learn some higher level libraries that let us interact with a database, using Python classes and expressions.</p>
-<p>In the next blog, I will talk about one of the most powerful Python libraries for interacting with databases: SQLAlchemy.</p>
+<p>In the next post, I will talk about one of the most powerful Python libraries for interacting with databases: <strong>SQLAlchemy</strong>.</p>
 
       
     </div>
@@ -732,7 +738,7 @@
               
                 <a href="/archives/%7C%7Carchive">
               
-                  <span class="site-state-item-count">62</span>
+                  <span class="site-state-item-count">68</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -743,7 +749,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">categories</span>
                 </a>
               </div>
@@ -754,7 +760,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">10</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
@@ -797,7 +803,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#overview"><span class="nav-number">1.</span> <span class="nav-text">Overview</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#interacting-with-databases"><span class="nav-number">2.</span> <span class="nav-text">Interacting with Databases</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#relational-databases"><span class="nav-number">2.1.</span> <span class="nav-text">Relational Databases</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#sql"><span class="nav-number">2.2.</span> <span class="nav-text">SQL</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#client-server-model"><span class="nav-number">2.3.</span> <span class="nav-text">Client-Server Model</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#client-server-model-example-onlinr-store"><span class="nav-number">2.3.1.</span> <span class="nav-text">Client-Server Model Example: Onlinr Store</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#tcpip"><span class="nav-number">2.4.</span> <span class="nav-text">TCP&#x2F;IP</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#transactions"><span class="nav-number">2.5.</span> <span class="nav-text">Transactions</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#dbapis-and-psycopg2"><span class="nav-number">2.6.</span> <span class="nav-text">DBAPIs and psycopg2</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#psql"><span class="nav-number">2.6.1.</span> <span class="nav-text">psql</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#dbapis"><span class="nav-number">2.6.2.</span> <span class="nav-text">DBAPIs</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#psycopg2"><span class="nav-number">2.6.3.</span> <span class="nav-text">psycopg2</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#summary"><span class="nav-number">3.</span> <span class="nav-text">Summary</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#overview"><span class="nav-number">1.</span> <span class="nav-text">Overview</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#interacting-with-databases"><span class="nav-number">2.</span> <span class="nav-text">Interacting with Databases</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#relational-databases"><span class="nav-number">2.1.</span> <span class="nav-text">Relational Databases</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#sql"><span class="nav-number">2.2.</span> <span class="nav-text">SQL</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#client-server-model"><span class="nav-number">2.3.</span> <span class="nav-text">Client-Server Model</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#client-server-model-example-onlinr-store"><span class="nav-number">2.3.1.</span> <span class="nav-text">Client-Server Model Example: Onlinr Store</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#tcpip"><span class="nav-number">2.4.</span> <span class="nav-text">TCP&#x2F;IP</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#transactions"><span class="nav-number">2.5.</span> <span class="nav-text">Transactions</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#dbapis-and-psycopg2"><span class="nav-number">2.6.</span> <span class="nav-text">DBAPIs and psycopg2</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#psql"><span class="nav-number">2.6.1.</span> <span class="nav-text">psql</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#dbapis"><span class="nav-number">2.6.2.</span> <span class="nav-text">DBAPIs</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#psycopg2"><span class="nav-number">2.6.3.</span> <span class="nav-text">psycopg2</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#forecast"><span class="nav-number">3.</span> <span class="nav-text">Forecast</span></a></li></ol></div>
             
 
           </div>
@@ -817,7 +823,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
+        <div class="copyright">&copy; 2021 &mdash; <span itemprop="copyrightYear">2022</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>

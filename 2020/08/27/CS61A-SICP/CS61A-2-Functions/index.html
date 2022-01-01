@@ -121,7 +121,7 @@
 <meta property="og:image" content="http://example.com/2020/08/27/CS61A-SICP/CS61A-2-Functions/lec2-1.png">
 <meta property="og:image" content="http://example.com/2020/08/27/CS61A-SICP/CS61A-2-Functions/lec2-2.png">
 <meta property="article:published_time" content="2020-08-27T03:57:36.000Z">
-<meta property="article:modified_time" content="2021-11-24T14:23:36.377Z">
+<meta property="article:modified_time" content="2021-12-28T10:04:53.130Z">
 <meta property="article:author" content="gogo-wang">
 <meta property="article:tag" content="CS61A">
 <meta name="twitter:card" content="summary">
@@ -408,17 +408,17 @@
 <p>Assignment is a simple means of abstraction: <strong>binds names to values.</strong></p>
 <p>Function definition is a more powerful means of abstraction: <strong>binds names to expressions.</strong></p>
 <p>Examples:</p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> math <span class="keyword">import</span> pi, sin</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>radius = <span class="number">10</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>x = sin(pi / <span class="number">2</span>) <span class="comment"># 1.0</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>f = <span class="built_in">max</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>f(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>)      <span class="comment"># max(1, 2, 3)</span></span><br><span class="line"><span class="number">3</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> math <span class="keyword">import</span> pi, sin</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>radius = <span class="number">10</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>x = sin(pi / <span class="number">2</span>) <span class="comment"># 1.0</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>f = <span class="built_in">max</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>f(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>)      <span class="comment"># max(1, 2, 3)</span></span><br><span class="line"><span class="number">3</span></span><br></pre></td></tr></table></figure>
 <h3 id="defining-functions">Defining Functions</h3>
 <p>We programmers can build our own functions.</p>
 <figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> &lt;<span class="title">name</span>&gt;(<span class="params">&lt;formal parameters&gt;</span>):</span></span><br><span class="line">    <span class="keyword">return</span> &lt;<span class="keyword">return</span> expression&gt;</span><br></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># User-defined functions</span></span><br><span class="line"><span class="keyword">from</span> operator <span class="keyword">import</span> add, mul  </span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">square</span>(<span class="params">x</span>):</span></span><br><span class="line">    <span class="keyword">return</span> mul(x, x)</span><br><span class="line"></span><br><span class="line">square(<span class="number">21</span>)          <span class="comment"># 441</span></span><br><span class="line">square(add(<span class="number">2</span>, <span class="number">5</span>))   <span class="comment"># 49</span></span><br><span class="line">square(square(<span class="number">3</span>))   <span class="comment"># 81</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">sum_squares</span>(<span class="params">x, y</span>):</span></span><br><span class="line">    <span class="keyword">return</span> add(square(x), square(y))</span><br><span class="line"></span><br><span class="line">sum_squares(<span class="number">3</span>, <span class="number">4</span>)   <span class="comment"># 9 + 16 = 25</span></span><br><span class="line">sum_squares(<span class="number">5</span>, <span class="number">12</span>)  <span class="comment"># 25 + 144 = 169</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># User-defined functions</span></span><br><span class="line"><span class="keyword">from</span> operator <span class="keyword">import</span> add, mul  </span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">square</span>(<span class="params">x</span>):</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    &gt;&gt;&gt; square(21)</span></span><br><span class="line"><span class="string">    441</span></span><br><span class="line"><span class="string">    &gt;&gt;&gt; square(add(2, 5))</span></span><br><span class="line"><span class="string">    49</span></span><br><span class="line"><span class="string">    &gt;&gt;&gt; square(square(3))</span></span><br><span class="line"><span class="string">    81</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    <span class="keyword">return</span> mul(x, x)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">sum_squares</span>(<span class="params">x, y</span>):</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    &gt;&gt;&gt; sum_squares(3, 4) </span></span><br><span class="line"><span class="string">    25</span></span><br><span class="line"><span class="string">    &gt;&gt;&gt; sum_squares(5, 12)</span></span><br><span class="line"><span class="string">    169</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    <span class="keyword">return</span> add(square(x), square(y))</span><br></pre></td></tr></table></figure>
 <p>Procedure of calling user-defined functions is as follows:</p>
 <img src="/2020/08/27/CS61A-SICP/CS61A-2-Functions/lec2-2.png" class="">
 <h3 id="modules">Modules</h3>
 <p>Functions are organized into <strong>modules</strong>, which together comprise the Python <strong>library</strong>. For example, Numpy is a library, it contains many modules, i.e. many <code>.py</code> files.</p>
 <p>We programmer can define our own functions modules or libraries.</p>
-<p>🦄 External Resource: <a target="_blank" rel="noopener" href="https://docs.python.org/3/library/index.html">Python Standard Library Ref</a></p>
+<p>🦄 External Resource: <a target="_blank" rel="noopener" href="https://docs.python.org/3/library/index.html">Python Standard Library</a></p>
 
       
     </div>
@@ -566,7 +566,7 @@
               
                 <a href="/archives/%7C%7Carchive">
               
-                  <span class="site-state-item-count">62</span>
+                  <span class="site-state-item-count">68</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -577,7 +577,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">categories</span>
                 </a>
               </div>
@@ -588,7 +588,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">10</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
@@ -651,7 +651,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
+        <div class="copyright">&copy; 2021 &mdash; <span itemprop="copyrightYear">2022</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>

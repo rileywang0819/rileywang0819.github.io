@@ -1,0 +1,909 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="en,zh-Hans,default">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Roboto Slab:300,300italic,400,400italic,700,700italic|Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="shell," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="This is the lecture note of The Missing Semester - Lecture 1. Today&#39;s topic is the shell.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Lecture 1: The Shell">
+<meta property="og:url" content="http://example.com/2021/12/17/The-Missing-Semester/Lecture-1-The-Shell/index.html">
+<meta property="og:site_name" content="GoGo-Wang&#39;s Blog">
+<meta property="og:description" content="This is the lecture note of The Missing Semester - Lecture 1. Today&#39;s topic is the shell.">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-12-17T10:13:32.000Z">
+<meta property="article:modified_time" content="2021-12-19T15:00:01.368Z">
+<meta property="article:author" content="gogo-wang">
+<meta property="article:tag" content="shell">
+<meta name="twitter:card" content="summary">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://example.com/2021/12/17/The-Missing-Semester/Lecture-1-The-Shell/"/>
+
+
+
+
+
+  <title>Lecture 1: The Shell | GoGo-Wang's Blog</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">GoGo-Wang's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">"Say something." <br> - "Something."</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/12/17/The-Missing-Semester/Lecture-1-The-Shell/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="GoGo-Wang's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Lecture 1: The Shell</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2021-12-17T19:13:32+09:00">
+                2021-12-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/The-Missing-Semester-Of-Your-CS-Education/" itemprop="url" rel="index">
+                    <span itemprop="name">The-Missing-Semester-Of-Your-CS-Education</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2021/12/17/The-Missing-Semester/Lecture-1-The-Shell/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2021/12/17/The-Missing-Semester/Lecture-1-The-Shell/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>This is the lecture note of The Missing Semester - <a target="_blank" rel="noopener" href="https://missing.csail.mit.edu/2020/course-shell/">Lecture 1</a>.</p>
+<p>Today's topic is the shell.</p>
+<span id="more"></span>
+<h2 id="what-is-the-shell">What is the shell?</h2>
+<p>Computers have a variety of interfaces for giving commands:</p>
+<ul>
+<li>GUIs</li>
+<li>Voice Interfaces</li>
+<li>AR/VR</li>
+<li>Shell: old-school textual interfaces</li>
+<li>...</li>
+</ul>
+<p>The core functionality of the shell: allows you to run programs, give them input, and inspect their semi-structured output.</p>
+<h2 id="using-the-shell">Using the shell</h2>
+<p>🦁 The shell showed in this blog is <code>BASH</code>, which is one of the most widely used shells, and has similar syntax to many other shells.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># machine: missing</span></span><br><span class="line"><span class="comment"># current working directory: ~(home)</span></span><br><span class="line"><span class="comment"># $: tells that you are not the root user</span></span><br><span class="line">missing:~$ date</span><br><span class="line">Fri Dec 17 16:06:49 JST 2021</span><br><span class="line"></span><br><span class="line"><span class="comment"># shell parses the command by whitespace</span></span><br><span class="line">missing ~$ <span class="built_in">echo</span> hello</span><br><span class="line">hello</span><br><span class="line"></span><br><span class="line"><span class="comment"># either use quotes or escape characters</span></span><br><span class="line">missing ~$ <span class="built_in">echo</span> <span class="string">&quot;Hello World&quot;</span>   <span class="comment"># single quote is also ok</span></span><br><span class="line">Hello World</span><br><span class="line">missing ~$ <span class="built_in">echo</span> Hello\ World</span><br><span class="line">Hello World</span><br></pre></td></tr></table></figure>
+<p>How does the shell know how to find the <code>date</code> and <code>echo</code> program?</p>
+<p>Actually, <strong>the shell is a programming environment</strong>, just like Python or Ruby. So it has variables, conditionals, loops, and functions. When you run commands in your shell, you are writing a small bit of code that your shell interprets. If the shell is asked to execute a command that doesn't match one the its programming keywords, it will consult an <code>environment variable</code> called <code>$PATH</code> that lists which directories the shell should search for programs.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># the shell searches through the &quot;:&quot;-separated list of directories for a file named echo</span></span><br><span class="line">missing:~$ <span class="built_in">echo</span> <span class="variable">$PATH</span></span><br><span class="line">/usr/<span class="built_in">local</span>/sbin:/usr/<span class="built_in">local</span>/bin:/usr/sbin:/usr/bin:/sbin:/bin</span><br><span class="line"></span><br><span class="line"><span class="comment"># find out which file is executed for a program name: using &quot;which&quot; program</span></span><br><span class="line">missing:~$ <span class="built_in">which</span> <span class="built_in">echo</span></span><br><span class="line">/bin/<span class="built_in">echo</span></span><br></pre></td></tr></table></figure>
+<h2 id="navigating-in-the-shell">Navigating in the shell</h2>
+<p>A path on the shell is a delimited list of directories, separated by:</p>
+<ul>
+<li>Linux and MacOS: <code>/</code></li>
+<li>Windows: <code>\</code></li>
+</ul>
+<p>On Linux and MacOS, the path <code>/</code> is the <strong>&quot;root&quot;</strong> of the file system, under which all directories and files lie. On Windows, there is one root for each disk partition, such as <code>C:\</code> .</p>
+<p>A path can be either:</p>
+<ul>
+<li>absolute path: start with <code>/</code></li>
+<li>relative path</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">missing:missing$ <span class="built_in">pwd</span></span><br><span class="line">/home/missing</span><br><span class="line"></span><br><span class="line">missing:~$ <span class="built_in">cd</span> /home</span><br><span class="line">missing:/home$ <span class="built_in">pwd</span></span><br><span class="line">/home</span><br><span class="line"></span><br><span class="line">missing:/home$ <span class="built_in">cd</span> ..</span><br><span class="line">missing:/$ <span class="built_in">pwd</span></span><br><span class="line">/</span><br><span class="line"></span><br><span class="line">missing:/$ <span class="built_in">cd</span> ./home</span><br><span class="line">missing:/home$ <span class="built_in">pwd</span></span><br><span class="line">/home</span><br><span class="line"></span><br><span class="line">missing:/home$ <span class="built_in">cd</span> missing</span><br><span class="line">missing:missing$ <span class="built_in">pwd</span></span><br><span class="line">/home/missing</span><br><span class="line"></span><br><span class="line"><span class="comment"># cd to the directory you were previously in</span></span><br><span class="line">missing:/home$ <span class="built_in">cd</span> -</span><br><span class="line">/home</span><br><span class="line"></span><br><span class="line">missing:~$ ../../bin/<span class="built_in">echo</span> hello</span><br><span class="line">hello</span><br></pre></td></tr></table></figure>
+<h2 id="commands">Commands</h2>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">missing:/$ ls</span><br><span class="line">bin</span><br><span class="line">boot</span><br><span class="line">dev</span><br><span class="line">etc</span><br><span class="line">home</span><br><span class="line">...</span><br><span class="line"></span><br><span class="line"><span class="comment"># -l: usee a long listing format</span></span><br><span class="line"><span class="comment"># r: for files, it means read contents; for directories, it means see which files are in the directory; </span></span><br><span class="line"><span class="comment"># w: for files, it means write or revise contents of the file; for directories, it means rename/create/remove files within this directory</span></span><br><span class="line"><span class="comment"># x: for files, it means execute the file; for directories, it means search or enter the directory</span></span><br><span class="line">missing:~$ ls -l /home</span><br><span class="line">drwxr-xr-x 1 missing  users  4096 Jun 15  2019 missing</span><br></pre></td></tr></table></figure>
+<p>The paramter <code>-l</code> gives us more information about each file or directory.</p>
+<ul>
+<li>The first <code>d</code> tells that <code>missing</code> is a directory; if it is a file ,then use <code>-</code> parameter;</li>
+<li><code>rwx</code> indicates what permissions the owner of the file(<code>missing</code>) have;</li>
+<li><code>r-x</code> indicates what permissions the owning groups(<code>users</code>) have, <code>-</code> means the given principal does not have the given permission;</li>
+<li><code>r-x</code> indicates what permissions everyone else has;</li>
+</ul>
+<p>If you ever want more information about a program's arguments, input, outputs, or how it works in general, use <code>man</code> program.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># press &quot;q&quot; to exit</span></span><br><span class="line">missing:~$ man ls</span><br></pre></td></tr></table></figure>
+<h2 id="connecting-programs">Connecting programs</h2>
+<p>In the shell, programs have 2 primary &quot;streams&quot;, <strong>input stream</strong> and <strong>output stream</strong>.</p>
+<p>Normally, a program's input and output are both your terminal —— keyboard as input and screen as output. However, we can rewire streams.</p>
+<p>The simplest form of redirection is <code>&lt; file</code> and <code>&gt; file</code> , which will let you rewire the input and output streams of a program to a file respectively.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">missing:~$ <span class="built_in">echo</span> hello &gt; hello.txt</span><br><span class="line"></span><br><span class="line">missing:~$ cat hello.txt</span><br><span class="line">hello</span><br><span class="line"></span><br><span class="line">missing:~$ cat &lt; hello.txt</span><br><span class="line">hello</span><br><span class="line"></span><br><span class="line">missing:~$ cat &lt; hello.txt &gt; hello2.txt</span><br><span class="line">missing:~$ cat hello2.txt</span><br><span class="line">hello</span><br><span class="line"></span><br><span class="line"><span class="comment"># &gt;&gt; operator: append to a file</span></span><br><span class="line">missing:~$ <span class="built_in">echo</span> hello2 &gt;&gt; hello2.txt</span><br><span class="line"></span><br><span class="line"><span class="comment"># pip character |: chain promgrams such that the output of one is the input of another</span></span><br><span class="line">missing:/$ ls</span><br><span class="line">bin</span><br><span class="line">boot</span><br><span class="line">dev</span><br><span class="line">etc</span><br><span class="line">home</span><br><span class="line"></span><br><span class="line"><span class="comment"># tail: print the last n lines of its input</span></span><br><span class="line">missing:/$ ls | tail -n2</span><br><span class="line"><span class="comment"># etc</span></span><br><span class="line"><span class="comment"># home</span></span><br></pre></td></tr></table></figure>
+<h2 id="a-versatile-and-powerful-tool">A versatile and powerful tool</h2>
+<p>The &quot;root&quot; user if a special user on most Unix-like systems.</p>
+<p>The root user is above (almost) all access restrictions, and can create, read, update, and delete any file in the system. You will not usually log into your system as the root user though, since it’s too easy to accidentally break something. Instead, you will be using the <code>sudo</code> command(program). As its name implies, it lets you “do” something “as su” (short for “super user”, or “root”). When you get permission denied errors, it is usually because you need to do something as root. Though make sure you first double-check that you really wanted to do it that way!</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">missing:/$ sudo su</span><br><span class="line">(enter password)</span><br><span class="line"><span class="comment">#change from $ to #: from non-root user to root user</span></span><br><span class="line">missing:/<span class="comment"># </span></span><br></pre></td></tr></table></figure>
+<p>Let's look an example.</p>
+<p>If you want to write to the <code>sysfs</code> file system mounted under <code>/sys</code>. <code>sysfs</code> exposes a number of kernel parameters as files, so that you can easily reconfigure the kernel on the fly without specialized tools.</p>
+<p><em>Note that <code>sysfs</code> does not exist on Windows or macOS.</em></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># /sys/class/backlight file: expose your laptop&#x27;s screen</span></span><br><span class="line"></span><br><span class="line">$ sudo find -L /sys/class/backlight -maxdepth 2 -name <span class="string">&#x27;*brightness*&#x27;</span></span><br><span class="line">/sys/class/backlight/thinkpad_screen/brightness</span><br><span class="line"></span><br><span class="line">$ <span class="built_in">cd</span> /sys/class/backlight/thinkpad_screen</span><br><span class="line"></span><br><span class="line"><span class="comment"># tee command: take its input and write to a file, but also to the standard output</span></span><br><span class="line">$ <span class="built_in">echo</span> 3 | sudo tee brightness</span><br></pre></td></tr></table></figure>
+<h2 id="exercises">Exercises</h2>
+<p><a target="_blank" rel="noopener" href="https://github.com/rileywang0819/missing-semester/blob/main/lecture1.md">My solution</a> of exercises.</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>Post author:</strong>
+    gogo-wang
+  </li>
+  <li class="post-copyright-link">
+    <strong>Post link:</strong>
+    <a href="http://example.com/2021/12/17/The-Missing-Semester/Lecture-1-The-Shell/" title="Lecture 1: The Shell">http://example.com/2021/12/17/The-Missing-Semester/Lecture-1-The-Shell/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice: </strong>
+    All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> unless stating additionally.
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/shell/" rel="tag"># shell</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2021/11/23/CS61A-SICP/CS61A-23-Decomposition/" rel="next" title="CS61A(23): Decomposition">
+                <i class="fa fa-chevron-left"></i> CS61A(23): Decomposition
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2021/12/30/Coding/%E6%9C%89%E5%85%B3C-C-%E7%9A%84%E7%BC%96%E8%AF%91%E5%92%8C%E6%89%A7%E8%A1%8C/" rel="prev" title="有关C/C++的编译和执行">
+                有关C/C++的编译和执行 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a target="_blank" rel="noopener" href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name"></p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/%7C%7Carchive">
+              
+                  <span class="site-state-item-count">68</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/rileywang0819" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#what-is-the-shell"><span class="nav-number">1.</span> <span class="nav-text">What is the shell?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#using-the-shell"><span class="nav-number">2.</span> <span class="nav-text">Using the shell</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#navigating-in-the-shell"><span class="nav-number">3.</span> <span class="nav-text">Navigating in the shell</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#commands"><span class="nav-number">4.</span> <span class="nav-text">Commands</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#connecting-programs"><span class="nav-number">5.</span> <span class="nav-text">Connecting programs</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#a-versatile-and-powerful-tool"><span class="nav-number">6.</span> <span class="nav-text">A versatile and powerful tool</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#exercises"><span class="nav-number">7.</span> <span class="nav-text">Exercises</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2021 &mdash; <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">GoGo-Wang</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+    
+      <script id="dsq-count-scr" src="https://author.disqus.com/count.js" async></script>
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'http://example.com/2021/12/17/The-Missing-Semester/Lecture-1-The-Shell/';
+          this.page.identifier = '2021/12/17/The-Missing-Semester/Lecture-1-The-Shell/';
+          this.page.title = 'Lecture 1: The Shell';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://author.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>
