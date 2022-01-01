@@ -111,15 +111,15 @@
 
 
 
-<meta name="description" content="该博客是对CS144(1): Internet and IP">
+<meta name="description" content="该博客是对CS144(1): Internet and IP中提到的BItTorrent的补充。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="解析BitTorrent协议的原理">
 <meta property="og:url" content="http://example.com/2021/09/01/CS144-Network/%E8%A7%A3%E6%9E%90BitTorrent%E5%8D%8F%E8%AE%AE%E7%9A%84%E5%8E%9F%E7%90%86/index.html">
 <meta property="og:site_name" content="GoGo-Wang&#39;s Blog">
-<meta property="og:description" content="该博客是对CS144(1): Internet and IP">
+<meta property="og:description" content="该博客是对CS144(1): Internet and IP中提到的BItTorrent的补充。">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2021-09-01T07:14:30.000Z">
-<meta property="article:modified_time" content="2022-01-01T07:15:36.792Z">
+<meta property="article:modified_time" content="2022-01-01T07:29:37.246Z">
 <meta property="article:author" content="gogo-wang">
 <meta property="article:tag" content="Computer Network">
 <meta name="twitter:card" content="summary">
@@ -337,8 +337,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/CS61A-SICP/" itemprop="url" rel="index">
-                    <span itemprop="name">CS61A-SICP</span>
+                  <a href="/categories/CS144-Computer-Network/" itemprop="url" rel="index">
+                    <span itemprop="name">CS144-Computer Network</span>
                   </a>
                 </span>
 
@@ -385,7 +385,21 @@
       
 
       
-        <p>该博客是对CS144(1): Internet and IP</p>
+        <p>该博客是对CS144(1): Internet and IP中提到的BItTorrent的补充。</p>
+<span id="more"></span>
+<p>下载，是我们网络应用中非常普遍的一项用能，也是网络分享资源的一种方式。在这里我们来对<strong>BitTorrent协议</strong>的下载技术进行一下介绍。</p>
+<h2 id="bittorrent">Bittorrent</h2>
+<p>Bittorrent已经成为最为流行的P2P软件,在2004年6月的Cachelogic的一份测试是报告中提到，Bittorrent的数据流量已经占到整个P2P数据流量的52%。与其他传统P2P软件如Gnutella,Fasttrack不同，Bittorrent只是一个纯粹的文件下载协议，并不提供搜索功能，所以往往资源的获取要跟其他一些应用结合起来。比如说发布Bittorrent种子信息的网站，如5Q，或者是网络搜索引擎如百度、google等｡</p>
+<h2 id="bittorrent工作原理">Bittorrent工作原理</h2>
+<p>Bittorrent的工作原理其实很简单。他就是将一份数据分隔成256K大小的数据分组，并在Bittorrent网络中一群用户相互协作完成这些数据的分发。用户参与数据分发的信息以文件的形式存储，一般可以通过web网站获取这些信息。但是实际数据传输依靠的不是HTTP协议，而是由专门的P2P协议来完成。这些对于用户都是透明的｡</p>
+<p>普通的HTTP/FTP下载使用TCP/IP协议，BitTorrent协议是架构于TCP/IP协议之上的一个P2P文件传输协议，处于TCP/IP结构的应用层｡ BitTorrent协议本身也包含了很多具体的内容协议和扩展协议,并在不断扩充中｡</p>
+<p>根据BitTorrent协议，文件发布者会根据要发布的文件生成提供一个<code>.torrent</code>文件，即种子文件，也简称为“种子&quot;｡<code>.torrent</code>文件本质上是文本文件，包含<strong>Tracker信息</strong>和<strong>文件信息</strong>两部分。Tracker信息主要是BT下载中需要用到的Tracker服务器的地址和针对Tracker服务器的设置,文件信息是根据对目标文件的计算生成的计算结果根据BitTorrent协议内的B编码规则进行编码。它的主要原理是需要把提供下载的文件虚拟分成大小相等的块，块大小必须为2k的整数次方(由于是虚拟分块，硬盘上并不产生各个块文件)，并把每个块的索引信息和Hash验证码写入<code>.torrent</code>文件中;所以<code>.torrent</code>文件就是被下载文件的“索引&quot;｡</p>
+<p>下载者要下载文件内容，需要先得到相应的<code>.torrent</code>文件，然后使用BT客户端软件进行下载。</p>
+<p>下载时，BT客户端首先解析<code>.torrent</code>文件得到Tracker地址，然后连接Tracker服务器。Tracker服务器回应下载者的请求，提供下载者其他下载者(包括发布者)的IP。下载者再连接其他下载者，根据<code>.torrent</code>文件，两者分别对方告知自己已经有的块，然后交换对方没有的数据。此时不需要其他服务器参与，分散了单个线路上的数据流量，因此减轻了服务器负担。</p>
+<p>下载者每得到一个块，需要算出下载块的Hash验证码与<code>.torrent</code>文件中的对比，如果一样则说明块正确，不一样则需要重新下载这个块。这种规定是为了解决下载内容准确性的问题。</p>
+<p>一般的HTTP/FTP下载，发布文件仅在某个或某几个服务器，下载的人太多，下载速度会变得很慢。而BitTorrent协议下载的特点是：<strong>下载的人越多，提供的带宽也越多，种子也会越来越多，下载速度就越快</strong>。而有些人下载完成后关掉下载任务，提供较少量数据给其他用户。为尽量避免这种行为，在非官方BitTorrent协议中存在超级种子的算法。这种算法允许文件发布者分几步发布文件，发布者不需要一次提供文件所有内容，而是慢慢开放下载内容的比例，延长下载时间。此时,速度快的人由于未下载完所以必须提供给他人数据，速度慢的人有更多机会得到数据。</p>
+<h2 id="参考">参考</h2>
+<p>[1] <a target="_blank" rel="noopener" href="https://network.51cto.com/art/201007/210435.htm">解析BitTorrent协议的原理</a></p>
 
       
     </div>
@@ -508,8 +522,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -535,7 +558,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-count">7</span>
                   <span class="site-state-item-name">categories</span>
                 </a>
               </div>
@@ -579,6 +602,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#bittorrent"><span class="nav-number">1.</span> <span class="nav-text">Bittorrent</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#bittorrent%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86"><span class="nav-number">2.</span> <span class="nav-text">Bittorrent工作原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%82%E8%80%83"><span class="nav-number">3.</span> <span class="nav-text">参考</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
