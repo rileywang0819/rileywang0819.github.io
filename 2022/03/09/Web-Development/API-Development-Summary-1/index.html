@@ -1,0 +1,913 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="en,zh-Hans,default">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Roboto Slab:300,300italic,400,400italic,700,700italic|Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="API," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="🚀 This blog is just a cheetsheet for myself. You can&#39;t visit links because the corresponding repositories are private.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="API Development Summary(1)">
+<meta property="og:url" content="http://example.com/2022/03/09/Web-Development/API-Development-Summary-1/index.html">
+<meta property="og:site_name" content="GoGo-Wang&#39;s Blog">
+<meta property="og:description" content="🚀 This blog is just a cheetsheet for myself. You can&#39;t visit links because the corresponding repositories are private.">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2022-03-08T15:27:23.000Z">
+<meta property="article:modified_time" content="2022-05-11T06:58:30.132Z">
+<meta property="article:author" content="gogo-wang">
+<meta property="article:tag" content="API">
+<meta name="twitter:card" content="summary">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://example.com/2022/03/09/Web-Development/API-Development-Summary-1/"/>
+
+
+
+
+
+  <title>API Development Summary(1) | GoGo-Wang's Blog</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">GoGo-Wang's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">"Say something." <br> - "Something."</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/03/09/Web-Development/API-Development-Summary-1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="GoGo-Wang's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">API Development Summary(1)</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2022-03-09T00:27:23+09:00">
+                2022-03-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Web-Development/" itemprop="url" rel="index">
+                    <span itemprop="name">Web-Development</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2022/03/09/Web-Development/API-Development-Summary-1/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2022/03/09/Web-Development/API-Development-Summary-1/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>🚀 This blog is just a cheetsheet for myself. You can't visit links because the corresponding repositories are private.</p>
+<span id="more"></span>
+<h2 id="simple-api">Simple API</h2>
+<p>API is the shortname of <strong>Application Program Interface</strong>. An API can be viewed as a program which takes some data, processes it and gives back some data.</p>
+<p>We use <strong>JSON</strong> format to store and transmit data over the Internet. The server side cannot return the Python or Java data directly since JavaScript doesn't understand it. 😓 Imagining how JS deals with Python's dictionary or Java's HashTable? Instead, since JSON data is text, a long string, so JS can read it and deals with it.</p>
+<ul>
+<li>tip: Alway double quote in JSON instead of single quotes.</li>
+</ul>
+<p>❤️ <a target="_blank" rel="noopener" href="https://github.com/rileywang0819/Flask-API/blob/main/01_REST_APIs/Section2/app.py">LINK: <strong>demo of a simple api using flask</strong></a></p>
+<p>❤️ <a target="_blank" rel="noopener" href="https://kinsta.com/knowledgebase/api-endpoint/#understanding-api-endpoints">LINK: What is an API endpoint?</a></p>
+<h2 id="restful-api">RESTful API</h2>
+<h3 id="rest-principles">REST Principles</h3>
+<p>&quot;REST&quot; is a way of thinking about how a web server responds to your requests. <strong>Resource</strong> is the core component when designing RESTful API. A resouces can be anything, like a document, an image, a service, or a collection of other resources. So it is the resources that transfer between cilent and server. JSON, XML or JPG image are just the format of resources.</p>
+<p>(When designing RESTful API, theoretically we only use noun and don't use verb)</p>
+<p>Another key feature of REST is to be <strong>stateless</strong>. This means one request cannot depend on other requests. <strong>The server doesn't remember any state.</strong></p>
+<p>Let's see an example in the real world.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">- A user logs in a web application such as Twitter.</span><br><span class="line">- The web server doesn&#x27;t know the user is logged in since REST api is stateless.</span><br><span class="line">- In each request, the application must send enough data to identify the user, otherwise the server won&#x27;t associate the request with the user.</span><br></pre></td></tr></table></figure>
+<h3 id="virtual-environment">Virtual Environment</h3>
+<p>We develop our api using Python virtual environment.</p>
+<p>❤️ <a target="_blank" rel="noopener" href="https://github.com/rileywang0819/Flask-API/blob/main/01_REST_APIs/Section3/README.md">Link: virtualenv README</a></p>
+<h3 id="flask-restful">flask-restful</h3>
+<ul>
+<li><code>flask-restful</code> is an extension of Flask that provides additional support for building RESTful apps.
+<ul>
+<li>❤️ <a href="">Link: flask-restful source code analysis</a></li>
+</ul></li>
+</ul>
+<h3 id="flask_jwt">flask_jwt</h3>
+<ul>
+<li><strong>Flask-JWT</strong>: (JWT: JSON Web Token) an extension of Flask that implementing token-based authentication
+<ul>
+<li>❤️ <a target="_blank" rel="noopener" href="https://github.com/rileywang0819/Flask-API/blob/main/01_REST_APIs/Section3/JWT%E5%85%A5%E9%97%A8%E6%95%99%E7%A8%8B.md">Link: JWT README</a></li>
+</ul></li>
+</ul>
+<p>Using JWT authentication is good for scaling. Since the server doesn't need to store any information of the user, so it is stateless.</p>
+<p>When we pass the authentication, the server will generate a JWT token and return to the client. Each time, the cilent sends request containing the JSON token, and the server will use this JSON token to identity the user.</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># security.py</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> werkzeug.security <span class="keyword">import</span> safe_str_cmp</span><br><span class="line"><span class="keyword">from</span> user <span class="keyword">import</span> User</span><br><span class="line"></span><br><span class="line"><span class="comment"># memory database: store registered users</span></span><br><span class="line">users = [</span><br><span class="line">    User(<span class="number">1</span>, <span class="string">&#x27;bob&#x27;</span>, <span class="string">&#x27;abcd&#x27;</span>),</span><br><span class="line">    User(<span class="number">2</span>, <span class="string">&#x27;emma&#x27;</span>, <span class="string">&#x27;123456&#x27;</span>)</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line">username_mapping = &#123;u.username: u <span class="keyword">for</span> u <span class="keyword">in</span> users&#125;</span><br><span class="line">userid_mapping = &#123;u.<span class="built_in">id</span>: u <span class="keyword">for</span> u <span class="keyword">in</span> users&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">authenticate</span>(<span class="params">name, pw</span>):</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;Authenticate a user.&quot;&quot;&quot;</span></span><br><span class="line">    user = username_mapping.get(name, <span class="literal">None</span>)</span><br><span class="line">    <span class="keyword">if</span> user <span class="keyword">and</span> safe_str_cmp(user.password, pw):</span><br><span class="line">        <span class="keyword">return</span> user</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">identity</span>(<span class="params">payload</span>):</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;Identify a user.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    payload: the contents of JWT Token</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    <span class="comment"># &#x27;identity&#x27; is one of JWT fields. Flask-JWT use this filed to populate the user&#x27;s id  </span></span><br><span class="line">    user_id = payload[<span class="string">&#x27;identity&#x27;</span>]</span><br><span class="line">    <span class="keyword">return</span> userid_mapping.get(user_id, <span class="literal">None</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># app.py (snippet)</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> Flask</span><br><span class="line"><span class="keyword">from</span> flask_restful <span class="keyword">import</span> Api, Resource</span><br><span class="line"><span class="keyword">from</span> flask_jwt <span class="keyword">import</span> JWT, jwt_required</span><br><span class="line"></span><br><span class="line">app = Flask(__name__)</span><br><span class="line">api = Api(app)</span><br><span class="line"></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">JWT creates a new endpoint(&#x27;/auth&#x27;).</span></span><br><span class="line"><span class="string">When calling this endpoint and passing username and password, the authenticate function will be called.</span></span><br><span class="line"><span class="string">It will do some authentication(login simulation). If the authentication succeeds, the jwt-extension will return a JWT object.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">Later, when send request with this generated JWT to the server, JWT will call the identity function.</span></span><br><span class="line"><span class="string">By the information from JWT&#x27;s payload, if it can get the correct user, it means the JWT is valid, and the user is authenticated.</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="comment"># create the jwt instance</span></span><br><span class="line">jwt = JWT(app, authenticate, identity)</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Item</span>(<span class="params">Resource</span>):</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;Advanced request parsing&quot;&quot;&quot;</span></span><br><span class="line">    parser = reqparse.RequestParser()</span><br><span class="line">    parser.add_argument(<span class="string">&#x27;price&#x27;</span>, <span class="built_in">type</span>=<span class="built_in">float</span>, required=<span class="literal">True</span>, <span class="built_in">help</span>=<span class="string">&quot;This filed cannot be left blank!&quot;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># meaning a valid JWT token is required in the request</span></span><br><span class="line"><span class="meta">    @jwt_required()</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get</span>(<span class="params">self, name</span>):</span></span><br><span class="line">        item = <span class="built_in">next</span>(<span class="built_in">filter</span>(<span class="keyword">lambda</span> item: item[<span class="string">&#x27;name&#x27;</span>] == name, items), <span class="literal">None</span>)</span><br><span class="line">        <span class="keyword">return</span> &#123;<span class="string">&#x27;item&#x27;</span>: item&#125;, <span class="number">200</span> <span class="keyword">if</span> item <span class="keyword">else</span> <span class="number">404</span></span><br></pre></td></tr></table></figure>
+<p>Advanced JWT configurations:</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;&quot;&quot;Advanced JWT Configuration&quot;&quot;&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 1. change authentication url</span></span><br><span class="line">app.config[<span class="string">&#x27;JWT_AUTH_URL_RULE&#x27;</span>] = <span class="string">&#x27;/login&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 2. Token expiration time(有效期): each access token must have an expiration time for security purpose</span></span><br><span class="line">app.config[<span class="string">&#x27;JWT_EXPIRATION_DELTA&#x27;</span>] = timedelta(seconds=<span class="number">1800</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 3. authentication key name: config JWT auth key name to be &#x27;email&#x27; instead of default &#x27;username&#x27;</span></span><br><span class="line">app.config[<span class="string">&#x27;JWT_AUTH_USERNAME_KEY&#x27;</span>] = <span class="string">&#x27;email&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 4. authentication response handler: customize JWT auth response, include user_id in response body</span></span><br><span class="line"><span class="meta">@jwt.auth_response_handler</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">customized_response_handler</span>(<span class="params">access_token, identity</span>):</span></span><br><span class="line">    <span class="keyword">return</span> jsonify(&#123;</span><br><span class="line">                        <span class="string">&#x27;access_token&#x27;</span>: access_token.decode(<span class="string">&#x27;utf-8&#x27;</span>),</span><br><span class="line">                        <span class="string">&#x27;user_id&#x27;</span>: identity.<span class="built_in">id</span></span><br><span class="line">                   &#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 5. error handler</span></span><br><span class="line"><span class="meta">@jwt.error_handler</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">customized_error_handler</span>(<span class="params">error</span>):</span></span><br><span class="line">    <span class="keyword">return</span> jsonify(&#123;</span><br><span class="line">                       <span class="string">&#x27;message&#x27;</span>: error.description,</span><br><span class="line">                       <span class="string">&#x27;code&#x27;</span>: error.status_code</span><br><span class="line">                   &#125;), error.status_code</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">jwt = JWT(app, authenticate, identity)</span><br></pre></td></tr></table></figure>
+<h2 id="advanced-postman-config">Advanced Postman Config</h2>
+<p>❤️ <a target="_blank" rel="noopener" href="https://github.com/rileywang0819/Flask-API/tree/main/01_REST_APIs/Section5/Advanced-Postman-environments-and-tests">Link: Advanced Postman —— environment &amp; tests</a></p>
+<h2 id="resources-vs.-models">Resources vs. Models</h2>
+<p>For any code related to getting data from API users and responding with data, that will go in a <strong>resource</strong>. The resource will then call the <strong>model</strong> for any interactions with our system (e.g. databases, saving things, creating objects,...)</p>
+<p>Resources and models are used to encapsulate the logic of user-facing and system-facing respectively, which makes it simpler for you — the developer — in the long term.</p>
+<h2 id="persistent-storage-database">Persistent Storage: Database</h2>
+<h3 id="sqlite-db">SQLite DB</h3>
+<p>❤️ <a target="_blank" rel="noopener" href="https://github.com/rileywang0819/Flask-API/blob/main/01_REST_APIs/Section4/test.py">Link: interaction with sqlite demo</a></p>
+<h3 id="postgresql-with-sqlalchemy">PostgreSQL with SQLAlchemy</h3>
+<p>We can use <strong>SQLAlchemy</strong> to easily replace database from SQLite to PostgreSQL or other databases. SQLAlchemy is a library that provides a nice “Pythonic” way of interacting with databases. So rather than dealing with the differences between specific dialects of traditional SQL such as MySQL or PostgreSQL or Oracle, you can leverage the Pythonic framework of SQLAlchemy to streamline your workflow and more efficiently query your data.</p>
+<p>Most of the times, this library is used as an Object Relational Mapper (ORM) tool that translates Python classes to tables on relational databases and automatically converts function calls to SQL statements. Also, it can map objects to rows in a database.</p>
+<h3 id="psycopg2">psycopg2</h3>
+<p>SQLAlchemy is a ORM. <strong>psycopg2</strong> is a PostgreSQL database adapter for the Python programming language. These are completely different things: SQLAlchemy generates SQL statements and psycopg2 sends SQL statements to the database. SQLAlchemy depends on psycopg2 or other database drivers to communicate with the database!</p>
+<h2 id="security">Security</h2>
+<p>Security in REST APIs is extremely important, because often applications that use our REST APIs will be sending us all sorts of data about users: passwords, e-mail addresses, names, postal addresses, security questions, bank details, and more.</p>
+<p>In order to prevent people from intercepting the data on the internet and being able to read it, we must use <strong>Secure Sockets Layer</strong>. This sits on top of HTTP and encrypts all communication between a server and a client.</p>
+<p>❤️ <a target="_blank" rel="noopener" href="https://books.tecladocode.com/rest-apis-with-flask-and-python/domains-and-https/what-is-a-domain">Link: Security in REST APIs</a></p>
+<h2 id="flask-extension-flask-jwt-extended">Flask Extension: Flask-JWT-Extended</h2>
+<ul>
+<li>❤️ <a target="_blank" rel="noopener" href="https://docs.authing.cn/v2/concepts/">Link: Authing Doc</a></li>
+<li>❤️ <a target="_blank" rel="noopener" href="https://www.cnblogs.com/blowing00/p/4524132.html">Link: Access Token vs. Refresh Token</a></li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>Post author:</strong>
+    gogo-wang
+  </li>
+  <li class="post-copyright-link">
+    <strong>Post link:</strong>
+    <a href="http://example.com/2022/03/09/Web-Development/API-Development-Summary-1/" title="API Development Summary(1)">http://example.com/2022/03/09/Web-Development/API-Development-Summary-1/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice: </strong>
+    All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> unless stating additionally.
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/API/" rel="tag"># API</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2021/12/17/The-Missing-Semester/Lecture-1-The-Shell/" rel="next" title="Lecture 1: The Shell">
+                <i class="fa fa-chevron-left"></i> Lecture 1: The Shell
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2022/03/20/Web-Development/Source-Code-1-Flask-and-Flask-RESTful/" rel="prev" title="Source Code(1): Flask and Flask-RESTful">
+                Source Code(1): Flask and Flask-RESTful <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a target="_blank" rel="noopener" href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name"></p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/%7C%7Carchive">
+              
+                  <span class="site-state-item-count">48</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/rileywang0819" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#simple-api"><span class="nav-number">1.</span> <span class="nav-text">Simple API</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#restful-api"><span class="nav-number">2.</span> <span class="nav-text">RESTful API</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#rest-principles"><span class="nav-number">2.1.</span> <span class="nav-text">REST Principles</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#virtual-environment"><span class="nav-number">2.2.</span> <span class="nav-text">Virtual Environment</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#flask-restful"><span class="nav-number">2.3.</span> <span class="nav-text">flask-restful</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#flask_jwt"><span class="nav-number">2.4.</span> <span class="nav-text">flask_jwt</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#advanced-postman-config"><span class="nav-number">3.</span> <span class="nav-text">Advanced Postman Config</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#resources-vs.-models"><span class="nav-number">4.</span> <span class="nav-text">Resources vs. Models</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#persistent-storage-database"><span class="nav-number">5.</span> <span class="nav-text">Persistent Storage: Database</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#sqlite-db"><span class="nav-number">5.1.</span> <span class="nav-text">SQLite DB</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#postgresql-with-sqlalchemy"><span class="nav-number">5.2.</span> <span class="nav-text">PostgreSQL with SQLAlchemy</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#psycopg2"><span class="nav-number">5.3.</span> <span class="nav-text">psycopg2</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#security"><span class="nav-number">6.</span> <span class="nav-text">Security</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#flask-extension-flask-jwt-extended"><span class="nav-number">7.</span> <span class="nav-text">Flask Extension: Flask-JWT-Extended</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2021 &mdash; <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">GoGo-Wang</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+    
+      <script id="dsq-count-scr" src="https://author.disqus.com/count.js" async></script>
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'http://example.com/2022/03/09/Web-Development/API-Development-Summary-1/';
+          this.page.identifier = '2022/03/09/Web-Development/API-Development-Summary-1/';
+          this.page.title = 'API Development Summary(1)';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://author.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>

@@ -1,0 +1,918 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="en,zh-Hans,default">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Roboto Slab:300,300italic,400,400italic,700,700italic|Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Flask," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="It&#39;s easy to creat an api or restful api with Flask and Flask-RESTful extension. But what&#39;s happening under the hood when executing the code? In this blog, we will dive into the source code of Flask">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Source Code(1): Flask and Flask-RESTful">
+<meta property="og:url" content="http://example.com/2022/03/20/Web-Development/Source-Code-1-Flask-and-Flask-RESTful/index.html">
+<meta property="og:site_name" content="GoGo-Wang&#39;s Blog">
+<meta property="og:description" content="It&#39;s easy to creat an api or restful api with Flask and Flask-RESTful extension. But what&#39;s happening under the hood when executing the code? In this blog, we will dive into the source code of Flask">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2022-03-20T09:40:25.000Z">
+<meta property="article:modified_time" content="2022-05-09T09:42:24.403Z">
+<meta property="article:author" content="gogo-wang">
+<meta property="article:tag" content="Flask">
+<meta name="twitter:card" content="summary">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://example.com/2022/03/20/Web-Development/Source-Code-1-Flask-and-Flask-RESTful/"/>
+
+
+
+
+
+  <title>Source Code(1): Flask and Flask-RESTful | GoGo-Wang's Blog</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">GoGo-Wang's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">"Say something." <br> - "Something."</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/03/20/Web-Development/Source-Code-1-Flask-and-Flask-RESTful/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="GoGo-Wang's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Source Code(1): Flask and Flask-RESTful</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2022-03-20T18:40:25+09:00">
+                2022-03-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Web-Development/" itemprop="url" rel="index">
+                    <span itemprop="name">Web-Development</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2022/03/20/Web-Development/Source-Code-1-Flask-and-Flask-RESTful/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2022/03/20/Web-Development/Source-Code-1-Flask-and-Flask-RESTful/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>It's easy to creat an api or restful api with <strong>Flask</strong> and <strong>Flask-RESTful</strong> extension. But what's happening under the hood when executing the code?</p>
+<p>In this blog, we will dive into the source code of Flask framework and its extension Flask-RESTful, and understand the code deeply.</p>
+<span id="more"></span>
+<h2 id="flask-api">Flask API</h2>
+<p>We can create an api with Flask quickly and easily.</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> Flask, jsonify, request, render_template</span><br><span class="line"></span><br><span class="line"><span class="comment"># ***************</span></span><br><span class="line"><span class="comment">#  Creat the App</span></span><br><span class="line"><span class="comment"># ***************</span></span><br><span class="line"></span><br><span class="line">app = Flask(__name__)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># *********************************</span></span><br><span class="line"><span class="comment">#     Creat various endpoints</span></span><br><span class="line"><span class="comment">#  send request and return response</span></span><br><span class="line"><span class="comment"># *********************************</span></span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/&#x27;</span></span>)</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">homepage</span>():</span></span><br><span class="line">    <span class="keyword">return</span> render_template(<span class="string">&#x27;index.html&#x27;</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/store&#x27;</span>, methods=[<span class="string">&#x27;POST&#x27;</span>]</span>)</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">create_store</span>():</span></span><br><span class="line">    request_data = request.get_json()</span><br><span class="line">    new_store = &#123;</span><br><span class="line">        <span class="string">&#x27;name&#x27;</span>: request_data[<span class="string">&#x27;name&#x27;</span>],</span><br><span class="line">        <span class="string">&#x27;items&#x27;</span>: []</span><br><span class="line">    &#125;</span><br><span class="line">    stores.append(new_store)</span><br><span class="line">    <span class="keyword">return</span> jsonify(new_store)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/store/&lt;string:store_name&gt;&#x27;</span></span>)</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_store</span>(<span class="params">store_name</span>):</span></span><br><span class="line">    <span class="keyword">for</span> store <span class="keyword">in</span> stores:</span><br><span class="line">        <span class="keyword">if</span> store[<span class="string">&#x27;name&#x27;</span>] == store_name:</span><br><span class="line">            <span class="keyword">return</span> jsonify(store)</span><br><span class="line">    <span class="keyword">return</span> jsonify(&#123;<span class="string">&#x27;message&#x27;</span>: <span class="string">&#x27;store not found&#x27;</span>&#125;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># *************</span></span><br><span class="line"><span class="comment">#  Run the App</span></span><br><span class="line"><span class="comment"># *************</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    app.run(port=<span class="number">5000</span>, debug=<span class="literal">True</span>)</span><br></pre></td></tr></table></figure>
+<p>We use decorator <code>app.route()</code> to create endpoints. It's like a magic —— we provide an URL rule and/or some methods to the decorator, then we can call the corresponding function by typing URL in our browser or Postman.</p>
+<p>But it's not a magic. There is a function called <code>route</code> in <code>Flask</code> class.</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># app.py</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Flask</span>(<span class="params">_PackageBoundObject</span>):</span></span><br><span class="line">    ....</span><br><span class="line">    ....</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">route</span>(<span class="params">self, rule, **options</span>):</span></span><br><span class="line">        <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">        :param endpoint: the endpoint for the registered URL rule. Flask</span></span><br><span class="line"><span class="string">                         itself assumes the name of the view function as</span></span><br><span class="line"><span class="string">                         endpoint</span></span><br><span class="line"><span class="string">        &quot;&quot;&quot;</span></span><br><span class="line">        <span class="function"><span class="keyword">def</span> <span class="title">decorator</span>(<span class="params">f</span>):</span></span><br><span class="line">            endpoint = options.pop(<span class="string">&quot;endpoint&quot;</span>, <span class="literal">None</span>)</span><br><span class="line">            self.add_url_rule(rule, endpoint, f, **options)</span><br><span class="line">            <span class="keyword">return</span> f</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> decorator</span><br></pre></td></tr></table></figure>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># endpoint</span></span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/&#x27;</span></span>)</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">index</span>():</span></span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;Hello World&quot;</span></span><br></pre></td></tr></table></figure>
+<p>The <code>app.route('/')</code> will call this higher-order function <code>route</code>, where parameter <code>self</code> is <code>app</code> and <code>rule</code> is <code>'/'</code>, then the function <code>decorator</code> will be returned.</p>
+<p>When applying <code>decorator</code> to our user-defined function, such as <code>index</code>, we can see this function will add the previous given url rule, i.e. <code>'/'</code> , to the app. So when we type the url <code>'/'</code>, the Flask app will help us trigger the corresponding function <code>index</code>, and returns <code>Hello World</code>.</p>
+<h2 id="pluggable-views">Pluggable Views</h2>
+<h3 id="introduction">Introduction</h3>
+<p>A <strong>view function</strong>, or view in short, is just a Python function that takes a web request and returns a web response.</p>
+<p>In the last section, we use decorators to register view functions, and use them to deal with requests. However, this way is not generic and not flexible if we want to apply other models or templates.</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># view function is not generic and flexible</span></span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/&#x27;</span></span>)</span></span><br><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/users&#x27;</span></span>)</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">show_users</span>(<span class="params">page</span>):</span></span><br><span class="line">    users = User.query.<span class="built_in">all</span>()</span><br><span class="line">    <span class="keyword">return</span> render_template(<span class="string">&#x27;users.html&#x27;</span>, users=users)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/stores&#x27;</span></span>)</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">show_products</span>(<span class="params">page</span>):</span></span><br><span class="line">    products = Product.query.<span class="built_in">all</span>()</span><br><span class="line">    <span class="keyword">return</span> render_template(<span class="string">&#x27;products.html&#x27;</span>, products=products)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>This is where <strong>pluggable view</strong> comes in.</p>
+<p>Flask 0.7 introduces pluggable views inspired by the generic view from Django. <strong>The pluggable views are based on classes instead of functions. We can use customized class view to deal with requests.</strong></p>
+<p>See an example. With the following code, we can type a specific url to let Flask app trigger the corresponding function.</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> flask.views <span class="keyword">import</span> View</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string"># Alternative way to use view function.</span></span><br><span class="line"><span class="string">class View:</span></span><br><span class="line"><span class="string">    ...</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    def dispatch_request(self) -&gt; ResponseReturnValue:</span></span><br><span class="line"><span class="string">        raise NotImplementedError()</span></span><br><span class="line"><span class="string">    </span></span><br><span class="line"><span class="string">    ...</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># customized-view class: inherit from View class</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ListView</span>(<span class="params">View</span>):</span></span><br><span class="line">    methods = [<span class="string">&#x27;GET&#x27;</span>, <span class="string">&#x27;POST&#x27;</span>]</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get_template_name</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="keyword">raise</span> NotImplementedError()</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">render_template</span>(<span class="params">self, context</span>):</span></span><br><span class="line">        <span class="keyword">return</span> render_template(self.get_template_name(), **context)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># the subclass should implement dispatch_request method</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">dispatch_request</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="keyword">if</span> request.method == <span class="string">&#x27;GET&#x27;</span>:</span><br><span class="line">            context = &#123;<span class="string">&#x27;objects&#x27;</span>: self.get_objects()&#125;</span><br><span class="line">            <span class="keyword">return</span> self.render_template(context)</span><br><span class="line">        <span class="keyword">elif</span> request.method == <span class="string">&#x27;POST&#x27;</span>:</span><br><span class="line">            <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">UserView</span>(<span class="params">ListView</span>):</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get_template_name</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="keyword">return</span> <span class="string">&#x27;users.html&#x27;</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get_objects</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="keyword">return</span> User.query.<span class="built_in">all</span>()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ProductView</span>(<span class="params">ListView</span>):</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get_template_name</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="keyword">return</span> <span class="string">&#x27;products.html&#x27;</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get_objects</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="keyword">return</span> Product.query.<span class="built_in">all</span>()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># add url rule into the app (endpoint is optional)</span></span><br><span class="line">app.add_url_rule(rule=<span class="string">&#x27;/users&#x27;</span>, endpoint=<span class="string">&#x27;show_users&#x27;</span>, view_func=UserView.as_view(<span class="string">&#x27;show_users&#x27;</span>))</span><br></pre></td></tr></table></figure>
+<p>In this example, we define some pluggable views instead of view functions, then use <code>add_url_rule()</code> method to register a rule for routing. You should notice that, although we also use <code>add_url_rule()</code> here, there is a slight difference between this example and the previous example.</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Comparasion</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># view function</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Flask</span>(<span class="params">_PackageBoundObject</span>):</span></span><br><span class="line">    ....</span><br><span class="line">    ....</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">route</span>(<span class="params">self, rule, **options</span>):</span></span><br><span class="line">        <span class="function"><span class="keyword">def</span> <span class="title">decorator</span>(<span class="params">f</span>):</span></span><br><span class="line">            endpoint = options.pop(<span class="string">&quot;endpoint&quot;</span>, <span class="literal">None</span>)</span><br><span class="line">            self.add_url_rule(rule, endpoint, f, **options)     <span class="comment"># this line!</span></span><br><span class="line">            <span class="keyword">return</span> f</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> decorator</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># pluggable view</span></span><br><span class="line">app.add_url_rule(rule=<span class="string">&#x27;/users&#x27;</span>, endpoint=<span class="string">&#x27;show_users&#x27;</span>, view_func=UserView.as_view(<span class="string">&#x27;show_users&#x27;</span>))</span><br></pre></td></tr></table></figure>
+<p>Although we use pluggable view in the latter case, we still need to convert it into view function when register URL rule for app. The <code>as_view</code> class method will <strong>convert that pluggable view class into an actual view function</strong>. The string you passed is the name of the endpoint that view will then have. Whenever a request is dispatched, a new instance of the class is created based on url rule. Then, the instance's dispatch_request() method will be called.</p>
+<h3 id="methodview">MethodView</h3>
+<p>For RESTful API, it is helpful to execute different function for each HTTP method. This is where <code>flask.views.MethodView</code> comes in.</p>
+<p>MethodView is also a class-based pluggable view that dispatches request methods to the corresponding class methods. It has already implemented <code>dispatch_request</code> method, so you don't have to implement it by yourself.</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> flask.views <span class="keyword">import</span> MethodView</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">UserAPI</span>(<span class="params">MethodView</span>):</span></span><br><span class="line">    <span class="comment"># each http method maps to a method with the same name</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get</span>(<span class="params">self</span>):</span></span><br><span class="line">        users = User.query.<span class="built_in">all</span>()</span><br><span class="line">        <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">post</span>(<span class="params">self</span>):</span></span><br><span class="line">        user = User.from_form_data(request.form)</span><br><span class="line">        <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line">app.add_url_rule(<span class="string">&#x27;/users/&#x27;</span>, view_func=UserAPI.as_view(<span class="string">&#x27;users&#x27;</span>))</span><br></pre></td></tr></table></figure>
+<h3 id="summary">Summary</h3>
+<p>Each URL rule is corresponding to a view. The view is callable and can deal with request and return a response. When a Flask api receives a request, it has two ways to deal with it. One is by using &quot;FUNCTION-BASED VIEW&quot; directly, while another way is using &quot;CLASS-BASED VIEW&quot;.</p>
+<ol type="1">
+<li>function-based view</li>
+</ol>
+<ul>
+<li>use &quot;route(url_rule, methods)&quot; decorator to register view function.</li>
+<li>the route decorator will add url-rule to the app by using &quot;add_url_rule(rule, endpoint, view_func)&quot; function</li>
+<li>this way is suitable for simple requests</li>
+</ul>
+<ol start="2" type="1">
+<li>class-based view</li>
+</ol>
+<ul>
+<li>customized-class view must inherit &quot;View&quot; class or &quot;MethodView&quot; class, and must override dispatch_request method (MethodView has already override the dispatch_request method)</li>
+<li>use &quot;add_url_ruler(rule, endpoint, view_func)&quot; to add url rule to the app</li>
+<li>use class method &quot;as_view()&quot; to convert a class into an actual view function</li>
+<li>whenever a request is dispatched, create a new instance based on url rule, then call its dispatch_request method</li>
+</ul>
+<h2 id="flask-restful-api">Flask-RESTful API</h2>
+<p>Now, let's use Flask and its extension <code>flask-restful</code> to build a RESTful API.</p>
+<p>Resource is the core when designing a RESTful API. We make resources as the center to design different url rules, and define different HTTP methods for resource to manipulate it.</p>
+<p>To do this,</p>
+<p>1️⃣ first we should define the resources that our api can work with.</p>
+<p>2️⃣ Then, define different methods that the resource should support.</p>
+<p>3️⃣ Finally, add the defined resources to our api.</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;&quot;&quot; restful api demo &quot;&quot;&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> Flask</span><br><span class="line"><span class="keyword">from</span> flask_restful <span class="keyword">import</span> Resource, Api</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">app = Flask(__name__)</span><br><span class="line">api = Api(app)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># each resource should be a class (oop)</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Student</span>(<span class="params">Resource</span>):</span></span><br><span class="line">    <span class="comment"># use http method as the method name; will handle GET requests</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get</span>(<span class="params">self, name</span>):</span></span><br><span class="line">        <span class="keyword">return</span> &#123;<span class="string">&#x27;student&#x27;</span>: name&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># api works with resource: add a resource to the api</span></span><br><span class="line">api.add_resource(Student, <span class="string">&#x27;/student/&lt;string:name&gt;&#x27;</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    app.run(debug=<span class="literal">True</span>)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>Let's see the source code.</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Api</span>(<span class="params"><span class="built_in">object</span></span>):</span></span><br><span class="line">    ......</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self, app=<span class="literal">None</span>, ...</span>):</span></span><br><span class="line">        ....</span><br><span class="line">        <span class="keyword">if</span> app <span class="keyword">is</span> <span class="keyword">not</span> <span class="literal">None</span>:</span><br><span class="line">            self.app = app</span><br><span class="line">            self.init_app(app)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">add_resource</span>(<span class="params">self, resource, *urls, **kwargs</span>):</span></span><br><span class="line">        <span class="keyword">if</span> self.app <span class="keyword">is</span> <span class="keyword">not</span> <span class="literal">None</span>:</span><br><span class="line">            self._register_view(self.app, resource, *urls, **kwargs)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            self.resources.append((resource, urls, kwargs)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">_register_view</span>(<span class="params">self, app, resource, *urls, **kwargs</span>):</span></span><br><span class="line">        ...</span><br><span class="line">        resource_func = self.output(resource.as_view(endpoint, *resource_class_args,</span><br><span class="line">            **resource_class_kwargs))</span><br><span class="line">        ...</span><br><span class="line">        <span class="keyword">for</span> url <span class="keyword">in</span> urls:</span><br><span class="line">            ...</span><br><span class="line">            app.add_url_rule(rule, view_func=resource_func, **kwargs)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">output</span>(<span class="params">self, resource</span>):</span></span><br><span class="line">        <span class="string">&quot;&quot;&quot; Wraps a resource as a flask view function. &quot;&quot;&quot;</span></span><br><span class="line">        <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Resource</span>(<span class="params">MethodView</span>):</span></span><br><span class="line">    ...</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MethodView</span>(<span class="params">View</span>):</span></span><br><span class="line">    ...</span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>Api</code> is the main entry point for the application. You need to initialize it with a Flask Application.</li>
+<li><code>Resource</code> represents an abstract RESTful resource. Concrete resources should extend from this class and expose methods for each supported HTTP method. If a resource is invoked with an unsupported HTTP method, the API will return a response with status 405 Method Not Allowed. Otherwise, the appropriate method is called, and all arguments from the url rule which is used when adding resource to an api instance will be passed to the method.</li>
+</ul>
+<p>We use a Flask instance <code>app</code> to initialize <code>Api</code> class and get an instance <code>api</code>, so <code>api.app = app</code> . When executing <code>api.add_resource(resource, urls)</code> (Line 19 in restful demo) , since <code>api.app</code> is not None, so a pluggable view will be registered by calling <code>_register_view</code> method. Here, the <code>resource</code> is the <code>Student</code> class. Finally, the url rule will be added to the app.</p>
+<p>Until now, I think you should understand every line of our code when building a simple Flask API or Flask RESTful API. If you have question or suggestion, please leave me a message.</p>
+<p>Thank you so much, and see you later. 💝</p>
+<h2 id="reference">Reference</h2>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://flask.palletsprojects.com/en/2.0.x/">Flask Doc</a></li>
+<li><a target="_blank" rel="noopener" href="https://flask-restful.readthedocs.io/en/latest/">Flask-RESTful Doc</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/pallets/flask">Flask source code</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/flask-restful/flask-restful">Flask-RESTful source code</a></li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>Post author:</strong>
+    gogo-wang
+  </li>
+  <li class="post-copyright-link">
+    <strong>Post link:</strong>
+    <a href="http://example.com/2022/03/20/Web-Development/Source-Code-1-Flask-and-Flask-RESTful/" title="Source Code(1): Flask and Flask-RESTful">http://example.com/2022/03/20/Web-Development/Source-Code-1-Flask-and-Flask-RESTful/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice: </strong>
+    All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> unless stating additionally.
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Flask/" rel="tag"># Flask</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2022/03/09/Web-Development/API-Development-Summary-1/" rel="next" title="API Development Summary(1)">
+                <i class="fa fa-chevron-left"></i> API Development Summary(1)
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a target="_blank" rel="noopener" href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name"></p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/%7C%7Carchive">
+              
+                  <span class="site-state-item-count">48</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/rileywang0819" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#flask-api"><span class="nav-number">1.</span> <span class="nav-text">Flask API</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#pluggable-views"><span class="nav-number">2.</span> <span class="nav-text">Pluggable Views</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#introduction"><span class="nav-number">2.1.</span> <span class="nav-text">Introduction</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#methodview"><span class="nav-number">2.2.</span> <span class="nav-text">MethodView</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#summary"><span class="nav-number">2.3.</span> <span class="nav-text">Summary</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#flask-restful-api"><span class="nav-number">3.</span> <span class="nav-text">Flask-RESTful API</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#reference"><span class="nav-number">4.</span> <span class="nav-text">Reference</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2021 &mdash; <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">GoGo-Wang</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+    
+      <script id="dsq-count-scr" src="https://author.disqus.com/count.js" async></script>
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'http://example.com/2022/03/20/Web-Development/Source-Code-1-Flask-and-Flask-RESTful/';
+          this.page.identifier = '2022/03/20/Web-Development/Source-Code-1-Flask-and-Flask-RESTful/';
+          this.page.title = 'Source Code(1): Flask and Flask-RESTful';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://author.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>

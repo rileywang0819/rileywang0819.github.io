@@ -1,0 +1,934 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="en,zh-Hans,default">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Roboto Slab:300,300italic,400,400italic,700,700italic|Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="DSA," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="This is the lecture note of CS61B - Lecture 8.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CS61B(8): Inheritance, Implements">
+<meta property="og:url" content="http://example.com/2021/02/05/Data%20Structures%20and%20Algorithms/CS61B-DSA/CS61B-8-Inheritance-Implements/index.html">
+<meta property="og:site_name" content="GoGo-Wang&#39;s Blog">
+<meta property="og:description" content="This is the lecture note of CS61B - Lecture 8.">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/2021/02/05/Data%20Structures%20and%20Algorithms/CS61B-DSA/CS61B-8-Inheritance-Implements/8-1.JPG">
+<meta property="og:image" content="http://example.com/2021/02/05/Data%20Structures%20and%20Algorithms/CS61B-DSA/CS61B-8-Inheritance-Implements/8-2.JPG">
+<meta property="og:image" content="http://example.com/2021/02/05/Data%20Structures%20and%20Algorithms/CS61B-DSA/CS61B-8-Inheritance-Implements/8-3.JPG">
+<meta property="og:image" content="http://example.com/2021/02/05/Data%20Structures%20and%20Algorithms/CS61B-DSA/CS61B-8-Inheritance-Implements/8-4.JPG">
+<meta property="og:image" content="http://example.com/2021/02/05/Data%20Structures%20and%20Algorithms/CS61B-DSA/CS61B-8-Inheritance-Implements/8-5.JPG">
+<meta property="og:image" content="http://example.com/2021/02/05/Data%20Structures%20and%20Algorithms/CS61B-DSA/CS61B-8-Inheritance-Implements/8-6.JPG">
+<meta property="og:image" content="http://example.com/2021/02/05/Data%20Structures%20and%20Algorithms/CS61B-DSA/CS61B-8-Inheritance-Implements/8-7.JPG">
+<meta property="og:image" content="http://example.com/2021/02/05/Data%20Structures%20and%20Algorithms/CS61B-DSA/CS61B-8-Inheritance-Implements/8-8.JPG">
+<meta property="og:image" content="http://example.com/2021/02/05/Data%20Structures%20and%20Algorithms/CS61B-DSA/CS61B-8-Inheritance-Implements/8-9.JPG">
+<meta property="article:published_time" content="2021-02-05T06:09:27.000Z">
+<meta property="article:modified_time" content="2022-04-20T01:41:51.598Z">
+<meta property="article:author" content="gogo-wang">
+<meta property="article:tag" content="DSA">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2021/02/05/Data%20Structures%20and%20Algorithms/CS61B-DSA/CS61B-8-Inheritance-Implements/8-1.JPG">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://example.com/2021/02/05/Data Structures and Algorithms/CS61B-DSA/CS61B-8-Inheritance-Implements/"/>
+
+
+
+
+
+  <title>CS61B(8): Inheritance, Implements | GoGo-Wang's Blog</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">GoGo-Wang's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">"Say something." <br> - "Something."</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/02/05/Data%20Structures%20and%20Algorithms/CS61B-DSA/CS61B-8-Inheritance-Implements/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="GoGo-Wang's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">CS61B(8): Inheritance, Implements</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2021-02-05T15:09:27+09:00">
+                2021-02-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Data-Structures-and-Algorithms/" itemprop="url" rel="index">
+                    <span itemprop="name">Data Structures and Algorithms</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Data-Structures-and-Algorithms/CS61B-Data-Structures/" itemprop="url" rel="index">
+                    <span itemprop="name">CS61B-Data Structures</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2021/02/05/Data%20Structures%20and%20Algorithms/CS61B-DSA/CS61B-8-Inheritance-Implements/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2021/02/05/Data Structures and Algorithms/CS61B-DSA/CS61B-8-Inheritance-Implements/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>This is the lecture note of CS61B - Lecture 8.</p>
+<span id="more"></span>
+<h2 id="a-real-problem">A Real Problem</h2>
+<p>Recall <code>SLList</code> and <code>AList</code> we have implemented until now. They exactly have many same methods (signatures), although their data structures under the hood are totally different.</p>
+<p>Now, suppose we’re writing a library to manipulate lists of words. We might want to write a function that finds the longest word from a list of words.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">WordUtils</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">longest</span><span class="params">(SLList&lt;String&gt; list)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// ...</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> list.get(maxId);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        SLList&lt;String&gt; L = <span class="keyword">new</span> SLList&lt;&gt;();</span><br><span class="line">        L.addLast(<span class="string">&quot;elk&quot;</span>);</span><br><span class="line">        L.addLast(<span class="string">&quot;are&quot;</span>);</span><br><span class="line">        L.addLast(<span class="string">&quot;watching&quot;</span>);</span><br><span class="line">        System.out.println(longest(L));   <span class="comment">// watching</span></span><br><span class="line"></span><br><span class="line">        AList&lt;String&gt; L2 = <span class="keyword">new</span> AList&lt;&gt;();</span><br><span class="line">        L2.addLast(<span class="string">&quot;elk&quot;</span>);</span><br><span class="line">        L2.addLast(<span class="string">&quot;are&quot;</span>);</span><br><span class="line">        L2.addLast(<span class="string">&quot;watching&quot;</span>);</span><br><span class="line">        System.out.println(longest(L2));   <span class="comment">// Error: we can&#x27;t pass AList to longest method</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">If X is a superclass of Y, then memory boxes for X may contain Y.</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
+<p>Read the code above, I think you should understand why there is an error when calling <code>longest</code> method on an AList. Now, what should we do if we want the <code>longest</code> method can also handle AList beautifully?</p>
+<p>To sovle this problem, you should know the knowledge of <code>interface</code> and <code>inheritance</code>.</p>
+<h2 id="hypernyms-hyponyms-and-interface-inheritance">Hypernyms, Hyponyms, and Interface Inheritance</h2>
+<ul>
+<li>Hypernyms(上位词) represent abstraction.</li>
+<li>Hyponyms(下位词) represent details.</li>
+</ul>
+<img src="/2021/02/05/Data%20Structures%20and%20Algorithms/CS61B-DSA/CS61B-8-Inheritance-Implements/8-1.JPG" class="" title="Example of Relationship Between Hypernyms and Hyponyms">
+<p>Java can help us build this hierarchy.</p>
+<img src="/2021/02/05/Data%20Structures%20and%20Algorithms/CS61B-DSA/CS61B-8-Inheritance-Implements/8-2.JPG" class="">
+<img src="/2021/02/05/Data%20Structures%20and%20Algorithms/CS61B-DSA/CS61B-8-Inheritance-Implements/8-3.JPG" class="">
+<img src="/2021/02/05/Data%20Structures%20and%20Algorithms/CS61B-DSA/CS61B-8-Inheritance-Implements/8-4.JPG" class="">
+<p>Now, turn back to the previous problem. We can solve it now.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">WordUtils</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">longest</span><span class="params">(List61B&lt;String&gt; list)</span> </span>&#123;  <span class="comment">// &lt;-- change here</span></span><br><span class="line">        <span class="comment">// ...</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> list.get(maxId);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        SLList&lt;String&gt; L = <span class="keyword">new</span> SLList&lt;&gt;();</span><br><span class="line">        L.addLast(<span class="string">&quot;elk&quot;</span>);</span><br><span class="line">        L.addLast(<span class="string">&quot;are&quot;</span>);</span><br><span class="line">        L.addLast(<span class="string">&quot;watching&quot;</span>);</span><br><span class="line">        System.out.println(longest(L));   <span class="comment">// watching</span></span><br><span class="line"></span><br><span class="line">        AList&lt;String&gt; L2 = <span class="keyword">new</span> AList&lt;&gt;();</span><br><span class="line">        L2.addLast(<span class="string">&quot;elk&quot;</span>);</span><br><span class="line">        L2.addLast(<span class="string">&quot;are&quot;</span>);</span><br><span class="line">        L2.addLast(<span class="string">&quot;watching&quot;</span>);</span><br><span class="line">        System.out.println(longest(L2));   <span class="comment">// watching</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="overriding-vs.-overloading">Overriding vs. Overloading</h2>
+<img src="/2021/02/05/Data%20Structures%20and%20Algorithms/CS61B-DSA/CS61B-8-Inheritance-Implements/8-5.JPG" class="" title="Overriding vs. Overloading">
+<p>##Interface Inheritance</p>
+<img src="/2021/02/05/Data%20Structures%20and%20Algorithms/CS61B-DSA/CS61B-8-Inheritance-Implements/8-6.JPG" class="">
+<p>In the last section, we said that subclass must override all methods of interface, otherwise it will fail to compile. In fact, this is not accurate.</p>
+<img src="/2021/02/05/Data%20Structures%20and%20Algorithms/CS61B-DSA/CS61B-8-Inheritance-Implements/8-7.JPG" class="">
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">List61B</span>&lt;<span class="title">Item</span>&gt; </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">addFirst</span><span class="params">(Item x)</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">addLast</span><span class="params">(Item y)</span></span>;</span><br><span class="line">   </span><br><span class="line">    <span class="function">Item <span class="title">getFirst</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="function">Item <span class="title">getLast</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="function">Item <span class="title">removeLast</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="function">Item <span class="title">get</span><span class="params">(<span class="keyword">int</span> i)</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">insert</span><span class="params">(Item x, <span class="keyword">int</span> position)</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">size</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">default</span> <span class="keyword">void</span> <span class="title">print</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; size(); i += <span class="number">1</span>) &#123;</span><br><span class="line">            System.out.print(get(i) + <span class="string">&quot; &quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    System.out.println();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>If you don’t like the default method, you absolutely can override it. For example, the default <code>print</code> method is inefficient for <code>SLList</code>, so we override it:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">SLList</span>&lt;<span class="title">Item</span>&gt; <span class="keyword">implements</span> <span class="title">List61B</span>&lt;<span class="title">Item</span>&gt; </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">/** </span></span><br><span class="line"><span class="comment">     * the default print method is inefficient for SLList, so we override it. </span></span><br><span class="line"><span class="comment">     * */</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">print</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">for</span> (Node p = sentinel.next; p != <span class="keyword">null</span>; p = p.next) &#123;</span><br><span class="line">            System.out.print(p.item + <span class="string">&quot; &quot;</span>);     	</span><br><span class="line">        &#125;</span><br><span class="line">    </span><br><span class="line">        System.out.println();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="static-and-dynamic-type-dynamic-method-selection">Static and Dynamic Type, Dynamic Method Selection</h2>
+<img src="/2021/02/05/Data%20Structures%20and%20Algorithms/CS61B-DSA/CS61B-8-Inheritance-Implements/8-8.JPG" class="">
+<img src="/2021/02/05/Data%20Structures%20and%20Algorithms/CS61B-DSA/CS61B-8-Inheritance-Implements/8-9.JPG" class="">
+<p>To wrap up above materials, let's do a puzzle.</p>
+<p>Suppose we have classes defined below. Try to predict the results.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">Animal</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">default</span> <span class="keyword">void</span> <span class="title">greet</span><span class="params">(Animal a)</span> </span>&#123;</span><br><span class="line">        print(<span class="string">&quot;hello animal&quot;</span>); &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">default</span> <span class="keyword">void</span> <span class="title">sniff</span><span class="params">(Animal a)</span> </span>&#123;</span><br><span class="line">        print(<span class="string">&quot;sniff animal&quot;</span>); &#125;</span><br><span class="line">        </span><br><span class="line">    <span class="function"><span class="keyword">default</span> <span class="keyword">void</span> <span class="title">praise</span><span class="params">(Animal a)</span> </span>&#123;</span><br><span class="line">        print(<span class="string">&quot;u r cool animal&quot;</span>); &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Dog</span> <span class="keyword">implements</span> <span class="title">Animal</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">sniff</span><span class="params">(Animal a)</span> </span>&#123;</span><br><span class="line">        print(<span class="string">&quot;dog sniff animal&quot;</span>); &#125;</span><br><span class="line">  </span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">praise</span><span class="params">(Dog a)</span> </span>&#123;</span><br><span class="line">        print(<span class="string">&quot;u r cool dog&quot;</span>); &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Animal a = <span class="keyword">new</span> Dog();</span><br><span class="line">        Dog d = <span class="keyword">new</span> Dog();</span><br><span class="line">        a.greet(d);</span><br><span class="line">        a.sniff(d);</span><br><span class="line">        d.praise(d);</span><br><span class="line">        a.praise(d);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Add annotation to the above code, and also give the answer.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Animal</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">default</span> <span class="keyword">void</span> <span class="title">greet</span><span class="params">(Animal a)</span> </span>&#123; </span><br><span class="line">        print(<span class="string">&quot;hello animal&quot;</span>); &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">default</span> <span class="keyword">void</span> <span class="title">sniff</span><span class="params">(Animal a)</span> </span>&#123;</span><br><span class="line">        print(<span class="string">&quot;sniff animal&quot;</span>); &#125;</span><br><span class="line">        </span><br><span class="line">    <span class="function"><span class="keyword">default</span> <span class="keyword">void</span> <span class="title">praise</span><span class="params">(Animal a)</span> </span>&#123;</span><br><span class="line">        print(<span class="string">&quot;u r cool animal&quot;</span>); &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Dog</span> <span class="keyword">implements</span> <span class="title">Animal</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">sniff</span><span class="params">(Animal a)</span> </span>&#123;</span><br><span class="line">        print(<span class="string">&quot;dog sniff animal&quot;</span>); &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Overload</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">praise</span><span class="params">(Dog a)</span> </span>&#123;</span><br><span class="line">        print(<span class="string">&quot;u r cool dog&quot;</span>); &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Animal a = <span class="keyword">new</span> Dog();  <span class="comment">// static type:Animal; dynamic type: Dog</span></span><br><span class="line">        Dog d = <span class="keyword">new</span> Dog();  <span class="comment">// static type &amp; dynamic type: Dog</span></span><br><span class="line">        </span><br><span class="line">        a.greet(d);  <span class="comment">// hello animal</span></span><br><span class="line">        a.sniff(d);  <span class="comment">// dog sniff animal</span></span><br><span class="line">        d.praise(d);  <span class="comment">// u r cool dog</span></span><br><span class="line">        a.praise(d);  <span class="comment">// u r cool animal</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>The shocking answer is the last one, i.e. <code>a.flatter(d);</code> . Why?</p>
+<p>There are some rules that you should apply when solving such problems.</p>
+<ul>
+<li>At compile time: we determine the <strong>signature S</strong> of the method to be called.
+<ul>
+<li>S is decided using <strong>ONLY static types</strong></li>
+</ul></li>
+<li>At runtime: the dynamic type of the <strong>invoking object</strong> uses its method with this exact signature S.
+<ul>
+<li>By involing object, we mean the object whose method is invoked.</li>
+</ul></li>
+</ul>
+<p>So,</p>
+<ul>
+<li>since <code>a</code> has <code>Animal</code> static type, <code>a.greet(d)</code> will call the default interface method <code>greet</code>;</li>
+<li>although <code>a</code> has <code>Animal</code> static type, the <code>sniff</code> method has be overriden in <code>Dog</code> class, so <code>a.sniff(d)</code> will call the dynamic type method <code>sniff</code>;</li>
+<li>since <code>d</code> has <code>Dog</code> static type, <code>d.praise(d)</code> will call the method <code>praise</code> from <code>Dog</code> class;</li>
+<li>notice <code>praise</code> method is not overriden, it's just overload, so since <code>a</code> has <code>Animal</code> static type, <code>a.praise(d)</code> will call the default interface method <code>praise</code>;</li>
+</ul>
+<p>🦔 Related Slides: link <a target="_blank" rel="noopener" href="https://docs.google.com/presentation/d/1EUOpd9NXq28eEUqQMZoo_rRpxw8EekQ2LEp61U9bnDc/edit#slide=id.gb943cfb275_0_158">here</a></p>
+<h2 id="real-world">Real World</h2>
+<p>Finally, let's go back to the real world.</p>
+<p>We will use the Java's built-in <strong>List interface</strong> and several implementations, e.g. <strong>ArrayList</strong>, <strong>LinkedList</strong>, <strong>Stack</strong>, <strong>Vector</strong> etc. in our future works.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"><span class="keyword">import</span> java.util.ArrayList;</span><br><span class="line"><span class="keyword">import</span> java.util.LinkedList;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Examples</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        List&lt;Integer&gt; L = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        L.add(<span class="number">5</span>);</span><br><span class="line">        L.add(<span class="number">10</span>);</span><br><span class="line">        L.add(<span class="number">15</span>);</span><br><span class="line">        System.out.println(L);  <span class="comment">// L.toString()</span></span><br><span class="line"></span><br><span class="line">        List&lt;Integer&gt; L2 = <span class="keyword">new</span> LinkedList&lt;&gt;();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Reference: <a target="_blank" rel="noopener" href="https://docs.oracle.com/javase/8/docs/api/java/util/List.html">LINK</a></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>Post author:</strong>
+    gogo-wang
+  </li>
+  <li class="post-copyright-link">
+    <strong>Post link:</strong>
+    <a href="http://example.com/2021/02/05/Data%20Structures%20and%20Algorithms/CS61B-DSA/CS61B-8-Inheritance-Implements/" title="CS61B(8): Inheritance, Implements">http://example.com/2021/02/05/Data%20Structures%20and%20Algorithms/CS61B-DSA/CS61B-8-Inheritance-Implements/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice: </strong>
+    All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> unless stating additionally.
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/DSA/" rel="tag"># DSA</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2021/02/03/Data%20Structures%20and%20Algorithms/CS61B-DSA/CS61B-7-ALists-Resizing-vs-SLists/" rel="next" title="CS61B(7): ALists, Resizing, vs. SLists">
+                <i class="fa fa-chevron-left"></i> CS61B(7): ALists, Resizing, vs. SLists
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2021/02/08/Data%20Structures%20and%20Algorithms/CS61B-DSA/CS61B-9-Extends-Casting-HoFs/" rel="prev" title="CS61B(9): Extends, Casting, HoFs">
+                CS61B(9): Extends, Casting, HoFs <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a target="_blank" rel="noopener" href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name"></p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/%7C%7Carchive">
+              
+                  <span class="site-state-item-count">48</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/rileywang0819" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#a-real-problem"><span class="nav-number">1.</span> <span class="nav-text">A Real Problem</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#hypernyms-hyponyms-and-interface-inheritance"><span class="nav-number">2.</span> <span class="nav-text">Hypernyms, Hyponyms, and Interface Inheritance</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#overriding-vs.-overloading"><span class="nav-number">3.</span> <span class="nav-text">Overriding vs. Overloading</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#static-and-dynamic-type-dynamic-method-selection"><span class="nav-number">4.</span> <span class="nav-text">Static and Dynamic Type, Dynamic Method Selection</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#real-world"><span class="nav-number">5.</span> <span class="nav-text">Real World</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2021 &mdash; <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">GoGo-Wang</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+    
+      <script id="dsq-count-scr" src="https://author.disqus.com/count.js" async></script>
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'http://example.com/2021/02/05/Data%20Structures%20and%20Algorithms/CS61B-DSA/CS61B-8-Inheritance-Implements/';
+          this.page.identifier = '2021/02/05/Data Structures and Algorithms/CS61B-DSA/CS61B-8-Inheritance-Implements/';
+          this.page.title = 'CS61B(8): Inheritance, Implements';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://author.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>
